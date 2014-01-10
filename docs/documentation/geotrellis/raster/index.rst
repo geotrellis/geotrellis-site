@@ -104,12 +104,6 @@ rasters (where the size is the length of one dimension in a square raster)::
 As you can see, there is a performance cost to using floating point values to rasters, so be 
 wary, and use :math:`\mathbb{Z}`\-based rasters whenever possible.
 
-RasterExtent
-------------
-
-Extent
-------
-
 NoData
 ------
 
@@ -125,3 +119,19 @@ NoData values are represented differently for each `Raster Type`_:
 :TypeDouble: ``Double.NaN``
 
 If you are getting or setting values in a Raster or base RasterData, remember that .get, .getDouble, .set, and .setDouble return Ints and Doubles, so you'd really only be checking for or setting ``NODATA`` or ``Double.NaN``.
+
+RasterExtent
+------------
+
+Extent
+------
+
+Warping
+-------
+
+Warping is the term used to describe changing the resolution of the raster (the columns and the rows) as well as changing the extent of the raster (cropping). Warping rasters is as easy as passing the new raster extent to the ``warp`` function:
+
+.. includecode:: code/RasterExamples.scala
+   :snippet: warp-example
+
+This code takes the raster's existing RasterExtent, crops it to the lower-left corner, and changes the resolution to 256x256.
