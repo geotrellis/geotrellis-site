@@ -1,0 +1,75 @@
+// Partial: Navbar
+
+.navbar {
+    background: $gt-darkblue;
+    border: none;
+    min-height: 52px;
+    
+    .navbar-brand {
+        font-family: 'Signika', sans-serif;
+        font-weight: 300;
+        color: white;
+        text-indent: 38px;
+        position: relative;
+        
+        > span {
+            background: url(../images/logo-icon.png) no-repeat;
+            background-size: 100%;
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            position: absolute;
+            left: 15px;
+            top: 12px;
+        }
+    }
+    .navbar-toggle {
+        border: none;
+        
+        &.collapsed {
+            opacity: 0.5;
+        }
+        
+        .icon-bar {
+            background: white !important;
+        }
+    }
+    .navbar-nav {
+        @media #{$screen-sm}{
+            margin: 0 -15px;
+        }
+        
+        > li {
+            > a {
+                color: lighten($gt-darkblue, 25%);
+                color: rgba(255,255,255,0.65);
+                line-height: 22px;
+                font-weight: 700;
+                transition: color 0.25s;
+                
+                &:hover {
+                    color: white;
+                }
+            }
+            &.open {
+                > a {
+                    background-color: lighten($gt-darkblue, 5%) !important;
+                }
+            }
+            &.nav-btn {
+                background: $gt-blue;
+                transition: background 0.5s;
+                
+                &:hover {
+                    background: darken($gt-blue, 10%);
+                }
+                
+                a {
+                    color: white;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+}

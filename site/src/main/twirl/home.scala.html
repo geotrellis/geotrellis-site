@@ -1,0 +1,77 @@
+@()
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>GeoTrellis</h1>
+        <p>Fast raster processing for the web and the cluster.</p>
+        <p>
+            <a class="btn btn-primary btn-lg" role="button" href="#what-is-geotrellis">What is GeoTrellis?</a>
+            <a class="btn btn-primary btn-lg" role="button" href="gettingstarted/">Get Started</a>
+        </p>
+    </div>
+</div>
+<div id="what-is-geotrellis">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>I/O</h3>
+                <p>GeoTrellis provides data types for working with rasters in the Scala language, as well as fast reading and writing of these data types to disk.</p>
+            </div>
+            <div class="col-sm-4">
+                <h3>Operations</h3>
+                <p>GeoTrellis provides a number of operations to manipulate raster data, including cropping/warping, Map Algebra operations, and rendering operations, as well as vector to raster operations such as Kernel Density and vectorization of raster data.</p>
+            </div>
+            <div class="col-sm-4">
+                <h3>Web Service Utilities</h3>
+                <p>GeoTrellis includes a set of utilities to help developers create useful, high performing web services that load and manipulate raster data.</p>
+            </div>
+        </div>
+        <hr/>
+        <h2>How to use <strong>GeoTrellis</strong></h2>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="setup-container">
+                    <img src="/img/setup_01.jpg" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3><strong>Real-time</strong>, web speed REST services</h3>
+                <p>GeoTrellis can help build web applications that work with raster data. It provides a set of functionality to aid the translation of queries into GeoTrellis operations, that load raster data, operate on your data, and render the results of those operations in a format useful to return to the client.</p>
+            </div>
+        </div>
+        <hr class="half" />
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="setup-container">
+                    <img src="/img/setup_02.jpg" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3><strong>Fast</strong> batch processing</h3>
+                <p>GeoTrellis can also be used to do fast batch processing of large raster data. Currently GeoTrellis uses Akka clustering to distribute data across a cluster; in the next version of GeoTrellis, we will be running on the Spark system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="case-studies">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Case Studies</h3>
+                <p>Build radically engaging applications. Explore applications that leverage the high performance geoprocessing capabilities of GeoTrellis.</p>
+            </div>
+            <div class="col-sm-3 col-sm-offset-2">
+                <a class="case-study" href="http://transit.geotrellis.com/">
+                    <img src="/img/case-study_01.jpg" />
+                    <h4>GeoTrellis Transit</h4>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a class="case-study" href="http://demo.geotrellis.com/chatta/">
+                    <img src="/img/case-study_02.jpg" />
+                    <h4>Chattanooga Models</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

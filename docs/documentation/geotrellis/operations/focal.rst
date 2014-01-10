@@ -1,0 +1,4 @@
+.. _focal:
+
+Focal Operations
+================

@@ -1,0 +1,4 @@
+.. _global:
+
+Global Operations
+=================

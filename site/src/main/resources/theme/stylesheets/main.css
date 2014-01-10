@@ -1,0 +1,129 @@
+html,
+body {
+  font-size: 62.5%;
+  line-height: 1.5; }
+
+div, p {
+  font-size: 1.4rem; }
+
+h1, h2, h3 {
+  font-family: 'Signika', sans-serif; }
+
+html,
+body {
+  min-height: 100%; }
+
+.navbar {
+  background: #1c2e3f;
+  border: none;
+  min-height: 52px; }
+  .navbar .navbar-brand {
+    font-family: 'Signika', sans-serif;
+    font-weight: 300;
+    color: white;
+    text-indent: 38px;
+    position: relative; }
+    .navbar .navbar-brand > span {
+      background: url(../../images/logo-icon.png) no-repeat;
+      background-size: 100%;
+      width: 26px;
+      height: 26px;
+      display: inline-block;
+      position: absolute;
+      left: 15px;
+      top: 12px; }
+  .navbar .navbar-toggle {
+    border: none; }
+    .navbar .navbar-toggle.collapsed {
+      opacity: 0.5; }
+    .navbar .navbar-toggle .icon-bar {
+      background: white !important; }
+  @media screen and (max-width: 767px) {
+    .navbar .navbar-nav {
+      margin: 0 -15px; } }
+  .navbar .navbar-nav > li > a {
+    color: #436e97;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 22px;
+    font-weight: 700;
+    transition: color 0.25s; }
+    .navbar .navbar-nav > li > a:hover {
+      color: white; }
+  .navbar .navbar-nav > li.open > a {
+    background-color: #243b51 !important; }
+  .navbar .navbar-nav > li.nav-btn {
+    background: #3a7ec0;
+    transition: background 0.5s; }
+    .navbar .navbar-nav > li.nav-btn:hover {
+      background: #2e6499; }
+    .navbar .navbar-nav > li.nav-btn a {
+      color: white;
+      padding-left: 20px;
+      padding-right: 20px; }
+
+.jumbotron {
+  background: url(../../images/bg-static.png);
+  background-size: cover;
+  min-height: 400px;
+  margin-top: 52px; }
+  .jumbotron h1 {
+    font-size: 6rem;
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    margin-top: 50px;
+    margin-bottom: 10px; }
+  .jumbotron p {
+    font-size: 2.4rem;
+    font-family: 'Signika', sans-serif;
+    color: #fff29d;
+    margin-bottom: 24px; }
+    .jumbotron p > a {
+      padding: 12px 24px;
+      font-size: 2.1rem;
+      line-height: 1.5;
+      border-radius: 0;
+      margin-right: 10px; }
+
+#what-is-geotrellis {
+  padding-top: 52px; }
+  #what-is-geotrellis img {
+    max-width: 100%;
+    height: auto; }
+  #what-is-geotrellis hr {
+    margin-bottom: 40px;
+    margin-top: 40px; }
+    #what-is-geotrellis hr.half {
+      width: 50%;
+      margin-right: auto;
+      margin-left: auto; }
+  #what-is-geotrellis .setup-container {
+    position: relative; }
+
+#case-studies {
+  background: #ecf0f0;
+  padding: 40px 0;
+  margin-top: 50px; }
+  #case-studies .case-study {
+    width: 100%;
+    min-height: 200px;
+    background: #7d8b8d;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 10px; }
+    #case-studies .case-study h4 {
+      position: absolute;
+      bottom: 0;
+      background: #24A3C3;
+      margin: 0;
+      padding: 14px 12px;
+      width: 100%;
+      font-family: 'Signika', sans-serif;
+      font-size: 1.6rem;
+      color: #FFF;
+      font-weight: 400; }
+    #case-studies .case-study img {
+      width: 100%;
+      height: auto; }
+

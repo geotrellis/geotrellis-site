@@ -1,0 +1,4 @@
+.. _GeoJSON:
+
+GeoJSON
+==========

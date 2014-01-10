@@ -1,0 +1,4 @@
+.. _local:
+
+Local Operations
+================
