@@ -21,7 +21,7 @@
     List(
       Option(first).toList,
       if (node.isLast) "last" :: Nil else Nil,
-      if (pageNode.isDescendantOf(node)) "active" :: Nil else Nil
+      if (pageNode.isDescendantOf(node)) "current-page" :: Nil else Nil
     ).flatten match {
       case Nil => ""
       case x => x.mkString(" class=\"", " ", "\"")
