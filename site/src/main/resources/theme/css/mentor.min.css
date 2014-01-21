@@ -3797,7 +3797,7 @@ a.thumbnail:hover {
 }
 .navbar .nav>li>a:hover {
     background-color: transparent;
-    color: #333;
+    color: #2dbbbb;
     text-decoration: none;
     border-bottom: 2px solid #1c2e3f;
 }

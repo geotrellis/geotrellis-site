@@ -196,6 +196,7 @@ footer .footNav { text-align: center; }
     line-height: 40px;
     margin-bottom: 0.5em;
     border-bottom: 1px solid #CCC;
+    padding-bottom: 10px;
 }
 
 .section h2 {
@@ -214,14 +215,14 @@ footer .footNav { text-align: center; }
     font-weight: bold;
 }
 
-.section p, .section table { line-height: 20px; margin: 0 0 10px; }
-.section li { line-height: 20px; margin: 0 0 10px; }
+.section p, .section table { margin: 0 0 10px; }
+.section li { margin: 0 0 10px; }
 .section li > ul { margin-top: 10px; }
 .section ul li { margin: 0; }
 .section ul.wide > li { margin-top: 10px; }
 .section ul li > ul { margin-top: 0; }
-.section dt { line-height: 20px; }
-.section dd { line-height: 20px; margin-left: 10px; margin-bottom: 10px; }
+.section dt { }
+.section dd { margin-left: 10px; margin-bottom: 10px; }
 .section img { margin: 1em 0; }
 .section table.field-list { text-align: left; }
 .section th.field-name { padding-right: 5px; }
@@ -231,9 +232,8 @@ footer .footNav { text-align: center; }
 pre {margin:1.5em 0;white-space:pre;}
 tt {
     color: #000055;
-    font:1.1em 'andale mono', 'lucida console', monospace;
-    line-height:1.5;
     font-family: 'andale mono', 'lucida console', monospace;
+    line-height:1.5;
 }
 
 
