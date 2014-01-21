@@ -1,5 +1,7 @@
+.. _resources:
+
 Resources
-===============
+=========
 
 Scaladocs
 ---------
