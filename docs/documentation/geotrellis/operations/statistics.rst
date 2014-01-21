@@ -1,4 +1,4 @@
-.. statistics:
+.. _statistics:
 
 Statistical Operations
 ======================

@@ -3,4 +3,4 @@
 License
 =======
 
-.. literalinclude:: /../LICENSE
+.. literalinclude:: ../LICENSE

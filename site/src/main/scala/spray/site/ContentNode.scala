@@ -38,9 +38,11 @@ sealed trait ContentNode {
   def absoluteUri = if (uri.startsWith("http") || uri.startsWith("/")) uri else "/" + uri
   def isDescendantOf(node: ContentNode): Boolean = node == this || !isRoot && parent.isDescendantOf(node)
 
-  def find(uri: String): Option[ContentNode] =
+  def find(uri: String): Option[ContentNode] = {
+    println(s"FINDING NODE $uri")
     if (uri == this.uri) Some(this)
     else children.mapFind(_.find(uri))
+  }
 
   def render[R <: Rendering](r: R, prefix: String = ""): r.type =
     if (children.nonEmpty) {

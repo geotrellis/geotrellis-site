@@ -12,10 +12,10 @@ import com.typesafe.sbt.osgi.SbtOsgi
 import SbtOsgi._
 
 object BuildSettings {
-  val VERSION = "1.1-SNAPSHOT"
+  val VERSION = "0.9.0"
 
   lazy val basicSettings = seq(
-    version               := NightlyBuildSupport.buildVersion(VERSION),
+    version               := VERSION,
     homepage              := Some(new URL("http://spray.io")),
     organization          := "io.spray",
     organizationHomepage  := Some(new URL("http://spray.io")),
@@ -117,5 +117,4 @@ object BuildSettings {
       OsgiKeys.importPackage += "*",
       OsgiKeys.additionalHeaders := Map("-removeheaders" -> "Include-Resource,Private-Package")
     )
-
 }

@@ -33,6 +33,4 @@ object Build extends Build {
   lazy val docs = Project("docs", file("docs"))
     .settings(docsSettings: _*)
     .settings(libraryDependencies ++= test(akkaActor, sprayJson, gtGeotools,gtJetty))
-
-
 }

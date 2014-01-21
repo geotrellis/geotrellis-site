@@ -36,6 +36,7 @@ object SphinxSupport {
     log("[YELLOW]Recompiling Sphinx sources...")
     if (script.nonEmpty) {
       val cmd = "%1$s -b json -d %3$s/doctrees -D version=%4$s -D release=%4$s %2$s %3$s/json".format(script.get, sourceDir, targetDir, v)
+      println(cmd)
       log(cmd)
       val exitCode = Process(cmd) ! state.log
       if (exitCode != 0) sys.error("Error compiling sphinx sources")

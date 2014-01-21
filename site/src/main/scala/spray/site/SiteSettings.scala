@@ -24,8 +24,6 @@ case class SiteSettings(
     interface: String,
     port: Int,
     devMode: Boolean,
-    repoDirs: List[String],
-    nightliesDir: String,
     mainVersion: String,
     otherVersions: Seq[String]) {
 
@@ -38,8 +36,6 @@ object SiteSettings extends SettingsCompanion[SiteSettings]("spray.site") {
     c getString "interface",
     c getInt "port",
     c getBoolean "dev-mode",
-    c getString "repo-dirs" split ':' toList,
-    c getString "nightlies-dir",
     c getString "main-version",
     c.getStringList("other-versions").asScala)
 }

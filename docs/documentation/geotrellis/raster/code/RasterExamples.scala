@@ -1,6 +1,5 @@
 package docs
 
-//# raster-map
 import geotrellis._
 import geotrellis.source._
 
@@ -22,7 +21,7 @@ object RasterExamples {
 
   // Counts the number of values above 12.5
   var countDouble = 0
-  raster.foreach { z:Double => if(z > 12.5) countDouble += 1 } 
+  raster.foreachDouble { z:Double => if(z > 12.5) countDouble += 1 } 
 //#
 
 //# map-values
@@ -70,7 +69,7 @@ object RasterExamples {
 //# int-double-isNoData
   var isTrue = true
   for(col <- 0 until raster.cols;
-      rows <- 0 until raster.rows) {
+      row <- 0 until raster.rows) {
     val i = raster.get(col,row)
     val d = raster.getDouble(col,row)
     isTrue &= (isNoData(i) == isNoData(d))
@@ -78,5 +77,15 @@ object RasterExamples {
   isTrue
 //#
 
+//# warp-example
+
+  val Extent(xmin, ymin, xmax, ymax) = 
+    raster.rasterExtent.extent
+  val newExtent = 
+    Extent(xmin, ymin, (xmax+xmin)/2, (ymax + ymin) / 2)
+  val newRasterExtent =
+    RasterExtent(newExtent, 256, 256)
+  raster.warp(newRasterExtent)
+//# 
 }
-//#
+

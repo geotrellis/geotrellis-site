@@ -6,5 +6,4 @@ Introduction
 
    what-is-geotrellis
    getting-started
-   spray-for-web-development
    other-resources
