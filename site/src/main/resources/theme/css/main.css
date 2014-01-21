@@ -64,8 +64,7 @@ body {
 .jumbotron {
   background: url(../../img/bg-static.png);
   background-size: cover;
-  min-height: 400px;
-  margin-top: 52px; }
+  min-height: 400px; }
   .jumbotron h1 {
     font-size: 6rem;
     font-weight: 400;
@@ -84,6 +83,12 @@ body {
       line-height: 1.5;
       border-radius: 0;
       margin-right: 10px; }
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
 
 #what-is-geotrellis {
   padding-top: 52px; }
@@ -171,8 +176,6 @@ footer .footNav { text-align: center; }
 }
 
 .sidebar .widget h3 {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #515161;
     text-rendering: optimizelegibility;
     font-size: 16px;
     line-height: 40px;
@@ -185,8 +188,6 @@ footer .footNav { text-align: center; }
 }
 
 .section h1, .section h2, .section h3, .section p, .section li, .section dt, .section dd, .section table {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #515161;
     text-rendering: optimizelegibility;
 }
 
