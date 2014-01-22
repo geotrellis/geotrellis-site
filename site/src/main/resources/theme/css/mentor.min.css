@@ -1607,8 +1607,6 @@ table .span24 {
 }
 .dropdown:hover .caret,
 .open.dropdown .caret {
-    opacity: 1;
-    filter: alpha(opacity=100);
 }
 .dropdown-menu {
     position: absolute;
@@ -1903,8 +1901,7 @@ input[type="submit"].btn.btn-mini {
 }
 .btn:hover .caret,
 .open.btn-group .caret {
-    opacity: 1;
-    filter: alpha(opacity=100);
+
 }
 .btn-mini .caret { margin-top: 5px }
 .btn-small .caret { margin-top: 6px }
@@ -2136,8 +2133,6 @@ input[type="submit"].btn.btn-mini {
 .nav .open a:hover .caret {
     border-top-color: #fff;
     border-bottom-color: #fff;
-    opacity: 1;
-    filter: alpha(opacity=100);
 }
 .tabs-stacked .open>a:hover { border-color: white }
 .tabbable { *zoom: 1 }
@@ -2480,8 +2475,7 @@ input[type="submit"].btn.btn-mini {
     border-bottom-color: #fff;
 }
 .navbar .nav .active .caret {
-    opacity: 1;
-    filter: alpha(opacity=100);
+
 }
 .navbar .nav .open>.dropdown-toggle,
 .navbar .nav .active>.dropdown-toggle,
@@ -3564,8 +3558,7 @@ a.thumbnail:hover {
     float: right;
     margin-top: 83px;
 }
-.navbar .nav>li { margin-right: 15px }
-.navbar .nav>li>a { padding: 8px 10px }
+.navbar .nav>li>a { padding: 16.5px 18px }
 .navbar .nav>li.last { margin-right: 0 }
 .dropdown .caret {
     margin-left: 8px;
@@ -3793,13 +3786,22 @@ a.thumbnail:hover {
     font-weight: bold;
     font-size: 14px;
     text-shadow: none;
-    border-bottom: 2px solid #1c2e3f;
+}
+.navbar .nav>li.current-page>a {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: none;
+    background-color: #2dbbbb;
+}
+.navbar .nav>li.current-page>a:hover {
+    background-color: #2dbbbb;
+    color: #fff;
 }
 .navbar .nav>li>a:hover {
     background-color: transparent;
     color: #2dbbbb;
     text-decoration: none;
-    border-bottom: 2px solid #1c2e3f;
 }
 .navbar .nav .active>a,
 .navbar .nav .active>a:hover {
@@ -3810,7 +3812,6 @@ a.thumbnail:hover {
     border-radius: 0;
 }
 .navbar .nav>.active>a {
-    border-bottom: 2px solid #1c2e3f;
     -webkit-border-radius: 3px 3px 0 0;
     -moz-border-radius: 3px 3px 0 0;
     border-radius: 3px 3px 0 0;
@@ -3840,7 +3841,6 @@ a.thumbnail:hover {
     -webkit-border-radius: 0;
     border-color: #e5e5e5;
     border: 0;
-    border-top: 2px solid #1c2e3f;
     box-shadow: 0 3px 5px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.5);
     background: #393939;
