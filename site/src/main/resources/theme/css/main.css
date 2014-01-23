@@ -132,6 +132,32 @@ body {
       width: 100%;
       height: auto; }
 
+#demos {
+  background: #ecf0f0;
+  padding: 40px 0; }
+  #demos .case-study {
+    width: 100%;
+    min-height: 200px;
+    background: #7d8b8d;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 10px; }
+    #demos .case-study h4 {
+      position: absolute;
+      bottom: 0;
+      background: #24A3C3;
+      margin: 0;
+      padding: 14px 12px;
+      width: 100%;
+      font-family: 'Signika', sans-serif;
+      font-size: 1.6rem;
+      color: #FFF;
+      font-weight: 400; }
+    #demos .case-study img {
+      width: 100%;
+      height: auto; }
+
 .nav-list > .active i { opacity: 0.6; }
 .nav-list > .active > a > i { opacity: 1; }
 .nav-list > li > a { padding-left: 35px; }
@@ -153,9 +179,10 @@ body {
     right: 0px;
 }
 
+section.mainContentWrap {padding-bottom: 60px;}
+
 footer .poweredBy { text-align: right; font-size: 12px; color: #bbb; }
 .footerLower .copyright { font-size: 12px; color: #bbb; margin: 0; }
-footer { margin-top: 45px; }
 footer .footNav { text-align: center; }
 .footerLower .footNav a, .footerLower .footNav span { float: none; }
 
