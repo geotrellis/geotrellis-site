@@ -133,9 +133,9 @@ body {
       height: auto; }
 
 #demos {
-  background: #ecf0f0;
+  background: #fafafa;
   padding: 40px 0; }
-  #demos .case-study {
+  #demos .demo {
     width: 100%;
     min-height: 200px;
     background: #7d8b8d;
@@ -143,10 +143,10 @@ body {
     display: block;
     overflow: hidden;
     margin-bottom: 10px; }
-    #demos .case-study h4 {
+    #demos .demo h4 {
       position: absolute;
       bottom: 0;
-      background: #24A3C3;
+      background: #3c7cbf;
       margin: 0;
       padding: 14px 12px;
       width: 100%;
@@ -154,7 +154,7 @@ body {
       font-size: 1.6rem;
       color: #FFF;
       font-weight: 400; }
-    #demos .case-study img {
+    #demos .demo img {
       width: 100%;
       height: auto; }
 
