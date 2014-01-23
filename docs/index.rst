@@ -3,4 +3,5 @@
    introduction/index
    documentation/index
    project-info/index
+   contact
 

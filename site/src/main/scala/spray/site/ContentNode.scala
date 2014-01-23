@@ -39,7 +39,6 @@ sealed trait ContentNode {
   def isDescendantOf(node: ContentNode): Boolean = node == this || !isRoot && parent.isDescendantOf(node)
 
   def find(uri: String): Option[ContentNode] = {
-    println(s"FINDING NODE $uri")
     if (uri == this.uri) Some(this)
     else children.mapFind(_.find(uri))
   }
