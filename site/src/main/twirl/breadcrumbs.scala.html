@@ -5,13 +5,13 @@
 
     @level(node: spray.site.ContentNode) = {
       @if(node.isRoot) {
-        <li><a href="/">Home</a> <span class="divider">/</span></li>
+        <li><a href="/">Home</a></li>
       } else {
         @level(node.parent)
         @if(node == contentNode) {
           <li class="active">@node.name</li>
         } else {
-          <li><a href="@node.absoluteUri">@node.name</a> <span class="divider">/</span></li>
+          <li><a href="@node.absoluteUri">@node.name</a> </li>
         }
       }
     }
