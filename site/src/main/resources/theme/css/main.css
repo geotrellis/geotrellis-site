@@ -13,6 +13,63 @@ html,
 body {
   min-height: 100%; }
 
+.modal-header h5 {
+  text-transform: uppercase;
+  color: #A5A5A5;
+  font-weight: normal;
+}
+
+.modal-backdrop {
+  background-color: rgba(36, 163, 195, 0.9);
+}
+.modal-content {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: none;
+  border-radius: 0;
+  padding: 30px 40px 10px 40px;
+}
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    width: 80%;
+    max-width: 840px;
+    min-width: 750px;
+  }
+}
+.modal-header {
+  padding: 15px 0;
+}
+.modal-body {
+  padding: 20px 5px;
+}
+.modal-body-sidebar .btn {
+  border-radius: 0;
+}
+.modal-body-sidebar {
+  text-align: center;
+}
+button.close {
+  position: fixed;
+  right: 16px;
+  top: 0;
+  color: white;
+  opacity: 1;
+  font-weight: normal;
+  padding: 4px 20px 20px 20px;
+}
+button.close:hover {
+  opacity: .8;
+  color: white;
+  font-weight: normal;
+}
+#menu-collapse {
+  max-height: inherit;
+}
+@media screen and (max-width: 767px) {
+  #menu-collapse {
+    width: 100%;
+  }
+}
 .navbar {
   background: #1c2e3f;
   border: none;
