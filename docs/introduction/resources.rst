@@ -18,36 +18,6 @@ You can find us on IRC at **#geotrellis on freenode**, or join the `geotrellis-u
 
 __ https://groups.google.com/group/geotrellis-user
 
-Adding GeoTrellis to your Project
----------------------------------
-
-We publish the jars of current release version of GeoTrellis, so you can include GeoTrellis in an SBT project
-by adding the following to your build.sbt file:
-
-.. code-block:: scala
-
-  scalaVersion := "2.10.3"
-  libraryDependencies += "com.azavea.geotrellis" %% "geotrellis" % "0.9.0-RC3"
-
-We also publish `automated snapshot artifacts`__ based on recent development.  
-
-__ https://oss.sonatype.org/content/repositories/snapshots/com/azavea/geotrellis/geotrellis_2.10/
-
-We publish a few additional libraries that you might choose to include:
-
-- geotrellis-geotools: GeoTools integration with GeoTrellis, including GeoTiff loading
-- geotrellis-tasks: Tasks for interacting with raster data, designed to be used on the command line
-
-Demonstration project
----------------------
-
-The `/demo directory in the github repository`__ includes code from the `web service tutorial`__ and a
-demonstration project that provides a REST service that performs a geoprocessing operation and returns a
-PNG image to the user.
-
-__ https://github.com/geotrellis/geotrellis/tree/master/demo
-__ tutorials/webservice.html
-
 
 Blog articles
 -------------

@@ -11,6 +11,10 @@ GeoTrellis was designed to solve three core problems, with a focus on raster pro
 - Creating distributed geoprocessing services that can act on large data sets
 - Parallelizing geoprocessing operations to take full advantage of multi-core architecture
 
+GeoTrellis is published through `sonatype`__ to maven central as a :ref:`number of jars <adding-dependencies>` that you can add as dependencies to your project.
+
+__ http://www.sonatype.org/central
+
 Features
 --------
 

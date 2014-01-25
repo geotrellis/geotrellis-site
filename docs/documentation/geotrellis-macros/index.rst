@@ -5,6 +5,8 @@ geotrellis-macros
 
 The *geotrellis-macro* project holds macros for the goetrellis project. Macros must be defined in a separate project, since to perform macro expansion, the compiler needs a macro implementation in executable form.
 
+The *geotrellis-macro* jar is pulled in as dependency from the core *geotrellis* jar, so you won't have to worry about pulling this dependency into your project manually.
+
 Checking for NoData
 -------------------
 
