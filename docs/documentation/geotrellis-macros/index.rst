@@ -10,7 +10,8 @@ Checking for NoData
 
 isNoData \ isData - These functions are for checking if a data type is NoData or not. See :ref:`NoData` for an explination of what NoData means. Using a macro for this check allows for different overloaded versions of the functions to inline their specific NoData check for the different datatypes; for example, 
 
-CODE EXAMPLES
+.. includecode:: code/MacroExamples.scala
+   :snippet: noData-examples
 
 Future Macro work
 -----------------

@@ -1,4 +1,4 @@
-.. _engine
+.. _engine:
 
 Akka Execution Engine
 =====================
@@ -34,159 +34,161 @@ Operation Flow Example
 
 As an example of how Operations are executed, imagine we had a ValueSource that was created by loading up a tiled raster into a RasterSource, and then ``.minMax`` was called on it. The ValueSource would give the Server it's operation, which would be a composition of the following Operations: an Operation to load each tile would be executed in parallel. 
 
-MapOp1 (Converge)
-        ├──────────Collect
-        │             ├─────MapOp1 (RasterSource map)
-        │             │                 ├──────────────MapOp1
-        │             │                 │                 ├─────LoadRasterDefinition
-        │             │                 │                 │               ├────────────Literal
-        │             │                 │                 │               │               └───Result: LayerId (in 0 ms)
-        │             │                 │                 │               └──────────Result: RasterDefinition (in 1 ms)
-        │             │                 │                 └───Result: Vector(LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile) (in 3 ms)
-        │             │                 └────────────Result: Vector(Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1) (in 4 ms)
-        │             ├───┬─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 4 ms)
-        │             │   │  └─Result: 2922 (in 17 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 5 ms)
-        │             │   │  └─Result: 3411 (in 17 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 2 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 6 ms)
-        │             │   │  └─Result: 2455 (in 16 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 8 ms)
-        │             │   │  └─Result: 3250 (in 19 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 14 ms)
-        │             │   │  └─Result: 4402 (in 25 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 2 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 15 ms)
-        │             │   │  └─Result: 2946 (in 25 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 2 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 14 ms)
-        │             │   │  └─Result: 2874 (in 25 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 2 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 15 ms)
-        │             │   │  └─Result: 2817 (in 26 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 2 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 2 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 16 ms)
-        │             │   │  └─Result: 2859 (in 27 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 0 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 3 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 16 ms)
-        │             │   │  └─Result: 2231 (in 27 ms)
-        │             │   ├─Op1
-        │             │   │  ├───LoadTile
-        │             │   │  │       ├────┬─Literal
-        │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 1 (in 0 ms)
-        │             │   │  │       │    ├─Literal
-        │             │   │  │       │    │    └───Result: 3 (in 0 ms)
-        │             │   │  │       │    └─Literal
-        │             │   │  │       │         └───Result: None$ (in 0 ms)
-        │             │   │  │       └────Result: ArrayRaster (in 17 ms)
-        │             │   │  └─Result: 2245 (in 28 ms)
-        │             │   └─Op1
-        │             │      ├───LoadTile
-        │             │      │       ├────┬─Literal
-        │             │      │       │    │    └───Result: LayerId (in 0 ms)
-        │             │      │       │    ├─Literal
-        │             │      │       │    │    └───Result: 2 (in 0 ms)
-        │             │      │       │    ├─Literal
-        │             │      │       │    │    └───Result: 3 (in 0 ms)
-        │             │      │       │    └─Literal
-        │             │      │       │         └───Result: None$ (in 0 ms)
-        │             │      │       └────Result: ArrayRaster (in 18 ms)
-        │             │      └─Result: 2640 (in 28 ms)
-        │             └───Result: List(Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer) (in 37 ms)
-        └────────Result: 2231 (in 38 ms)
+.. code-block:: console
+
+  MapOp1 (Converge)
+          ├──────────Collect
+          │             ├─────MapOp1 (RasterSource map)
+          │             │                 ├──────────────MapOp1
+          │             │                 │                 ├─────LoadRasterDefinition
+          │             │                 │                 │               ├────────────Literal
+          │             │                 │                 │               │               └───Result: LayerId (in 0 ms)
+          │             │                 │                 │               └──────────Result: RasterDefinition (in 1 ms)
+          │             │                 │                 └───Result: Vector(LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile,LoadTile) (in 3 ms)
+          │             │                 └────────────Result: Vector(Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1,Op1) (in 4 ms)
+          │             ├───┬─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 4 ms)
+          │             │   │  └─Result: 2922 (in 17 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 5 ms)
+          │             │   │  └─Result: 3411 (in 17 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 2 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 6 ms)
+          │             │   │  └─Result: 2455 (in 16 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 8 ms)
+          │             │   │  └─Result: 3250 (in 19 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 14 ms)
+          │             │   │  └─Result: 4402 (in 25 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 2 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 15 ms)
+          │             │   │  └─Result: 2946 (in 25 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 2 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 14 ms)
+          │             │   │  └─Result: 2874 (in 25 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 2 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 15 ms)
+          │             │   │  └─Result: 2817 (in 26 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 2 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 2 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 16 ms)
+          │             │   │  └─Result: 2859 (in 27 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 0 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 3 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 16 ms)
+          │             │   │  └─Result: 2231 (in 27 ms)
+          │             │   ├─Op1
+          │             │   │  ├───LoadTile
+          │             │   │  │       ├────┬─Literal
+          │             │   │  │       │    │    └───Result: LayerId (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 1 (in 0 ms)
+          │             │   │  │       │    ├─Literal
+          │             │   │  │       │    │    └───Result: 3 (in 0 ms)
+          │             │   │  │       │    └─Literal
+          │             │   │  │       │         └───Result: None$ (in 0 ms)
+          │             │   │  │       └────Result: ArrayRaster (in 17 ms)
+          │             │   │  └─Result: 2245 (in 28 ms)
+          │             │   └─Op1
+          │             │      ├───LoadTile
+          │             │      │       ├────┬─Literal
+          │             │      │       │    │    └───Result: LayerId (in 0 ms)
+          │             │      │       │    ├─Literal
+          │             │      │       │    │    └───Result: 2 (in 0 ms)
+          │             │      │       │    ├─Literal
+          │             │      │       │    │    └───Result: 3 (in 0 ms)
+          │             │      │       │    └─Literal
+          │             │      │       │         └───Result: None$ (in 0 ms)
+          │             │      │       └────Result: ArrayRaster (in 18 ms)
+          │             │      └─Result: 2640 (in 28 ms)
+          │             └───Result: List(Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer,Integer) (in 37 ms)
+          └────────Result: 2231 (in 38 ms)

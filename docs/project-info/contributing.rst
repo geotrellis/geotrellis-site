@@ -1,17 +1,13 @@
 Contributing
 ============
 
-We value all kinds of contributions from the community, not just actual code. Maybe the easiest and yet very good way
-of helping us improve *geotrellis* is to ask questions, voice concerns or propose improvements on the :ref:`Mailing List`.
-Or simply tell us about you or your organization using *geotrellis* by sending us a small statement for inclusion on the
-:ref:`References` page.
+We value all kinds of contributions from the community, not just actual code. Maybe the easiest and yet very good way of helping us improve *geotrellis* is to ask questions, voice concerns or propose improvements on the :ref:`Mailing List`.
 
-If you do like to contribute actual code in the form of bug fixes, new features or other patches this page gives you
-more info on how to do it.
+If you do like to contribute actual code in the form of bug fixes, new features or other patches this page gives you more info on how to do it.
 
 
 Building *geotrellis*
-----------------
+---------------------
 
 Since *geotrellis* is open-source and hosted on github you can easily build it yourself.
 
@@ -116,6 +112,8 @@ If you'd like to submit a code contribution please fork the `github repository`_
 against the ``master`` branch (or the respective release branch, depending on what version your patch is targeting).
 Please keep in mind that we might ask you to go through some iterations of discussion and refinements before merging and
 that you will need have signed a CLA first!
+
+.. _`our CLA`:
 
 Contributor License Agreement (CLA)
 -----------------------------------

@@ -7,3 +7,4 @@ Project Info
    current-versions
    contributing
    license
+   github-projects

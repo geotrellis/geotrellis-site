@@ -104,6 +104,8 @@ rasters (where the size is the length of one dimension in a square raster)::
 As you can see, there is a performance cost to using floating point values to rasters, so be 
 wary, and use :math:`\mathbb{Z}`\-based rasters whenever possible.
 
+.. _NoData:
+
 NoData
 ------
 

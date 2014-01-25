@@ -1,5 +1,7 @@
+.. _what-is-geotrellis:
+
 What is *geotrellis*?
-================
+=====================
 
 GeoTrellis is a high performance geoprocessing engine and programming toolkit. The goal of the project is to transform user interaction with geospatial data by bringing the power of geospatial analysis to real time, interactive web applications.
 
@@ -19,4 +21,4 @@ Features
 Philosophy
 ----------
 
-TODO
+The rapid increase in both imagery and other geospatial data has increased the complexity of creating responsive and scalable geospatial applications.  The GeoTrellis library aims to provide the highest possible performance, while taking advantage of Scala's ability to construct programmer-friendly APIs.  Raster data sets can easily have millions or billions of values, and performing operations on them is often a very computationally expensive task. We believe that through performance-minded code and techniques such as parallelization, raster data can become critical pieces in high performance applications. We also believe in creating beautiful code, and that programming is a joy that can be increased with well-developed libraries.

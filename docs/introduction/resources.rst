@@ -27,8 +27,7 @@ by adding the following to your build.sbt file:
 .. code-block:: scala
 
   scalaVersion := "2.10.3"
-
-  libraryDependencies += "com.azavea.geotrellis" %% "geotrellis" % "0.9.0-RC1"
+  libraryDependencies += "com.azavea.geotrellis" %% "geotrellis" % "0.9.0-RC3"
 
 We also publish `automated snapshot artifacts`__ based on recent development.  
 
@@ -38,25 +37,6 @@ We publish a few additional libraries that you might choose to include:
 
 - geotrellis-geotools: GeoTools integration with GeoTrellis, including GeoTiff loading
 - geotrellis-tasks: Tasks for interacting with raster data, designed to be used on the command line
-
-
-Template Project
-----------------
-
-We have provided a sample project that provides a template for creating a
-geoprocessing web service with GeoTrellis. It is a blank slate for your own
-development that provides an environment set up with the
-necessary dependencies in place, making it a little easier to get started.
-
-The project loads GeoTrellis as a library, includes some basic configuration,
-and has a very simple "hello world" web service in place for you to edit.
-The template contains `step-by-step instructions`__.
-
-__ https://github.com/geotrellis/geotrellis.g8
-
-If you are a first time GeoTrellis user, you can use this template with the
-tutorial included in this documentation to start exploring how to build your
-own geoprocessing service.
 
 Demonstration project
 ---------------------
