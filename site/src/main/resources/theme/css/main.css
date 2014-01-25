@@ -13,6 +13,63 @@ html,
 body {
   min-height: 100%; }
 
+.modal-header h5 {
+  text-transform: uppercase;
+  color: #A5A5A5;
+  font-weight: normal;
+}
+
+.modal-backdrop {
+  background-color: rgba(36, 163, 195, 0.9);
+}
+.modal-content {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: none;
+  border-radius: 0;
+  padding: 30px 40px 10px 40px;
+}
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    width: 80%;
+    max-width: 840px;
+    min-width: 750px;
+  }
+}
+.modal-header {
+  padding: 15px 0;
+}
+.modal-body {
+  padding: 20px 5px;
+}
+.modal-body-sidebar .btn {
+  border-radius: 0;
+}
+.modal-body-sidebar {
+  text-align: center;
+}
+button.close {
+  position: fixed;
+  right: 16px;
+  top: 0;
+  color: white;
+  opacity: 1;
+  font-weight: normal;
+  padding: 4px 20px 20px 20px;
+}
+button.close:hover {
+  opacity: .8;
+  color: white;
+  font-weight: normal;
+}
+#menu-collapse {
+  max-height: inherit;
+}
+@media screen and (max-width: 767px) {
+  #menu-collapse {
+    width: 100%;
+  }
+}
 .navbar {
   background: #1c2e3f;
   border: none;
@@ -64,8 +121,7 @@ body {
 .jumbotron {
   background: url(../../img/bg-static.png);
   background-size: cover;
-  min-height: 400px;
-  margin-top: 52px; }
+  min-height: 400px; }
   .jumbotron h1 {
     font-size: 6rem;
     font-weight: 400;
@@ -84,6 +140,12 @@ body {
       line-height: 1.5;
       border-radius: 0;
       margin-right: 10px; }
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
 
 #what-is-geotrellis {
   padding-top: 52px; }
@@ -127,13 +189,39 @@ body {
       width: 100%;
       height: auto; }
 
+#demos {
+  background: #fafafa;
+  padding: 40px 0; }
+  #demos .demo {
+    width: 100%;
+    min-height: 200px;
+    background: #7d8b8d;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 10px; }
+    #demos .demo h4 {
+      position: absolute;
+      bottom: 0;
+      background: #3c7cbf;
+      margin: 0;
+      padding: 14px 12px;
+      width: 100%;
+      font-family: 'Signika', sans-serif;
+      font-size: 1.6rem;
+      color: #FFF;
+      font-weight: 400; }
+    #demos .demo img {
+      width: 100%;
+      height: auto; }
+
 .nav-list > .active i { opacity: 0.6; }
 .nav-list > .active > a > i { opacity: 1; }
 .nav-list > li > a { padding-left: 35px; }
 .nav-list > li > a > i { position: absolute; margin-left: -20px; }
 
 .navbar .nav { 
-    margin-top: 10px; 
+    margin-top: 0;
     margin-right: 40px; 
 }
 
@@ -148,9 +236,10 @@ body {
     right: 0px;
 }
 
+section.mainContentWrap {padding-bottom: 60px;}
+
 footer .poweredBy { text-align: right; font-size: 12px; color: #bbb; }
 .footerLower .copyright { font-size: 12px; color: #bbb; margin: 0; }
-footer { margin-top: 45px; }
 footer .footNav { text-align: center; }
 .footerLower .footNav a, .footerLower .footNav span { float: none; }
 
@@ -171,8 +260,6 @@ footer .footNav { text-align: center; }
 }
 
 .sidebar .widget h3 {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #515161;
     text-rendering: optimizelegibility;
     font-size: 16px;
     line-height: 40px;
@@ -185,8 +272,6 @@ footer .footNav { text-align: center; }
 }
 
 .section h1, .section h2, .section h3, .section p, .section li, .section dt, .section dd, .section table {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #515161;
     text-rendering: optimizelegibility;
 }
 
@@ -195,6 +280,7 @@ footer .footNav { text-align: center; }
     line-height: 40px;
     margin-bottom: 0.5em;
     border-bottom: 1px solid #CCC;
+    padding-bottom: 10px;
 }
 
 .section h2 {
@@ -213,14 +299,14 @@ footer .footNav { text-align: center; }
     font-weight: bold;
 }
 
-.section p, .section table { line-height: 20px; margin: 0 0 10px; }
-.section li { line-height: 20px; margin: 0 0 10px; }
+.section p, .section table { margin: 0 0 10px; }
+.section li { margin: 0 0 10px; }
 .section li > ul { margin-top: 10px; }
 .section ul li { margin: 0; }
 .section ul.wide > li { margin-top: 10px; }
 .section ul li > ul { margin-top: 0; }
-.section dt { line-height: 20px; }
-.section dd { line-height: 20px; margin-left: 10px; margin-bottom: 10px; }
+.section dt { }
+.section dd { margin-left: 10px; margin-bottom: 10px; }
 .section img { margin: 1em 0; }
 .section table.field-list { text-align: left; }
 .section th.field-name { padding-right: 5px; }
@@ -230,9 +316,8 @@ footer .footNav { text-align: center; }
 pre {margin:1.5em 0;white-space:pre;}
 tt {
     color: #000055;
-    font:1.1em 'andale mono', 'lucida console', monospace;
-    line-height:1.5;
     font-family: 'andale mono', 'lucida console', monospace;
+    line-height:1.5;
 }
 
 

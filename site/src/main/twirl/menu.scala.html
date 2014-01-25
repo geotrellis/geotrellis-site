@@ -1,8 +1,13 @@
 @(pageNode: spray.site.ContentNode)
 
 @import spray.site._
-
-<ul class="nav">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+<ul class="nav collapse navbar-collapse" id="menu-collapse">
   <li><a href="/">Home</a></li>
 
   @anchor(node: ContentNode, caret: Boolean) = {
@@ -21,7 +26,7 @@
     List(
       Option(first).toList,
       if (node.isLast) "last" :: Nil else Nil,
-      if (pageNode.isDescendantOf(node)) "active" :: Nil else Nil
+      if (pageNode.isDescendantOf(node)) "current-page" :: Nil else Nil
     ).flatten match {
       case Nil => ""
       case x => x.mkString(" class=\"", " ", "\"")
