@@ -6,4 +6,4 @@ Introduction
 
    what-is-geotrellis
    getting-started
-   other-resources
+   resources

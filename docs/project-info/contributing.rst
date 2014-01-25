@@ -1,17 +1,13 @@
 Contributing
 ============
 
-We value all kinds of contributions from the community, not just actual code. Maybe the easiest and yet very good way
-of helping us improve *geotrellis* is to ask questions, voice concerns or propose improvements on the :ref:`Mailing List`.
-Or simply tell us about you or your organization using *geotrellis* by sending us a small statement for inclusion on the
-:ref:`References` page.
+We value all kinds of contributions from the community, not just actual code. Maybe the easiest and yet very good way of helping us improve *geotrellis* is to ask questions, voice concerns or propose improvements on the :ref:`Mailing List`.
 
-If you do like to contribute actual code in the form of bug fixes, new features or other patches this page gives you
-more info on how to do it.
+If you do like to contribute actual code in the form of bug fixes, new features or other patches this page gives you more info on how to do it.
 
 
-Building *geotrellis*
-----------------
+Building GeoTrellis
+-------------------
 
 Since *geotrellis* is open-source and hosted on github you can easily build it yourself.
 
@@ -22,37 +18,12 @@ Here is how:
    you are targeting (check the :ref:`Current Versions` chapter for more info on this).
 3. Run ``sbt test`` to compile the suite and run all tests.
 
-Contributing documentation
---------------------------
+Style Guide
+-----------
 
-The site, i.e. what you see here at http://geotrellis.io, is built with `spray`__ and is modified from the documentation of
-that project. It uses sphinx_ to generate
-documentation from `reStructured text`_ files located in the ``docs`` folder of the `geotrellis-site`__ repository checkout. 
-The documentation is served from the ``site`` sub-project of the sbt build. If you want to contribute documentation make sure you can
-build and view the site locally. Follow these instructions to get the site project working locally:
+We try to follow the `Scala Style Guide`__ as closely as possible, although you will see some variations throughout the codebase. When in doubt, follow that guide.
 
-* Install sphinx_  (in Debian / Ubuntu install the ``python-sphinx`` package, for OS/X see this `mailing list thread`_).
-* Find the path of ``sphinx-build`` (in Ubuntu it's probably ``/usr/bin/sphinx-build``)
-* Set the SPHINX_PATH environment variable to that path.
-* Run sbt
-* In the sbt shell use ``project site`` to change into the site project.
-* Use ``compile`` to build the site, this will take some time when running for the first time (~ 1 - 3 minutes).
-* Use ``re-start`` [1]_ to start the local site server.
-* Browse to http://localhost:8080
-* Use ``~ products`` in sbt to let it monitor changes to the documentation sources automatically.
-* Edit the documentation files inside the ``docs`` subdirectory. After saving a file, it will be automatically
-  picked up by sbt, then it will be regenerated and be available in the browser after ~ 1 - 5 seconds with a refresh
-  of the page.
-
-.. [1] ``re-start`` is a task from the sbt-revolver_ plugin which starts a project in the background while you can
-       still use the sbt shell for other tasks.
-.. _sphinx: http://sphinx-doc.org/
-.. _`reStructured text`: http://docutils.sourceforge.net/docs/user/rst/quickref.html
-.. _`mailing list thread`: https://groups.google.com/d/msg/spray-user/x2PJUYkn1Vs/JxhT_rRoJS0J
-.. _sbt-revolver: https://github.com/spray/sbt-revolver
-
-__ http://spray.io
-__ http://github.com/geotrellis/geotrellis-site
+__ http://docs.scala-lang.org/style/
 
 git Branching Model
 -------------------
@@ -67,39 +38,9 @@ Additionally we maintain release branches for older and possibly future releases
 git Commit Messages
 -------------------
 
-We follow the "imperative present tense" style for commit messages (more info here__) and begin each message with
-the module name(s) touched by the commit followed by a colon. Additionally, in order to make it easier for us
-(and everyone else) to track the effects of changes onto the public API we also explicitly classify every commit into
-exactly one of three categories:
+We follow the "imperative present tense" style for commit messages (more info here__)
 
 __ http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-
-.. rst-class:: table table-striped
-
-========= =============================================================================== ======
-Category  Description                                                                     Marker
-========= =============================================================================== ======
-Neutral   Only touches things "under the hood" and has no effect on *spray's* public API. ``=``
-Extending Extends the API by adding things. In rare cases this might break code due to    ``+``
-          things like identifier shadowing but is generally considered a "safe" change.
-Breaking  Changes or removes public API elements. Will definitely break user code         ``!``
-          relying on these parts of the API surface.
-========= =============================================================================== ======
-
-Apart from the actual Scala interfaces the public API surface covered by these categories also includes configuration
-settings (most importantly the ``reference.conf`` files).
-
-The category that a commit belongs to is indicated with a respective marker character that the commit's message must
-start with (followed by a space char), e.g. ``= testkit: clean up imports``. Note that *all* commits must carry exactly
-one of the markers listed in the table above, with one exception: merge commits that don't introduce any changes
-themselves do not have to carry a marker. Instead, they start with "Merge".
-Requiring the marker makes sure that the committer has actively thought about the effects of the commit on the public
-API surface.
-
-Also, all commits in the "Extending" and especially in the "Breaking" category should contain a dedicated paragraph
-(in addition to the summary line) explaining in what way the change breaks the API and why this is necessary/beneficial.
-These paragraphes form the basis of release-to-release migration guides.
-
 
 Issue Tracking
 --------------
@@ -116,6 +57,40 @@ If you'd like to submit a code contribution please fork the `github repository`_
 against the ``master`` branch (or the respective release branch, depending on what version your patch is targeting).
 Please keep in mind that we might ask you to go through some iterations of discussion and refinements before merging and
 that you will need have signed a CLA first!
+
+Contributing documentation
+--------------------------
+
+The site, i.e. what you see here at http://geotrellis.io, is built with `spray`__ and is modified from the documentation of
+that project. It uses sphinx_ to generate
+documentation from `reStructured text`_ files located in the ``docs`` folder of the `geotrellis-site`__ repository checkout. This is a separate repository from the core GeoTrellis code.
+The documentation is served from the ``site`` sub-project of the sbt build. If you want to contribute documentation make sure you can
+build and view the site locally. Follow these instructions to get the site project working locally:
+
+* Install sphinx_  (in Debian / Ubuntu install the ``python-sphinx`` package, for OS/X see this `mailing list thread`_).
+* Find the path of ``sphinx-build`` (in Ubuntu it's probably ``/usr/bin/sphinx-build``)
+* Set the SPHINX_PATH environment variable to that path.
+* Run sbt
+* In the sbt shell use ``project site`` to change into the site project.
+* Use ``compile`` to build the site, this will take some time when running for the first time (~ 1 - 3 minutes).
+* Use ``re-start`` [1]_ to start the local site server.
+* Browse to http://localhost:8080
+* Use ``~re-start`` in sbt to let it monitor changes to the documentation sources automatically.
+* Edit the documentation files inside the ``docs`` subdirectory. After saving a file, it will be automatically
+  picked up by sbt, then it will be regenerated and be available in the browser after ~ 1 - 5 seconds with a refresh
+  of the page.
+
+.. [1] ``re-start`` is a task from the sbt-revolver_ plugin which starts a project in the background while you can
+       still use the sbt shell for other tasks.
+.. _sphinx: http://sphinx-doc.org/
+.. _`reStructured text`: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+.. _`mailing list thread`: https://groups.google.com/d/msg/spray-user/x2PJUYkn1Vs/JxhT_rRoJS0J
+.. _sbt-revolver: https://github.com/spray/sbt-revolver
+
+__ http://spray.io
+__ http://github.com/geotrellis/geotrellis-site
+
+.. _`our CLA`:
 
 Contributor License Agreement (CLA)
 -----------------------------------

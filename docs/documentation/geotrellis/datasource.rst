@@ -1,4 +1,5 @@
 .. _Datasource:
+.. _Datasources:
 
 DataSource
 ==========

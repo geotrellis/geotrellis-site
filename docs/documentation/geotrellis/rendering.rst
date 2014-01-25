@@ -35,10 +35,125 @@ You can also request linear breaks (or “equal interval” breaks). Linear brea
 
 There are other classification schemes that GeoTrellis does not currently support, such as Natural breaks (Jenks) and Standard Deviation, but we intend to implement them in the future. Let us know if you have a need.
 
+.. _Color Ramps:
+
 Color Ramps
 -----------
 
 GeoTrellis provides a set of color ramps (a list of colors) from which to choose. These are provided to ease the transition from developer to cartographer. However, you need not feel constrained by these and can use your own color palettes as well. There are many good resources online for selecting color ramps.
+
+Usage
+-----
+
+.. code-block:: scala
+
+  import geotrellis._
+  import geotrellis.source._
+  import geotrellis.render.ColorRamps
+
+  val rasterSource:RasterSource = ???
+
+  rasterSource.renderPng(ColorRamps.BlueToOrange)
+
+Diverging Color Schemes
+-----------------------
+
+.. image:: images/01_blue-to-orange.png
+  :align: left
+
+.. image:: images/02_green-to-orange.png
+  :align: left
+
+.. image:: images/03_blue-to-red.png
+  :align: left
+
+.. image:: images/04_green-to-red-orange.png
+  :align: left
+
+From left to right:
+
+Blue to Orange
+  An 11-step diverging color ramp from blue to gray to orange.
+  The gray critical class in the middle clearly shows a median or zero value. Example uses include temperature, climate, elevation, or other color ranges where it is necessary to distinguish categories with multiple hues.
+
+Blue to Red
+  A 10-step diverging color ramp from blue to red.
+  Example uses include elections and politics, voter swing, climate or temperature, or other color ranges where it is necessary to distinguish categories with multiple hues.
+ 
+Green to Red-Orange
+  A 10-step diverging color ramp from green to red-orange.
+  Example uses include elections and politics, voter swing, climate or temperature, or other color ranges where it is necessary to distinguish categories with multiple hues.
+ 
+Green to Orange
+  A 13-step diverging color ramp from green to orange.
+  Example uses include elevation, relief maps, topography, or other color ranges where it is necessary to distinguish categories with multiple hues.
+
+Sequential Color Schemes
+------------------------
+
+.. image:: images/05_light-to-dark-sunset.png
+  :align: left
+
+.. image:: images/06_light-to-dark-green.png
+  :align: left
+
+.. image:: images/07_yellow-to-red-heatmap.png
+  :align: left
+
+.. image:: images/08_blue-to-yellow-to-red-heatmap.png
+  :align: left
+
+.. image:: images/09_dark-red-to-yellow-heatmap.png
+  :align: left
+
+.. image:: images/10_purple-to-dark-purple-to-white-heatmap.png
+  :align: left
+
+From left to right:
+
+Light to Dark - Sunset
+  An 11-step sequential color ramp showing intensity from light to dark.
+  This color ramp is perfect for showing density where it is critical to highlight very different values with bold colors at the higher, darker end of the ramp. Example uses include population density, accessibility, or ranking.
+
+Light to Dark - Green
+  A basic 8-step sequential color ramp showing light to dark in shades of green.
+  Example uses include density, ordered data, ranking, or any map where darker colors represent higher data values and lighter colors represent lower data values, generally.
+
+
+Yellow to Red - Heatmap
+  An 8-step sequential heatmap from yellow to dark red.
+  Great for heatmaps on a light basemap where the hottest values are more opaque or dark. Also useful for sequential color ranges where the lowest value is the median or zero value.
+
+Blue to Yellow to Red Spectrum - Heatmap
+  An 11-step heatmap from blue to yellow to red.
+  Great for showing a wide range of values with clear differences in hue.
+
+Dark Red to Yellow-White - Heatmap
+  A 10-step sequential heatmap from dark red to yellow to white.
+  Great for heatmaps where the hottest values should look more vibrant or intense.
+
+Light Purple to Dark Purple To White
+  An 8-step sequential heatmap to show intensity with shades of purple with white as the "hottest" value.
+  Great for light or gray basemaps, or where the highest value needs to be called out visually.
+
+Qualitative or Categorical Schemes
+----------------------------------
+
+.. image:: images/11_bold-land-use-qualitative.png
+  :align: left
+
+.. image:: images/12_muted-terrain-qualitative.png
+  :align: left
+
+From left to right:
+
+Bold Land Use
+  An 8-hue qualitative scheme used to show a clear difference in categories that are unordered or very different.
+  Example uses include zoning, land use, land cover, or maps where all categories or groups are equal in visual strength/magnitude.
+
+Muted Terrain
+  An 8-hue qualitative scheme used to show different kinds of map topology or features.
+  This is generally used to show landforms, terrain, and topology.
 
 Customizing Color Ramps
 -----------------------

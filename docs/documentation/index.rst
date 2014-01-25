@@ -11,5 +11,5 @@ This is the index of all documentation chapters for the different modules of the
    geotrellis-jetty/index
    geotrellis-geotools/index
    geotrellis-admin/index
-   gtloader/index
    benchmarking
+   python-geotrellis/index
