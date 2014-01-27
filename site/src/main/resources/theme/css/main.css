@@ -147,19 +147,19 @@ button.close:hover {
   border-color: #357ebd;
 }
 
-#what-is-geotrellis {
+body.page-home #what-is-geotrellis {
   padding-top: 52px; }
-  #what-is-geotrellis img {
+  body.page-home #what-is-geotrellis img {
     max-width: 100%;
     height: auto; }
-  #what-is-geotrellis hr {
+  body.page-home #what-is-geotrellis hr {
     margin-bottom: 40px;
     margin-top: 40px; }
-    #what-is-geotrellis hr.half {
+    body.page-home #what-is-geotrellis hr.half {
       width: 50%;
       margin-right: auto;
       margin-left: auto; }
-  #what-is-geotrellis .setup-container {
+  body.page-home #what-is-geotrellis .setup-container {
     position: relative; }
 
 #case-studies {
