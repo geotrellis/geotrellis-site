@@ -1597,10 +1597,20 @@ table .span24 {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 4px solid #000;
-    opacity: .3;
-    filter: alpha(opacity=30);
+    opacity: 1;
+    filter: alpha(opacity=100);
     content: "";
 }
+
+.nav .caret {
+    border-top-color: #fff !important;
+    border-bottom-color: #fff !important;
+}
+.nav a:hover .caret {
+    border-top-color: #2ebebe !important;
+    border-bottom-color: #2ebebe !important;
+}
+
 .dropdown .caret {
     margin-top: 8px;
     margin-left: 2px;
