@@ -52,7 +52,7 @@ object SphinxSupport {
     Seq(
       "/usr/bin/sphinx-build",               // Ubuntu
       "/usr/local/share/python/sphinx-build", // OS/X
-      "/usr/local/Cellar/sphinx/2.1.4",      
+//      "/usr/local/Cellar/sphinx/2.1.4",      
       "/usr/local/bin/sphinx-build" // homebrew python and sphinx installed by pip
     )
 
