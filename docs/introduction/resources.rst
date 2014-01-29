@@ -24,5 +24,5 @@ Blog articles
   | `Developing a Kernel Density Service With GeoTrellis`__
   | `Viewing Raster Data with GeoTrellis 0.8.1`__
 
-__ http://www.azavea.com/blogs/labs/2013/03/developing-a-kernel-density-service-with-geotrellis/>
+__ http://www.azavea.com/blogs/labs/2013/03/developing-a-kernel-density-service-with-geotrellis/
 __ http://www.azavea.com/blogs/labs/2013/04/viewing-raster-data-with-geotrellis-0-8-1/
