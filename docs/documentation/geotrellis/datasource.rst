@@ -29,11 +29,42 @@ A data source is similar to a scala collection such as Seq or List -- it can be 
 
 A data source, however, has one critical additional piece of functionality. If a data source can be thought of like a Seq[E], where E is the type of the element in its sequence, then what is the type of the Future -- what kind of value does it return? A data source extends the trait DataSource[E,V] where E is the kind of element in its sequence and V is the kind of value it returns. In a simple case, a datasource might be of type DataSource[E,Seq[E]] -- it is a sequence of elements of type E, and overall it returns a sequence of those results. But, for example, a RasterSource -- which represents a raster layer which can be transformed through a variety of map algebra or raster operations -- extends the type DataSource[Raster,Raster], because the elements are individual tiles that make up a single raster dataset. The overall result is the whole raster that can be built from combining those rasters. The overall result might never be built, but the datasource will pass along additional information necessary to produce its value or result from its sequence.
 
+The DataSource has methods to transform the elements of the sequence. It has familiar collection functions such as ``map``, ``reduce``, ``foldLeft``, as well as additional functions:
+
+``combine``
+  The combine method combines the DataSource's elements with another DataSource's elements.
+  The number of elements between the two DataSources must be the same.
+
+``mapOp`` and ``combineOp``
+  These methods behave like their non-Op counterparts, but instead take functions that
+  work with :ref:`Operations`. This allows you to work with the operations of the elements,
+  which can be useful in cases where you want to modify the elements base on GeoTrellis Operations.
+
+Getting values from a DataSource
+--------------------------------
+
+After a DataSource is created and transformed, you need some way to actually run the operations 
+and get the resulting data. You can do this by running the DataSource against the GeoTrellis server.
+The GeoTrellis server is an implicit parameter that is imported by ``import geotrellis._``. If you
+are using the default server configured by the configuration file, you won't have to worry about
+what server is being passed to the methods for running DataSources; if need a different configuration,
+see :ref:`Modifying the Server configuration in code`.
+
 ValueSource
 -----------
 
-A value source is a DataSource with only 
+A value source is a DataSource with only one element. Calling ``converge`` on a ValueSource will just return
+itself. Running the ValueSource will produce the value of that single element. It typically represents
+a value that is the result of a chain of operations; for instance, if you mapped tiles of a RasterSource to
+their maximum value, and reduced the resulting DataSource by taking the max of the sequence, you would
+end up with a ``ValueSource[Int]``, which when run would give the maximum value of the raster.
+
+.. _RasterSource:
 
 RasterSource
 ------------
+
+RasterSource is the main motivation for creating the DataSource architecture. Having the RasterSource interface let's users to write code against one type, and that same code can work over tiled or untiled rasters. The Operations that load tiles are the elements of the collection of a RasterSource. It's default convergance funciton is to return a ValueSource containing a single Raster; if the RasterSource was backed by a tiled raster, those tiles would be stitched together. Operations that can be parallized over tiles will be; the user does not have to think about whether or not the RasterSource is a tiled raster or untiled (single tile) raster.
+
+RasterSources can be combined only if their tile layout matches. The sequence of tiles of the one RasterSource must match the sequence of tiles in the other RasterSource.
 

@@ -5,6 +5,8 @@ Akka Execution Engine
 
 The Akka execution engine is what takes `Operations`_ and :ref:`DataSources`, executes them, and returns their computed values. The way it executes DataSources is by asking the source what the operation to compute it's value is, so the internals of the engine only deal with Operations.
 
+.. _Operations:
+
 Operations
 ----------
 
@@ -17,11 +19,28 @@ Server
 
 The Server is the interface into the execution engine. It is what contains the Akka Actor system. It's also what contains the :ref:`Catalog` that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in geotrellis.GeoTrellis that is configured based on your ``application.conf``; this system is also imported as an implicit value when importing ``geotrellis._``.
 
+The setting in your ``application.conf`` for setting the catalog is:
+
+.. code-block:: console
+
+   geotrellis.catalog = "/path/to/catalog.json"
+
+.. _Modifying the Server configuration in code:
+
+Modifying the Server configuration in code
+------------------------------------------
+
+If you need to, you can set up the catalog in the ``GeoTrellis.server`` manually through code. You do this by calling the ``init`` function on the ``GeoTrellis`` object before the server is used:
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: catalog-manual-config
+
+
 Actors
 ------
 
 ServerActor
-  This actor yada yada
+  The ServerActor takes the initial ``Run`` message that is sent to it from the GeoTrellis Server. It can also take a number of internal messages, which is 
 
 Worker
   This actor handles the execution of a base case Operation, or if the Operation has sub-Operations (operations in the case class's parameters), it will delegate to the StepAggregator.

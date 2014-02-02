@@ -18,6 +18,15 @@ There's also some operation categories that GeoTrellis recognizes:
 
 *Note:* For each Operation that takes an input Raster and returns a Raster, the data type of the output Raster will be the same as the input Raster, unless otherwise noted.
 
+How operations are implemented
+------------------------------
+
+Raster operations are accessed through methods on the :ref:`RasterSource` type, or through methods on a sequence of :ref:`RasterSources <Operations on a Sequence of RasterSources>`.
+
+Double vs Int
+-------------
+
+asdf
 
 .. toctree::
 
@@ -26,3 +35,4 @@ There's also some operation categories that GeoTrellis recognizes:
    global
    zonal
    statistics
+   hydrology
