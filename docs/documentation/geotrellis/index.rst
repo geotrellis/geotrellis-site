@@ -10,6 +10,7 @@ The core *geotrellis* module holds the functionality for reading, writing, and o
    raster/index
    engine
    datasource
+   operations
    io/index
    raster-operations/index
    rendering

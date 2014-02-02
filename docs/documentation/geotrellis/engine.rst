@@ -33,6 +33,8 @@ __ http://www.scala-lang.org/api/current/index.html#scala.util.Try
 
 .. _Ops: 
 
+.. _Operations:
+
 Operations
 ----------
 
@@ -40,11 +42,36 @@ A geoprocessing model in GeoTrellis is composed of smaller geoprocessing operati
 
 The GeoTrellis naming convention for operations namespaces every operation within a single package, and we commonly refer to the operation with the package name in the format package.operation. For example, data loading operations are in the io package, and so the LoadRaster operation is referred to as io.LoadRaster.
 
+<<<<<<< HEAD
+=======
+Server
+------
+
+The Server is the interface into the execution engine. It is what contains the Akka Actor system. It's also what contains the :ref:`Catalog` that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in geotrellis.GeoTrellis that is configured based on your ``application.conf``; this system is also imported as an implicit value when importing ``geotrellis._``.
+
+The setting in your ``application.conf`` for setting the catalog is:
+
+.. code-block:: console
+
+   geotrellis.catalog = "/path/to/catalog.json"
+
+.. _Modifying the Server configuration in code:
+
+Modifying the Server configuration in code
+------------------------------------------
+
+If you need to, you can set up the catalog in the ``GeoTrellis.server`` manually through code. You do this by calling the ``init`` function on the ``GeoTrellis`` object before the server is used:
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: catalog-manual-config
+
+
+>>>>>>> origin/updates/0.9
 Actors
 ------
 
 ServerActor
-  This actor yada yada
+  The ServerActor takes the initial ``Run`` message that is sent to it from the GeoTrellis Server. It can also take a number of internal messages, which is 
 
 Worker
   This actor handles the execution of a base case Operation, or if the Operation has sub-Operations (operations in the case class's parameters), it will delegate to the StepAggregator.

@@ -7,13 +7,3 @@ Manipulation and processing of raster data is a large part of the GeoTrellis lib
 
 __ http://www.amazon.com/GIS-Cartographic-Modeling-Dana-Tomlin/dp/158948309X
 
-- :ref:`local`: Local operations calculate resulting raster cell values based on the value at the same cell location in one or more input rasters.
-- :ref:`focal`: Focal operations calculate resulting raster cell values based on the values in a defined in a neighborhood around the same cell location in one or more input rasters.
-- :ref:`zonal`: Zonal operations calcuate resulting raster cell values based on the values associated with that cell’s zone in one or more input rasters.
-
-There's also some operation categories that GeoTrellis recognizes:
-
-- :ref:`global`: Global operaitons are operations that need all information from the whole entire raster.
-- :ref:`statistics`: Statistics operations compute statistics from raster values.
-
-*Note:* For each Operation that takes an input Raster and returns a Raster, the data type of the output Raster will be the same as the input Raster, unless otherwise noted.
