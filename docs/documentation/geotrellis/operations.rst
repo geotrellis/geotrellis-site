@@ -1,6 +1,6 @@
-.. _operations:
+.. _raster-operations:
 
-Operations
+Raster Operations
 ==========
 
 Manipulation and processing of raster data is a large part of the GeoTrellis library. The approach taken to the organization of raster operations is in line with `C. Dana Tomlin’s Map Algebra`__, as detailed in the book GIS and Cartographic Modeling. Map Algebra breaks focal operations into three main categories:
@@ -17,12 +17,3 @@ There's also some operation categories that GeoTrellis recognizes:
 - :ref:`statistics`: Statistics operations compute statistics from raster values.
 
 *Note:* For each Operation that takes an input Raster and returns a Raster, the data type of the output Raster will be the same as the input Raster, unless otherwise noted.
-
-
-.. toctree::
-
-   local
-   focal
-   global
-   zonal
-   statistics

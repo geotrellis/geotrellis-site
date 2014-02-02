@@ -4,7 +4,8 @@ object Dependencies {
 
   val resolutionRepos = Seq(
     "spray repo" at "http://repo.spray.io/",
-    "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
+    "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/",
+    "Geotools" at "http://download.osgeo.org/webdav/geotools/"
   )
 
   def compile   (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "compile")
@@ -13,10 +14,10 @@ object Dependencies {
   def runtime   (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "runtime")
   def container (deps: ModuleID*): Seq[ModuleID] = deps map (_ % "container")
 
-  val gt            = "com.azavea.geotrellis"                  %%  "geotrellis"            % "0.9.0-RC1"
-  val gtServices    = "com.azavea.geotrellis"                  %%  "geotrellis-services"   % "0.9.0-RC1"
-  val gtGeotools    = "com.azavea.geotrellis"                  %%  "geotrellis-geotools"   % "0.9.0-RC1"
-  val gtJetty       = "com.azavea.geotrellis"                  %%  "geotrellis-jetty"      % "0.9.0-RC1"
+  val gt            = "com.azavea.geotrellis"                  %%  "geotrellis"            % "0.9.0-RC4"
+  val gtServices    = "com.azavea.geotrellis"                  %%  "geotrellis-services"   % "0.9.0-RC4"
+  val gtGeotools    = "com.azavea.geotrellis"                  %%  "geotrellis-geotools"   % "0.9.0-RC4"
+  val gtJetty       = "com.azavea.geotrellis"                  %%  "geotrellis-jetty"      % "0.9.0-RC4"
 
   val scalaReflect  = "org.scala-lang"                          %   "scala-reflect"         % "2.10.3"
   val akkaActor     = "com.typesafe.akka"                       %%  "akka-actor"            % "2.2.3"

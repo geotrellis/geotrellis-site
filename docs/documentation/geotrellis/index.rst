@@ -11,7 +11,7 @@ The core *geotrellis* module holds the functionality for reading, writing, and o
    engine
    datasource
    io/index
-   operations/index
+   raster-operations/index
    rendering
    vector
    srs
