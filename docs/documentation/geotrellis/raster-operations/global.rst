@@ -6,22 +6,22 @@ Global Operations
 Global operations require knowledge of the entire raster to compute the operation.
 
 rescale
-  asdf
+  TODO
 
 toVector
-  asdf
+  TODO
 
 asArray
-  asdf
+  TODO
 
 regionGroup
-  asdf
+  TODO
 
 verticalFlip
-  asdf
+  TODO
 
 costDistance
-  asdf
+  TODO
 
 convolve
-  asdf
+  TODO

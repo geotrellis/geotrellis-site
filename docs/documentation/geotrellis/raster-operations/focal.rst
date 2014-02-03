@@ -8,38 +8,38 @@ focal operations require knowledge of the cell value and the values of surroundi
 cells.
 
 focalSum
-  Stuff
+  TODO
 
 focalMin
-  Stuff
+  TODO
 
 focalMax
-  Stuff
+  TODO
 
 focalMean
-  Sdf
+  TODO
 
 focalMedian
-  asdf
+  TODO
 
 focalMode
-  asdf
+  TODO
 
 focalStandardDeviation
-  asdf
+  TODO
 
 focalAspect
-  asdf
+  TODO
 
 focalSlope
-  asdf
+  TODO
 
 focalHillshade
-  asdf
+  TODO
 
 focalMoransI
-  asdf
+  TODO
 
 focalScalaMoransI
-  asdf
+  TODO
 

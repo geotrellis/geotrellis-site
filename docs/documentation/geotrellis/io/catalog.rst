@@ -50,7 +50,9 @@ See the :ref:`Server` section on more information about how to set the catalog o
 DataStore
 ---------
 
+Each of the ``store`` entries in the above example JSON represents a DataStore. A DataStore is essentially points to a directory with raster data. The raster data can be a variety of :ref:`layer types <Layer Types>`.
+
 The Cache
 ---------
 
-
+The Catalog has a cache that can load up the raw byte data for a raster, which makes loading of raster data much faster (at the expense of having to hold large raster data in memory). You can specify a ``cacheAll`` setting on the DataStore in the catalog, which will cause GeoTrellis to cache every layer in that DataStore. Alternatively, you can you set :ref:`the cache property <layer-cache>` on the individual layer to have finer control over which layers get cached. 

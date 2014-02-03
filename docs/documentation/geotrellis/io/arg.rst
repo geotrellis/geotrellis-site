@@ -6,6 +6,7 @@ Azavea Raster Grid format (ARG)
 
 The ARG (Azavea Raster Graphics) format is a simple way to encode raster data. A raster encoded in ARG comprises two files: foo.json and foo.arg. The JSON file contains all metadata about the raster, including name, data type, resolution, and the geographic extent. The ARG file contains the actual raster data (a two-dimension grid of numbers). It's important to know that both files are required.
 
+.. _ARG metadata:
 
 Metadata
 --------

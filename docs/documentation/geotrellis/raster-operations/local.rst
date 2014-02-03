@@ -13,28 +13,28 @@ Mapping and Combining
 These local operations take functions as parameters and allows the user to specify any sort of local transformation of cells:
 
 localMap
-  asdf
+  TODO
 
 localMapDouble
-  asdf
+  TODO
 
 localMapIfSet
-  asdf
+  TODO
 
 localMapIfSetDouble
-  asdf
+  TODO
 
 localDualMap
-  asdf
+  TODO
 
 localDualMapDouble
-  asdf
+  TODO
 
 localCombine
-  asdf
+  TODO
 
 localCombineDouble
-  asdf
+  TODO
 
 
 Specific Operations
@@ -143,10 +143,10 @@ localIf
   Stuff, overloads
 
 localMajority
-  asdf
+  TODO
 
 localMinority
-  asdf
+  TODO
 
 localVariety
   Variety gives the count of unique values at each location in a set of Rasters.
@@ -158,4 +158,4 @@ localVariety
 Operations on a Sequence of RasterSources
 -----------------------------------------
 
-
+TODO

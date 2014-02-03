@@ -26,7 +26,7 @@ Raster operations are accessed through methods on the :ref:`RasterSource` type, 
 Double vs Int
 -------------
 
-asdf
+TODO
 
 .. toctree::
 

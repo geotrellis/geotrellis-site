@@ -3,7 +3,11 @@
 Operations
 ==========
 
-Manipulation and processing of raster data is a large part of the GeoTrellis library. The approach taken to the organization of raster operations is in line with `C. Dana Tomlin’s Map Algebra`__, as detailed in the book GIS and Cartographic Modeling. Map Algebra breaks focal operations into three main categories:
+A geoprocessing model in GeoTrellis is composed of smaller geoprocessing operations with well-defined inputs and outputs. The next section describes how to create your own operations, but it is usually better to compose an operation out of existing operations if that is possible.
 
-__ http://www.amazon.com/GIS-Cartographic-Modeling-Dana-Tomlin/dp/158948309X
+Operations are like a lot like a `Future[T]`__. 
+
+TODO: This section.
+
+__ http://docs.scala-lang.org/overviews/core/futures.html 
 
