@@ -12,24 +12,27 @@ __ http://www.vividsolutions.com/jts/JTSHome.htm
 Rasterization
 -------------
 
-Rasterization of vector data is the process of converting vectors into rasters. There's a few different ways for you to rasterize your vector data using GeoTrellis.
+Rasterization of vector data is the process of converting vectors into rasters. There's a few different ways for you to rasterize your vector data using GeoTrellis. 
+
+TODO
 
 Interpolation
 -------------
 
 Interpolation is the process of taking point data and using it to interpolate the values of all the cells in a raster.
 
+TODO
+
 Kernel Density
 --------------
 
 The Kernel Density operation is a method for smoothing values of point data across a raster using an estimated probability density function. It's a geostatistical method that a full explination of is beyond the scope of this documentation; please refer to the `Wikipedia article`__ for more information, or ask for more resources on the mailing list or IRC.
 
-GeoTrellis implements the kernel density operation ... [RESOLVE AFTER ISSUE #718]
+GeoTrellis implements the kernel density operation through the ``VectorToRaster.kernelDensity`` method.
 
 __ http://en.wikipedia.org/wiki/Kernel_density_estimation
 
 GeoJSON
 -------
 
-GeoTrellis provides utility objects that read and write GeoJson from GeoTrellis feature objects. 
-
+GeoTrellis provides utility objects that read and write GeoJson from GeoTrellis feature objects. See the :ref:`GeoJSON` section of *Reading and Writing Data* for more information.

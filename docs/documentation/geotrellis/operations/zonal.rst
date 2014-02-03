@@ -1,4 +1,0 @@
-.. _zonal:
-
-Zonal Operations
-================

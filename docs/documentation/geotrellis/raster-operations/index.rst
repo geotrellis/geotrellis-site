@@ -1,7 +1,7 @@
-.. _operations:
+.. _raster-operations:
 
-Operations
-==========
+Raster Operations
+=================
 
 Manipulation and processing of raster data is a large part of the GeoTrellis library. The approach taken to the organization of raster operations is in line with `C. Dana Tomlin’s Map Algebra`__, as detailed in the book GIS and Cartographic Modeling. Map Algebra breaks focal operations into three main categories:
 
@@ -18,6 +18,15 @@ There's also some operation categories that GeoTrellis recognizes:
 
 *Note:* For each Operation that takes an input Raster and returns a Raster, the data type of the output Raster will be the same as the input Raster, unless otherwise noted.
 
+How operations are implemented
+------------------------------
+
+Raster operations are accessed through methods on the :ref:`RasterSource` type, or through methods on a sequence of :ref:`RasterSources <Operations on a Sequence of RasterSources>`.
+
+Double vs Int
+-------------
+
+TODO
 
 .. toctree::
 
@@ -26,3 +35,4 @@ There's also some operation categories that GeoTrellis recognizes:
    global
    zonal
    statistics
+   hydrology

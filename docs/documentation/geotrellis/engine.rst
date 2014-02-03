@@ -3,7 +3,52 @@
 Akka Execution Engine
 =====================
 
-The Akka execution engine is what takes `Operations`_ and :ref:`DataSources`, executes them, and returns their computed values. The way it executes DataSources is by asking the source what the operation to compute it's value is, so the internals of the engine only deal with Operations.
+The Akka execution engine is what takes :ref:`Operations <Ops>` and :ref:`DataSources`, executes them, and returns their computed values. There is no type `Engine`, the phrase Akka Execution Engine simply refers to the process of how DataSources and Operations are executed. Creating DataSources and Operations only describes the work that should be done; that work is not done until it is executed against the engine. The interface for executing DataSources or Operations against the engine is to run it through the :ref:`Server` instance.
+
+.. _Server:
+
+Server
+------
+
+The Server is the interface into the execution engine. It is what contains the Akka Actor system. It's also what contains the :ref:`Catalog` that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in ``geotrellis.GeoTrellis`` that is configured based on your ``application.conf``; this system is also imported as an implicit value when importing ``geotrellis._``. This provides a convenience for running DataSources: the ``.run`` and ``.get`` methods on DataSource take an implicit ``Server`` parameter that it executes itself through. So these two code blocks are equivalent: 
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: implicit-server-ds
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: explicit-server-ds
+
+
+The setting in your ``application.conf`` for setting the catalog is:
+
+.. code-block:: console
+
+   geotrellis.catalog = "/path/to/catalog.json"
+
+Modifying the Server configuration in code
+------------------------------------------
+
+If you need to, you can set up the catalog in the ``GeoTrellis.server`` manually through code. You do this by calling the ``init`` function on the ``GeoTrellis`` object before the server is used:
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: catalog-manual-config
+
+OperationResults
+----------------
+
+Along with calling the ``.get`` method to execute a DataSource or Operation, you can use the ``.run`` methods:
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: run-method-datasource
+
+.. includecode:: code/EngineExamples.scala
+   :snippet: run-method-op
+
+This allows you to handle errors with a `Try[T]-style`__ error handling. It will also return a ``History`` instance that gives you information on how the Operations were executed in the engine. See the :ref:`operation workflow example` for an example of printing out a History instance to the console.
+
+__ http://www.scala-lang.org/api/current/index.html#scala.util.Try
+
+.. _Ops: 
 
 Operations
 ----------
@@ -12,22 +57,7 @@ A geoprocessing model in GeoTrellis is composed of smaller geoprocessing operati
 
 The GeoTrellis naming convention for operations namespaces every operation within a single package, and we commonly refer to the operation with the package name in the format package.operation. For example, data loading operations are in the io package, and so the LoadRaster operation is referred to as io.LoadRaster.
 
-Server
-------
-
-The Server is the interface into the execution engine. It is what contains the Akka Actor system. It's also what contains the :ref:`Catalog` that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in geotrellis.GeoTrellis that is configured based on your ``application.conf``; this system is also imported as an implicit value when importing ``geotrellis._``.
-
-Actors
-------
-
-ServerActor
-  This actor yada yada
-
-Worker
-  This actor handles the execution of a base case Operation, or if the Operation has sub-Operations (operations in the case class's parameters), it will delegate to the StepAggregator.
-
-StepAggregator
-  This actor yada yada
+.. _operation workflow example:
 
 Operation Flow Example
 ----------------------

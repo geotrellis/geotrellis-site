@@ -8,10 +8,11 @@ The core *geotrellis* module holds the functionality for reading, writing, and o
 .. toctree::
    
    raster/index
-   engine
    datasource
+   operations
+   engine
    io/index
-   operations/index
+   raster-operations/index
    rendering
    vector
    srs

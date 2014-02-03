@@ -16,6 +16,9 @@ The geotrellis-geotools project is an additional dependency, so you will have to
 
   scalaVersion := "2.10.3"
   libraryDependencies += "com.azavea.geotrellis" %% "geotrellis-geotools" % "0.9.0"
+  resolvers += "Geotools" at "http://download.osgeo.org/webdav/geotools/"
+
+Notice that we need to add the GeoTools repository to the resolvers in order to find those dependencies.
 
 
 Reading GeoTIFFs
