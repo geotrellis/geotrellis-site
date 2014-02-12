@@ -50,7 +50,7 @@ See the :ref:`Server` section on more information about how to set the catalog o
 DataStore
 ---------
 
-Each of the ``store`` entries in the above example JSON represents a DataStore. A DataStore is essentially points to a directory with raster data. The raster data can be a variety of :ref:`layer types <Layer Types>`.
+Each of the ``store`` entries in the above example JSON represents a DataStore. A DataStore is essentially points to a directory with raster data. The raster data can be a variety of :ref:`layer types <rasterlayers>`.
 
 The Cache
 ---------

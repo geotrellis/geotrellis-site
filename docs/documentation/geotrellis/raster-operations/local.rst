@@ -13,28 +13,25 @@ Mapping and Combining
 These local operations take functions as parameters and allows the user to specify any sort of local transformation of cells:
 
 localMap
-  TODO
+  Transforms each integer cell value to another value by a function.
 
 localMapDouble
-  TODO
+  Transforms each double cell value to another value by a function.
 
 localMapIfSet
-  TODO
+  Transforms each integer cell value to another value by a function, if the value is not NoData.
 
 localMapIfSetDouble
-  TODO
+  Transforms each double cell value to another value by a function, if the value is not NoData.
 
 localDualMap
-  TODO
-
-localDualMapDouble
-  TODO
+  Map the values of a each cell to a new value; if the type of the raster is a double type, map using the double function, otherwise map using the integer function.
 
 localCombine
-  TODO
+  Combines the integer cell values of two or more rasters.
 
 localCombineDouble
-  TODO
+  Combines the double cell values of two or more rasters.
 
 
 Specific Operations
@@ -43,119 +40,151 @@ Specific Operations
 These operations perform one specific transformation or combination of values.
 
 localAdd
-  Stuff
+  Add the value of each cell to a constant value or to the matching cells of of another raster.
 
   *Operator: +*
 
 localSubtract
-  Stuff
+  Subtract the value of each cell to a constant value or to the matching cells of of another raster.
 
   *Operator: -*
 
 localMultiply
-  Stuff
+  Multiply the value of each cell to a constant value or to the matching cells of of another raster.
 
   *Operator: **
 
 localDivide
-  Stuff
+  Divide the value of each cell to a constant value or to the matching cells of of another raster.
 
   *Operator: /*
 
 localMin
-  Stuff
+  Take the minimum value of each cell between a sequence of rasters.
 
 localMax
-  Stuff
+  Take the maximum value of each cell between a sequence of rasters.
 
 localMean
-  Stuff
+  Take the mean value of each cell of a sequence of rasters.
 
 localMask
-  Stuff
+  Masks this raster based on cell values of the second raster.
 
 localInverseMask
-  Stuff
+  Masks this raster based on cell values of the second raster.
 
 mask
-  Stuff
+  Mask this raster based off of a polygon.
 
 localDefined
-  Stuff
+  Maps an integer typed Raster to 1 if the cell value is not NODATA, otherwise 0.
 
 localUndefined
-  Stuff
+  Maps an integer typed Raster to 0 if the cell value is not NODATA, otherwise 1.
 
 localPow
-  Stuff
+  Pow each value of the raster by a constant value.
 
 localSqrt
-  Stuff
+  Take the square root each value in a raster.
 
 localRound
-  Stuff
+  Round the values of a Raster.
 
 localLog
-  Stuff
+  Computes the Log of a Raster.
 
-localFloot
-  Stuff
+localFloor
+  Takes the Floor of each raster cell value.
 
 localCeil
-  Stuff
+  Takes the Ceiling of each raster cell value.
 
 localNegate
-  Stuff
+  Negate (multiply by -1) each value in a raster.
 
   *Operator: uniary - (-raster)*
 
 localNot
-  Stuff
+  Get the negation of this raster source.
 
 localAnd
-  Stuff
+  And the values of each cell in each raster.
 
 localOr
-  Stuff
+  Or the values of each cell in each raster.
 
 localXor
-  Stuff
+  Xor the values of each cell in each raster.
 
 localEqual
-  Stuff
+  Returns a Raster with data of TypeBit, where cell values equal 1 if the corresponding cell valued of the rasters are equal, else 0.
 
 localUnequal
-  Stuff
+  Returns a Raster with data of TypeBit, where cell values equal 1 if the corresponding cell valued of the rasters are not equal, else 0.
 
 localGreater
-  Stuff
+  Returns a Raster with data of TypeBit, where cell values equal 1 if the corresponding cell valued of the rasters are greater than the next raster, else 0.
 
 localLess
-  Stuff
+  Returns a Raster with data of TypeBit, where cell values equal 1 if the corresponding cell valued of the rasters are less than the next raster, else 0.
 
 localGreaterOrEqual
-  Stuff
+  Returns a Raster with data of TypeBit, where cell values equal 1 if the corresponding cell valued of the rasters are greater than or equal to the next raster, else 0.
 
 localLessOrEqual
-  Stuff
+  Returns a Raster with data of TypeBit, where cell values equal 1 if the corresponding cell valued of the rasters are less than or equal to the next raster, else 0.
 
 localIf
-  Stuff, overloads
+  Transform values of a raster based on conditionals.
 
 localMajority
-  TODO
+  Assigns to each cell the value within the given rasters that is the most numerous.
 
 localMinority
-  TODO
+  Assigns to each cell the value within the given rasters that is the nth least numerous.
 
 localVariety
   Variety gives the count of unique values at each location in a set of Rasters.
-
-
 
 .. _Operations on a Sequence of RasterSources:
 
 Operations on a Sequence of RasterSources
 -----------------------------------------
 
-TODO
+exponentiate
+  Raises each cell value to the power of the next raster, from left to right
+
+localAdd
+  Adds all the rasters in the sequence
+
+localSubtract
+  Takes the difference of the rasters in the sequence from left to right
+
+difference
+  Takes the difference of the rasters in the sequence from left to right (same as localSubtract)
+
+localDivide
+  Divides the rasters in the sequence from left to right
+
+localMultiply
+  Takes the product of the rasters in the sequence
+
+product
+  Takes the product of the rasters in the sequence (same as localMultiply)
+
+max
+  Takes the max of each cell value
+
+min
+  Takes the min of each cell value
+
+and
+  Takes the logical And of each cell value
+
+or
+  Takes the logical Or of each cell value
+
+xor
+  Takes the logical Xor of each cell value
