@@ -7,15 +7,15 @@ extensions = ['sphinx.ext.todo', 'includecode', 'sphinx.ext.graphviz']
 source_suffix = '.rst'
 source_encoding = 'utf-8'
 master_doc = 'index'
-project = u'spray'
-copyright = u'2011-2013 spray.io.'
+project = u'geotrellis'
+copyright = u'2013-2014 geotrellis.io.'
 version = '$VERSION$'
 release = '$VERSION$'
 exclude_patterns = []
 highlight_language = 'scala'
 
 # -- Options for HTML output ---------------------------------------------------
-html_title = u'spray'
+html_title = u'geotrellis'
 html_static_path = []
 html_use_smartypants = True
 html_add_permalinks = None
