@@ -3,7 +3,7 @@ import sys, os
 # -- General configuration -----------------------------------------------------
 
 sys.path.append(os.path.abspath('_sphinx/exts'))
-extensions = ['sphinx.ext.todo', 'includecode', 'sphinx.ext.graphviz']
+extensions = ['sphinx.ext.todo', 'includecode', 'sphinx.ext.graphviz', 'sphinxcontrib.gist']
 source_suffix = '.rst'
 source_encoding = 'utf-8'
 master_doc = 'index'
