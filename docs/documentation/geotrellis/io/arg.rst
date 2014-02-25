@@ -43,21 +43,24 @@ The ``datatype`` parameter communicates the width (in bytes) of each cell, as we
 
 .. cssclass:: table-striped
 
-=============== =============== ======== ======= =============== ===================
-datatype        bytes per cell  min      max     no data value   Scala no data value
-=============== =============== ======== ======= =============== ===================
-int8            1               -127     127     -128            Byte.MinValue
-int16           2               -32,767  32,767  -32,767         Short.MinValue 
-int32           4               -231+1   231-1   -231            Int.MinValue
-float32         32              |FMIN|   |FMAX|  NaN             Float.NaN
-float64         64              |DMIN|   |DMAX|  NaN             Float.NaN
-=============== =============== ======== ======= =============== ===================
+=============== =============== ======== ========= =============== ===================
+datatype        bytes per cell  min      max       no data value   Scala no data value
+=============== =============== ======== ========= =============== ===================
+int8            1               -127     127       -128            Byte.MinValue
+int16           2               -32,767  32,767    -32,767         Short.MinValue 
+int32           4               |I32MIN| |I32MAX|  -2 :sup:`31`     Int.MinValue
+float32         32              |FMIN|   |FMAX|    NaN             Float.NaN
+float64         64              |DMIN|   |DMAX|    NaN             Float.NaN
+=============== =============== ======== ========= =============== ===================
 
+.. |I32MIN| replace:: \ -2 :sup:`31+1` \
+.. |I32MAX| replace:: \ 2 :sup:`31-1` \
 .. |FMIN| replace:: \ -10 :sup:`38.5` \
 .. |FMAX| replace:: \ 10 :sup:`38.5` \
 .. |DMIN| replace:: \ -10 :sup:`308.2` \
 .. |DMAX| replace:: \ 10 :sup:`308.2` \
 
+VERSION 1
 There are three specific keys which are not directly used by GeoTrellis but which could be used by other clients: ``epsg``, ``xskew`` and ``yskew``.
 
 The ``epsg`` attribute gives the coordinate system of the data. When absent, the coordinate system is assumed to be Web Mercator (i.e. "3785").
