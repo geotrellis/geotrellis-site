@@ -81,7 +81,7 @@ __ http://spray.io/documentation/1.2.0/spray-testkit/
 
 HttpService
 ^^^^^^^^^^^
-Finlally we create ``src/main/scala/GeoTrellisServiceActor.scala`` where we will define our route structure.
+Finally we create ``src/main/scala/GeoTrellisServiceActor.scala`` where we will define our route structure.
 
 .. code-block:: scala
 
@@ -297,7 +297,7 @@ To filter out all locations that are "too far" from the farmers markets we can g
 
   Mean income near farmers markets: 22.955766888898363
 
-Notice that we mapped over every location/cell in the ``farmMarketRaster`` and replaced everything bellow 1 with ``NODATA``. This is a constant is defined in GeoTrellis as a stand-in for NULL. For rasters of integers it is defined to be ``Int.MinValue``. All other values in the raster are replaced with 1, producing a convenient mask.
+Notice that we mapped over every location/cell in the ``farmMarketRaster`` and replaced everything less than 1 with ``NODATA``. This is a constant defined in GeoTrellis to represent :ref:`NoData`. For Integer rasters it is defined to be ``Int.MinValue``. All other values in the ``farmMarketRaster`` are replaced with 1, producing a convenient mask.
 
 Also important to note is that we have created a new RasterSource, `filteredIncomeRaster` that is a combination of two other rasters. The ``*`` operation performs a multiplication of every location in the two rasters. 
 
@@ -308,7 +308,7 @@ The perhaps surprising result is that the difference in mean income is minor and
 
 .. image:: images/filtered.png
 
-Its a little difficult to tell without an overlay but it's apparent that the city of Philadelphia has a ready access to farmers markets but on average lower income. 
+Its a little difficult to tell without an overlay but it's apparent that the city of Philadelphia has a ready access to farmers markets but on average is lower income. 
 
 Analyze Route
 ^^^^^^^^^^^^^
