@@ -85,9 +85,7 @@ trait GeoTrellisService extends HttpService {
       parameter('cutoff.as[Int]) { cutoff =>
         val incomePerCapRaster = RasterSource("SBN_inc_percap")
         val farmMarketRaster = RasterSource("SBN_farm_mkt")
-        val farmMarketMaskRaster = farmMarketRaster.localMap{ 
-          x => if (x > cutoff) 1 else NODATA 
-        }
+        val farmMarketMaskRaster = farmMarketRaster.localMap{ x => if (x > cutoff) 1 else NODATA }
 
         val result = incomePerCapRaster *  farmMarketMaskRaster
 
@@ -97,15 +95,19 @@ trait GeoTrellisService extends HttpService {
               result.renderPng(ColorRamps.BlueToRed).get
             }
           }
-        } 
-        ~
+        } ~
         path("stats") {
           get {
             respondWithMediaType(MediaTypes.`application/json`) {
               complete {
                 val histogramSource: ValueSource[Histogram] = result.histogram()
                 //No processing has been done yet
-                val histogram = histogramSource.get
+                val histogram = histogramSource.run match {
+                  case Complete(histogram, hist) =>
+                    histogram
+                  case Error(msg, hist) =>
+                    throw new RuntimeException(msg)
+                }
                 val stats = histogram.generateStatistics()
                 s"{mean: ${stats.mean}, histogram: ${histogram.toJSON} }"
               }

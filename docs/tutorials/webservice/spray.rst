@@ -112,8 +112,8 @@ Now we are able to verify that the service runs by using the ``run`` command in 
 **Note:** It is good practice to define routes as ``def``s to avoid bewildering intitilization problems.
 
 
-GeoTrellis
-----------
+Using GeoTrellis
+----------------
 
 Now we are ready to start using GeoTrellis. When we use GeoTrellis we are building objects that know how to perform Operation(s) and in what order. However the work is delayed until either ``.run`` or ``.get`` is called. 
 
@@ -130,7 +130,9 @@ Lets make an endpoint that will load a raster of a given name and render it to P
 .. includecode:: code/GeoTrellisService.scala
   :snippet: RasterRoute
 
-``val raster: RasterSource = RasterSource("RASTER_NAME")`` represents an Operation that will load a Raster of a given name in the future, thus it provides as with a source of a Raster, a ``RasterSource``. We are able to transform and combine such operations by using the methods defined on RasterSource, such as ``.renderPng(_)``. RasterSource is a type of :ref:`DataSource`. This architecture is new as of ``0.9``. Note that ``.renderPng(_)`` transforms a ``RasterSource`` into a ``ValueSource``, essentially reducing a future collection of values to a single one.
+:ref:`RasterSource` is an object that represents the result of an operation that loads a raster with ID of "RASTER_NAME" from the catalog in the future. We are able to transform the result of this operation by using the methods defined on ``RasterSource``, such as ``.renderPng()``, ``localMap``, etc.  Note that ``.renderPng(_)`` transforms a ``RasterSource`` into a ``ValueSource``, essentially reducing a future collection of values, a raster, into a single one value, PNG file. We will see shortly that two RasterSources can be combined with ``*`` operation.
+
+RasterSource is a type of :ref:`DataSource`. This architecture is new as of ``0.9``. 
 
 
 GeoTrellis Server
@@ -247,10 +249,10 @@ We drop this definition into our ``GeoTrellisService`` trait and reap the benefi
   
 
 
-Analyze
--------
+Raster Analysis
+---------------
 
-One may wonders if perhaps the location of farmers markets are somehow correlated to the average income of the neighborhood, in the same way that location of Whole Foods has been shown to be. 
+One may wonder if perhaps the location of farmers markets are somehow correlated to the average income of the neighborhood, in the same way that location of Whole Foods has been shown to be. 
 
 Average Income
 ^^^^^^^^^^^^^^
@@ -269,9 +271,9 @@ What is the average income of the Philadelphia area.
 
   Mean income in Philadelphia: 26.62950322073986
   
-**Note:** The data in the ``SBN_inc_percap`` has been normalized, so the answers will have meaning in compression only.
+**Note:** The data in the ``SBN_inc_percap`` has been normalized, so the answers will have meaning in comparison only.
 
-Also notice that this time we called ``.get`` rather than ``.run`` to trigger the computation. This is a shortcut method that will return a value if there is a ``Complete`` result and will throw an ``RuntimeException`` if there is and ``Error``. Since we're intercepting all exceptions in our service it is convenient for us to use it.
+This time we called ``.get`` rather than ``.run`` to trigger the computation. This is a shortcut method that will return a value if there is a ``Complete`` result and will throw an ``RuntimeException`` if there is and ``Error``. Since we're intercepting all exceptions in our service it is convenient for us to use it.
 
 Neighborhood Income
 ^^^^^^^^^^^^^^^^^^^
@@ -286,10 +288,9 @@ To filter out all locations that are "too far" from the farmers markets we can g
         x => if (x > 1) 1 else NODATA 
       }
     val filteredIncomeRaster = incomePerCapRaster *  farmMarketMaskRaster
-    val histogramSource: ValueSource[Histogram] = filteredIncomeRaster.histogram()
-
-    val histogram = histogramSource.get
-    val stats = histogram.generateStatistics()
+    val histogramSource: ValueSource[Histogram] = filteredIncomeRaster.histogram
+    val statsSource = histogramSource.map{ h=> generateStatistics() }
+    val stats = statsSource.get
     println(s"Mean income near farmers markets: ${stats.mean}")
     
 .. code-block: console
@@ -297,6 +298,8 @@ To filter out all locations that are "too far" from the farmers markets we can g
   Mean income near farmers markets: 22.955766888898363
 
 Notice that we mapped over every location/cell in the ``farmMarketRaster`` and replaced everything bellow 1 with ``NODATA``. This is a constant is defined in GeoTrellis as a stand-in for NULL. For rasters of integers it is defined to be ``Int.MinValue``. All other values in the raster are replaced with 1, producing a convenient mask.
+
+Also important to note is that we have created a new RasterSource, `filteredIncomeRaster` that is a combination of two other rasters. The ``*`` operation performs a multiplication of every location in the two rasters. 
 
 Why?
 ^^^^
