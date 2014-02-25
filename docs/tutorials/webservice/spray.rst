@@ -35,7 +35,6 @@ __ http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html
   │   ├── resources
   │   └── scala
   └── test
-      ├── resources
       └── scala
 
 
