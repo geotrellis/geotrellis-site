@@ -244,7 +244,7 @@ We drop this definition into our ``GeoTrellisService`` trait and reap the benefi
   
 .. code-block:: console
 
-  Exception: No raster with name SBN_inc_NOrcap exists in the catalog.
+  Exception: No raster with name SBN_inc_NOcap exists in the catalog.
   
 
 
@@ -328,9 +328,9 @@ __ http://spray.io/documentation/1.2.0/spray-routing/parameter-directives/parame
 Sample Project
 --------------
 
-Please look over the fully ``completed project``__ that has all of the above code and more. 
+Please look over the fully `completed project`__ that has all of the above code and more. 
 
-__https://github.com/geotrellis/geotrellis-spray-tutorial
+__ https://github.com/geotrellis/geotrellis-spray-tutorial
 
 
 
