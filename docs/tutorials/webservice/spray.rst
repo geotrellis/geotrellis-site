@@ -293,7 +293,7 @@ To filter out all locations that are "too far" from the farmers markets we can g
     val stats = statsSource.get
     println(s"Mean income near farmers markets: ${stats.mean}")
     
-.. code-block: console
+.. code-block:: scala
 
   Mean income near farmers markets: 22.955766888898363
 
