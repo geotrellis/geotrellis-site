@@ -59,6 +59,18 @@ The GeoTrellis naming convention for operations namespaces every operation withi
 
 .. _operation workflow example:
 
+Actor Diagram
+-------------
+
+The following diagram shows the structure of the actor system which evaluates the Operations. The :ref:`Server` in the diagram is ``geotrellis.process.Server``, it will kick off the request and ``Await`` the ``PositionedResult``.
+
+.. image:: images/akka-execution-engine.png
+
+Akka Notation
+^^^^^^^^^^^^^
+
+.. image:: images/akka-notation.png
+
 Operation Flow Example
 ----------------------
 
