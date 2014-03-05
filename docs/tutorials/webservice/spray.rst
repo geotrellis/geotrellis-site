@@ -81,7 +81,7 @@ __ http://spray.io/documentation/1.2.0/spray-testkit/
 
 HttpService
 ^^^^^^^^^^^
-Finally we create ``src/main/scala/GeoTrellisServiceActor.scala`` where we will define our route structure.
+Finally we create ``src/main/scala/GeoTrellisService.scala`` where we will define our route structure.
 
 .. code-block:: scala
 
@@ -109,7 +109,7 @@ __ http://spray.io/documentation/1.2.0/spray-routing/key-concepts/routes/
 
 Now we are able to verify that the service runs by using the ``run`` command in sbt and opening ``http://localhost:8000/ping`` and seeing the expected response of ``pong!``
 
-**Note:** It is good practice to define routes as ``def``s to avoid bewildering intitilization problems.
+**Note:** It is good practice to define routes as ``def`` s to avoid bewildering intitilization problems.
 
 
 Using GeoTrellis
@@ -119,8 +119,9 @@ Now we are ready to start using GeoTrellis. When we use GeoTrellis we are buildi
 
 Lets look at some code. First we'll need these imports for the rest of the tutorial:
 
-.. includecode:: code/@annotation.tailrec
+.. includecode:: code/GeoTrellisService.scala
   :snippet: Imports
+
 
 Draw a Raster
 ^^^^^^^^^^^^^
@@ -199,7 +200,7 @@ These and other rasters are also included in GeoTrellis project and can be viewe
 
 
 Draw!
-^^^^
+^^^^^
 
 Now that we have the data and the catalog defined we can finally test the service. Update the ``rootRoute`` to include the ``rasterRoute``: 
 
