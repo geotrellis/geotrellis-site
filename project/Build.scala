@@ -25,7 +25,7 @@ object Build extends Build {
     .settings(SphinxSupport.settings: _*)
     .settings(resolvers ++= resolutionRepos)
     .settings(libraryDependencies ++=
-      compile(akkaActor, sprayJson, sprayCan, sprayCaching, sprayRouting) ++
+      compile(akkaActor, sprayJson, sprayCan, sprayCaching, sprayRouting, gt) ++
       runtime(akkaSlf4j, logback) ++
       test(specs2)
     )

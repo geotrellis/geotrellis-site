@@ -26,6 +26,10 @@ import spray.routing._
 import html._
 import StatusCodes._
 
+import geotrellis._
+import geotrellis.process
+import geotrellis.source.ValueSource
+
 class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
 
   // format: OFF
@@ -38,6 +42,9 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           } ~
           path("favicon.png") {
             complete(NotFound) // fail early in order to prevent error response logging
+          } ~
+          pathPrefix("gt") {
+            demoRoute
           } ~
           logRequestResponse(showErrorResponses _) {
             getFromResourceDirectory("theme") ~
@@ -90,6 +97,31 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         }
       }
     }
+  }
+
+  val demoRoute =  path("weighted-overlay"/) {
+    parameters('weight1.as[Int], 'weight2.as[Int]) { (w1, w2) =>
+      val layers = List("LAYER_1", "LAYER_2")
+      val weights = List(w1,w2)
+
+      val model = Model.weightedOverlay(layers,weights, None)
+      val png:ValueSource[Png] = model.renderPng()
+
+      png.run match {
+        case process.Complete(img,h) =>
+          respondWithMediaType(MediaTypes.`image/png`) {
+            complete(img)
+          }
+        case process.Error(message,trace) =>
+          println(message)
+          println(trace)
+
+          failWith(new RuntimeException(message))
+      }
+    }
+  } ~
+  unmatchedPath { ump => //anything hitting the demo subroute will have standard 404
+    complete(StatusCodes.NotFound)
   }
   // format: ON
 
