@@ -1,13 +1,185 @@
+/*Homepage*/
+
+.carousel-indicators li.active {
+  display: inline-block;
+}
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+#carousel-controller {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.geotrellis-overview {
+  margin-bottom: 1em;
+}
+
+.overview {
+  margin-bottom: 1em;
+}
+
+.btn-group-justified .btn {
+  width: 50%;
+}
+
+.btn-group {
+  margin-top: 8px;
+}
+
+.navbar-brand {
+  font-size: 21px;
+}
+
+.demo-map {
+  height: 720px;
+}
+
+.demo-container {
+  width: 360px !important;
+  min-height: 540px;
+  padding: 20px;
+  background-color: #fff;
+  pointer-events: visible;
+}
+
+input.demo-amount {
+  outline: 0;
+  height: 100%;
+  text-align: right;
+  background-color: inherit !important;
+  border-width: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+}
+
+.demo-controller-label {
+  line-height: 1.5;
+  margin: 0;
+}
+
+#demo-controllers {
+  position: absolute;
+  transform: translate3d(100px, 60px, 0);
+  -webkit-transform: translate3d(100px, 60px, 0);
+  z-index: 20;
+  width: auto;
+}
+
+.demo-controller-input-header {
+  height: 40px;
+}
+
+.leaflet-control-container {
+  display: none;
+}
+
+.demo-controller-super-header {
+
+  color: #aaa;
+}
+
+.demo-controller-header {
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.map-preview-icon {
+  padding: 1px;
+  margin-top: 2px;
+  background-color: #aaa;
+  display: inline-block !important;
+  cursor: pointer;
+}
+
+.map-preview-icon img {
+  width: 40px;
+}
+
+.map-preview-icon.active {
+  padding: 3px;
+  margin-top: 0;
+  background-color: #1c2e3f;
+}
+
+.map-preview-icon:last-child {
+  margin-right: 0;
+}
+
+#map-preview-icons {
+  margin-top: 12px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  left: 0px;
+  padding: 20px;
+}
+
+/*Globals*/
+
+h1, .h1 {
+  font-size: 50px;
+}
+h2, .h2 {
+  font-size: 38px;
+}
+h3, .h3 {
+  font-size: 28px;
+}
+h4, .h4 {
+  font-size: 21px;
+}
+h5, .h5 {
+  font-size: 16px;
+}
+h6, .h6 {
+  font-size: 13px;
+}
+
 html,
 body {
   font-size: 62.5%;
   line-height: 1.5; }
 
 div, p {
-  font-size: 1.5rem; }
+  font-size: 1.6rem; }
 
-h1, h2, h3 {
-  font-family: 'Signika', sans-serif; }
+h1, h2, h3, h4, h5, h6 {
+  font-family:"ff-dagny-web-pro", 'Signika', sans-serif; }
 
 html,
 body {
@@ -75,7 +247,7 @@ button.close:hover {
   border: none;
   min-height: 52px; }
   .navbar .navbar-brand {
-    font-family: 'Signika', sans-serif;
+    font-family:'Signika', sans-serif;
     font-weight: 300;
     color: white;
     text-indent: 38px;
@@ -131,7 +303,7 @@ button.close:hover {
     margin-bottom: 10px; }
   .jumbotron p {
     font-size: 2.4rem;
-    font-family: 'Signika', sans-serif;
+    font-family:"ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro",: 'Signika', sans-serif;
     color: #fff29d;
     margin-bottom: 24px; }
     .jumbotron p > a {
@@ -181,7 +353,7 @@ body.page-home #what-is-geotrellis {
       margin: 0;
       padding: 14px 12px;
       width: 100%;
-      font-family: 'Signika', sans-serif;
+      font-family:"ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro",: 'Signika', sans-serif;
       font-size: 1.6rem;
       color: #FFF;
       font-weight: 400; }
@@ -207,7 +379,7 @@ body.page-home #what-is-geotrellis {
       margin: 0;
       padding: 14px 12px;
       width: 100%;
-      font-family: 'Signika', sans-serif;
+      font-family:"ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro",: 'Signika', sans-serif;
       font-size: 1.6rem;
       color: #FFF;
       font-weight: 400; }
@@ -276,24 +448,18 @@ footer .footNav { text-align: center; }
 }
 
 .section h1 {
-    font-size: 30px;
-    line-height: 40px;
     margin-bottom: 0.5em;
     border-bottom: 1px solid #CCC;
     padding-bottom: 10px;
 }
 
 .section h2 {
-    font-size: 20px;
-    line-height: 40px;
     margin-top: 1em;
     margin-bottom: 0.3em;
     font-weight: bold;
 }
 
 .section h3 {
-    font-size: 16px;
-    line-height: 40px;
     margin-top: 1em;
     margin-bottom: 0;
     font-weight: bold;
@@ -316,7 +482,7 @@ footer .footNav { text-align: center; }
 pre {margin:1.5em 0;white-space:pre;}
 tt {
     color: #000055;
-    font-family: 'andale mono', 'lucida console', monospace;
+    font-family:"ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro",: 'andale mono', 'lucida console', monospace;
     line-height:1.5;
 }
 
@@ -333,7 +499,7 @@ div.ramp span.floating {
 math { font-size: 1.6rem; }
 
 .section table {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family:"ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro","ff-dagny-web-pro",: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #515161;
     text-rendering: optimizelegibility;
 }
