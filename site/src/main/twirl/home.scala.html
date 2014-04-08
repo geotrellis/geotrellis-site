@@ -1,16 +1,136 @@
 @()
 
-<div class="jumbotron">
-    <div class="container">
-        <h1>GeoTrellis</h1>
-        <p>Fast raster processing for the web and the cluster.</p>
-        <p>
-            <a class="btn btn-primary btn-lg" role="button" href="#what-is-geotrellis">What is GeoTrellis?</a>
-            <a class="btn btn-primary btn-lg" role="button" href="introduction/getting-started/">Get Started</a>
-        </p>
+<div id="interactive-demos">
+
+    <div id="carousel-controller" class="carousel slide carousel-fade" data-ride="carousel">
+
+      <div class="carousel-inner" id="demo-controllers">
+        <div id="controller-1" class="demo-container item active">
+            <h4 class="demo-controller-super-header">
+                Demo 1/3
+            </h4>
+            <h1 class="demo-controller-header">
+                Weighted overlay
+            </h1>
+            <p>
+                The GeoTrellis weighted overlay operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
+            </p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="demo-controller-label">Population</h6>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
+                    </div>
+                </div>
+            <div id="controller-1-slider-1"></div>
+            <div id="map-preview-icons">
+              <div class="map-preview-icon active"><img src="img/map-preview-icon-1.png"></div>
+              <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon"><img src="img/map-preview-icon-2.png"></div>
+              <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon"><img src="img/map-preview-icon-3.png"></div>
+            </div>
+        </div>
+        <div id="controller-2" class="demo-container item">
+            <h4 class="demo-controller-super-header">
+                Demo 2/3
+            </h4>
+            <h1 class="demo-controller-header">
+                Hillshade
+            </h1>
+            <p>
+                The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
+            </p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="demo-controller-label">Time</h6>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="controller-2-amount-1" class="demo-amount" disabled>
+                    </div>
+                </div>
+            <div id="controller-2-slider-1"></div>
+            <div id="map-preview-icons">
+              <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon"><img src="img/map-preview-icon-1.png"></div>
+              <div class="map-preview-icon active"><img src="img/map-preview-icon-2.png"></div>
+              <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon"><img src="img/map-preview-icon-3.png"></div>
+            </div>
+        </div>
+        <div id="controller-3" class="demo-container item">
+            <h4 class="demo-controller-super-header">
+                Demo 3/3
+            </h4>
+            <h1 class="demo-controller-header">
+                Travelshed
+            </h1>
+            <p>
+                The GeoTrellis travelshed operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
+            </p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6 class="demo-controller-label">Type of Transportation</h6>
+                    </div>
+                    <div class="col-sm-6">
+                        
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                      <label class="btn btn-primary active">
+                        <input type="radio" name="options" id="option1"><i class="icon-school"></i> Walking
+                      </label>
+                      <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option2"><i class="icon-bus"></i> Transit
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            <div id="controller-3-slider-1"></div>
+            <div id="map-preview-icons">
+              <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon"><img src="img/map-preview-icon-1.png"></div>
+              <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon"><img src="img/map-preview-icon-2.png"></div>
+              <div class="map-preview-icon active"><img src="img/map-preview-icon-3.png"></div>
+            </div>
+        </div>
+      </div>
+
     </div>
+
+    <div id="carousel-map" class="carousel slide carousel-fade" data-ride="carousel">
+
+      <div class="carousel-inner" id="demo-maps">
+        <div class="item active">
+            <div id="map-1" class="demo-map">
+            </div>
+        </div>
+        <div class="item">
+            <div id="map-2" class="demo-map">
+            </div>
+        </div>
+        <div class="item">
+            <div id="map-3" class="demo-map">
+            </div>
+        </div>        
+      </div>
+
+      <a class="left carousel-control" data-target="#carousel-controller" data-slide="prev">
+        ‹
+      </a>
+      <a class="right carousel-control" data-target="#carousel-controller" data-slide="next">
+        ›
+      </a>
+    </div>
+
 </div>
+
 <div id="what-is-geotrellis">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="overview">GeoTrellis is a fast raster processing library for the web and the cluster.</h2>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -171,3 +291,69 @@
         </div>
     </div>
 </div>
+
+<script>
+$(function() {
+
+    // Weighted overlay controllers
+    var defaultState = 3;
+    $("#controller-1-slider-1").slider({
+      min: 1,
+      max: 5,
+      value: defaultState,
+      slide: function(event, ui) {
+        $("#controller-1-amount-1").val(ui.value);
+      }
+    });
+    $("#controller-1-amount-1").val(defaultState);
+
+    // Hillshade controllers
+    defaultState = 4;
+    var valMap = ["12:00 AM", "1:00 AM", "2:00 AM", "3:00 AM", "4:00 AM", "5:00 AM", "6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
+    $("#controller-2-slider-1").slider({
+      min: 0,
+      max: valMap.length - 1,
+      value: defaultState,
+      slide: function(event, ui) {
+        $("#controller-2-amount-1").val(valMap[ui.value]);
+      }
+    });
+    $("#controller-2-amount-1").val(valMap[defaultState]);
+
+});
+</script>
+
+<script>
+
+    var maps = [];
+    maps[0] = L.mapbox.map('map-1', 'lknarf.map-rugx6hs5')
+        .setView([39.948365, -75.221654], 16);
+    maps[0].scrollWheelZoom.disable();
+    maps[1] = L.mapbox.map('map-2', 'lknarf.map-rugx6hs5')
+        .setView([39.948365, -79.221654], 13);
+    maps[1].scrollWheelZoom.disable();
+    maps[2] = L.mapbox.map('map-3', 'lknarf.map-rugx6hs5')
+        .setView([43.948365, -79.221654], 6);
+    maps[2].scrollWheelZoom.disable();
+
+    $('#carousel-map').carousel({
+      interval: false
+    });
+
+    $('#carousel-controller').carousel({
+      interval: false
+    });
+
+    $('#carousel-controller').on('slide.bs.carousel', function (event) {
+      if (event.namespace==="bs.carousel") {
+        var next = $(event.relatedTarget);
+        var to = next.index();
+        $('#carousel-map').carousel(to);
+        maps[to].invalidateSize();
+      }
+    });
+
+</script>
+
+
+

@@ -18,13 +18,24 @@
 
     <link href="/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/css/mentor.min.css" rel="stylesheet"/>
+    <link href="/css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"/>
+
     <link href="/css/vendor/fontello.css" rel="stylesheet">
 
     <link href="/css/main.css" rel="stylesheet">
     
+    <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+    <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+    <![endif]-->
+
+    <script type="text/javascript" src="//use.typekit.net/tjy8olz.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-
+    <script src="/js/jquery-ui-1.10.4.custom.min.js"></script>
 
     <!-- <link href="/css/skin_blue.css" rel="stylesheet"/> -->
     <!-- <link href="/css/spray.css" rel="stylesheet"/> -->
@@ -57,6 +68,27 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
+    <script>
+    $(function() {
+      
+      $( "#slider" ).slider({
+        range: true,
+        values: [ 17, 67 ]
+      });
+      
+      // Hover states on the static widgets
+      $( "#dialog-link, #icons li" ).hover(
+        function() {
+          $(this).addClass("ui-state-hover");
+        },
+        function() {
+          $(this).removeClass("ui-state-hover");
+        }
+      );
+    });
+    </script>
+
 </head>
 
 <body class="@{if(node.isRoot) "page-home" else if (node.uri.startsWith("blog")) "page-blog" else "page-doc"}">

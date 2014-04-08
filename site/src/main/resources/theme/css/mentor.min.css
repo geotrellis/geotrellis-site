@@ -475,7 +475,7 @@ textarea {
 }
 body {
     margin: 0;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "ff-dagny-web-pro", "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     line-height: 1.5;
     color: #333;
@@ -490,7 +490,6 @@ a:hover {
     text-decoration: underline;
 }
 .row {
-    margin-left: -20px;
     *zoom: 1;
 }
 .row:before,
@@ -581,7 +580,7 @@ a:hover {
 .container-fluid:after { clear: both }
 p {
     margin: 0 0 9px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "ff-dagny-web-pro", "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     line-height: 1.5;
 }
@@ -691,7 +690,7 @@ cite { font-style: normal }
 code,
 pre {
     padding: 0 3px 2px;
-    font-family: Menlo,Monaco,"Courier New",monospace;
+    font-family: "ff-dagny-web-pro", Menlo,Monaco,"Courier New",monospace;
     font-size: 12px;
     color: #333;
     -webkit-border-radius: 3px;
@@ -765,7 +764,7 @@ textarea {
 input,
 button,
 select,
-textarea { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif }
+textarea { font-family: "ff-dagny-web-pro", "Helvetica Neue",Helvetica,Arial,sans-serif }
 label {
     display: block;
     margin-bottom: 5px;
@@ -2346,7 +2345,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-search .search-query {
     padding: 4px 9px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "ff-dagny-web-pro", "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     font-weight: normal;
     line-height: 1;
@@ -3094,21 +3093,18 @@ a.thumbnail:hover {
 .carousel .active.right { left: 100% }
 .carousel-control {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 15px;
     width: 40px;
     height: 40px;
     margin-top: -20px;
-    font-size: 60px;
+    font-size: 28px;
     font-weight: 100;
-    line-height: 30px;
+    line-height: 1.4;
     color: #fff;
     text-align: center;
     background: #222;
-    border: 3px solid #fff;
-    -webkit-border-radius: 23px;
-    -moz-border-radius: 23px;
-    border-radius: 23px;
+    cursor: pointer;
     opacity: .5;
     filter: alpha(opacity=50);
 }
@@ -3399,7 +3395,6 @@ a.thumbnail:hover {
     .navbar .nav>li>a,
     .navbar .dropdown-menu a {
         padding: 6px 15px;
-        font-weight: bold;
         color: white;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
@@ -3631,6 +3626,7 @@ a.thumbnail:hover {
     .navbar .nav {
         float: none;
         margin-top: 15px;
+        padding: 0;
     }
     .navbar .nav>li { margin-right: 0 }
     .navbar .nav>li.last { margin-right: 0 }
@@ -3698,14 +3694,13 @@ a.thumbnail:hover {
 .navbar .brand { border-bottom: 2px solid #1c2e3f }
 .navbar .nav>li>a {
     color: white;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-shadow: none;
 }
 .navbar .nav>li.current-page>a {
     color: white;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-shadow: none;
     background-color: #2dbbbb;
 }
@@ -3813,7 +3808,7 @@ a.thumbnail:hover {
     }
     .btn-navbar:hover { background: #1c2e3f }
     .btn-navbar .btnTitle {
-        font-size: 14px;
+        font-size: 16px;
         color: #fff;
         font-weight: bold;
         text-shadow: none;
@@ -3826,13 +3821,17 @@ a.thumbnail:hover {
         -webkit-border-radius: 0;
     }
     .navbar .nav>li>a {
-        border-left: 2px solid #1c2e3f;
+        border-left: 0;
         border-bottom: 0;
         background-color: #eee;
     }
+
+    .navbar .nav>li>a .caret {
+        display: none;
+    }
     .navbar .nav .active>a,
     .navbar .nav .active>a:hover {
-        border-left: 2px solid #1c2e3f;
+        border-left: 0;
         border-bottom: 0;
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
@@ -3852,17 +3851,17 @@ a.thumbnail:hover {
         border-bottom: 1px solid #666;
     }
     .navbar .nav .nav-header { border-bottom: 1px solid #aaa }
-    .navbar .dropdown-menu { box-shadow: none }
+    .navbar .nav .dropdown-menu { box-shadow: none; display: none!important;}
     .navbar .nav li a:hover .caret { border-top-color: #fff }
 }
 body {
     background: #fcfcfc;
-    font-family: helvetica,arial,verdana,sans-serif;
+    font-family: "ff-dagny-web-pro", helvetica,arial,verdana,sans-serif;
     font-size: 12px;
 }
 p {
-    font-family: Georgia,Constantia,Lucida,serif;
-    font-family: helvetica,arial,verdana,sans-serif;
+    font-family: "ff-dagny-web-pro", Georgia,Constantia,Lucida,serif;
+    font-family: "ff-dagny-web-pro", helvetica,arial,verdana,sans-serif;
     margin-bottom: 20px;
     color: #333;
     font-size: 12px;
@@ -3887,7 +3886,7 @@ a {
     transition: opacity .2s linear;
 }
 a:hover { text-decoration: none }
-.nav a { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif }
+.nav a { font-family: "ff-dagny-web-pro", "Helvetica Neue",Helvetica,Arial,sans-serif }
 .relative { position: relative }
 *:focus { outline: 0 }
 a:focus,
@@ -4044,7 +4043,7 @@ blockquote p {
     font-size: 22px;
     color: #5f5f5f;
     line-height: 28px;
-    font-family: Georgia,Constantia,Lucida,serif;
+    font-family: "ff-dagny-web-pro", Georgia,Constantia,Lucida,serif;
 }
 pre.prettyprint { margin-bottom: 20px }
 .row-spacing { margin-top: 20px }
@@ -4121,7 +4120,7 @@ header .smedia span {
     width: 10px;
     line-height: 36px;
     font-style: italic;
-    font-family: Georgia,Constantia,Lucida,serif;
+    font-family: "ff-dagny-web-pro", Georgia,Constantia,Lucida,serif;
 }
 .btn-success {
     background-color: #9fb44f;
@@ -4253,7 +4252,7 @@ header .smedia span {
 .bypostauthor>.comment-body>.comment-author img { border: 2px solid #1c2e3f }
 #comments .fn a {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
 }
 .bypostauthor #comments .fn a { color: #1c2e3f }
@@ -4776,14 +4775,14 @@ textarea:focus {
 }
 .galleryCover p { float: left }
 .galleryCover .title a {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     margin-left: 75px;
     padding-left: 22px;
 }
 .galleryCover .title span {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     color: #444;
     height: 29px;
     background: url(../img/skin/photo_num_bg.png) no-repeat 0 0;
@@ -4810,7 +4809,7 @@ footer blockquote p {
     font-size: 21px;
     color: #888;
     line-height: 28px;
-    font-family: Georgia,Constantia,Lucida,serif;
+    font-family: "ff-dagny-web-pro", Georgia,Constantia,Lucida,serif;
 }
 footer blockquote p .tel { color: #5f5f5f }
 footer blockquote small {
@@ -5338,7 +5337,7 @@ a.peVideo iframe {
 #multiPro { zoom: 1 }
 .projekktor {
     background-color: #000;
-    font-family: 'Lucida Grande',Trebuchet MS,Arial,Sans-Serif;
+    font-family: "ff-dagny-web-pro", 'Lucida Grande',Trebuchet MS,Arial,Sans-Serif;
     font-size: 12px;
     font-weight: bold;
     text-align: center;
@@ -5635,7 +5634,7 @@ a.peVideo iframe {
     padding: 5px;
     margin: 15px 0;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     background-color: #191b10;
     color: #fdfdfd;
     -moz-border-radius: 5px;
