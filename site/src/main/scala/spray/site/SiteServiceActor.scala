@@ -29,6 +29,8 @@ import StatusCodes._
 import geotrellis._
 import geotrellis.process
 import geotrellis.source.ValueSource
+import geotrellis.services.ColorRampMap
+import geotrellis.render.ColorRamps
 
 class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
 
@@ -99,24 +101,56 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     }
   }
 
-  val demoRoute =  path("weighted-overlay"/) {
-    parameters('weight1.as[Int], 'weight2.as[Int]) { (w1, w2) =>
-      val layers = List("LAYER_1", "LAYER_2")
-      val weights = List(w1,w2)
+  val demoRoute =  path("weighted-overlay"/){
+    parameters("SERVICE",
+      'REQUEST,
+      'VERSION,
+      'FORMAT,
+      'BBOX,
+      'HEIGHT.as[Int],
+      'WIDTH.as[Int],
+      'LAYERS,
+      'WEIGHTS,
+      'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
+      'COLORS.as[Int] ? 4,
+      'BREAKS,
+      'COLORRAMP ? "colorRamp",
+      'MASK ? "") {
+      (_,_,_,_,bbox,cols,rows,layersString,weightsString,
+       palette,colors,breaksString,colorRamp,mask) => {
+        val extent = Extent.fromString(bbox)
 
-      val model = Model.weightedOverlay(layers,weights, None)
-      val png:ValueSource[Png] = model.renderPng()
+        val re = RasterExtent(extent, cols, rows)
 
-      png.run match {
-        case process.Complete(img,h) =>
-          respondWithMediaType(MediaTypes.`image/png`) {
-            complete(img)
-          }
-        case process.Error(message,trace) =>
-          println(message)
-          println(trace)
+        val layers = layersString.split(",")
+        val weights = weightsString.split(",").map(_.toInt)
 
-          failWith(new RuntimeException(message))
+        val model = Model.weightedOverlay(layers,weights,Some(re))
+
+        val breaks =
+          breaksString.split(",").map(_.toInt)
+
+        val ramp = {
+          val cr = ColorRampMap.getOrElse(colorRamp,ColorRamps.BlueToRed)
+          if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
+          else { cr }
+        }
+
+        val png:ValueSource[Png] =
+          model.renderPng(ramp, breaks)
+
+        png.run match {
+          case process.Complete(img,h) =>
+            respondWithMediaType(MediaTypes.`image/png`) {
+              complete(img)
+            }
+          case process.Error(message,trace) =>
+            println(message)
+            println(trace)
+            println(re)
+
+            failWith(new RuntimeException(message))
+        }
       }
     }
   } ~
