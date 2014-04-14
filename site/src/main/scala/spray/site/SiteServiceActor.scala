@@ -108,22 +108,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     }
   }
 
-  /*
-  SERVICE=WMS&
-  REQUEST=GetMap&
-  VERSION=1.1.1&
-  LAYERS=pop_density&
-  STYLES=&
-  FORMAT=image%2Fjpeg&
-  TRANSPARENT=false&
-  HEIGHT=256&
-  WIDTH=256&
-  WEIGHTS=1&
-  COLORRAMP=red-to-blue&
-  SRS=EPSG%3A3857&
-  BBOX=-8414188.073632201,4852834.051769271,-8375052.315150191,4891969.810251278
-   */
-
   val demoRoute = path("weighted-overlay") {
     parameters(
       'SERVICE,
@@ -137,7 +121,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
       'WEIGHTS,
       'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
       'COLORS.as[Int] ? 4,
-      'BREAKS ? "0,10,20,30,40,50,60,70,80,90",
+      'BREAKS ? "",
       'COLORRAMP ? "colorRamp",
       'MASK ? "",
       'SRS ? "",
@@ -151,7 +135,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         val weights = weightsString.split(",").map(_.toInt)
         val model = Model.weightedOverlay(layers, weights, Some(re))
         val breaks = breaksString.split(",").map(_.toInt)
-
         val ramp = {
           val cr = ColorRampMap.getOrElse(colorRamp,ColorRamps.BlueToRed)
           if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
