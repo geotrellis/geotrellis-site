@@ -6,7 +6,6 @@ define(['app/ui'], function(ui){
     var layers = ['pop-density', 'st-density'];
     var weights = [1, weight1];
     var numBreaks = 10;
-    console.log(layers.join(), weights.join());
 
     $.ajax({
       url: 'gt/breaks',
