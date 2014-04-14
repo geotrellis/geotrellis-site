@@ -2,7 +2,7 @@ define([], function(){
    var maps = [];
 
    maps[0] = L.mapbox.map('map-1', 'lknarf.map-rugx6hs5')
-     .setView([40.185262587404466,-75.34060850650938], 11);
+     .setView([40.185262587404466,-75.34060850650938], 12);
    //maps[0].scrollWheelZoom.disable();
 
    maps[1] = L.mapbox.map('map-2', 'lknarf.map-rugx6hs5')

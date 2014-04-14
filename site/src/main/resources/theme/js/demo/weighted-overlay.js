@@ -2,11 +2,8 @@ define(['app/ui'], function(ui){
   var WOLayer = null;
   var map = ui.maps[0];
 
-  var update = function(weight1, weight2){
-    var layers = ['pop-density', 'st-density'];
-    var weights = [1, weight1];
-    var numBreaks = 10;
-
+  var update = function(layers, weights, numBreaks){
+    console.log("WO update:", layers, weights);
     $.ajax({
       url: 'gt/breaks',
       data: {
@@ -17,12 +14,13 @@ define(['app/ui'], function(ui){
       dataType: "json",
       success: function(r) {
         var breaks = r.classBreaks;
+        console.log("WO breaks:", layers, weights, breaks);
 
         WOLayer = new L.TileLayer.WMS("gt/weighted-overlay", {
           breaks: breaks,
           layers: layers,
           weights: weights,
-          colorRamp: 'yellow-to-red-heatmap',
+          colorRamp: 'light-to-dark-green',
           attribution: 'Azavea'
         });
 

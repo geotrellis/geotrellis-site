@@ -12,18 +12,21 @@ requirejs(
 ],
 function(ui, wo){
   // Weighted overlay controllers
+  var layers = ['open_space_walkable', 'st_density'];
+  var numBreaks = 10;
+
   $("#controller-1-slider-1").slider({
     min: 0,
     max: 6,
     value: defaultState,
     slide: function(event, ui) {
       $("#controller-1-amount-1").val(ui.value);
-      wo.update(ui.value, 6-ui.value);
+      wo.update(layers, [6 - ui.value, ui.value], numBreaks);
     }
   });
-  var defaultState = 1;
+  var defaultState = 0;
   $("#controller-1-amount-1").val(defaultState);
-  wo.update(1,1);
+  wo.update(layers, [1, 0], numBreaks);
 
 
   // Hillshade controllers
