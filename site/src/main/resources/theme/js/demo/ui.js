@@ -28,7 +28,6 @@ define([], function(){
        var to = next.index();
        $('#carousel-map').carousel(to);
        maps[to].invalidateSize();
-       alert("NEXT!")
      }
    });
 
