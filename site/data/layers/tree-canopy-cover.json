@@ -1,0 +1,16 @@
+{
+    "cellheight": 75.0,
+    "cellwidth": 75.0,
+    "cols": 784,
+    "datatype": "int16",
+    "epsg": 4326,
+    "layer": "tree-canopy-cover",
+    "rows": 610,
+    "type": "arg",
+    "xmax": -8357478.175218685,
+    "xmin": -8416278.175218685,
+    "xskew": 0,
+    "ymax": 4915775.769235718,
+    "ymin": 4870025.769235718,
+    "yskew": 0
+}

@@ -292,68 +292,7 @@
     </div>
 </div>
 
-<script>
-$(function() {
-
-    // Weighted overlay controllers
-    var defaultState = 3;
-    $("#controller-1-slider-1").slider({
-      min: 1,
-      max: 5,
-      value: defaultState,
-      slide: function(event, ui) {
-        $("#controller-1-amount-1").val(ui.value);
-      }
-    });
-    $("#controller-1-amount-1").val(defaultState);
-
-    // Hillshade controllers
-    defaultState = 4;
-    var valMap = ["12:00 AM", "1:00 AM", "2:00 AM", "3:00 AM", "4:00 AM", "5:00 AM", "6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
-    $("#controller-2-slider-1").slider({
-      min: 0,
-      max: valMap.length - 1,
-      value: defaultState,
-      slide: function(event, ui) {
-        $("#controller-2-amount-1").val(valMap[ui.value]);
-      }
-    });
-    $("#controller-2-amount-1").val(valMap[defaultState]);
-
-});
-</script>
-
-<script>
-
-    var maps = [];
-    maps[0] = L.mapbox.map('map-1', 'lknarf.map-rugx6hs5')
-        .setView([39.948365, -75.221654], 16);
-    maps[0].scrollWheelZoom.disable();
-    maps[1] = L.mapbox.map('map-2', 'lknarf.map-rugx6hs5')
-        .setView([39.948365, -79.221654], 13);
-    maps[1].scrollWheelZoom.disable();
-    maps[2] = L.mapbox.map('map-3', 'lknarf.map-rugx6hs5')
-        .setView([43.948365, -79.221654], 6);
-    maps[2].scrollWheelZoom.disable();
-
-    $('#carousel-map').carousel({
-      interval: false
-    });
-
-    $('#carousel-controller').carousel({
-      interval: false
-    });
-
-    $('#carousel-controller').on('slide.bs.carousel', function (event) {
-      if (event.namespace==="bs.carousel") {
-        var next = $(event.relatedTarget);
-        var to = next.index();
-        $('#carousel-map').carousel(to);
-        maps[to].invalidateSize();
-      }
-    });
-
-</script>
+<script data-main="js/demo/main" src="js/require.min.js"></script>
 
 
 

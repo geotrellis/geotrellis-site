@@ -36,76 +36,100 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
 
   // format: OFF
   def receive = runRoute {
-    dynamicIf(settings.devMode) { // for proper support of twirl + sbt-revolver during development
+    dynamicIf(settings.devMode) {
+      // for proper support of twirl + sbt-revolver during development
       (get & compressResponse()) {
         host("geotrellis.io", "localhost", "127.0.0.1") {
           path("favicon.ico") {
             getFromResource("theme/favicon.ico/")
           } ~
-          path("favicon.png") {
-            complete(NotFound) // fail early in order to prevent error response logging
-          } ~
-          pathPrefix("gt") {
-            demoRoute
-          } ~
-          logRequestResponse(showErrorResponses _) {
-            getFromResourceDirectory("theme") ~
-            pathPrefix("_images") {
-              getFromResourceDirectory("sphinx/json/_images")
+            path("favicon.png") {
+              complete(NotFound) // fail early in order to prevent error response logging
             } ~
-            logRequest(showRequest _) {
-              pathSingleSlash {
-                complete(page(home()))
-              } ~
-              pathPrefix("documentation" / Segment / "api") { version =>
-                val dir = s"api/$version/"
-                pathEnd {
-                  redirect(s"/documentation/$version/api/", MovedPermanently)
+            pathPrefix("gt") {
+              demoRoute
+            } ~
+            logRequestResponse(showErrorResponses _) {
+              getFromResourceDirectory("theme") ~
+                pathPrefix("_images") {
+                  getFromResourceDirectory("sphinx/json/_images")
                 } ~
-                pathSingleSlash {
-                  getFromResource(dir + "index.html")
-                } ~
-                getFromResourceDirectory(dir)
-              } ~
-              pathSuffixTest(Slash) {
-                path("home" /) {
-                  redirect("/", MovedPermanently)
-                } ~
-                path("index" /) {
-                  complete(page(index()))
-                } ~
-                pathPrefixTest("documentation" / !IntNumber ~ !PathEnd ~ Rest) { subUri =>
-                  redirect("/documentation/" + Main.settings.mainVersion + '/' + subUri, MovedPermanently)
-                } ~
-                requestUri { uri =>
-                  val path = uri.path.toString
-                  "-RC[123]/".r.findFirstIn(path) match {
-                    case Some(found) => redirect(uri.withPath(Uri.Path(path.replace(found, "-RC4/"))), MovedPermanently)
-                    case None => reject
-                  }
-                } ~
-                sphinxNode { node =>
-                  complete(page(document(node), node))
+                logRequest(showRequest _) {
+                  pathSingleSlash {
+                    complete(page(home()))
+                  } ~
+                    pathPrefix("documentation" / Segment / "api") {
+                      version =>
+                        val dir = s"api/$version/"
+                        pathEnd {
+                          redirect(s"/documentation/$version/api/", MovedPermanently)
+                        } ~
+                          pathSingleSlash {
+                            getFromResource(dir + "index.html")
+                          } ~
+                          getFromResourceDirectory(dir)
+                    } ~
+                    pathSuffixTest(Slash) {
+                      path("home" /) {
+                        redirect("/", MovedPermanently)
+                      } ~
+                        path("index" /) {
+                          complete(page(index()))
+                        } ~
+                        pathPrefixTest("documentation" / !IntNumber ~ !PathEnd ~ Rest) {
+                          subUri =>
+                            redirect("/documentation/" + Main.settings.mainVersion + '/' + subUri, MovedPermanently)
+                        } ~
+                        requestUri {
+                          uri =>
+                            val path = uri.path.toString
+                            "-RC[123]/".r.findFirstIn(path) match {
+                              case Some(found) => redirect(uri.withPath(Uri.Path(path.replace(found, "-RC4/"))), MovedPermanently)
+                              case None => reject
+                            }
+                        } ~
+                        sphinxNode {
+                          node =>
+                            complete(page(document(node), node))
+                        }
+                    } ~
+                    unmatchedPath {
+                      ump =>
+                        redirect(ump.toString + "/", MovedPermanently)
+                    }
                 }
-              } ~
-              unmatchedPath { ump =>
-                redirect(ump.toString + "/", MovedPermanently)
-              }
             }
-          }
         } ~
-        unmatchedPath { ump =>
-          redirect("http://spray.io" + ump, Found)
-        }
+          unmatchedPath {
+            ump =>
+              redirect("http://spray.io" + ump, Found)
+          }
       }
     }
   }
 
-  val demoRoute =  path("weighted-overlay"/){
-    parameters("SERVICE",
+  /*
+  SERVICE=WMS&
+  REQUEST=GetMap&
+  VERSION=1.1.1&
+  LAYERS=pop_density&
+  STYLES=&
+  FORMAT=image%2Fjpeg&
+  TRANSPARENT=false&
+  HEIGHT=256&
+  WIDTH=256&
+  WEIGHTS=1&
+  COLORRAMP=red-to-blue&
+  SRS=EPSG%3A3857&
+  BBOX=-8414188.073632201,4852834.051769271,-8375052.315150191,4891969.810251278
+   */
+
+  val demoRoute = path("weighted-overlay") {
+    parameters(
+      'SERVICE,
       'REQUEST,
       'VERSION,
-      'FORMAT,
+      'FORMAT ? "",
       'BBOX,
       'HEIGHT.as[Int],
       'WIDTH.as[Int],
@@ -113,22 +137,20 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
       'WEIGHTS,
       'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
       'COLORS.as[Int] ? 4,
-      'BREAKS,
+      'BREAKS ? "0,10,20,30,40,50,60,70,80,90",
       'COLORRAMP ? "colorRamp",
-      'MASK ? "") {
-      (_,_,_,_,bbox,cols,rows,layersString,weightsString,
-       palette,colors,breaksString,colorRamp,mask) => {
+      'MASK ? "",
+      'SRS ? "",
+      'STYLES ? ""
+    ) {
+      (_, _, _, _, bbox, cols, rows, layersString, weightsString,
+       palette, colors, breaksString, colorRamp, mask, srs, styles) => {
         val extent = Extent.fromString(bbox)
-
         val re = RasterExtent(extent, cols, rows)
-
         val layers = layersString.split(",")
         val weights = weightsString.split(",").map(_.toInt)
-
-        val model = Model.weightedOverlay(layers,weights,Some(re))
-
-        val breaks =
-          breaksString.split(",").map(_.toInt)
+        val model = Model.weightedOverlay(layers, weights, Some(re))
+        val breaks = breaksString.split(",").map(_.toInt)
 
         val ramp = {
           val cr = ColorRampMap.getOrElse(colorRamp,ColorRamps.BlueToRed)
@@ -140,11 +162,11 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           model.renderPng(ramp, breaks)
 
         png.run match {
-          case process.Complete(img,h) =>
+          case process.Complete(img, h) =>
             respondWithMediaType(MediaTypes.`image/png`) {
               complete(img)
             }
-          case process.Error(message,trace) =>
+          case process.Error(message, trace) =>
             println(message)
             println(trace)
             println(re)
@@ -153,6 +175,32 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         }
       }
     }
+  } ~
+  path("breaks") {
+    parameters('layers,
+      'weights,
+      'numBreaks.as[Int],
+      'mask ? "") {
+      (layersParam,weightsParam,numBreaks,mask) => {
+        val layers = layersParam.split(",")
+        val weights = weightsParam.split(",").map(_.toInt)
+
+
+        Model.weightedOverlay(layers,weights,None)
+          .classBreaks(numBreaks)
+          .run match {
+          case process.Complete(breaks, _) =>
+            val breaksArray = breaks.mkString("[", ",", "]")
+            val json = s"""{ "classBreaks" : $breaksArray }"""
+            complete(json)
+          case process.Error(message,trace) =>
+            failWith(new RuntimeException(message))
+        }
+      }
+    }
+  } ~
+  path("ping"){
+    complete("PONG")
   } ~
   unmatchedPath { ump => //anything hitting the demo subroute will have standard 404
     complete(StatusCodes.NotFound)

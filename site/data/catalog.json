@@ -1,0 +1,13 @@
+{
+ "catalog": "Catalog of Demo data",
+ "stores": [
+  {
+   "store": "layers",
+   "params": {
+     "type": "fs",
+     "path": "layers",
+     "cacheAll": "yes"
+    }
+  }
+ ]
+}
