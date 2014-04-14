@@ -4,7 +4,7 @@
     "cols": 784,
     "datatype": "int16",
     "epsg": 4326,
-    "layer": "tree-canopy-cover",
+    "layer": "st_density",
     "rows": 610,
     "type": "arg",
     "xmax": -8357478.175218685,
