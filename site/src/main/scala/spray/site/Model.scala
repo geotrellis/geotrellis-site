@@ -10,8 +10,7 @@ object Model {
   def weightedOverlay(
     layers: Iterable[String],
     weights: Iterable[Int],
-    rasterExtent: Option[RasterExtent] //TODO: Do I really need RE for this demo ?
-    ): RasterSource =
+    rasterExtent: Option[RasterExtent]): RasterSource =
     layers
       .zip(weights)
       .map {
@@ -20,7 +19,9 @@ object Model {
             case Some(re) ⇒ RasterSource(layer, re)
             case None     ⇒ RasterSource(layer)
           }
-          rs.localMultiply(weight)
+          rs.convert(TypeShort)
+            .localMap { x ⇒ if (x > 0) x else NODATA }
+            .localMultiply(weight)
       }
-      .localAdd
+      .localAdd.cached
 }

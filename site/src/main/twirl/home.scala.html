@@ -2,7 +2,7 @@
 
 <div id="interactive-demos">
 
-    <div id="carousel-controller" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carousel-controller" class="carousel slide carousel-fade">
 
       <div class="carousel-inner" id="demo-controllers">
         <div id="controller-1" class="demo-container item active">
@@ -13,18 +13,39 @@
                 Weighted overlay
             </h1>
             <p>
-                The GeoTrellis weighted overlay operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
+                Try adjusting the time of day to change the height of the light source.
             </p>
                 <div class="row">
                     <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Population</h6>
+                        <h6 class="demo-controller-label">Bars</h6>
                     </div>
                     <div class="col-sm-6">
                         <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
                     </div>
                 </div>
             <div id="controller-1-slider-1"></div>
-            <div id="map-preview-icons">
+            <br/>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6 class="demo-controller-label">Grocery Stores</h6>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="controller-1-amount-2" class="demo-amount" disabled>
+                </div>
+            </div>
+            <br/>
+            <div id="controller-1-slider-2"></div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6 class="demo-controller-label">Rail Stops</h6>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="controller-1-amount-3" class="demo-amount" disabled>
+                </div>
+            </div>
+            <div id="controller-1-slider-3"></div>
+            <div id="map-preview-icons-1">
               <div class="map-preview-icon active"><img src="img/map-preview-icon-1.png"></div>
               <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon"><img src="img/map-preview-icon-2.png"></div>
               <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon"><img src="img/map-preview-icon-3.png"></div>
@@ -49,7 +70,7 @@
                     </div>
                 </div>
             <div id="controller-2-slider-1"></div>
-            <div id="map-preview-icons">
+            <div id="map-preview-icons-2">
               <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon"><img src="img/map-preview-icon-1.png"></div>
               <div class="map-preview-icon active"><img src="img/map-preview-icon-2.png"></div>
               <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon"><img src="img/map-preview-icon-3.png"></div>
@@ -86,7 +107,7 @@
                   </div>
                 </div>
             <div id="controller-3-slider-1"></div>
-            <div id="map-preview-icons">
+            <div id="map-preview-icons-3">
               <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon"><img src="img/map-preview-icon-1.png"></div>
               <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon"><img src="img/map-preview-icon-2.png"></div>
               <div class="map-preview-icon active"><img src="img/map-preview-icon-3.png"></div>
@@ -96,7 +117,7 @@
 
     </div>
 
-    <div id="carousel-map" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carousel-map" class="carousel slide carousel-fade">
 
       <div class="carousel-inner" id="demo-maps">
         <div class="item active">

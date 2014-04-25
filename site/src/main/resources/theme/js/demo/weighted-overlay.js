@@ -20,7 +20,7 @@ define(['app/ui'], function(ui){
           breaks: breaks,
           layers: layers,
           weights: weights,
-          colorRamp: 'light-to-dark-green',
+          colorRamp: '',
           attribution: 'Azavea'
         });
 

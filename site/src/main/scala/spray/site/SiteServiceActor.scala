@@ -30,7 +30,7 @@ import geotrellis._
 import geotrellis.process
 import geotrellis.source.ValueSource
 import geotrellis.services.ColorRampMap
-import geotrellis.render.ColorRamps
+import geotrellis.render.{ ColorRamp, ColorRamps }
 
 class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
 
@@ -129,20 +129,33 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     ) {
       (_, _, _, _, bbox, cols, rows, layersString, weightsString,
        palette, colors, breaksString, colorRamp, mask, srs, styles) => {
-        val extent = Extent.fromString(bbox)
-        val re = RasterExtent(extent, cols, rows)
+        val defaultRamp =
+          ColorRamp.createWithRGBColors(
+            0xBD4E2E,
+            0xC66E4B,
+            0xD08B6C,
+            0xDCAD92,
+            0xE9D3C1,
+            0xCCDBE0,
+            0xA8C5D8,
+            0x83B2D1,
+            0x5DA1CA,
+            0x2791C3)
+
+        val re = RasterExtent(Extent.fromString(bbox), cols, rows)
         val layers = layersString.split(",")
         val weights = weightsString.split(",").map(_.toInt)
+
         val model = Model.weightedOverlay(layers, weights, Some(re))
+
         val breaks = breaksString.split(",").map(_.toInt)
         val ramp = {
-          val cr = ColorRampMap.getOrElse(colorRamp,ColorRamps.BlueToRed)
+          val cr = ColorRampMap.getOrElse(colorRamp, defaultRamp)
           if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
           else { cr }
         }
 
-        val png:ValueSource[Png] =
-          model.renderPng(ramp, breaks)
+        val png:ValueSource[Png] = model.renderPng(ramp, breaks)
 
         png.run match {
           case process.Complete(img, h) =>

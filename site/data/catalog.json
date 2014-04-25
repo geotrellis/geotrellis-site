@@ -2,10 +2,10 @@
  "catalog": "Catalog of Demo data",
  "stores": [
   {
-   "store": "layers",
+   "store": "walkshed",
    "params": {
      "type": "fs",
-     "path": "layers",
+     "path": "walkshed",
      "cacheAll": "yes"
     }
   }
