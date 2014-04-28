@@ -21,7 +21,8 @@ object Model {
           }
           rs.convert(TypeShort)
             .localMap { x ⇒ if (x > 0) x else NODATA }
+            .cached
             .localMultiply(weight)
       }
-      .localAdd.cached
+      .localAdd
 }

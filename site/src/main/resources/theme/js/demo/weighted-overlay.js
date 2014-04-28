@@ -20,12 +20,13 @@ define(['app/ui'], function(ui){
           breaks: breaks,
           layers: layers,
           weights: weights,
+          transparent: true,
           colorRamp: '',
           attribution: 'Azavea'
         });
 
         if (WOLayer) map.removeLayer(WOLayer);
-        WOLayer.setOpacity(0.7);
+        WOLayer.setOpacity(0.6);
         WOLayer.addTo(map);
       }
     });

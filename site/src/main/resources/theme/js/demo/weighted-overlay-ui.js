@@ -3,8 +3,8 @@ define([
   'app/weighted-overlay'
 ], function(ui, wo) {
   var layers = ['5m_philly_bars', '5m_philly_grocery_stores', '5m_philly_rail_stops'];
-  var weights = [3,1,-1];
-  var numBreaks = 10;
+  var weights = [2,1,-2];
+  var numBreaks = 20;
 
   var updateWO = function(index, event, ui) {
     weights[index] = ui.value;

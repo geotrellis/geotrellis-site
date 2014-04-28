@@ -38,7 +38,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
   def receive = runRoute {
     dynamicIf(settings.devMode) {
       // for proper support of twirl + sbt-revolver during development
-      (get & compressResponse()) {
+      get {
         host("geotrellis.io", "localhost", "127.0.0.1") {
           path("favicon.ico") {
             getFromResource("theme/favicon.ico/")
