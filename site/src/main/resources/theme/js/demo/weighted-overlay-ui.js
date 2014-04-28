@@ -16,17 +16,17 @@ define([
 
   $("#controller-1-slider-1").slider({
     min: -3, max: 3, value: weights[0],
-    slide: _.partial(updateWO, 0)
+    stop: _.partial(updateWO, 0)
   });
 
   $("#controller-1-slider-2").slider({
     min: -3, max: 3, value: weights[1],
-    slide: _.partial(updateWO, 1)
+    stop: _.partial(updateWO, 1)
   });
 
   $("#controller-1-slider-3").slider({
     min: -3, max: 3, value: weights[2],
-    slide: _.partial(updateWO, 2)
+    stop: _.partial(updateWO, 2)
   });
 
   //initial load
