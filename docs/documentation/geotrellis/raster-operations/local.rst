@@ -95,6 +95,9 @@ localRound
 localLog
   Computes the Log of a Raster.
 
+localLog10
+  Computes the Log10 of a Raster.
+
 localFloor
   Takes the Floor of each raster cell value.
 
@@ -147,6 +150,41 @@ localMinority
 
 localVariety
   Variety gives the count of unique values at each location in a set of Rasters.
+
+localAbs
+  Takes the absolute value of each raster cell value.
+
+localSin
+  Takes the sine of each cell in the raster.
+
+localCos
+  Takes the cosine of each cell in the raster.
+
+localTan
+  Takes the tangent of each cell in the raster.
+
+localSinh
+  Takes the hyperbolic sine of each cell in the raster.
+
+localCosh
+  Takes the hyperbolic cosine of each cell in the raster.
+
+localTanh
+  Takes the hyperbolic tangent of each cell in the raster.
+
+localAsin
+  Takes the arcsine of each cell in the raster.
+
+localAcos
+  Takes the arccosine of each cell in the raster.
+
+localAtan
+  Takes the arctangent of each cell in the raster.
+
+localAtan2
+  Takes the tangent between corresponding cells of two rasters.
+  The calling raster holds y-values, the parameter holds x-values.
+  The arctangent is computed from y/x.
 
 .. _Operations on a Sequence of RasterSources:
 
