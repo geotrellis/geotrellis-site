@@ -19,10 +19,7 @@ object Model {
             case Some(re) ⇒ RasterSource(layer, re)
             case None     ⇒ RasterSource(layer)
           }
-          rs.convert(TypeShort)
-            .localMap { x ⇒ if (x > 0) x else NODATA }
-            .cached
-            .localMultiply(weight)
+          rs.convert(TypeShort).localMultiply(weight)
       }
       .localAdd
 }
