@@ -2,7 +2,7 @@
 
 <div id="interactive-demos">
 
-    <div id="carousel-controller" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carousel-controller" class="carousel slide carousel-fade">
 
       <div class="carousel-inner" id="demo-controllers">
         <div id="controller-1" class="demo-container item active">
@@ -13,22 +13,53 @@
                 Weighted overlay
             </h1>
             <p>
-                The GeoTrellis weighted overlay operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
+                Try adjusting the weights for the proximity to a location to find the best spot in Philadelphia!
             </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Population</h6>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
-                    </div>
+
+            <p>
+                Low &nbsp; <img src="img/red-to-blue.png"> &nbsp; High
+            </p>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6 class="demo-controller-label">Bars</h6>
                 </div>
+                <div class="col-sm-6">
+                    <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
+                </div>
+            </div>
             <div id="controller-1-slider-1"></div>
-            <div id="map-preview-icons">
+            <p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6 class="demo-controller-label">Grocery Stores</h6>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="controller-1-amount-2" class="demo-amount" disabled>
+                </div>
+            </div>
+            <div id="controller-1-slider-2"></div>
+            </p>
+
+            <p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6 class="demo-controller-label">Rail Stops</h6>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="controller-1-amount-3" class="demo-amount" disabled>
+                </div>
+            </div>
+            <div id="controller-1-slider-3"></div>
+            </p>
+
+            <p>
+            <div id="map-preview-icons-1">
               <div class="map-preview-icon active"><img src="img/map-preview-icon-1.png"></div>
               <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon"><img src="img/map-preview-icon-2.png"></div>
               <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon"><img src="img/map-preview-icon-3.png"></div>
             </div>
+            </p>
         </div>
         <div id="controller-2" class="demo-container item">
             <h4 class="demo-controller-super-header">
@@ -49,7 +80,7 @@
                     </div>
                 </div>
             <div id="controller-2-slider-1"></div>
-            <div id="map-preview-icons">
+            <div id="map-preview-icons-2">
               <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon"><img src="img/map-preview-icon-1.png"></div>
               <div class="map-preview-icon active"><img src="img/map-preview-icon-2.png"></div>
               <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon"><img src="img/map-preview-icon-3.png"></div>
@@ -86,7 +117,7 @@
                   </div>
                 </div>
             <div id="controller-3-slider-1"></div>
-            <div id="map-preview-icons">
+            <div id="map-preview-icons-3">
               <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon"><img src="img/map-preview-icon-1.png"></div>
               <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon"><img src="img/map-preview-icon-2.png"></div>
               <div class="map-preview-icon active"><img src="img/map-preview-icon-3.png"></div>
@@ -96,7 +127,7 @@
 
     </div>
 
-    <div id="carousel-map" class="carousel slide carousel-fade" data-ride="carousel">
+    <div id="carousel-map" class="carousel slide carousel-fade">
 
       <div class="carousel-inner" id="demo-maps">
         <div class="item active">
@@ -292,68 +323,7 @@
     </div>
 </div>
 
-<script>
-$(function() {
-
-    // Weighted overlay controllers
-    var defaultState = 3;
-    $("#controller-1-slider-1").slider({
-      min: 1,
-      max: 5,
-      value: defaultState,
-      slide: function(event, ui) {
-        $("#controller-1-amount-1").val(ui.value);
-      }
-    });
-    $("#controller-1-amount-1").val(defaultState);
-
-    // Hillshade controllers
-    defaultState = 4;
-    var valMap = ["12:00 AM", "1:00 AM", "2:00 AM", "3:00 AM", "4:00 AM", "5:00 AM", "6:00 AM", "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM", "11:00 PM"];
-    $("#controller-2-slider-1").slider({
-      min: 0,
-      max: valMap.length - 1,
-      value: defaultState,
-      slide: function(event, ui) {
-        $("#controller-2-amount-1").val(valMap[ui.value]);
-      }
-    });
-    $("#controller-2-amount-1").val(valMap[defaultState]);
-
-});
-</script>
-
-<script>
-
-    var maps = [];
-    maps[0] = L.mapbox.map('map-1', 'lknarf.map-rugx6hs5')
-        .setView([39.948365, -75.221654], 16);
-    maps[0].scrollWheelZoom.disable();
-    maps[1] = L.mapbox.map('map-2', 'lknarf.map-rugx6hs5')
-        .setView([39.948365, -79.221654], 13);
-    maps[1].scrollWheelZoom.disable();
-    maps[2] = L.mapbox.map('map-3', 'lknarf.map-rugx6hs5')
-        .setView([43.948365, -79.221654], 6);
-    maps[2].scrollWheelZoom.disable();
-
-    $('#carousel-map').carousel({
-      interval: false
-    });
-
-    $('#carousel-controller').carousel({
-      interval: false
-    });
-
-    $('#carousel-controller').on('slide.bs.carousel', function (event) {
-      if (event.namespace==="bs.carousel") {
-        var next = $(event.relatedTarget);
-        var to = next.index();
-        $('#carousel-map').carousel(to);
-        maps[to].invalidateSize();
-      }
-    });
-
-</script>
+<script data-main="js/demo/main" src="js/require.min.js"></script>
 
 
 
