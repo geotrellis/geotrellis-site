@@ -142,6 +142,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
             0x5DA1CA,
             0x2791C3)
 
+        println(s"TILE: $bbox, BREAKS: $breaksString")
         val re = RasterExtent(Extent.fromString(bbox), cols, rows)
         val layers = layersString.split(",")
         val weights = weightsString.split(",").map(_.toInt)
@@ -178,6 +179,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
       'numBreaks.as[Int],
       'mask ? "") {
       (layersParam,weightsParam,numBreaks,mask) => {
+        println(s"BREAKS: $weightsParam")
         val layers = layersParam.split(",")
         val weights = weightsParam.split(",").map(_.toInt)
 

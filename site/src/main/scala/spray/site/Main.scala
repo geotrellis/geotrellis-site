@@ -21,8 +21,24 @@ import akka.event.Logging
 import akka.io.IO
 import spray.can.Http
 import spray.http.StringRendering
+import geotrellis.source.RasterSource
+import geotrellis.{ io, TypeByte, RasterExtent }
+import geotrellis.data.arg.ArgWriter
+import geotrellis.raster.op.transform.Resize
+import geotrellis._
 
 object Main extends App {
+
+  //  val rsNames = List("short_philly_bars", "short_philly_grocery_stores", "short_philly_rail_stops")
+  //  val rs = rsNames.map { name ⇒
+  //    server.get(Resize(io.LoadFile("site/data/walkshed/" + name + ".arg"), 2000, 2000))
+  //  }
+  //
+  //  val writer = new ArgWriter(TypeByte)
+  //  writer.write("philly_bars", rs(0), "philly_bars")
+  //  writer.write("philly_grocery_stores", rs(1), "philly_grocery_stores")
+  //  writer.write("philly_rail_stops", rs(2), "philly_rail_stops")
+
   implicit val system = ActorSystem("site")
   val log = Logging(system, getClass)
   val settings = SiteSettings(system)
