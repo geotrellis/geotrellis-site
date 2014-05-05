@@ -60,7 +60,7 @@
 }
 
 .demo-map {
-  height: 720px;
+  height: 680px;
 }
 
 .demo-container {
@@ -85,9 +85,40 @@ input.demo-amount {
   -webkit-transition: none;
 }
 
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: none;
+  border-radius: 0 !important;
+  width: 20px;
+  background-color: #ccc;
+  width: .5em !important;
+  margin-left: -.1em;
+}
+
 .demo-controller-label {
   line-height: 1.5;
   margin: 0;
+}
+.slider-marker {
+  height: 21px;
+  width: 1px;
+  background-color: #ccc;
+  position: absolute;
+  margin-top: -4px;
+  margin-left: 162px;
+  z-index: 1;
+}
+
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+  border-radius: 0;
+}
+
+.ui-slider-handle:hover {
+  cursor: move;
+}
+
+.ui-slider-handle.ui-state-hover, .ui-slider-handle.ui-state-focus {
+  border: 0;
+  background-color: #999;
 }
 
 #demo-controllers {
@@ -107,8 +138,7 @@ input.demo-amount {
 }
 
 .demo-controller-super-header {
-
-  color: #aaa;
+  color: #36bdbb;
 }
 
 .demo-controller-header {
@@ -118,15 +148,30 @@ input.demo-amount {
 }
 
 .map-preview-icon {
-  padding: 1px;
-  margin-top: 2px;
-  background-color: #aaa;
+  margin-left: -20px;
   display: inline-block !important;
   cursor: pointer;
+  width: 360px;
+}
+
+.map-preview-label {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  background-color: #36bdbb;
+  color: #fff;
+  padding: 10px;
+}
+
+.map-preview-icons {
+  position: absolute;
+  bottom: 0;
 }
 
 .map-preview-icon img {
-  width: 40px;
+/*  width: 40px;
+*/  
 }
 
 .map-preview-icon.active {
