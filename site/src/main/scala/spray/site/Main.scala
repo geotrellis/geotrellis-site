@@ -38,6 +38,9 @@ object Main extends App {
   //  writer.write("philly_bars", rs(0), "philly_bars")
   //  writer.write("philly_grocery_stores", rs(1), "philly_grocery_stores")
   //  writer.write("philly_rail_stops", rs(2), "philly_rail_stops")
+  // var rs = server.get(Resize(io.LoadFile("data/hillshade/hills.arg"), 1052, 724))
+  // val writer = new ArgWriter(TypeByte)
+  // writer.write("hills_small", rs, "hills_small")
 
   implicit val system = ActorSystem("site")
   val log = Logging(system, getClass)

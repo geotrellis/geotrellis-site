@@ -22,4 +22,13 @@ object Model {
           rs.convert(TypeShort).localMultiply(weight)
       }
       .localAdd
+
+  def hillshade(layer: String, rasterExtent: Option[RasterExtent],
+                azimuth: Double, altitude: Double, zFactor: Double): RasterSource =
+    {
+      (rasterExtent match {
+        case Some(re) ⇒ RasterSource(layer, re)
+        case None     ⇒ RasterSource(layer)
+      }).focalHillshade(azimuth, altitude, zFactor)
+    }
 }

@@ -1,0 +1,16 @@
+{
+    "cellheight": 38.563605428957885,
+    "cellwidth": 38.563605428957885,
+    "cols": 2890,
+    "datatype": "float32",
+    "epsg": 3857,
+    "layer": "hills_cropped",
+    "rows": 1907,
+    "type": "arg",
+    "xmax": -13469714.589578055,
+    "xmin": -13581163.409267744,
+    "xskew": 0,
+    "ymax": 5858277.459105672,
+    "ymin": 5784736.663552649,
+    "yskew": 0
+}

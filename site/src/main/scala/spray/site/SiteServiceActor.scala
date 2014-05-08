@@ -108,91 +108,149 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     }
   }
 
-  val demoRoute = path("weighted-overlay") {
-    parameters(
-      'SERVICE,
-      'REQUEST,
-      'VERSION,
-      'FORMAT ? "",
-      'BBOX,
-      'HEIGHT.as[Int],
-      'WIDTH.as[Int],
-      'LAYERS,
-      'WEIGHTS,
-      'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
-      'COLORS.as[Int] ? 4,
-      'BREAKS ? "",
-      'COLORRAMP ? "colorRamp",
-      'MASK ? "",
-      'SRS ? "",
-      'STYLES ? ""
-    ) {
-      (_, _, _, _, bbox, cols, rows, layersString, weightsString,
-       palette, colors, breaksString, colorRamp, mask, srs, styles) => {
-        val defaultRamp =
-          ColorRamp.createWithRGBColors(
-            0xBD4E2E,
-            0xC66E4B,
-            0xD08B6C,
-            0xDCAD92,
-            0xE9D3C1,
-            0xCCDBE0,
-            0xA8C5D8,
-            0x83B2D1,
-            0x5DA1CA,
-            0x2791C3)
+  val demoRoute = 
+  pathPrefix("weighted-overlay"){
+    path("wms") {
+      parameters(
+        'SERVICE, 'REQUEST, 'VERSION, 'FORMAT ? "",
+        'BBOX, 'HEIGHT.as[Int], 'WIDTH.as[Int],
+        'LAYERS, 'WEIGHTS,
+        'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
+        'COLORS.as[Int] ? 4, 'BREAKS ? "",
+        'COLORRAMP ? "colorRamp",
+        'MASK ? "", 'SRS ? "", 'STYLES ? ""
+      ) {
+        (_, _, _, _, bbox, cols, rows, layersString, weightsString,
+         palette, colors, breaksString, colorRamp, mask, srs, styles) => {
+          val defaultRamp =
+            ColorRamp.createWithRGBColors(0xBD4E2E, 0xC66E4B, 0xD08B6C, 0xDCAD92, 0xE9D3C1, 0xCCDBE0, 0xA8C5D8, 0x83B2D1, 0x5DA1CA, 0x2791C3)
 
-        println(s"TILE: $bbox, BREAKS: $breaksString")
-        val re = RasterExtent(Extent.fromString(bbox), cols, rows)
-        val layers = layersString.split(",")
-        val weights = weightsString.split(",").map(_.toInt)
+          //println(s"TILE: $bbox, BREAKS: $breaksString")
+          val re = RasterExtent(Extent.fromString(bbox), cols, rows)
+          val layers = layersString.split(",")
+          val weights = weightsString.split(",").map(_.toInt)
 
-        val model = Model.weightedOverlay(layers, weights, Some(re))
+          val model = Model.weightedOverlay(layers, weights, Some(re))
 
-        val breaks = breaksString.split(",").map(_.toInt)
-        val ramp = {
-          val cr = ColorRampMap.getOrElse(colorRamp, defaultRamp)
-          if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
-          else { cr }
+          val breaks = breaksString.split(",").map(_.toInt)
+          val ramp = {
+            val cr = ColorRampMap.getOrElse(colorRamp, defaultRamp)
+            if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
+            else { cr }
+          }
+
+          val png:ValueSource[Png] = model.renderPng(ramp, breaks)
+
+          png.run match {
+            case process.Complete(img, h) =>
+              respondWithMediaType(MediaTypes.`image/png`) {
+                complete(img)
+              }
+            case process.Error(message, trace) =>
+              println(message)
+              println(trace)
+              println(re)
+
+              failWith(new RuntimeException(message))
+          }
         }
+      }
+    } ~
+    path("breaks") {
+      parameters('layers,
+        'weights,
+        'numBreaks.as[Int],
+        'mask ? "") {
+        (layersParam,weightsParam,numBreaks,mask) => {        
+          val layers = layersParam.split(",")
+          val weights = weightsParam.split(",").map(_.toInt)
 
-        val png:ValueSource[Png] = model.renderPng(ramp, breaks)
 
-        png.run match {
-          case process.Complete(img, h) =>
-            respondWithMediaType(MediaTypes.`image/png`) {
-              complete(img)
-            }
-          case process.Error(message, trace) =>
-            println(message)
-            println(trace)
-            println(re)
-
-            failWith(new RuntimeException(message))
+          Model.weightedOverlay(layers,weights,None)
+            .classBreaks(numBreaks)
+            .run match {
+            case process.Complete(breaks, _) =>
+              val breaksArray = breaks.mkString("[", ",", "]")
+              val json = s"""{ "classBreaks" : $breaksArray }"""
+              complete(json)
+            case process.Error(message,trace) =>
+              failWith(new RuntimeException(message))
+          }
         }
       }
     }
   } ~
-  path("breaks") {
-    parameters('layers,
-      'weights,
-      'numBreaks.as[Int],
-      'mask ? "") {
-      (layersParam,weightsParam,numBreaks,mask) => {
-        println(s"BREAKS: $weightsParam")
-        val layers = layersParam.split(",")
-        val weights = weightsParam.split(",").map(_.toInt)
+  pathPrefix("hillshade"){
+    path("wms"){
+      parameters(
+        'SERVICE, 'REQUEST, 'VERSION, 'FORMAT ? "",
+        'BBOX, 'HEIGHT.as[Int], 'WIDTH.as[Int],
+        'LAYERS,
+        'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
+        'COLORS.as[Int] ? 4, 'BREAKS ? "",
+        'COLORRAMP ? "light-to-dark-green",
+        'MASK ? "", 'SRS ? "", 'STYLES ? "",
+        'AZIMUTH.as[Double], 'ALTITUDE.as[Double], 'ZFACTOR.as[Double]) {
+        (_, _, _, _, bbox, cols, rows, layersString,
+         palette, colors, breaksString, colorRamp, mask, srs, styles,
+         azimuth , altitude, zFactor) => {
+          println(s"HILL TILE: $bbox, BREAKS: $breaksString")
+          val defaultRamp =
+            ColorRamp.createWithRGBColors(
+              0xBD4E2E,
+              0xC66E4B,
+              0xD08B6C,
+              0xDCAD92,
+              0xE9D3C1,
+              0xCCDBE0,
+              0xA8C5D8,
+              0x83B2D1,
+              0x5DA1CA,
+              0x2791C3)
 
+          val re = RasterExtent(Extent.fromString(bbox), cols, rows)
+          val layers = layersString
 
-        Model.weightedOverlay(layers,weights,None)
-          .classBreaks(numBreaks)
-          .run match {
-          case process.Complete(breaks, _) =>
-            val breaksArray = breaks.mkString("[", ",", "]")
-            val json = s"""{ "classBreaks" : $breaksArray }"""
-            complete(json)
-          case process.Error(message,trace) =>
-            failWith(new RuntimeException(message))
+          val model = Model.hillshade(layers, Some(re), azimuth, altitude, zFactor)
+          val breaks = breaksString.split(",").map(_.toInt)
+          val ramp = {
+            val cr = ColorRampMap.getOrElse(colorRamp, defaultRamp)
+            if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
+            else { cr }
+          }
+
+          val png:ValueSource[Png] = model.renderPng(ramp, breaks)
+
+          png.run match {
+            case process.Complete(img, h) =>
+              respondWithMediaType(MediaTypes.`image/png`) {
+                complete(img)
+              }
+            case process.Error(message, trace) =>
+              println(message)
+              println(trace)
+              println(re)
+
+              failWith(new RuntimeException(message))
+          }
+        }
+      }        
+    } ~
+    path("breaks") {
+      parameters('layers, 'numBreaks.as[Int], 
+        'azimuth.as[Double], 'altitude.as[Double], 'zFactor.as[Double]) {
+        (layer, numBreaks, azimuth, altitude, zFactor) => {    
+          println("HILL BREAKS!")    
+          Model.hillshade(layer,None, azimuth, altitude, zFactor)
+            .classBreaks(numBreaks)
+            .run match {
+            case process.Complete(breaks, _) =>
+              val breaksArray = breaks.mkString("[", ",", "]")
+              val json = s"""{ "classBreaks" : $breaksArray }"""
+              complete(json)
+            case process.Error(message,trace) =>
+              failWith(new RuntimeException(message))
+          }
         }
       }
     }

@@ -5,7 +5,7 @@ define(['app/ui'], function(ui){
   var update = function(layers, weights, numBreaks){
     console.log("WO update:", layers, weights);
     $.ajax({
-      url: 'gt/breaks',
+      url: 'gt/weighted-overlay/breaks',
       data: {
         'layers' : layers.join(),
         'weights' : weights.join(),
@@ -21,7 +21,7 @@ define(['app/ui'], function(ui){
           map.removeLayer(WOLayer);
         }
 
-        WOLayer = new L.TileLayer.WMS("gt/weighted-overlay", {
+        WOLayer = new L.TileLayer.WMS("gt/weighted-overlay/wms", {
           breaks: breaks,
           layers: layers,
           format: 'image/png',
