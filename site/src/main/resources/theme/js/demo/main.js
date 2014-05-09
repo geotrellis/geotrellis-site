@@ -8,7 +8,8 @@ requirejs.config({
 requirejs(
 [
   'app/weighted-overlay-ui',
-  'app/hillshade-ui'
+  'app/hillshade-ui',
+  'app/transit'
 ],
 function(wo_ui, hs_ui){
 
