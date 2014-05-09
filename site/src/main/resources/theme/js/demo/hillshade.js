@@ -1,6 +1,6 @@
-define(['app/ui'], function(ui){
+define(['app/maps'], function(maps){
   var HSLayer;
-  var map = ui.maps[1];
+  var map = maps[1];
 
   var update = function(layer, numBreaks, azimuth, altitude, zFactor){
     console.log("HS update", layer, numBreaks)

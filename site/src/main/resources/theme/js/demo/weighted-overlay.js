@@ -1,6 +1,6 @@
-define(['app/ui'], function(ui){
+define(['app/maps'], function(maps){
   var WOLayer;
-  var map = ui.maps[0];
+  var map = maps[0];
 
   var update = function(layers, weights, numBreaks){
     console.log("WO update:", layers, weights);

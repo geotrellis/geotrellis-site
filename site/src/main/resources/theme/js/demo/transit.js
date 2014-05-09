@@ -1,6 +1,6 @@
 define([
-  'app/ui'
-], function(ui) {
+  'app/maps'
+], function(maps) {
 
   var MAX_DURATION = 45 * 60;
   var INITIAL_TIME = 32400;
@@ -13,7 +13,7 @@ define([
   var $walking = $("#option1");
   var $transit = $("#option2");
 
-  var map = ui.maps[2];
+  var map = maps[2];
   var marker = L.marker([40.0175, -75.059], { draggable: true }).addTo(map);      
 
   map.setView([39.9886950160466,-75.1519775390625], 12);
@@ -55,4 +55,8 @@ define([
   $walking.on('change', update);
 
   update();
+  
+  return {
+    'init': update
+  }
 });

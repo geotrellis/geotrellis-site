@@ -1,7 +1,6 @@
 define([
-  'app/ui',
   'app/weighted-overlay'
-], function(ui, wo) {
+], function(wo) {
   var layers = ['philly_bars', 'philly_grocery_stores', 'philly_rail_stops'];
   var weights = [2,1,-2];
   var numBreaks = 20;
