@@ -39,71 +39,65 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     dynamicIf(settings.devMode) {
       // for proper support of twirl + sbt-revolver during development
       get {
-        host("geotrellis.io", "localhost", "127.0.0.1") {
-          path("favicon.ico") {
-            getFromResource("theme/favicon.ico/")
-          } ~
-            path("favicon.png") {
-              complete(NotFound) // fail early in order to prevent error response logging
+        path("favicon.ico") {
+          getFromResource("theme/favicon.ico/")
+        } ~
+        path("favicon.png") {
+          complete(NotFound) // fail early in order to prevent error response logging
+        } ~
+        pathPrefix("gt") {
+          demoRoute
+        } ~
+        logRequestResponse(showErrorResponses _) {
+          getFromResourceDirectory("theme") ~
+            pathPrefix("_images") {
+              getFromResourceDirectory("sphinx/json/_images")
             } ~
-            pathPrefix("gt") {
-              demoRoute
-            } ~
-            logRequestResponse(showErrorResponses _) {
-              getFromResourceDirectory("theme") ~
-                pathPrefix("_images") {
-                  getFromResourceDirectory("sphinx/json/_images")
-                } ~
-                logRequest(showRequest _) {
-                  pathSingleSlash {
-                    complete(page(home()))
-                  } ~
-                    pathPrefix("documentation" / Segment / "api") {
-                      version =>
-                        val dir = s"api/$version/"
-                        pathEnd {
-                          redirect(s"/documentation/$version/api/", MovedPermanently)
-                        } ~
-                          pathSingleSlash {
-                            getFromResource(dir + "index.html")
-                          } ~
-                          getFromResourceDirectory(dir)
+            logRequest(showRequest _) {
+              pathSingleSlash {
+                complete(page(home()))
+              } ~
+                pathPrefix("documentation" / Segment / "api") {
+                  version =>
+                    val dir = s"api/$version/"
+                    pathEnd {
+                      redirect(s"/documentation/$version/api/", MovedPermanently)
                     } ~
-                    pathSuffixTest(Slash) {
-                      path("home" /) {
-                        redirect("/", MovedPermanently)
+                      pathSingleSlash {
+                        getFromResource(dir + "index.html")
                       } ~
-                        path("index" /) {
-                          complete(page(index()))
-                        } ~
-                        pathPrefixTest("documentation" / !IntNumber ~ !PathEnd ~ Rest) {
-                          subUri =>
-                            redirect("/documentation/" + Main.settings.mainVersion + '/' + subUri, MovedPermanently)
-                        } ~
-                        requestUri {
-                          uri =>
-                            val path = uri.path.toString
-                            "-RC[123]/".r.findFirstIn(path) match {
-                              case Some(found) => redirect(uri.withPath(Uri.Path(path.replace(found, "-RC4/"))), MovedPermanently)
-                              case None => reject
-                            }
-                        } ~
-                        sphinxNode {
-                          node =>
-                            complete(page(document(node), node))
+                      getFromResourceDirectory(dir)
+                } ~
+                pathSuffixTest(Slash) {
+                  path("home" /) {
+                    redirect("/", MovedPermanently)
+                  } ~
+                    path("index" /) {
+                      complete(page(index()))
+                    } ~
+                    pathPrefixTest("documentation" / !IntNumber ~ !PathEnd ~ Rest) {
+                      subUri =>
+                        redirect("/documentation/" + Main.settings.mainVersion + '/' + subUri, MovedPermanently)
+                    } ~
+                    requestUri {
+                      uri =>
+                        val path = uri.path.toString
+                        "-RC[123]/".r.findFirstIn(path) match {
+                          case Some(found) => redirect(uri.withPath(Uri.Path(path.replace(found, "-RC4/"))), MovedPermanently)
+                          case None => reject
                         }
                     } ~
-                    unmatchedPath {
-                      ump =>
-                        redirect(ump.toString + "/", MovedPermanently)
+                    sphinxNode {
+                      node =>
+                        complete(page(document(node), node))
                     }
+                } ~
+                unmatchedPath {
+                  ump =>
+                    redirect(ump.toString + "/", MovedPermanently)
                 }
             }
-        } ~
-          unmatchedPath {
-            ump =>
-              redirect("http://spray.io" + ump, Found)
-          }
+        }
       }
     }
   }
