@@ -171,7 +171,7 @@ input.demo-amount {
 
 .map-preview-icon img {
 /*  width: 40px;
-*/  
+*/
 }
 
 .map-preview-icon.active {
@@ -437,14 +437,14 @@ body.page-home #what-is-geotrellis {
 .nav-list > li > a { padding-left: 35px; }
 .nav-list > li > a > i { position: absolute; margin-left: -20px; }
 
-.navbar .nav { 
+.navbar .nav {
     margin-top: 0;
-    margin-right: 40px; 
+    margin-right: 40px;
 }
 
-.navbar-inner .container { 
-    width: auto; 
-    margin-left: 10px; 
+.navbar-inner .container {
+    width: auto;
+    margin-left: 10px;
 }
 
 .topbar {
@@ -484,7 +484,7 @@ footer .footNav { text-align: center; }
     font-weight: bold;
 }
 
-.sidebar .well { 
+.sidebar .well {
     overflow: hidden;
 }
 
@@ -531,6 +531,10 @@ tt {
     line-height:1.5;
 }
 
+.brandname-emphasis {
+  color: #36bdbb;
+  font-weight: 600;
+}
 
 div.ramp {
   overflow: auto;
