@@ -7,7 +7,7 @@ define([
   var azimuth = [76.2, 85.2, 94.6, 105.7, 120.5, 143, 177, 212.4, 236.7, 252.4, 263.9, 273.5, 282.5, 291.6]
 
   var layer = "hills_cropped"
-  var breaks = 10
+  var breaks = 14
   defaultState = 4;
 
   var updateHS = function(event, ui) {
