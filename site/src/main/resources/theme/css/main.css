@@ -64,7 +64,7 @@
 }
 
 .demo-container {
-  width: 360px !important;
+  width: 340px !important;
   min-height: 540px;
   padding: 20px;
   background-color: #fff;
@@ -104,12 +104,16 @@ input.demo-amount {
   background-color: #ccc;
   position: absolute;
   margin-top: -4px;
-  margin-left: 162px;
+  margin-left: 152px;
   z-index: 1;
 }
 
 .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
   border-radius: 0;
+}
+
+.ui-slider-handle {
+
 }
 
 .ui-slider-handle:hover {
@@ -141,6 +145,14 @@ input.demo-amount {
   color: #36bdbb;
 }
 
+.controller {
+  margin-bottom: 1em;
+}
+
+.controller-wrapper {
+  padding: 4px 0;
+}
+
 .demo-controller-header {
   font-weight: 700;
   margin-top: 10px;
@@ -151,7 +163,7 @@ input.demo-amount {
   margin-left: -20px;
   display: inline-block !important;
   cursor: pointer;
-  width: 360px;
+  width: 340px;
 }
 
 .map-preview-label {
