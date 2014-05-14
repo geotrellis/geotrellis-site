@@ -189,7 +189,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         (_, _, _, _, bbox, cols, rows, layersString,
          palette, colors, breaksString, colorRamp, mask, srs, styles,
          azimuth , altitude, zFactor) => {
-          println(s"HILL TILE: $bbox, BREAKS: $breaksString")
+          println(s"HILL TILE: $bbox, $azimuth, $altitude, $zFactor")
           
           var darkGreenToGreen = ColorRamp.createWithRGBColors(
             0x3A6D35, 0x1CA049, 0x4BAF48, 0x81C561, 0xA0CF88, 0xBEDBAD)

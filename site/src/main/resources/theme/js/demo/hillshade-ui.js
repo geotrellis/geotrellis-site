@@ -12,7 +12,7 @@ define([
   var updateHS = function(event, ui) {
     var idx = ui.value
     $("#controller-2-amount-1").val(time[idx]);
-    model.update(layer, breaks, azimuth[idx], altitude[idx], 1.0);
+    model.update(layer, breaks, azimuth[idx], altitude[idx], 10.0);
   };
 
   // Hillshade controllers
@@ -23,6 +23,6 @@ define([
   $("#controller-2-amount-1").val(time[defaultState]);
 
   return {
-    'init': function() { model.update(layer, breaks, azimuth[defaultState], altitude[defaultState], 1.0);}
+    'init': function() { model.update(layer, breaks, azimuth[defaultState], altitude[defaultState], 10.0);}
   }
 });
