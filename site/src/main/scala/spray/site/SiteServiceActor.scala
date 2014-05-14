@@ -192,7 +192,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           println(s"HILL TILE: $bbox, $azimuth, $altitude, $zFactor")
           
           var darkGreenToGreen = ColorRamp.createWithRGBColors(
-            0x3A6D35, 0x1CA049, 0x4BAF48, 0x81C561, 0xA0CF88, 0xBEDBAD)
+            0x152913, 0x2C5229, 0x3A6D35, 0x1CA049, 0x4BAF48, 0x81C561, 0xA0CF88, 0xBEDBAD)
 
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString
