@@ -64,7 +64,7 @@
 }
 
 .demo-container {
-  width: 360px !important;
+  width: 340px !important;
   min-height: 540px;
   padding: 20px;
   background-color: #fff;
@@ -104,12 +104,16 @@ input.demo-amount {
   background-color: #ccc;
   position: absolute;
   margin-top: -4px;
-  margin-left: 162px;
+  margin-left: 152px;
   z-index: 1;
 }
 
 .ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
   border-radius: 0;
+}
+
+.ui-slider-handle {
+  outline: none;
 }
 
 .ui-slider-handle:hover {
@@ -141,6 +145,14 @@ input.demo-amount {
   color: #36bdbb;
 }
 
+.controller {
+  margin-bottom: 1em;
+}
+
+.controller-wrapper {
+  padding: 4px 0;
+}
+
 .demo-controller-header {
   font-weight: 700;
   margin-top: 10px;
@@ -151,7 +163,7 @@ input.demo-amount {
   margin-left: -20px;
   display: inline-block !important;
   cursor: pointer;
-  width: 360px;
+  width: 340px;
 }
 
 .map-preview-label {
@@ -171,7 +183,7 @@ input.demo-amount {
 
 .map-preview-icon img {
 /*  width: 40px;
-*/  
+*/
 }
 
 .map-preview-icon.active {
@@ -437,14 +449,14 @@ body.page-home #what-is-geotrellis {
 .nav-list > li > a { padding-left: 35px; }
 .nav-list > li > a > i { position: absolute; margin-left: -20px; }
 
-.navbar .nav { 
+.navbar .nav {
     margin-top: 0;
-    margin-right: 40px; 
+    margin-right: 40px;
 }
 
-.navbar-inner .container { 
-    width: auto; 
-    margin-left: 10px; 
+.navbar-inner .container {
+    width: auto;
+    margin-left: 10px;
 }
 
 .topbar {
@@ -484,7 +496,7 @@ footer .footNav { text-align: center; }
     font-weight: bold;
 }
 
-.sidebar .well { 
+.sidebar .well {
     overflow: hidden;
 }
 
@@ -531,6 +543,10 @@ tt {
     line-height:1.5;
 }
 
+.brandname-emphasis {
+  color: #36bdbb;
+  font-weight: 600;
+}
 
 div.ramp {
   overflow: auto;

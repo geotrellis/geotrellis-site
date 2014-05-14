@@ -102,7 +102,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     }
   }
 
-  val demoRoute = 
+  val demoRoute =
   pathPrefix("weighted-overlay"){
     path("wms") {
       parameters(
@@ -155,7 +155,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         'weights,
         'numBreaks.as[Int],
         'mask ? "") {
-        (layersParam,weightsParam,numBreaks,mask) => {        
+        (layersParam,weightsParam,numBreaks,mask) => {
           val layers = layersParam.split(",")
           val weights = weightsParam.split(",").map(_.toInt)
 
@@ -181,7 +181,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         'BBOX, 'HEIGHT.as[Int], 'WIDTH.as[Int],
         'LAYERS,
         'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
-        'COLORS.as[Int] ? 4, 
+        'COLORS.as[Int] ? 4,
         'BREAKS ? "0,10,20,30,40,50,60,70,80,90,100,110,120,127",
         'COLORRAMP ? "",
         'MASK ? "", 'SRS ? "", 'STYLES ? "",
@@ -190,9 +190,9 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
          palette, colors, breaksString, colorRamp, mask, srs, styles,
          azimuth , altitude, zFactor) => {
           println(s"HILL TILE: $bbox, $azimuth, $altitude, $zFactor")
-          
+
           var darkGreenToGreen = ColorRamp.createWithRGBColors(
-            0x152913, 0x2C5229, 0x3A6D35, 0x1CA049, 0x4BAF48, 0x81C561, 0xA0CF88, 0xBEDBAD)
+            0x034849, 0x054a49, 0x0c4e4b, 0x16564d, 0x216251, 0x2d7155, 0x357b58, 0x438462, 0x5f9577, 0x86af97, 0xbbd2c4, 0xffffff)
 
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString
@@ -201,9 +201,9 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           val breaks = breaksString.split(",").map(_.toInt)
           val ramp = {
             val cr = ColorRampMap.getOrElse(colorRamp, darkGreenToGreen)
-            if (cr.toArray.length < breaks.length) 
+            if (cr.toArray.length < breaks.length)
               cr.interpolate(breaks.length)
-            else 
+            else
               cr
           }
 
@@ -222,19 +222,19 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
               failWith(new RuntimeException(message))
           }
         }
-      }        
+      }
     }
   } ~
   pathPrefix("transit"){
     path("wms") {
       import Uri._
       val uri = Uri("http://transit.geotrellis.com/api/travelshed/wms")
-      parameterSeq { params =>        
+      parameterSeq { params =>
         redirect(
-          uri.withQuery(params.map(t=> (t._1.toLowerCase, t._2)): _*), 
+          uri.withQuery(params.map(t=> (t._1.toLowerCase, t._2)): _*),
           StatusCodes.TemporaryRedirect
         )
-      } 
+      }
     }
   } ~
   path("ping"){

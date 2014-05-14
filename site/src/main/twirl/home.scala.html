@@ -13,42 +13,44 @@
             <p>
                 Try adjusting the weights for the proximity to a location to find the best spot in Philadelphia!
             </p>
-            <p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Bars</h6>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Bars</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
-                    </div>
+                    <div class="slider-marker"></div>
+                    <div id="controller-1-slider-1"></div>
                 </div>
-                <div class="slider-marker"></div>
-                <div id="controller-1-slider-1"></div>
-            </p>
-            <p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Grocery Stores</h6>
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Grocery Stores</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-1-amount-2" class="demo-amount" disabled>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" id="controller-1-amount-2" class="demo-amount" disabled>
-                    </div>
+                    <div class="slider-marker"></div>
+                    <div id="controller-1-slider-2"></div>
                 </div>
-                <div class="slider-marker"></div>
-                <div id="controller-1-slider-2"></div>
-            </p>
-            <p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Rail Stops</h6>
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Rail Stops</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-1-amount-3" class="demo-amount" disabled>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" id="controller-1-amount-3" class="demo-amount" disabled>
-                    </div>
+                    <div class="slider-marker"></div>
+                    <div id="controller-1-slider-3"></div>
                 </div>
-                <div class="slider-marker"></div>
-                <div id="controller-1-slider-3"></div>
-            </p>
+            </div>
             <p class="h6">
                 Low &nbsp; <img src="img/red-to-blue.png"> &nbsp; High
             </p>
@@ -69,15 +71,19 @@
             <p>
                 The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
             </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Time</h6>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Time</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-2-amount-1" class="demo-amount" disabled>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" id="controller-2-amount-1" class="demo-amount" disabled>
-                    </div>
+                    <div id="controller-2-slider-1"></div>
                 </div>
-            <div id="controller-2-slider-1"></div>
+            </div>
             <div id="map-preview-icons-2" class="map-preview-icons">
                 <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon">
                     <img src="img/map-preview-button-1.png">
@@ -95,26 +101,30 @@
             <p>
                 The GeoTrellis travelshed operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
             </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Type of Transportation</h6>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Type of Transportation</h6>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                          <label class="btn btn-primary">
+                            <input type="radio" name="options" id="option1" value="walking"><i class="icon-school"></i> Walking
+                          </label>
+                          <label class="btn btn-primary active">
+                            <input type="radio" name="options" id="option2" value="walking,train,bus" checked><i class="icon-bus"></i> Transit
+                          </label>
+                        </div>
+                      </div>
                     </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="btn-group btn-group-justified" data-toggle="buttons">
-                      <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option1" value="walking"><i class="icon-school"></i> Walking
-                      </label>
-                      <label class="btn btn-primary active">
-                        <input type="radio" name="options" id="option2" value="walking,train,bus" checked><i class="icon-bus"></i> Transit
-                      </label>
-                    </div>
-                  </div>
-                </div>
+            </div>
             <div id="controller-3-slider-1"></div>
             <div id="map-preview-icons-3" class="map-preview-icons">
                 <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon">
@@ -139,7 +149,7 @@
         <div class="item">
             <div id="map-3" class="demo-map">
             </div>
-        </div>        
+        </div>
       </div>
 
       <a class="left carousel-control" data-target="#carousel-controller" data-slide="prev">
@@ -154,7 +164,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="overview">GeoTrellis is a fast raster processing library for the web and the cluster.</h2>
+                <h2 class="overview"><span class="brandname-emphasis">GeoTrellis</span> is a fast raster processing library for the web and the cluster.</h2>
             </div>
         </div>
     </div>
