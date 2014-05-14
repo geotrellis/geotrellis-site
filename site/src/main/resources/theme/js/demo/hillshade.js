@@ -2,7 +2,7 @@ define(['app/maps'], function(maps){
   var HSLayer;
   var map = maps[1];
 
-  var update = function(layer, numBreaks, azimuth, altitude, zFactor){
+  var update = function(layer,breaks, azimuth, altitude, zFactor){
     console.log("HS update", layer, azimuth, altitude, zFactor)
 
     if (HSLayer !== undefined) {
@@ -10,7 +10,8 @@ define(['app/maps'], function(maps){
     }
 
     HSLayer = new L.TileLayer.WMS("gt/hillshade/wms", {
-      layers: layer,
+      'breaks': breaks,
+      'layers': layer,
       'azimuth': azimuth,
       'altitude': altitude,
       'zFactor': zFactor,

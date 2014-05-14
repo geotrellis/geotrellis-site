@@ -183,13 +183,16 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
         'COLORS.as[Int] ? 4, 
         'BREAKS ? "0,10,20,30,40,50,60,70,80,90,100,110,120,127",
-        'COLORRAMP ? "light-to-dark-green",
+        'COLORRAMP ? "",
         'MASK ? "", 'SRS ? "", 'STYLES ? "",
         'AZIMUTH.as[Double], 'ALTITUDE.as[Double], 'ZFACTOR.as[Double]) {
         (_, _, _, _, bbox, cols, rows, layersString,
          palette, colors, breaksString, colorRamp, mask, srs, styles,
          azimuth , altitude, zFactor) => {
           println(s"HILL TILE: $bbox, BREAKS: $breaksString")
+          
+          var darkGreenToGreen = ColorRamp.createWithRGBColors(
+            0x3A6D35, 0x1CA049, 0x4BAF48, 0x81C561, 0xA0CF88, 0xBEDBAD)
 
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString
@@ -197,7 +200,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           val model = Model.hillshade(layers, Some(re), azimuth, altitude, zFactor)
           val breaks = breaksString.split(",").map(_.toInt)
           val ramp = {
-            val cr = ColorRampMap.getOrElse(colorRamp, ColorRamps.LightToDarkGreen)
+            val cr = ColorRampMap.getOrElse(colorRamp, darkGreenToGreen)
             if (cr.toArray.length < breaks.length) 
               cr.interpolate(breaks.length)
             else 
