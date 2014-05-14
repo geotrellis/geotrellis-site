@@ -1,14 +1,5 @@
 /*Homepage*/
 
-.map-preview-icon > img {
-  -webkit-filter: grayscale(100%);
-  -webkit-transition: -webkit-filter 200ms;
-}
-
-.map-preview-icon:hover > img {
-  -webkit-filter: grayscale(0%);
-}
-
 .carousel-indicators li.active {
   display: inline-block;
 }
