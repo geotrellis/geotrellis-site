@@ -71,15 +71,19 @@
             <p>
                 The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
             </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Time</h6>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Time</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-2-amount-1" class="demo-amount" disabled>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="text" id="controller-2-amount-1" class="demo-amount" disabled>
-                    </div>
+                    <div id="controller-2-slider-1"></div>
                 </div>
-            <div id="controller-2-slider-1"></div>
+            </div>
             <div id="map-preview-icons-2" class="map-preview-icons">
                 <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon">
                     <img src="img/map-preview-button-1.png">
@@ -97,26 +101,30 @@
             <p>
                 The GeoTrellis travelshed operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
             </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6 class="demo-controller-label">Type of Transportation</h6>
-                    </div>
-                    <div class="col-sm-6">
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Type of Transportation</h6>
+                        </div>
+                        <div class="col-sm-6">
 
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                          <label class="btn btn-primary">
+                            <input type="radio" name="options" id="option1" value="walking"><i class="icon-school"></i> Walking
+                          </label>
+                          <label class="btn btn-primary active">
+                            <input type="radio" name="options" id="option2" value="walking,train,bus" checked><i class="icon-bus"></i> Transit
+                          </label>
+                        </div>
+                      </div>
                     </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="btn-group btn-group-justified" data-toggle="buttons">
-                      <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option1" value="walking"><i class="icon-school"></i> Walking
-                      </label>
-                      <label class="btn btn-primary active">
-                        <input type="radio" name="options" id="option2" value="walking,train,bus" checked><i class="icon-bus"></i> Transit
-                      </label>
-                    </div>
-                  </div>
-                </div>
+            </div>
             <div id="controller-3-slider-1"></div>
             <div id="map-preview-icons-3" class="map-preview-icons">
                 <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon">
