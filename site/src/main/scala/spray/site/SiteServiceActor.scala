@@ -181,26 +181,18 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         'BBOX, 'HEIGHT.as[Int], 'WIDTH.as[Int],
         'LAYERS,
         'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
-        'COLORS.as[Int] ? 4, 'BREAKS ? "",
-        'COLORRAMP ? "light-to-dark-green",
+        'COLORS.as[Int] ? 4, 
+        'BREAKS ? "0,10,20,30,40,50,60,70,80,90,100,110,120,127",
+        'COLORRAMP ? "",
         'MASK ? "", 'SRS ? "", 'STYLES ? "",
         'AZIMUTH.as[Double], 'ALTITUDE.as[Double], 'ZFACTOR.as[Double]) {
         (_, _, _, _, bbox, cols, rows, layersString,
          palette, colors, breaksString, colorRamp, mask, srs, styles,
          azimuth , altitude, zFactor) => {
-          println(s"HILL TILE: $bbox, BREAKS: $breaksString")
-          val defaultRamp =
-            ColorRamp.createWithRGBColors(
-              0xBD4E2E,
-              0xC66E4B,
-              0xD08B6C,
-              0xDCAD92,
-              0xE9D3C1,
-              0xCCDBE0,
-              0xA8C5D8,
-              0x83B2D1,
-              0x5DA1CA,
-              0x2791C3)
+          println(s"HILL TILE: $bbox, $azimuth, $altitude, $zFactor")
+          
+          var darkGreenToGreen = ColorRamp.createWithRGBColors(
+            0x152913, 0x2C5229, 0x3A6D35, 0x1CA049, 0x4BAF48, 0x81C561, 0xA0CF88, 0xBEDBAD)
 
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString
@@ -208,9 +200,11 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           val model = Model.hillshade(layers, Some(re), azimuth, altitude, zFactor)
           val breaks = breaksString.split(",").map(_.toInt)
           val ramp = {
-            val cr = ColorRampMap.getOrElse(colorRamp, defaultRamp)
-            if(cr.toArray.length < breaks.length) { cr.interpolate(breaks.length) }
-            else { cr }
+            val cr = ColorRampMap.getOrElse(colorRamp, darkGreenToGreen)
+            if (cr.toArray.length < breaks.length) 
+              cr.interpolate(breaks.length)
+            else 
+              cr
           }
 
           val png:ValueSource[Png] = model.renderPng(ramp, breaks)
@@ -229,24 +223,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           }
         }
       }        
-    } ~
-    path("breaks") {
-      parameters('layers, 'numBreaks.as[Int], 
-        'azimuth.as[Double], 'altitude.as[Double], 'zFactor.as[Double]) {
-        (layer, numBreaks, azimuth, altitude, zFactor) => {    
-          println("HILL BREAKS!")    
-          Model.hillshade(layer,None, azimuth, altitude, zFactor)
-            .classBreaks(numBreaks)
-            .run match {
-            case process.Complete(breaks, _) =>
-              val breaksArray = breaks.mkString("[", ",", "]")
-              val json = s"""{ "classBreaks" : $breaksArray }"""
-              complete(json)
-            case process.Error(message,trace) =>
-              failWith(new RuntimeException(message))
-          }
-        }
-      }
     }
   } ~
   pathPrefix("transit"){
