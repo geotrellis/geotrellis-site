@@ -14,19 +14,19 @@ define([
   var $transit = $("#option2");
 
   var map = maps[2];
-  var marker = L.marker([40.0175, -75.059], { draggable: true }).addTo(map);      
+  var marker = L.marker([39.9795, -75.159], { draggable: true }).addTo(map);
 
-  map.setView([39.9886950160466,-75.1519775390625], 12);
-  
-  var breaks = 
+  map.setView([39.9887950160466,-75.2019775390625], 12);
+
+  var breaks =
      _.reduce(_.map([1,10,15,20,30,40,50,60,75,90,120], function(minute) { return minute*60; }),
               function(s,i) { return s + "," + i.toString(); })
 
-  var colors = "0x000000,0xF68481,0xFDB383,0xFEE085," + 
+  var colors = "0x000000,0xF68481,0xFDB383,0xFEE085," +
                "0xDCF288,0xB6F2AE,0x98FEE6,0x83D9FD,0x81A8FC,0x8083F7,0x7F81BD"
 
-  var update = function() { 
-    var modes = $('input[name=options]:checked').val();  
+  var update = function() {
+    var modes = $('input[name=options]:checked').val();
     console.log("Updating travelshed", modes)
     if (mapLayer) {
         map.removeLayer(mapLayer);
@@ -49,13 +49,13 @@ define([
     mapLayer.setOpacity(0.7);
     mapLayer.addTo(map);
   };
- 
+
   marker.on('dragend', update);
   $transit.on('change', update);
   $walking.on('change', update);
 
   update();
-  
+
   return {
     'init': update
   }
