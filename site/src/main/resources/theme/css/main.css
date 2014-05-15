@@ -43,6 +43,8 @@
   margin-bottom: 1em;
 }
 
+
+
 .overview {
   margin-bottom: 1em;
 }
@@ -60,12 +62,26 @@
 }
 
 .demo-map {
-  height: 680px;
+  height: 580px;
+}
+
+.demo-map-legend {
+  padding: 14px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 60px;
+  right: 40px;
+  z-index: 20;
+}
+
+.demo-map-transit-icon {
+  height: 16px;
+  margin-top: -2px 2px 0;
 }
 
 .demo-container {
   width: 340px !important;
-  min-height: 540px;
+  min-height: 460px;
   padding: 20px;
   background-color: #fff;
   pointer-events: visible;
