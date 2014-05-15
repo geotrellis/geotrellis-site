@@ -1,0 +1,23 @@
+
+.sun-slider-content {
+	margin: 0 auto; /*center slider in its container*/
+	height: 60px;
+	border: 1px;
+
+	background: url('/img/slider-bg.png') no-repeat transparent;
+}
+
+.sun-slider-content ui-slider .ui-slider-handle {
+	height: 60px;
+}
+
+.sun-slider-content .ui-state-default, .sun-slider-content .ui-widget-content .ui-state-default {
+	background-color: transparent;
+	background-image: url(/img/slider.png);
+	background-repeat: no-repeat;
+	background-position: 0% 100%;
+	border: none;
+	width: 25px !important;
+	margin-left: -1em !important;
+	height: 80px;
+}
