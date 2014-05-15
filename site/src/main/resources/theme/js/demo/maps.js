@@ -1,8 +1,8 @@
 define([], function(){
   var maps = [
-    L.mapbox.map('map-1', 'lknarf.map-rugx6hs5'),
-    L.mapbox.map('map-2', 'lknarf.map-rugx6hs5'),
-    L.mapbox.map('map-3', 'lknarf.map-rugx6hs5')
+    L.mapbox.map('map-1', 'azavea.i8f6m5el'),
+    L.mapbox.map('map-2', 'azavea.i8f6m5el'),
+    L.mapbox.map('map-3', 'azavea.i8f6m5el')
   ];
 
   maps[0].setView([39.99, -75.21], 12);
