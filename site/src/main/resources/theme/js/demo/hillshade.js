@@ -19,7 +19,7 @@ define(['app/maps'], function(maps){
       attribution: 'Azavea'
     });
 
-    HSLayer.setOpacity(0.6);
+    HSLayer.setOpacity(0.9);
     HSLayer.addTo(map);
   };
 
