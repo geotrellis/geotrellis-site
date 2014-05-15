@@ -1,7 +1,7 @@
 define([], function(){
   var maps = [
     L.mapbox.map('map-1', 'lknarf.map-rugx6hs5'),
-    L.mapbox.map('map-2', 'lknarf.i87db4h4'),
+    L.mapbox.map('map-2', 'lknarf.map-rugx6hs5'),
     L.mapbox.map('map-3', 'lknarf.map-rugx6hs5')
   ];
 
