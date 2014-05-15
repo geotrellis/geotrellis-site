@@ -11,7 +11,7 @@
                 Weighted overlay
             </h2>
             <p>
-                Try adjusting the weights for the proximity to a location to find the best spot in Philadelphia!
+               Try adjusting the weights below to find your ideal location. If you <span class="overlay-dislike">dislike</span> rail stops, give them a negative weight. If you <span class="overlay-prefer">prefer</span> bars, give them a positive weight.
             </p>
             <div class="controller-wrapper">
                 <div class="controller">
@@ -51,15 +51,6 @@
                     <div id="controller-1-slider-3"></div>
                 </div>
             </div>
-            <p class="h6">
-                Low &nbsp; <img src="img/red-to-blue.png"> &nbsp; High
-            </p>
-            <div id="map-preview-icons-1" class="map-preview-icons">
-                <div data-target="#carousel-controller" data-slide-to="1" class="map-preview-icon">
-                    <img src="img/map-preview-button-3.png">
-                    <div class="map-preview-label">Next: <strong>Hillshade</strong></div>
-                </div>
-            </div>
         </div>
         <div id="controller-2" class="demo-container item">
             <h4 class="demo-controller-super-header">
@@ -84,12 +75,6 @@
                     <div id="controller-2-slider-1"></div>
                 </div>
             </div>
-            <div id="map-preview-icons-2" class="map-preview-icons">
-                <div data-target="#carousel-controller" data-slide-to="2" class="map-preview-icon">
-                    <img src="img/map-preview-button-1.png">
-                    <div class="map-preview-label">Next: <strong>Travelshed</strong></div>
-                </div>
-            </div>
         </div>
         <div id="controller-3" class="demo-container item">
             <h4 class="demo-controller-super-header">
@@ -99,7 +84,7 @@
                 Travelshed
             </h2>
             <p>
-                The GeoTrellis travelshed operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the time of day to change the height of the light source.
+                Given a starting location and a type of transportation, how far can I travel in a given amount of time? Move the <img src="http://api.tiles.mapbox.com/mapbox.js/v1.3.1/images/marker-icon-2x.png" style="height: 16px; margin-top: -4px"> marker around the map to find out.
             </p>
             <div class="controller-wrapper">
                 <div class="controller">
@@ -115,10 +100,10 @@
                       <div class="col-sm-12">
                         <div class="btn-group btn-group-justified" data-toggle="buttons">
                           <label class="btn btn-primary">
-                            <input type="radio" name="options" id="option1" value="walking"><i class="icon-school"></i> Walking
+                            <input type="radio" name="options" id="option1" value="walking"><img src="img/walk-icon.png" class="demo-map-transit-icon"> Walk
                           </label>
                           <label class="btn btn-primary active">
-                            <input type="radio" name="options" id="option2" value="walking,train,bus" checked><i class="icon-bus"></i> Transit
+                            <input type="radio" name="options" id="option2" value="walking,train,bus" checked><img src="img/train-icon.png" class="demo-map-transit-icon"> Transit
                           </label>
                         </div>
                       </div>
@@ -126,12 +111,6 @@
                 </div>
             </div>
             <div id="controller-3-slider-1"></div>
-            <div id="map-preview-icons-3" class="map-preview-icons">
-                <div data-target="#carousel-controller" data-slide-to="0" class="map-preview-icon">
-                    <img src="img/map-preview-button-2.png">
-                    <div class="map-preview-label">Next: <strong>Weighted Overlay</strong></div>
-                </div>
-            </div>
         </div>
       </div>
     </div>
@@ -139,6 +118,9 @@
 
       <div class="carousel-inner" id="demo-maps">
         <div class="item active">
+            <div class="demo-map-legend">
+                Dislike &nbsp; <img src="img/red-to-blue.png"> &nbsp; Prefer
+            </div>
             <div id="map-1" class="demo-map">
             </div>
         </div>
