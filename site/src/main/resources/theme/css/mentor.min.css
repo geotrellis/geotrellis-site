@@ -5667,6 +5667,15 @@ a.peVideo iframe {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99222222, endColorstr=#99222222)";
     color: #fefefe;
 }
+
+.overlay-dislike {
+    color: #BD4E2E
+}
+
+.overlay-prefer {
+    color: #2791C3;
+}
+
 .ppsocialpopup textarea {
     width: 185px;
     height: 65px;
