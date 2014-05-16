@@ -8,7 +8,7 @@ define([
   var breaks = "0,10,20,30,40,50,60,70,80,90,100,110,120,127";
   var layer = "hills";
   var N = time.length -1;
-  var defaultState = N;
+  var defaultState = N-2;
   var maxAltitude = _.max(altitude);
 
   var updateHS = function(event, ui) {
@@ -16,6 +16,12 @@ define([
     $("#sun-time").val(time[idx]);
     model.update(layer, breaks, azimuth[idx], altitude[idx], 10.0);
   };
+
+  var drawSun = function(i) {
+    var percentLeft = altitude[i] / maxAltitude * 100;        
+    $('.sun-slider-content').children('.ui-slider-handle').css('background-position', '0 ' + (100 - percentLeft) +'%'); //set css sprite      
+    console.log(altitude[i],percentLeft);
+  }
 
   // Hillshade controllers
   $("#sun-time").val(time[N-defaultState]);
@@ -27,16 +33,15 @@ define([
     'orientation' : 'horizontal',
     'stop': updateHS,
     'slide': function(e, ui){
-      var i = N - ui.value;      
-      var percentLeft = altitude[i] / maxAltitude * 100;
-        
-      $(this).children('.ui-slider-handle').css('background-position', '0 ' + (100 - percentLeft) +'%'); //set css sprite      
-      console.log(altitude[i],percentLeft);
-    }
+      drawSun(N - ui.value)
+    } 
   });
 
 
   return {
-    'init': function() { model.update(layer, breaks, azimuth[N-defaultState], altitude[N-defaultState], 10.0);}
+    'init': function() { 
+      model.update(layer, breaks, azimuth[N-defaultState], altitude[N-defaultState], 10.0);
+      drawSun(defaultState);
+    }
   }
 });
