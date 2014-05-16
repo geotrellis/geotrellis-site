@@ -16,8 +16,8 @@ define([
   };
 
   var drawSun = function(i) {
-    var percentLeft = altitude[i] / maxAltitude * 100;        
-    $('.sun-slider-content').children('.ui-slider-handle').css('background-position', '0 ' + (100 - percentLeft) +'%'); //set css sprite      
+    var percentLeft = altitude[i] / maxAltitude * 100;
+    $('.sun-slider-content').children('.ui-slider-handle').css('background-position', '0 ' + (100 - percentLeft) +'%'); //set css sprite
     console.log(altitude[i],percentLeft);
   }
 
@@ -30,12 +30,15 @@ define([
     'stop': updateHS,
     'slide': function(e, ui){
       drawSun(N - ui.value)
-    } 
+    }
   });
 
+  $("#controller-2-slider-1").slider({
+    min: -3, max: 3, value: 2, orientation: "vertical"
+  });
 
   return {
-    'init': function() { 
+    'init': function() {
       model.update(layer, breaks, azimuth[N-defaultState], altitude[N-defaultState], 10.0);
       drawSun(defaultState);
     }
