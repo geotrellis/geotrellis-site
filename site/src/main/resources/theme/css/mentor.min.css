@@ -690,7 +690,7 @@ cite { font-style: normal }
 code,
 pre {
     padding: 0 3px 2px;
-    font-family: "ff-dagny-web-pro", Menlo,Monaco,"Courier New",monospace;
+    font-family: Menlo,Monaco,"Courier New",monospace;
     font-size: 12px;
     color: #333;
     -webkit-border-radius: 3px;
