@@ -1,5 +1,58 @@
 /*Homepage*/
 
+.ui-controlpad {
+  width:150px;
+  height:150px;
+  border:1px solid #bbb;
+  -moz-border-radius:150px;
+  border-radius:150px;
+  z-index:1000;
+  margin-left: 20px;
+}
+.ui-controlpad-pad {
+  position:relative;
+  width:25px;
+  height:25px;
+  top:24px;
+  left:24px;
+  z-index:1001;
+  background-image: url(/img/slider.png);
+  cursor: move;
+}
+
+.circle-sun-dash {
+  border: 1px dashed #ccc;
+  display: inline-block;
+  width: 160px;
+  height: 20px;
+  padding: 0;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  top: 65px;
+  left: 30px;
+}
+
+.controller-sun {
+  position: relative;
+}
+
+#controller-2-slider-1 {
+  position: relative;
+  left: 30px;
+  height: 150px;
+}
+
+#controller-2-slider-1 .ui-slider-handle {
+  background-image: url(http://localhost:9090/img/slider.png);
+  width: 25px !important;
+  height: 25px;
+  border: none;
+  background-color: transparent;
+}
+
 .carousel-indicators li.active {
   display: inline-block;
 }
