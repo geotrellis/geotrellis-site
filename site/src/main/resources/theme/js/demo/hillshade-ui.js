@@ -5,7 +5,6 @@ define([
   var $sun_slider = $("#controller-2-slider-1")
   var altitude = 31;
   var azimuth = 314;
-  var breaks = "0,10,20,30,40,50,60,70,80,90,100,110,120,127";
   var layer = "hills";
 
   //-- Vertical Sun slider
@@ -75,7 +74,7 @@ define([
       $sun.on("dragstop", 
         function(event, ui) {  
             console.log("DRAG END")  
-            model.update(layer, breaks, azimuth, altitude, 10.0);
+            model.update(layer, azimuth, altitude, 10.0);
         }
       );
   });
@@ -86,7 +85,7 @@ define([
 
   return {
     'init': function() {
-      model.update(layer, breaks, azimuth, altitude, 10.0);
+      model.update(layer, azimuth, altitude, 10.0);
     }
   }
 });
