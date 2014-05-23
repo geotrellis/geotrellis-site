@@ -194,7 +194,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           var darkGreenToGreen = ColorRamp.createWithRGBColors(
             0x034849, 0x054a49, 0x0c4e4b, 0x16564d, 0x216251, 0x2d7155, 0x357b58, 0x438462, 0x5f9577, 0x86af97, 0xbbd2c4, 0xffffff)
 
-          var greyScaleRamp = ColorRamp.createWithRGBColors(0x191919, 0xE0E0E0);
+          var greyScaleRamp = ColorRamp.createWithRGBColors(0x000000, 0xE0E0E0);
 
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString
