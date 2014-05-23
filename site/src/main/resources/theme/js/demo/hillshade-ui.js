@@ -1,46 +1,92 @@
 define([
   'app/hillshade'
 ], function(model) {
-
-  var altitude = [1,13,23,31,37,41,43,43,41,37,31,23,13,1]
-  var azimuth = [90, 77, 64, 51, 38, 25, 12, 360, 347, 334, 321, 308, 295, 282]
+  var $sun = $("#circle-sun")
+  var $sun_slider = $("#controller-2-slider-1")
+  var altitude = 31;
+  var azimuth = 314;
   var breaks = "0,10,20,30,40,50,60,70,80,90,100,110,120,127";
   var layer = "hills";
-  var N = altitude.length -1;
-  var defaultState = N-7;
-  var maxAltitude = _.max(altitude);
 
-  var updateHS = function(event, ui) {
-    var idx = N - ui.value;
-    model.update(layer, breaks, azimuth[idx], altitude[idx], 10.0);
-  };
-
+  //-- Vertical Sun slider
   var drawSun = function(i) {
-    var percentLeft = altitude[i] / maxAltitude * 100;
+    var percentLeft = (90 - altitude)/90*100;
     $('.sun-slider-content').children('.ui-slider-handle').css('background-position', '0 ' + (100 - percentLeft) +'%'); //set css sprite
     console.log(altitude[i],percentLeft);
   }
 
   // Hillshade controllers
-  $('.sun-slider-content').slider({
-    'animate': false,
-    'min': 0, 'max': N,
-    'value' : defaultState,
-    'orientation' : 'horizontal',
-    'stop': updateHS,
-    'slide': function(e, ui){
-      drawSun(N - ui.value)
-    }
+
+  $sun_slider.slider({
+    min: 0, max: 90, value: 39, orientation: "vertical", disabled: true    
   });
 
-  $("#controller-2-slider-1").slider({
-    min: -3, max: 3, value: 2, orientation: "vertical"
+  //-- Sun Globe
+  jQuery.fn.extend({
+      controlpad: function (options) {
+          $sun.draggable({
+              drag: options.ondrag,
+          });
+      }
   });
+  function limit(x, y, cenx, ceny, r) {
+      var dist = distance([x, y], [cenx, ceny]);
+      if (dist <= r) {
+          return { x: x, y: y };
+      }
+      else {
+          x = x - cenx;
+          y = y - ceny;
+          var radians = Math.atan2(y, x);
+          return {
+              x: Math.cos(radians) * r + cenx,
+              y: Math.sin(radians) * r + ceny
+          };
+      }
+  }
+  function distance(dot1, dot2) {
+      var x1 = dot1[0],
+          y1 = dot1[1],
+          x2 = dot2[0],
+          y2 = dot2[1];
+      return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+  }
+  function update_angle(x, y){
+    var theta = Math.atan2(x,y)*180/Math.PI;
+    if (theta<0) { var theta = (180+theta) + 180; }
+    var b = Math.sqrt(x*x + y*y);
+    var z = Math.sqrt(1-b*b);
+    var alpha = Math.atan(z/b)*180/Math.PI;
+    $sun_slider.slider( "value", alpha);
+    altitude = alpha;
+    azimuth = theta;
+  }
+  $(document).ready(function(){
+      var circle_cenx = 62;
+      var circle_ceny = 62;
+      var circle_radius = 62;
+      $sun.controlpad({
+          ondrag: function(event, ui){
+              var result = limit(ui.position.left, ui.position.top, circle_cenx, circle_ceny, circle_radius);
+              update_angle((result.x - circle_cenx)/circle_radius,(circle_ceny - result.y)/circle_radius)              
+              ui.position = { 'top': result.y, 'left': result.x };
+          }
+      });
+      $sun.on("dragstop", 
+        function(event, ui) {  
+            console.log("DRAG END")  
+            model.update(layer, breaks, azimuth, altitude, 10.0);
+        }
+      );
+  });
+
+
+
+
 
   return {
     'init': function() {
-      model.update(layer, breaks, azimuth[N-defaultState], altitude[N-defaultState], 10.0);
-      drawSun(defaultState);
+      model.update(layer, breaks, azimuth, altitude, 10.0);
     }
   }
 });

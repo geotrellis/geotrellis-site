@@ -182,7 +182,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         'LAYERS,
         'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
         'COLORS.as[Int] ? 4,
-        'BREAKS ? "0,10,20,30,40,50,60,70,80,90,100,110,120,127",
+        'BREAKS ? "",
         'COLORRAMP ? "",
         'MASK ? "", 'SRS ? "", 'STYLES ? "",
         'AZIMUTH.as[Double], 'ALTITUDE.as[Double], 'ZFACTOR.as[Double]) {
@@ -194,13 +194,15 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           var darkGreenToGreen = ColorRamp.createWithRGBColors(
             0x034849, 0x054a49, 0x0c4e4b, 0x16564d, 0x216251, 0x2d7155, 0x357b58, 0x438462, 0x5f9577, 0x86af97, 0xbbd2c4, 0xffffff)
 
+          var greyScaleRamp = ColorRamp.createWithRGBColors(0x191919, 0xE0E0E0);
+
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString
 
-          val model = Model.hillshade(layers, Some(re), azimuth, altitude, zFactor)
-          val breaks = breaksString.split(",").map(_.toInt)
+          val model = Model.hillshade(layers, Some(re), azimuth, altitude, zFactor)          
+          val breaks = (1 to 127).toArray //ignore the breaks, we know what we want
           val ramp = {
-            val cr = ColorRampMap.getOrElse(colorRamp, darkGreenToGreen)
+            val cr = ColorRampMap.getOrElse(colorRamp, greyScaleRamp)
             if (cr.toArray.length < breaks.length)
               cr.interpolate(breaks.length)
             else

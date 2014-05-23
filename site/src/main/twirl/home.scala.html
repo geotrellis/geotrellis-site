@@ -75,49 +75,6 @@
                             <div class="circle-sun-dash">
                             </div>
                         </div>
-                        <script type="text/javascript">
-                            // Reference: http://jsfiddle.net/s7Uy2/ & http://api.jqueryui.com/draggable
-                            jQuery.fn.extend({
-                                controlpad: function (options) {
-                                    $("#circle-sun").draggable({
-                                        drag: options.ondrag,
-                                    });
-                                }
-                            });
-                            function limit(x, y, cenx, ceny, r) {
-                                var dist = distance([x, y], [cenx, ceny]);
-                                if (dist <= r) {
-                                    return { x: x, y: y };
-                                }
-                                else {
-                                    x = x - cenx;
-                                    y = y - ceny;
-                                    var radians = Math.atan2(y, x);
-                                    return {
-                                        x: Math.cos(radians) * r + cenx,
-                                        y: Math.sin(radians) * r + ceny
-                                    };
-                                }
-                            }
-                            function distance(dot1, dot2) {
-                                var x1 = dot1[0],
-                                    y1 = dot1[1],
-                                    x2 = dot2[0],
-                                    y2 = dot2[1];
-                                return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-                            }
-                            $(document).ready(function(){
-                                var circle_cenx = 62;
-                                var circle_ceny = 62;
-                                var circle_radius = 62;
-                                $("#circle-sun").controlpad({
-                                    ondrag: function(event, ui){
-                                        var result = limit(ui.position.left, ui.position.top, circle_cenx, circle_ceny, circle_radius);
-                                        ui.position = { 'top': result.y, 'left': result.x };
-                                    }
-                                });
-                            });
-                        </script>
                     </div>
                 </div>
             </div>
