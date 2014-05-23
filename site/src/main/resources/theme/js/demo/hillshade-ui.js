@@ -7,17 +7,9 @@ define([
   var azimuth = 314;
   var layer = "hills";
 
-  //-- Vertical Sun slider
-  var drawSun = function(i) {
-    var percentLeft = (90 - altitude)/90*100;
-    $('.sun-slider-content').children('.ui-slider-handle').css('background-position', '0 ' + (100 - percentLeft) +'%'); //set css sprite
-    console.log(altitude[i],percentLeft);
-  }
-
   // Hillshade controllers
-
   $sun_slider.slider({
-    min: 0, max: 90, value: 39, orientation: "vertical", disabled: true    
+    min: 0, max: 100, value: 39, orientation: "vertical", disabled: true    
   });
 
   //-- Sun Globe
@@ -56,7 +48,7 @@ define([
     var b = Math.sqrt(x*x + y*y);
     var z = Math.sqrt(1-b*b);
     var alpha = Math.atan(z/b)*180/Math.PI;
-    $sun_slider.slider( "value", alpha);
+    $sun_slider.slider( "value", z*100);
     altitude = alpha;
     azimuth = theta;
   }
@@ -73,15 +65,10 @@ define([
       });
       $sun.on("dragstop", 
         function(event, ui) {  
-            console.log("DRAG END")  
-            model.update(layer, azimuth, altitude, 10.0);
+          model.update(layer, azimuth, altitude, 10.0);
         }
       );
   });
-
-
-
-
 
   return {
     'init': function() {

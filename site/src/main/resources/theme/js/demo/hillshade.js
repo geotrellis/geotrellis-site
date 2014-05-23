@@ -13,6 +13,7 @@ define(['app/maps'], function(maps){
       'layers': layer,
       'azimuth': azimuth,
       'altitude': altitude,
+      'breaks': '0',
       'zFactor': zFactor,
       format: 'image/png',
       attribution: 'Azavea'

@@ -182,7 +182,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         'LAYERS,
         'PALETTE ? "ff0000,ffff00,00ff00,0000ff",
         'COLORS.as[Int] ? 4,
-        'BREAKS ? "",
+        'BREAKS ? "0",
         'COLORRAMP ? "",
         'MASK ? "", 'SRS ? "", 'STYLES ? "",
         'AZIMUTH.as[Double], 'ALTITUDE.as[Double], 'ZFACTOR.as[Double]) {
