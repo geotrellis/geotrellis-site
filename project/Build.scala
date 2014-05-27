@@ -24,8 +24,9 @@ object Build extends Build {
     .settings(siteSettings: _*)
     .settings(SphinxSupport.settings: _*)
     .settings(resolvers ++= resolutionRepos)
+    .settings(javaOptions += "-Xmx4G")
     .settings(libraryDependencies ++=
-      compile(akkaActor, sprayJson, sprayCan, sprayCaching, sprayRouting) ++
+      compile(akkaActor, sprayJson, sprayCan, sprayCaching, sprayRouting, gt, gtServices) ++
       runtime(akkaSlf4j, logback) ++
       test(specs2)
     )

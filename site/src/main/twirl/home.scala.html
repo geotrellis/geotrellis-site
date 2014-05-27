@@ -1,16 +1,164 @@
 @()
 
-<div class="jumbotron">
-    <div class="container">
-        <h1>GeoTrellis</h1>
-        <p>Fast raster processing for the web and the cluster.</p>
-        <p>
-            <a class="btn btn-primary btn-lg" role="button" href="#what-is-geotrellis">What is GeoTrellis?</a>
-            <a class="btn btn-primary btn-lg" role="button" href="introduction/getting-started/">Get Started</a>
-        </p>
+<div id="interactive-demos">
+    <div id="carousel-controller" class="carousel slide carousel-fade">
+      <div class="carousel-inner hidden-xs" id="demo-controllers">
+        <div id="controller-1" class="demo-container item active">
+            <h4 class="demo-controller-super-header">
+                GeoTrellis in Action:
+            </h4>
+            <h2 class="demo-controller-header">
+                Weighted overlay
+            </h2>
+            <p>
+               Try adjusting the weights below to find your ideal location. If you want to <span class="overlay-dislike">avoid</span> rail stops, give them a negative weight. If you <span class="overlay-prefer">prefer</span> bars, give them a positive weight.
+            </p>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Bars</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-1-amount-1" class="demo-amount" disabled>
+                        </div>
+                    </div>
+                    <div class="slider-marker"></div>
+                    <div id="controller-1-slider-1"></div>
+                </div>
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Grocery Stores</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-1-amount-2" class="demo-amount" disabled>
+                        </div>
+                    </div>
+                    <div class="slider-marker"></div>
+                    <div id="controller-1-slider-2"></div>
+                </div>
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Rail Stops</h6>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" id="controller-1-amount-3" class="demo-amount" disabled>
+                        </div>
+                    </div>
+                    <div class="slider-marker"></div>
+                    <div id="controller-1-slider-3"></div>
+                </div>
+            </div>
+        </div>
+        <div id="controller-2" class="demo-container item">
+            <h4 class="demo-controller-super-header">
+                GeoTrellis in Action:
+            </h4>
+            <h2 class="demo-controller-header">
+                Hillshade
+            </h2>
+            <p>
+                The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the position or altitude of the sun.
+            </p>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="demo-controller-label">Altitude</h6>
+                        </div>
+                        <div class="col-sm-8">
+                            <h6 class="demo-controller-label">N</h6>
+                        </div>
+                    </div>
+                    <div class="row" class="controller-sun">
+                        <div class="col-sm-4">
+                            <div id="controller-2-slider-1"></div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="ui-controlpad">
+                                <div class="ui-controlpad-pad ui-draggable" id="circle-sun"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="controller-3" class="demo-container item">
+            <h4 class="demo-controller-super-header">
+                GeoTrellis in Action:
+            </h4>
+            <h2 class="demo-controller-header">
+                Travelshed
+            </h2>
+            <p>
+                Given a starting location and a type of transportation, how far can I travel in a given amount of time? Move the <img src="http://api.tiles.mapbox.com/mapbox.js/v1.3.1/images/marker-icon-2x.png" style="height: 16px; margin-top: -4px"> marker around the map to find out.
+            </p>
+            <div class="controller-wrapper">
+                <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="demo-controller-label">Type of Transportation</h6>
+                        </div>
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="btn-group btn-group-justified" data-toggle="buttons">
+                          <label class="btn btn-primary">
+                            <input type="radio" name="options" id="option1" value="walking"><img src="img/walk-icon.png" class="demo-map-transit-icon"> Walk
+                          </label>
+                          <label class="btn btn-primary active">
+                            <input type="radio" name="options" id="option2" value="walking,train,bus" checked><img src="img/train-icon.png" class="demo-map-transit-icon"> Transit
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div id="controller-3-slider-1"></div>
+        </div>
+      </div>
+    </div>
+    <div id="carousel-map" class="carousel slide carousel-fade">
+
+      <div class="carousel-inner" id="demo-maps">
+        <div class="item active">
+            <div class="demo-map-legend">
+                Avoid &nbsp; <img src="img/red-to-blue.png"> &nbsp; Prefer
+            </div>
+            <div id="map-1" class="demo-map">
+            </div>
+        </div>
+        <div class="item">
+            <div id="map-2" class="demo-map">
+            </div>
+        </div>
+        <div class="item">
+            <div id="map-3" class="demo-map">
+            </div>
+        </div>
+      </div>
+
+      <a class="left carousel-control" data-target="#carousel-controller" data-slide="prev">
+        ‹
+      </a>
+      <a class="right carousel-control" data-target="#carousel-controller" data-slide="next">
+        ›
+      </a>
     </div>
 </div>
 <div id="what-is-geotrellis">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="overview"><span class="brandname-emphasis">GeoTrellis</span> is a geographic data processing engine for high performance applications.</h2>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -171,3 +319,4 @@
         </div>
     </div>
 </div>
+<script data-main="js/demo/main" src="js/require.min.js"></script>

@@ -1,0 +1,21 @@
+{
+ "catalog": "Catalog of Demo data",
+ "stores": [
+  {
+   "store": "walkshed",
+   "params": {
+     "type": "fs",
+     "path": "walkshed",
+     "cacheAll": "yes"
+    }
+  },
+  {
+   "store": "hillshade",
+   "params": {
+     "type": "fs",
+     "path": "hillshade",
+     "cacheAll": "yes"
+    }
+  }
+ ]
+}

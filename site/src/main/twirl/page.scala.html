@@ -12,19 +12,32 @@
     <meta name="description" content="An open source geographic data processing engine for high performance applications">
     <meta name="keywords" content="raster, scala, gis, geospatial, open-source" />
     <meta name="author" content="Azavea">
-    
-    <link href="/favicon.ico" rel="icon" type="image/ico">
-    <link href="http://fonts.googleapis.com/css?family=Signika:400,300,600,700" rel="stylesheet" type="text/css">
 
-    <link href="/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/favicon.ico" rel="icon" type="image/ico">
+    <link href="http://fonts.googleapis.com/css?family=Signika:300" rel="stylesheet" type="text/css">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
     <link href="/css/mentor.min.css" rel="stylesheet"/>
-    <link href="/css/vendor/fontello.css" rel="stylesheet">
+
+    <!--link href="/css/vendor/fontello.css" rel="stylesheet"-->
 
     <link href="/css/main.css" rel="stylesheet">
-    
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link href="/css/slider.css" rel="stylesheet"/>
 
+    <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+    <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+    <![endif]-->
+
+    <script type="text/javascript" src="//use.typekit.net/tjy8olz.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
     <!-- <link href="/css/skin_blue.css" rel="stylesheet"/> -->
     <!-- <link href="/css/spray.css" rel="stylesheet"/> -->
@@ -57,6 +70,27 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
+    <script>
+    $(function() {
+
+      $( "#slider" ).slider({
+        range: true,
+        values: [ 17, 67 ]
+      });
+
+      // Hover states on the static widgets
+      $( "#dialog-link, #icons li" ).hover(
+        function() {
+          $(this).addClass("ui-state-hover");
+        },
+        function() {
+          $(this).removeClass("ui-state-hover");
+        }
+      );
+    });
+    </script>
+
 </head>
 
 <body class="@{if(node.isRoot) "page-home" else if (node.uri.startsWith("blog")) "page-blog" else "page-doc"}">

@@ -21,6 +21,11 @@ import akka.event.Logging
 import akka.io.IO
 import spray.can.Http
 import spray.http.StringRendering
+import geotrellis.source.RasterSource
+import geotrellis.{ io, TypeByte, RasterExtent }
+import geotrellis.data.arg.ArgWriter
+import geotrellis.raster.op.transform.Resize
+import geotrellis._
 
 object Main extends App {
   implicit val system = ActorSystem("site")
