@@ -3,7 +3,6 @@ define(['app/maps'], function(maps){
   var map = maps[0];
 
   var update = function(layers, weights, numBreaks){
-    console.log("WO update:", layers, weights);
     $.ajax({
       url: 'gt/weighted-overlay/breaks',
       data: {
@@ -14,10 +13,8 @@ define(['app/maps'], function(maps){
       dataType: "json",
       success: function(r) {
         var breaks = r.classBreaks;
-        console.log("WO breaks:", layers, weights, breaks);
 
         if (WOLayer !== undefined) {
-          console.log("Removing Layer: ", WOLayer);
           map.removeLayer(WOLayer);
         }
 

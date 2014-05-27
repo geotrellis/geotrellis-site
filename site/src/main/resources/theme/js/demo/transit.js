@@ -27,7 +27,7 @@ define([
 
   var update = function() {
     var modes = $('input[name=options]:checked').val();
-    console.log("Updating travelshed", modes)
+
     if (mapLayer) {
         map.removeLayer(mapLayer);
         mapLayer = null;

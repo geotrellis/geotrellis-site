@@ -119,7 +119,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
           val defaultRamp =
             ColorRamp.createWithRGBColors(0xBD4E2E, 0xC66E4B, 0xD08B6C, 0xDCAD92, 0xE9D3C1, 0xCCDBE0, 0xA8C5D8, 0x83B2D1, 0x5DA1CA, 0x2791C3)
 
-          //println(s"TILE: $bbox, BREAKS: $breaksString")
           val re = RasterExtent(Extent.fromString(bbox), cols, rows)
           val layers = layersString.split(",")
           val weights = weightsString.split(",").map(_.toInt)
@@ -189,8 +188,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
         (_, _, _, _, bbox, cols, rows, layersString,
          palette, colors, breaksString, colorRamp, mask, srs, styles,
          azimuth , altitude, zFactor) => {
-          println(s"HILL TILE: $bbox, $azimuth, $altitude, $zFactor")
-
           var darkGreenToGreen = ColorRamp.createWithRGBColors(
             0x034849, 0x054a49, 0x0c4e4b, 0x16564d, 0x216251, 0x2d7155, 0x357b58, 0x438462, 0x5f9577, 0x86af97, 0xbbd2c4, 0xffffff)
 
