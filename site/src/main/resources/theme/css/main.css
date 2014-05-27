@@ -3,7 +3,8 @@
 .ui-controlpad {
   width:150px;
   height:150px;
-  border:1px solid #bbb;
+  background-image: url('/img/globe.png');
+  background-size: 150px 150px;
   -moz-border-radius:150px;
   border-radius:150px;
   z-index:1000;
@@ -20,23 +21,13 @@
   cursor: move;
 }
 
-.circle-sun-dash {
-  border: 1px dashed #ccc;
-  display: inline-block;
-  width: 160px;
-  height: 20px;
-  padding: 0;
-  border-radius: 50%;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  position: absolute;
-  top: 65px;
-  left: 30px;
-}
-
 .controller-sun {
   position: relative;
+}
+
+#controller-2 .demo-controller-label {
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 #controller-2-slider-1 {
@@ -46,7 +37,7 @@
 }
 
 #controller-2-slider-1 .ui-slider-handle {
-  background-image: url(http://localhost:9090/img/slider.png);
+  background-image: url(/img/slider.png);
   width: 25px !important;
   height: 25px;
   border: none;
