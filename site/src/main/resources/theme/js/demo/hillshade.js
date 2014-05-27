@@ -27,8 +27,6 @@ define(['app/maps'], function(maps){
   }
 
   var update = function(layer){
-    console.log("HS update", state);
-
     if (HSLayer !== undefined) {
       map.removeLayer(HSLayer);
     }
