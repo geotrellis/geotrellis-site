@@ -60,10 +60,18 @@
                 Hillshade
             </h2>
             <p>
-                The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the position of the sun to simulate the passing of time.
+                The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the position or altitude of the sun.
             </p>
             <div class="controller-wrapper">
                 <div class="controller">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h6 class="demo-controller-label">Altitude</h6>
+                        </div>
+                        <div class="col-sm-8">
+                            <h6 class="demo-controller-label">N</h6>
+                        </div>
+                    </div>
                     <div class="row" class="controller-sun">
                         <div class="col-sm-4">
                             <div id="controller-2-slider-1"></div>
@@ -71,8 +79,6 @@
                         <div class="col-sm-8">
                             <div class="ui-controlpad">
                                 <div class="ui-controlpad-pad ui-draggable" id="circle-sun"></div>
-                            </div>
-                            <div class="circle-sun-dash">
                             </div>
                         </div>
                     </div>
