@@ -192,7 +192,7 @@ Are Contributor Agreements like this common?
   Yes, many open source communities and projects use Contributor License Agreements, including the
   Apache Software Foundation, the Open Geospatial Foundation and the Eclipse Foundation.
 
-.. _Individual Contributor License Agreement: http://geotrellis.github.com/files/2012_04_04-GeoTrellis-Open-Source-Contributor-Agreement-Individual.pdf?raw=true
+.. _Individual Contributor License Agreement: http://geotrellis.github.com/files/2014_05_20-GeoTrellis-Open-Source-Contributor-Agreement-Individual.pdf?raw=true
 .. _Corporate Contributor License Agreement: http://geotrellis.github.com/files/2012_04_04-GeoTrellis-Open-Source-Contributor-Agreement-Corporate.pdf?raw=true
 
 .. _SBT: http://www.scala-sbt.org/
