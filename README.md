@@ -11,7 +11,7 @@ In the sbt shell use project site to change into the site project.
 Use compile to build the site, this will take some time when running for the first time (~ 1 - 3 minutes).
 Use re-start or run to start the local site server.
 
-***NOTE: You must unzip the hills.zip in `site/data/hillshade` in order for the hillshade demo to work (the .arg file is larger than github allows for commit***
+***NOTE: You must unzip the hills.zip in `site/data/hillshade` in order for the hillshade demo to work (the .arg file is larger than github allows for commit)***
 
 Note:	re-start is a task from the sbt-revolver plugin which starts a project in the background while you can still use the sbt shell for other tasks.
 
