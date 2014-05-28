@@ -30,7 +30,7 @@ object BuildSettings {
       "-feature",
       "-unchecked",
       "-deprecation",
-      "-target:jvm-1.6",
+      "-target:jvm-1.7",
       "-language:_",
       "-Xlog-reflective-calls"
     )
@@ -63,6 +63,7 @@ object BuildSettings {
       resourceGenerators in Compile <+= (target in ScalaUnidoc in unidoc in LocalRootProject){ docsLocation =>
         constant(Seq(docsLocation)).map(_.flatMap(_.***.get))
       },
+      fork := true,
       assembly <<= assembly.dependsOn(unidoc in LocalRootProject)
     )
 
