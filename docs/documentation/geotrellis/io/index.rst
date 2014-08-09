@@ -11,3 +11,4 @@ There are a number of formats that GeoTrellis provides utilities for reading fro
    rasterlayers
    catalog
    geojson
+   geotiffreader
