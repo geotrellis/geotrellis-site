@@ -5,7 +5,7 @@ Getting Started
 
 .. _adding-dependencies:
 
-We publish the jars of current release version of GeoTrellis, so you can include GeoTrellis in an SBT project by adding the following to your build.sbt file:
+We publish the jars of the current release version of GeoTrellis, so you can include GeoTrellis in an SBT project by adding the following to your build.sbt file:
 
 .. code-block:: scala
 
