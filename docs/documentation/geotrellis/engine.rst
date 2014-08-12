@@ -3,7 +3,7 @@
 Akka Execution Engine
 =====================
 
-The Akka execution engine is what takes :ref:`Operations <Ops>` and :ref:`DataSources`, executes them, and returns their computed values. There is no type `Engine`, the phrase Akka Execution Engine simply refers to the process of how DataSources and Operations are executed. Creating DataSources and Operations only describes the work that should be done; that work is not done until it is executed against the engine. The interface for executing DataSources or Operations against the engine is to run it through the :ref:`Server` instance.
+The Akka execution engine is what takes :ref:`Operations <Ops>` and :ref:`DataSources`, executes them, and returns their computed values. There is no type ``Engine``, the phrase Akka Execution Engine simply refers to the process of how DataSources and Operations are executed. Creating DataSources and Operations only describes the work that should be done; that work is not done until it is executed against the engine. The interface for executing DataSources or Operations against the engine is to run it through the :ref:`Server` instance.
 
 .. _Server:
 
