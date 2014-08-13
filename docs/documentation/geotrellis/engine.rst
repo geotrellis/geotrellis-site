@@ -44,7 +44,7 @@ Along with calling the ``.get`` method to execute a DataSource or Operation, you
 .. includecode:: code/EngineExamples.scala
    :snippet: run-method-op
 
-This allows you to handle errors with a `Try[T]-style`__ error handling. It will also return a ``History`` instance that gives you information on how the Operations were executed in the engine. See the :ref:`operation workflow example` for an example of printing out a History instance to the console.
+This allows you to handle errors with a `Try[T]-style`__ error handling. It will also return a ``History`` instance that gives you information on how the Operations were executed in the engine. See the :ref:`operation flow example` for an example of printing out a History instance to the console.
 
 __ http://www.scala-lang.org/api/current/index.html#scala.util.Try
 
@@ -57,8 +57,6 @@ A geoprocessing model in GeoTrellis is composed of smaller geoprocessing operati
 
 The GeoTrellis naming convention for operations namespaces every operation within a single package, and we commonly refer to the operation with the package name in the format package.operation. For example, data loading operations are in the io package, and so the LoadRaster operation is referred to as io.LoadRaster.
 
-.. _operation workflow example:
-
 Actor Diagram
 -------------
 
@@ -70,6 +68,8 @@ Akka Notation
 ^^^^^^^^^^^^^
 
 .. image:: images/akka-notation.png
+
+.. _operation flow example:
 
 Operation Flow Example
 ----------------------
