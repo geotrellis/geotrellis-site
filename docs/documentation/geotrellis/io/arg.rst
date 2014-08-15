@@ -4,7 +4,7 @@
 Azavea Raster Grid format (ARG)
 ===============================
 
-The ARG (Azavea Raster Graphics) format is a simple way to encode raster data. A raster encoded in ARG comprises two files: foo.json and foo.arg. The JSON file contains all metadata about the raster, including name, data type, resolution, and the geographic extent. The ARG file contains the actual raster data (a two-dimension grid of numbers). It's important to know that both files are required.
+The ARG (Azavea Raster Grid) format is a simple way to encode raster data. A raster encoded in ARG comprises two files: foo.json and foo.arg. The JSON file contains all metadata about the raster, including name, data type, resolution, and the geographic extent. The ARG file contains the actual raster data (a two-dimension grid of numbers). It's important to know that both files are required.
 
 .. _ARG metadata:
 
@@ -33,7 +33,7 @@ The ``layer`` key provides the name of the raster as a string. The type must be 
 
 The geographic area covered by the raster is given by the points (``xmin``, ``ymin``) and (``xmax``, ``ymax``). ``xmin`` is the western edge of the raster and ``ymin`` is the southern edge. Together these values form the "lower left point" of the rectangle. ``xmax`` is the eastern edge of the raster and ``ymax`` is the northern edge. Together these values for the "upper right point" of the rectangle.
 
-The coordinate system for these points is unspecified. While the web mercator projection is often used, it is not required.
+The coordinate system for these points is unspecified. While the Web Mercator projection is often used, it is not required.
 
 The resolution of the raster is provided by ``cellwidth`` and ``cellheight``, which describe how much geographic area is covered by a single pixel's width and height, respectively. In general, these values should be the same when the output will be rendered with square pixels, although this is not enforced.
 
