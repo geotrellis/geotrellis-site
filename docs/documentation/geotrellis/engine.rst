@@ -74,7 +74,7 @@ Akka Notation
 Operation Flow Example
 ----------------------
 
-As an example of how Operations are executed, imagine we had a ValueSource that was created by loading up a tiled raster into a RasterSource, and then ``.minMax`` was called on it. The ValueSource would give the Server it's operation, which would be a composition of the following Operations: an Operation to load each tile would be executed in parallel. 
+As an example of how Operations are executed, imagine we had a ValueSource that was created by loading up a tiled raster into a RasterSource, and then ``.minMax`` was called on it. The ValueSource would give the Server its operation, which would be a composition of the following Operations; an Operation to load each tile would be executed in parallel. 
 
 .. code-block:: console
 
