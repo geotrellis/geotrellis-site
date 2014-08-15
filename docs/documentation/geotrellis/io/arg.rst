@@ -60,7 +60,6 @@ float64         64              |DMIN|   |DMAX|    NaN             Float.NaN
 .. |DMIN| replace:: \ -10 :sup:`308.2` \
 .. |DMAX| replace:: \ 10 :sup:`308.2` \
 
-VERSION 1
 There are three specific keys which are not directly used by GeoTrellis but which could be used by other clients: ``epsg``, ``xskew`` and ``yskew``.
 
 The ``epsg`` attribute gives the coordinate system of the data. When absent, the coordinate system is assumed to be Web Mercator (i.e. "3785").
