@@ -107,7 +107,7 @@ localCeil
 localNegate
   Negate (multiply by -1) each value in a raster.
 
-  *Operator: uniary - (-raster)*
+  *Operator: unary minus "-", e.g. (-raster)*
 
 localNot
   Get the negation of this raster source.
