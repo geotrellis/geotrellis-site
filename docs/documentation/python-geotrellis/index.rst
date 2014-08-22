@@ -80,7 +80,7 @@ Here are some of the options for using the *convert* subcommand:
 
 The raster being created will only be a tiled raster if --cols-per-tile COLS_PER_TILE and --rows-per-tile ROWS_PER_TILE are present.
 
-The last two arguments are the input file, and if the output raster is not tiled, the output file name, if it is tiled, then the directory which the tiled raster will be created in.
+The second-to-last argument is the input file. If the output raster is not tiled, the last argument will be the output file name. If the output raster is tiled, then the last argument should specify the directory which the tiled raster will be created in.
 
 For example, if we wanted to convert `the GeoTIFF at src/test/resources/slope.tif`__, we could use the *convert* command:
 
@@ -90,7 +90,7 @@ For example, if we wanted to convert `the GeoTIFF at src/test/resources/slope.ti
   NOTICE: Loading raster with width 979, height 1400
   >
 
-This will produce two files, slope.arg and slope.json. The data type of the ARG will be ``float32``; this is because the GeoTIFF file has type float32 (you can check this gdalinfo).
+This will produce two files, slope.arg and slope.json. The data type of the ARG will be ``float32``; this is because the GeoTIFF file has type float32 (you can check this with ``gdalinfo``).
 
 If we want to create a Double raster version that was comprised of 256 x 256 tiles, we could run the command with the rows and columns per tile:
 
@@ -130,7 +130,7 @@ __ https://github.com/geotrellis/geotrellis/blob/0.9/src/test/resources/slope.ti
 *gtloader convert-all* command
 ------------------------------
 
-The ``convert-all`` is used to convert a set of rasters in a directory into ARGs. This command has mostly the same options as the *convert* command, but adds one option
+The ``convert-all`` is used to convert a set of rasters in a directory into ARGs. This command has mostly the same options as the *convert* command, but adds one option:
 
 -e EXT                   The extention of the files in the input directory to consider for conversion.
 
