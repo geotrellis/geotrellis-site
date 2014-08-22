@@ -21,12 +21,12 @@ The geotrellis-jetty project is an additional dependency, so you will have to ad
 Using GeoTrellis with Jetty
 ---------------------------
 
-The general pattern of using GeoTrellis with Jetty is to have the ``main`` function call the ``run`` method of the object ``WebRunner``. 
+The general pattern of using GeoTrellis with Jetty is to have the ``main`` function call the ``run`` method of the object ``WebRunner``, as in the example below. 
 
 .. includecode:: code/JettyExamples.scala
    :snippet: mainExample
 
-The WebRunner creates an embedded Jetty server that is configured based on some settings in the ``applicaiton.conf``.
+The WebRunner creates an embedded Jetty server that is configured based on some settings in the ``application.conf``.
 
 
 Configuration
@@ -41,7 +41,7 @@ geotrellis.port
   This is the port that the server will be listening on.
 
 geotrellis.rest-package
-  This includes the package names that Jetty should search for services. The annotations on classes are how Jetty find and route services. Multiple packages can be searched, they should be separated by semicolins.
+  This includes the package names that Jetty should search for services. The annotations on classes are how Jetty finds and routes services. Multiple packages can be searched; they should be separated by semicolons.
 
 There are some other configuration settings to fine tune Jetty:
 
