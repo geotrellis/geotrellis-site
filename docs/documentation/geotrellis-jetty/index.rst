@@ -68,7 +68,7 @@ geotrellis.rest-prefix
   Set this to a prefix so that all annotated paths for services will be prefixed by a path. This is useful to separate out service calls from static path calls, which is necessary if the Jetty server is serving static content. **Note:** This defaults to "/gt".
 
 geotrellis.include-gt-services
-  Set this to "yes" to have some `default services <Services>`_ to be included in the service package, including a service to Catalog information and ColorRamp information.
+  Set this to "yes" to have some :ref:`default services <Services>` to be included in the service package, including a service to Catalog information and ColorRamp information.
 
 Response utils
 --------------
@@ -76,6 +76,8 @@ Response utils
 There's some wrapper classes around returning a Jetty Response, such as ``OK.json(str).allowCORS`` and ``ERROR(message)``. `See the code`__ for more information.
 
 __ https://github.com/geotrellis/geotrellis/blob/0.9/jetty/src/main/scala/geotrellis/jetty/Response.scala
+
+.. _Services:
 
 Services
 --------
