@@ -1,6 +1,6 @@
 .. _geotrellis-services:
 
-geotrellis-sercives
+geotrellis-services
 ===================
 
 The *geotrellis-services* project provides functionality that is common to writing raster based services using GeoTrellis.
@@ -20,7 +20,7 @@ The geotrellis-services project is an additional dependency, so you will have to
 Catalog services
 ----------------
 
-This class provides basic functionality for sending information about the catalog to a client. An example of it's use `is in the admin site`__.
+This class provides basic functionality for sending information about the catalog to a client. An example of its use `is in the admin site`__.
 
 __ https://github.com/geotrellis/geotrellis/blob/0.9/admin/src/main/scala/geotrellis/admin/AdminServiceActor.scala#L33
 
@@ -34,6 +34,6 @@ __ https://github.com/geotrellis/geotrellis/blob/0.9/admin/src/main/scala/geotre
 Layer services
 --------------
 
-The LayerService object provides functions to get information about individual layers, such as the bounding box, getting the class breaks for a layer, and rendering the layer based on query parameters. An example of it's use is `in the admin project, for rendering a raster layer`__.
+The LayerService object provides functions to get information about individual layers, such as the bounding box, getting the class breaks for a layer, and rendering the layer based on query parameters. An example of its use is `in the admin project, for rendering a raster layer`__.
 
 __ https://github.com/geotrellis/geotrellis/blob/0.9/admin/src/main/scala/geotrellis/admin/AdminServiceActor.scala#L79
