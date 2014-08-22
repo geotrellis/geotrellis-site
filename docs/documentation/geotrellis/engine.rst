@@ -10,7 +10,7 @@ The Akka execution engine is what takes :ref:`Operations <Ops>` and :ref:`DataSo
 Server
 ------
 
-The Server is the interface into the execution engine. It is what contains the Akka Actor system. It's also what contains the :ref:`Catalog` that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in ``geotrellis.GeoTrellis`` that is configured based on your ``application.conf``; this system is also imported as an implicit value when importing ``geotrellis._``. This provides a convenience for running DataSources: the ``.run`` and ``.get`` methods on DataSource take an implicit ``Server`` parameter that it executes itself through. So these two code blocks are equivalent: 
+The Server is the interface into the execution engine. It is what contains the Akka Actor system. The Server also contains the :ref:`catalog <Catalog>` that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in ``geotrellis.GeoTrellis`` that is configured based on your ``application.conf``; this system is also imported as an implicit value when importing ``geotrellis._``. This provides a convenience for running DataSources: the ``.run`` and ``.get`` methods on DataSource take an implicit ``Server`` parameter that it executes itself through. So these two code blocks are equivalent: 
 
 .. includecode:: code/EngineExamples.scala
    :snippet: implicit-server-ds

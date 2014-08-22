@@ -3,7 +3,7 @@
 python-geotrellis
 =================
 
-*python-geotrellis* is a python package for GeoTrellis data tasks, such as converting rasters into ARG format, tiling ARG rasters, and managing the :ref:`Catalog`.
+*python-geotrellis* is a python package for GeoTrellis data tasks, such as converting rasters into ARG format, tiling ARG rasters, and managing the :ref:`catalog <Catalog>`.
 
 Installation
 ------------
