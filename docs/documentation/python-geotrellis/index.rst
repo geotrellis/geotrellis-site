@@ -17,7 +17,7 @@ To install *python-geotrellis*, use pip:
 GDAL Bindings
 -------------
 
-The *python-geotrellis* package requires th `GDAL`__ bindings be installed. You can find information on installing the GDAL python bindings `here`__. I have personally had the most success with building gdal from source with the ``--with-python``.
+The *python-geotrellis* package requires the `GDAL`__ bindings be installed. You can find information on installing the GDAL python bindings `here`__. We recommend building gdal from source with the ``--with-python`` option.
 
 __ http://www.gdal.org/
 __ https://pypi.python.org/pypi/GDAL/
@@ -36,7 +36,7 @@ __ http://www.gdal.org/formats_list.html
 ---------------
 
 You can get information about an arg file with the the ``info`` subcommand.
-For instance, if I wanted to get information about `the arg at src/test/resources/data/aspect.json`__, I could use:
+For instance, if we wanted to get information about `the arg at src/test/resources/data/aspect.json`__, we could use:
 
 __ https://github.com/geotrellis/geotrellis/blob/0.9/src/test/resources/data/aspect.json
 
@@ -67,8 +67,8 @@ The ``convert`` subcommand is what you can use to both convert rasters of differ
 
 Here are some of the options for using the *convert* subcommand:
 
---cols-per-tile COLS_PER_TILE     The number of pixles in the width of each tiled raster being created.
---rows-per-tile ROWS_PER_TILE     The number of pixles in the height of each tiled raster being created.
+--cols-per-tile COLS_PER_TILE     The number of pixels in the width of each tiled raster being created.
+--rows-per-tile ROWS_PER_TILE     The number of pixels in the height of each tiled raster being created.
 -t TYPE                           The :ref:`raster type <Raster Type>` of the output raster. One of: bit,int8,int16,int32,float32,float64
 -n NAME                           Name of the output raster. The name used to
                                   identify the raster when it is stored in the catalog.
