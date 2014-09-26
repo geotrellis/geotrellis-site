@@ -1,22 +1,35 @@
-geotrellis-site
-===============
+# geotrellis-site
 
-This project runs the site you see at http://geotrellis.io, is built with spray and is modified from the documentation of that project. It uses sphinx to generate documentation from reStructured text files located in the docs folder of the geotrellis-site repository checkout. The documentation is served from the site sub-project of the sbt build. If you want to contribute documentation make sure you can build and view the site locally. Follow these instructions to get the site project working locally:
+This project runs the [GeoTrellis](http://geotrellis.io) website. The website is powered by [Spray](http://spray.io/), and was derived from Spray's own documentation. It also uses [Sphinx](http://sphinx-doc.org/) to generate web pages from [reStructuredText](http://docutils.sourceforge.net/rst.html) files located in the [docs](docs/) subdirectory.
 
-Install sphinx (in Debian / Ubuntu install the python-sphinx package, for OS/X see this mailing list thread).
-Find the path of sphinx-build (in Ubuntu it’s probably /usr/bin/sphinx-build)
-Set the SPHINX_PATH environment variable to that path.
-Run sbt
-In the sbt shell use project site to change into the site project.
-Use compile to build the site, this will take some time when running for the first time (~ 1 - 3 minutes).
-Use re-start or run to start the local site server.
+The documentation is served from the site sub-project of the `sbt` build. If you want to contribute to the documentation, use the steps below to build and view the site locally.
 
-***NOTE: You must unzip the hills.zip in `site/data/hillshade` in order for the hillshade demo to work (the .arg file is larger than github allows for commit)***
+## Usage
 
-Note:	re-start is a task from the sbt-revolver plugin which starts a project in the background while you can still use the sbt shell for other tasks.
+First, ensure that you have [Vagrant](https://www.vagrantup.com/) 1.5+ and [Ansible](http://docs.ansible.com/intro_installation.html) 1.4+ installed. From there, run the following commands to start a local development server:
 
-Browse to http://localhost:8080
-Use ~re-start in sbt to let it monitor changes to the documentation sources automatically.
-Edit the documentation files inside the docs subdirectory. After saving a file, it will be automatically picked up by sbt, then it will be regenerated and be available in the browser after ~ 1 - 5 seconds with a refresh of the page.
+```bash
+$ git clone https://github.com/geotrellis/geotrellis-site.git
+$ cd geotrellis-site
+$ vagrant up
+$ open http://localhost:8080
+```
+
+After Ansible finishes provisioning the virtual machine, wait a few minutes for `sbt` to pull down dependencies and build the site (~1-3 minutes). If you see a `502 Bad Gateway` error, that usually means that `sbt` is not finished yet.
+
+Ensure that you only edit the files inside the [docs](docs/) subdirectory. After saving a file, the changes will automatically be picked up by `sbt`.
+
+## Deployment
+
+[Packer](http://packer.io) is used to create EC2 AMIs using the same Ansible playbooks for provisioning a development environment. Ansible handles installing Packer inside of the Vagrant virtual machine, so if you've already spun that up, just provide your AWS credentials and execute Packer:
+
+```bash
+$ vagrant ssh
+vagrant@geotrellis-site:~$ export AWS_ACCESS_KEY_ID="..."
+vagrant@geotrellis-site:~$ export AWS_SECRET_ACCESS_KEY="..."
+vagrant@geotrellis-site:~$ packer build /vagrant/build/template.js
+```
+
+If successful, this should generate an EC2 AMI of the GeoTrellis site. Launching an instance of the AMI (we typically use `m3.large` instances) should yield a functioning clone of [geotrellis.io](http://geotrellis.io).
 
 Many thanks to [spray.io](http://spray.io) for the codebase, from which all of the implementation was derived.

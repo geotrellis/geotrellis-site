@@ -19,3 +19,7 @@ TAGS
 .settings
 .history
 .idea
+
+.vagrant
+build/roles/*
+!build/roles/.gitkeep

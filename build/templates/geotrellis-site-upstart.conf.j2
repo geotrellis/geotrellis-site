@@ -1,0 +1,10 @@
+description "GeoTrellis documentation website"
+
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on shutdown
+
+respawn
+setuid {{ geotrellis_site_user }}
+chdir /opt/geotrellis-site
+
+exec ./sbt "project site" run >> {{ geotrellis_site_log }} 2>&1
