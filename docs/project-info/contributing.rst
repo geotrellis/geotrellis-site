@@ -1,7 +1,7 @@
 Contributing
 ============
 
-We value all kinds of contributions from the community, not just actual code. Maybe the easiest and yet very good way of helping us improve *geotrellis* is to ask questions, voice concerns or propose improvements on the :ref:`Mailing List`.
+We value all kinds of contributions from the community, not just actual code. Perhaps the easiest and yet one of the most valuable ways of helping us improve *geotrellis* is to ask questions, voice concerns or propose improvements on the :ref:`Mailing List`.
 
 If you do like to contribute actual code in the form of bug fixes, new features or other patches this page gives you more info on how to do it.
 
@@ -45,10 +45,10 @@ __ http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 Issue Tracking
 --------------
 
-Currently the *geotrellis* team uses the `Issues Page`_ of the projects `github repository`_ for issue management.
+Currently the *geotrellis* team uses the `Issues Page`_ of the project's `Github repository`_ for issue management.
 If you find a bug and would like to report it please go there and create an issue.
 
-If you are unsure, whether the problem you've found really is a bug please ask on the :ref:`Mailing List` first.
+If you are unsure whether the problem you've found is really a bug or not, please ask on the :ref:`Mailing List` first.
 
 Pull Requests
 -------------
@@ -56,7 +56,7 @@ Pull Requests
 If you'd like to submit a code contribution please fork the `github repository`_ and `send us pull request`_
 against the ``master`` branch (or the respective release branch, depending on what version your patch is targeting).
 Please keep in mind that we might ask you to go through some iterations of discussion and refinements before merging and
-that you will need have signed a CLA first!
+that you will need to have signed a CLA first!
 
 Contributing documentation
 --------------------------
@@ -96,8 +96,8 @@ Contributor License Agreement (CLA)
 -----------------------------------
 
 Contributions to the project, no matter what kind, are always very welcome.
-Everybody who contributes code to GeoTrellis is going to be asked to sign a Contribute License
-Agreement (CLA). In order the provide a proper legal foundation for this we need to ask you to sign `our CLA`_, which is a direct
+Everybody who contributes code to GeoTrellis will be asked to sign a Contributor License
+Agreement (CLA). In order to provide a proper legal foundation for this we need to ask you to sign `our CLA`_, which is a direct
 adaptation of the `Apache Foundation's Individual Contributor License Agreement V2.0`__.
 This particular agreement has been used by other software projects
 in addition to Apache and is generally accepted as reasonable within the open source community.
