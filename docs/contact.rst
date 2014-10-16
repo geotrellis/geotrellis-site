@@ -5,11 +5,11 @@ Contact
 
 .. _Mailing List:
 
-Mailing List
-------------
+Mailing List and IRC
+--------------------
 
 The `geotrellis mailing list`_ is probably the best place for your needs with regard to
-support, feedback and general discussion.
+support, feedback and general discussion. You can also find project maintainers and contributors on IRC at **#geotrellis on freenode**.
 
 
 Twitter
