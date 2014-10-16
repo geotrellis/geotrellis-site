@@ -125,11 +125,11 @@ If you are getting or setting values in a Raster or base RasterData, remember th
 RasterData
 ----------
 
-The RasterData type represent the data of a raster without the consideration of how that data is spatially located. It can be considered a grid of columns and rows, and you can use RasterData to iterate over the cell values, select certain values, and transform one grid into another.
+The RasterData type represents the data of a raster without the consideration of how that data is spatially located. It can be considered a grid of columns and rows, and you can use RasterData to iterate over the cell values, select certain values, and transform one grid into another.
 
 The ``RasterData`` only contains information about the number of columns (member ``cols``) and the number of rows (member ``rows``) of the grid, as well as the RasterType (member ``getType``).
 
-The ``RasterData`` trait represents immutable raster data. There is an implementating trait, ``MutableRasterData``, that represents RasterData that can be written to. This includes all of the base implementations of RasterData that is backed by an Array. These core data types use a single dimensional array to hold all cell values. There is an implementation of one of these RasterData types for each RasterType. For instance, a ``FloatArrayRasterData`` is backed by a Array[Float]. The ``.get(col,row)`` methods are implemented by using the equation ``cols * row + col`` to translate from grid coordinates to array index. The exception to this rule is ``BitArrayRasterData``, which is backed by an ``Array[Byte]``, and uses bitwise operations to extract and set values of single bits within each byte. This makes the ``BitArrayRasterData`` much more compact than the next smallest ``MutableRasterData`` type, the ``ByteArrayRasterData``.
+The ``RasterData`` trait represents immutable raster data. There is an implementating trait, ``MutableRasterData``, that represents RasterData that can be written to. This includes all of the base implementations of RasterData that are backed by an Array. These core data types use a single dimensional array to hold all cell values. There is an implementation of one of these RasterData types for each RasterType. For instance, a ``FloatArrayRasterData`` is backed by an ``Array[Float]``. The ``.get(col,row)`` methods are implemented by using the equation ``cols * row + col`` to translate from grid coordinates to array index. The exception to this rule is ``BitArrayRasterData``, which is backed by an ``Array[Byte]``, and uses bitwise operations to extract and set values of single bits within each byte. This makes the ``BitArrayRasterData`` much more compact than the next smallest ``MutableRasterData`` type, the ``ByteArrayRasterData``.
 
 RasterExtent
 ------------
@@ -139,7 +139,7 @@ The ``RasterExtent`` is what defines the spatial association of the data contain
 Extent
 ------
 
-The ``Extent`` object is simply a case class that contains an ``xmin``, ``ymin``, ``xmax``, and ``ymax`` values that represent the bounds of the area for which a raster covers. It does not contain any inherit information about which spatial reference system is being used for those values. For instance, if a Raster were to cover a part of Philadelphia, PA, USA, and the spatial reference system being used was latitude-longitude coordinates (ESPG:4326), then the extent might look like this:
+The ``Extent`` object is simply a case class that contains ``xmin``, ``ymin``, ``xmax``, and ``ymax`` values that represent the bounds of the area for which a raster covers. It does not contain any inherent information about which spatial reference system is being used for those values. For instance, if a Raster were to cover a part of Philadelphia, PA, USA, and the spatial reference system being used was latitude-longitude coordinates (ESPG:4326), then the extent might look like this:
 
 .. code-block:: scala
 
@@ -158,7 +158,7 @@ The Raster extent has two coordinate concepts involved: map coordinates and grid
 coordinates. Map coordinates are what the ``Extent`` class uses, and specifies points
 using an X coordinate and a Y coordinate. The X coordinate is oriented along west to east
 such that the larger the X coordinate, the more eastern the point. The Y coordinate is
-along south to north such that the larger the Y coordinate, the more Northern the point.
+along south to north such that the larger the Y coordinate, the more northern the point.
 
 This contrasts with the grid coordinate system. The grid coordinate system does not
 actually reference points on the map, but instead a cell of the raster that represents

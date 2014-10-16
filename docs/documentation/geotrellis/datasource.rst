@@ -63,7 +63,7 @@ end up with a ``ValueSource[Int]``, which when run would give the maximum value 
 RasterSource
 ------------
 
-RasterSource is the main motivation for creating the DataSource architecture. Having the RasterSource interface let's users to write code against one type, and that same code can work over tiled or untiled rasters. The Operations that load tiles are the elements of the collection of a RasterSource. It's default convergance funciton is to return a ValueSource containing a single Raster; if the RasterSource was backed by a tiled raster, those tiles would be stitched together. Operations that can be parallized over tiles will be; the user does not have to think about whether or not the RasterSource is a tiled raster or untiled (single tile) raster.
+RasterSource is the main motivation for creating the DataSource architecture. Having the RasterSource interface lets users write code against one type, and that same code can work over tiled or untiled rasters. The Operations that load tiles are the elements of the collection of a RasterSource. Its default convergence function is to return a ValueSource containing a single Raster; if the RasterSource was backed by a tiled raster, those tiles would be stitched together. Operations that can be parallelized over tiles will be; the user does not have to think about whether or not the RasterSource is a tiled raster or untiled (single tile) raster.
 
 RasterSources can be combined only if their tile layout matches. The sequence of tiles of the one RasterSource must match the sequence of tiles in the other RasterSource.
 

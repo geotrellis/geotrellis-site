@@ -3,7 +3,7 @@
 Raster Layer Types
 ==================
 
-RasterLayers represent raster data in the :ref:`Catalog`. They consist of a metadata JSON file, and depending on the raster layer type, one or more data files.
+RasterLayers represent raster data in the :ref:`catalog <Catalog>`. They consist of a metadata JSON file, and depending on the raster layer type, one or more data files.
 
 Common Metadata
 ---------------
