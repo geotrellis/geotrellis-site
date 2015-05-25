@@ -130,6 +130,7 @@ Lets make an endpoint that will load a raster of a given name and render it to P
 
 .. includecode:: code/GeoTrellisService.scala
   :snippet: RasterRoute
+  }
 
 :ref:`RasterSource` is an object that represents the result of an operation that loads a raster with ID of "RASTER_NAME" from the catalog in the future. We are able to transform the result of this operation by using the methods defined on ``RasterSource``, such as ``.renderPng()``, ``localMap``, etc.  Note that ``.renderPng(_)`` transforms a ``RasterSource`` into a ``ValueSource``, essentially reducing a future collection of values, a raster, into a single one value, PNG file. We will see shortly that two RasterSources can be combined with ``*`` operation.
 
@@ -206,7 +207,7 @@ Now that we have the data and the catalog defined we can finally test the servic
 
 .. code-block:: scala
 
-  val rootRoute = pingRoute ~ pongRoute ~ rasterRoute
+  def rootRoute = pingRoute ~ pongRoute ~ rasterRoute
   
 ... and restart the server. Lets see:
 
