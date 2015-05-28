@@ -1,4 +1,4 @@
-.. _Raster:
+.. _Raster-0.9.0:
 
 Rasters
 =======
@@ -31,7 +31,7 @@ You may have noticed that there are two versions of each of these functions: one
 
 The dual versions will determine if the raster or rasters being operated on are all integer based, in which case it will use the integer function. Otherwise it will use the double valued functions.
 
-.. _Raster Type:
+.. _Raster Type-0.9.0:
 
 Raster Types
 ------------
@@ -42,7 +42,7 @@ Here are the possible values returned by ``rasterType``:
 
 ``TypeBit``
   Bit rasters are backed with an Byte array, but contain 8 values per byte: each cell is either value
-  0 (`NoData`_) or 1. This means that TypeBit rasters are much smaller in memory and on disk than
+  0 (`NoData-0.9.0`_) or 1. This means that TypeBit rasters are much smaller in memory and on disk than
   the other raster types. Mapping bit rasters is also very fast, since the map can only be
   an identity, an inverse, or a constant.
 
@@ -59,7 +59,7 @@ Here are the possible values returned by ``rasterType``:
   .. includecode:: code/RasterExamples.scala
      :snippet: int-double-get
 
-  will hold true, except for the case of `NoData`_. This statement:
+  will hold true, except for the case of `NoData-0.9.0`_. This statement:
 
   .. includecode:: code/RasterExamples.scala
      :snippet: int-double-isNoData
@@ -72,7 +72,7 @@ Performance considerations
 
 The type of the raster can greatly impact the performance of operations on the raster. For
 instance, consider the following benchmarking code, (similar to the RasterMap.scala code 
-contained within the :ref:`benchmarking` project)::
+contained within the :ref:`benchmarking-0.9.0` project)::
 
   def timeRasterMapInt(reps:Int) = run(reps)(rasterMapInt)
   def rasterMapInt = intRaster map { i => i * 2 }
@@ -104,14 +104,14 @@ rasters (where the size is the length of one dimension in a square raster)::
 As you can see, there is a performance cost to using floating point values to rasters, so be 
 wary, and use :math:`\mathbb{Z}`\-based rasters whenever possible.
 
-.. _NoData:
+.. _NoData-0.9.0:
 
 NoData
 ------
 
 Conceptually, NoData values in a raster represent cells which do not contain any data. Having a NoData value allows there to be a representation of not just values, but the absence of values as well. Often times when rendering rasters, you will want regions with NoData values to be transparent, to visually represent that there is no data; consider a raster that describes values inside of a complex city border. While the Extent_ of the raster is rectangular, the boundry containing the data is a complex polygon. So the Extent could be a box that encloses the border polygon, and all cell values outside of that border polygon could be set to NoData.
 
-NoData values are represented differently for each `Raster Type`_:
+NoData values are represented differently for each `Raster Type-0.9.0`_:
 
 :TypeBit: ``0:Byte``
 :TypeByte: ``Byte.MinValue`` (``byteNODATA`` in code)

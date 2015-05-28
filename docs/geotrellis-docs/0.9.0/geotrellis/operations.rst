@@ -1,4 +1,4 @@
-.. _operations:
+.. _operations-0.9.0:
 
 Operations
 ==========

@@ -1,4 +1,4 @@
-.. _geotrellis-services:
+.. _geotrellis-services-0.9.0:
 
 geotrellis-services
 ===================

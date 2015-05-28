@@ -1,4 +1,4 @@
-.. _local:
+.. _local-0.9.0:
 
 Local Operations
 ================
@@ -186,7 +186,7 @@ localAtan2
   The calling raster holds y-values, the parameter holds x-values.
   The arctangent is computed from y/x.
 
-.. _Operations on a Sequence of RasterSources:
+.. _Operations on a Sequence of RasterSources-0.9.0:
 
 Operations on a Sequence of RasterSources
 -----------------------------------------

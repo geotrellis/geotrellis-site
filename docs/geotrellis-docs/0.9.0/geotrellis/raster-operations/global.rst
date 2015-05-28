@@ -1,4 +1,4 @@
-.. _global:
+.. _global-0.9.0:
 
 Global Operations
 =================

@@ -1,4 +1,4 @@
-.. _geotrellis:
+.. _geotrellis-0.9.0:
 
 geotrellis
 ==========
@@ -43,7 +43,7 @@ The core *geotrellis* module holds the functionality for reading, writing, and o
      - Cropped Raster and TiledRaster
     - Akka execution engine
      - Op's
-     - Server [breifly mention the Catalog, link]
+     - Server [briefly mention the Catalog, link]
      - Actor system
      - Operation Flow example
      - Executing operations directly

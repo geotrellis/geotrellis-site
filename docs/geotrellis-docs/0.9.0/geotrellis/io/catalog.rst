@@ -1,9 +1,9 @@
-.. _catalog:
+.. _catalog-0.9.0:
 
 The Catalog
 ===========
 
-The Catalog is what gives the GeoTrellis :ref:`Server` easy access to your raster data. It's encoded on disk by a JSON file that specifies a number of data stores. Seperating out raster data by different data stores allows you to key a layer off of two levels: the DataStore name and the Layer name. This is useful for having the same raster data in different forms, for instance different projections, or tiled vs untiled.
+The Catalog is what gives the GeoTrellis :ref:`Server-0.9.0` easy access to your raster data. It's encoded on disk by a JSON file that specifies a number of data stores. Seperating out raster data by different data stores allows you to key a layer off of two levels: the DataStore name and the Layer name. This is useful for having the same raster data in different forms, for instance different projections, or tiled vs untiled.
 
 You can tell the ``geotrellis.GeoTrellis`` object to use your catalog by a setting in your ``application.conf``:
 
@@ -45,12 +45,12 @@ A catalog json looks like this:
         ]
     }
 
-See the :ref:`Server` section on more information about how to set the catalog on a GeoTrellis Server.
+See the :ref:`Server-0.9.0` section on more information about how to set the catalog on a GeoTrellis Server.
 
 DataStore
 ---------
 
-Each of the ``store`` entries in the above example JSON represents a DataStore. A DataStore is essentially points to a directory with raster data. The raster data can be a variety of :ref:`layer types <rasterlayers>`.
+Each of the ``store`` entries in the above example JSON represents a DataStore. A DataStore is essentially points to a directory with raster data. The raster data can be a variety of :ref:`layer types <rasterlayers-0.9.0>`.
 
 The Cache
 ---------

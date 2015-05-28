@@ -1,4 +1,4 @@
-.. _geotrellis-jetty:
+.. _geotrellis-jetty-0.9.0:
 
 geotrellis-jetty
 ================
@@ -8,7 +8,7 @@ The *geotrellis-jetty* project provides utility code for working with `Jetty`__ 
 __ http://www.eclipse.org/jetty/
 
 Including *geotrellis-jetty* into your project
--------------------------------------------------
+----------------------------------------------
 
 The geotrellis-jetty project is an additional dependency, so you will have to add it to your *build.sbt*:
 
@@ -68,7 +68,7 @@ geotrellis.rest-prefix
   Set this to a prefix so that all annotated paths for services will be prefixed by a path. This is useful to separate out service calls from static path calls, which is necessary if the Jetty server is serving static content. **Note:** This defaults to "/gt".
 
 geotrellis.include-gt-services
-  Set this to "yes" to have some :ref:`default services <Services>` to be included in the service package, including a service to Catalog information and ColorRamp information.
+  Set this to "yes" to have some :ref:`default services <Services-0.9.0>` to be included in the service package, including a service to Catalog information and ColorRamp information.
 
 Response utils
 --------------
@@ -77,7 +77,7 @@ There's some wrapper classes around returning a Jetty Response, such as ``OK.jso
 
 __ https://github.com/geotrellis/geotrellis/blob/0.9/jetty/src/main/scala/geotrellis/jetty/Response.scala
 
-.. _Services:
+.. _Services-0.9.0:
 
 Services
 --------
@@ -88,7 +88,7 @@ CatalogService
   This service will return information about the GeoTrellis catalog. It takes no parameters.
 
 Color
-  This returns color ramp information that can be used to pass keys into other services, for painting rasters with the GeoTrellis :ref:`default color ramps <Color Ramps>`.
+  This returns color ramp information that can be used to pass keys into other services, for painting rasters with the GeoTrellis :ref:`default color ramps <Color Ramps-0.9.0>`.
 
 __ https://github.com/geotrellis/geotrellis/tree/0.9/jetty/src/main/scala/geotrellis/jetty/services
 

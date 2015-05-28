@@ -1,4 +1,4 @@
-.. _geojson:
+.. _geojson-0.9.0:
 
 GeoJSON
 -------

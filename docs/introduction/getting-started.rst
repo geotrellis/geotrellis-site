@@ -18,9 +18,9 @@ __ https://oss.sonatype.org/content/repositories/snapshots/com/azavea/geotrellis
 
 We publish a few additional libraries that you might choose to include:
 
-- :ref:`geotrellis-services`: Utility functionality for creating web services that use GeoTrellis.
-- :ref:`geotrellis-jetty`: Utilities for creating `jetty`__ based projects with GeoTrellis.
-- :ref:`geotrellis-geotools`: GeoTools integration with GeoTrellis, including GeoTiff loading
+- :ref:`geotrellis-services-0.9.0`: Utility functionality for creating web services that use GeoTrellis.
+- :ref:`geotrellis-jetty-0.9.0`: Utilities for creating `jetty`__ based projects with GeoTrellis.
+- :ref:`geotrellis-geotools-0.9.0`: GeoTools integration with GeoTrellis, including GeoTiff loading
 
 __ http://www.eclipse.org/jetty/
 

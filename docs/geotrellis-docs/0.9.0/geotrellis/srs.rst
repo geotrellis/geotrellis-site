@@ -1,4 +1,4 @@
-.. _srs:
+.. _srs-0.9.0:
 
 Spatial Reference Systems
 =========================

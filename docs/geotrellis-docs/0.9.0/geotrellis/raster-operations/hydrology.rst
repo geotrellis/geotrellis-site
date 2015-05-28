@@ -1,4 +1,4 @@
-.. _hydrology:
+.. _hydrology-0.9.0:
 
 Hydrology Operations
 ====================

@@ -1,9 +1,9 @@
-.. _python-geotrellis:
+.. _python-geotrellis-0.9.0:
 
 python-geotrellis
 =================
 
-*python-geotrellis* is a python package for GeoTrellis data tasks, such as converting rasters into ARG format, tiling ARG rasters, and managing the :ref:`catalog <Catalog>`.
+*python-geotrellis* is a python package for GeoTrellis data tasks, such as converting rasters into ARG format, tiling ARG rasters, and managing the :ref:`catalog <Catalog-0.9.0>`.
 
 Installation
 ------------
@@ -28,7 +28,7 @@ gtloader
 
 The *python-geotrellis* package installs the *gtloader* module and executable script. 
 The gtloader script is a utility for working with raster data. It uses GDAL to read
-rasters of `a wide array of formats`__ and convert those rasters into the :ref:`Azavea Raster Grid format (ARG)`.
+rasters of `a wide array of formats`__ and convert those rasters into the :ref:`Azavea Raster Grid format (ARG)-0.9.0`.
 
 __ http://www.gdal.org/formats_list.html
 
@@ -63,13 +63,13 @@ Note: info currently does not support tiled rasters.
 *gtloader convert* command
 --------------------------
 
-The ``convert`` subcommand is what you can use to both convert rasters of different formats into ARG files, or to convert rasters of either ARG or GDAL-readable format into a :ref:`tiled ARG raster <tiledrasterlayer>`.
+The ``convert`` subcommand is what you can use to both convert rasters of different formats into ARG files, or to convert rasters of either ARG or GDAL-readable format into a :ref:`tiled ARG raster <tiledrasterlayer-0.9.0>`.
 
 Here are some of the options for using the *convert* subcommand:
 
 --cols-per-tile COLS_PER_TILE     The number of pixels in the width of each tiled raster being created.
 --rows-per-tile ROWS_PER_TILE     The number of pixels in the height of each tiled raster being created.
--t TYPE                           The :ref:`raster type <Raster Type>` of the output raster. One of: bit,int8,int16,int32,float32,float64
+-t TYPE                           The :ref:`raster type <Raster Type-0.9.0>` of the output raster. One of: bit,int8,int16,int32,float32,float64
 -n NAME                           Name of the output raster. The name used to
                                   identify the raster when it is stored in the catalog.
                                   If not supplied, it will be the file name of the source raster,
@@ -139,7 +139,7 @@ The input and output arguments are directories.
 *gtloader catalog* commands
 ---------------------------
 
-The ``catalog`` subcommand has a set of subcommands for working with a :ref:`GeoTrellis catalog <Catalog>`.
+The ``catalog`` subcommand has a set of subcommands for working with a :ref:`GeoTrellis catalog <Catalog-0.9.0>`.
 
 *gtloader catalog update*
   This command updates the catalog information.

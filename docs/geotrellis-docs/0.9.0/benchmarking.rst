@@ -1,4 +1,4 @@
-.. _benchmarking:
+.. _benchmarking-0.9.0:
 
 geotrellis-benchmarking
 =======================

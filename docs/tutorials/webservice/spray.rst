@@ -2,7 +2,7 @@
 Web Service Tutorial
 ====================
 
-In this tutorial we will walk through building web services using Spray and GeoTrellis from scratch. 
+In this tutorial we will walk through building web services using Spray and :ref:`GeoTrellis 0.9.0 <geotrellis-0.9.0>` from scratch.
 
 
 `Spray`__ is an actor-based framework built on top of `Akka`__ and provides an excellent way to build a RESTful, lightweight and asynchronous web service.
@@ -104,7 +104,7 @@ Finally we create ``src/main/scala/GeoTrellisService.scala`` where we will defin
 
 What we create with Spray is an tree of objects, called `directives`__, that behaves much like a decision tree. When a request comes in it is handed to the root object, ``rootRoute`` , which decides whether its a partial match, pass it on, it's no match, reject and pass it to the next node on the same level, or it's a complete, generate a response. Routes are aggregated using the ``~`` operator as we see happening with ``rootRoute``. You can read more about this on the `spray documentation site`__.
 
-__ http://spray.io/documentation/1.1-SNAPSHOT/spray-routing/key-concepts/directives/
+__ http://spray.io/documentation/1.2.0/spray-routing/key-concepts/directives/
 __ http://spray.io/documentation/1.2.0/spray-routing/key-concepts/routes/
 
 Now we are able to verify that the service runs by using the ``run`` command in sbt and opening ``http://localhost:8000/ping`` and seeing the expected response of ``pong!``
@@ -131,9 +131,9 @@ Lets make an endpoint that will load a raster of a given name and render it to P
 .. includecode:: code/GeoTrellisService.scala
   :snippet: RasterRoute
 
-:ref:`RasterSource` is an object that represents the result of an operation that loads a raster with ID of "RASTER_NAME" from the catalog in the future. We are able to transform the result of this operation by using the methods defined on ``RasterSource``, such as ``.renderPng()``, ``localMap``, etc.  Note that ``.renderPng(_)`` transforms a ``RasterSource`` into a ``ValueSource``, essentially reducing a future collection of values, a raster, into a single one value, PNG file. We will see shortly that two RasterSources can be combined with ``*`` operation.
+:ref:`RasterSource-0.9.0` is an object that represents the result of an operation that loads a raster with ID of "RASTER_NAME" from the catalog in the future. We are able to transform the result of this operation by using the methods defined on ``RasterSource``, such as ``.renderPng()``, ``localMap``, etc.  Note that ``.renderPng(_)`` transforms a ``RasterSource`` into a ``ValueSource``, essentially reducing a future collection of values, a raster, into a single one value, PNG file. We will see shortly that two RasterSources can be combined with ``*`` operation.
 
-RasterSource is a type of :ref:`DataSource`. This architecture is new as of ``0.9``. 
+RasterSource is a type of :ref:`DataSource-0.9.0`. This architecture is new as of ``0.9``.
 
 
 GeoTrellis Server
@@ -187,7 +187,7 @@ A ``Catalog`` is what a GeoTrellis server uses to define the data that can be us
    ]
   }
 
-This catalog defines one data store, which is the directory ``data/arg``. This means any raster in ARG format found in that directory will be available to the Server. For a description of the ARG format, see the documentation on loading data. Note that a data store cannot be the same directory as the catalog.json lives, because the Server will consider any JSON file in a data store directory to be a layer definition for an :ref:`ARG` file.
+This catalog defines one data store, which is the directory ``data/arg``. This means any raster in ARG format found in that directory will be available to the Server. For a description of the ARG format, see the documentation on loading data. Note that a data store cannot be the same directory as the catalog.json lives, because the Server will consider any JSON file in a data store directory to be a layer definition for an :ref:`ARG-0.9.0` file.
 
 You can `download the data`__ from the completed tutorial project. It contains two rasters: 
 
@@ -196,7 +196,7 @@ You can `download the data`__ from the completed tutorial project. It contains t
 
 __ https://github.com/echeipesh/geotrellis-spray-tutorial/releases/download/1.0/data.zip
 
-These and other rasters are also included in GeoTrellis project and can be viewed using :ref:`geotrellis-admin`
+These and other rasters are also included in GeoTrellis project and can be viewed using :ref:`geotrellis-admin-0.9.0`
 
 
 Draw!
@@ -298,9 +298,9 @@ To filter out all locations that are "too far" from the farmers markets we can g
 
   Mean income near farmers markets: 22.955766888898363
 
-Notice that we mapped over every location/cell in the ``farmMarketRaster`` and replaced everything less than 1 with ``NODATA``. This is a constant defined in GeoTrellis to represent :ref:`NoData`. For Integer rasters it is defined to be ``Int.MinValue``. All other values in the ``farmMarketRaster`` are replaced with 1, producing a convenient mask.
+Notice that we mapped over every location/cell in the ``farmMarketRaster`` and replaced everything less than 1 with ``NODATA``. This is a constant defined in GeoTrellis to represent :ref:`NoData-0.9.0`. For Integer rasters it is defined to be ``Int.MinValue``. All other values in the ``farmMarketRaster`` are replaced with 1, producing a convenient mask.
 
-Also important to note is that we have created a new RasterSource, `filteredIncomeRaster` that is a combination of two other rasters. The ``*`` operation performs a multiplication of every location in the two rasters. 
+Also important to note is that we have created a new RasterSource, ``filteredIncomeRaster`` that is a combination of two other rasters. The ``*`` operation performs a multiplication of every location in the two rasters.
 
 Why?
 ^^^^

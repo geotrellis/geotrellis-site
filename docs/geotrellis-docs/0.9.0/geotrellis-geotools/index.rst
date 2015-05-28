@@ -1,4 +1,4 @@
-.. _geotrellis-geotools:
+.. _geotrellis-geotools-0.9.0:
 
 geotrellis-geotools
 ===================
@@ -24,14 +24,14 @@ Notice that we need to add the GeoTools repository to the resolvers in order to 
 Reading GeoTIFFs
 ----------------
 
-There are two ways one could use the GeoTIFF reading capability in *geotrellis-geotools*: either read GeoTIFF's directly into a ``Raster`` type, or to give the GeoTrellis :ref:`catalog <Catalog>` the ability to read GeoTIFFs. Due to the lack of heavy use of the latter use case, we recommend using the GeoTiffReader object directly if having the GeoTIFFs be in the catalog isn't a hard requirement. One thing about reading GeoTIFFs directly (as opposed to converting them to ARGs) is that reading them can be quite slow; if you are reading quite a bit and not using caching, and are warping the raster on read (only reading a specific extent, possibly resampled), things will end up being very slow. Converting GeoTIFFs to ARG rasters is definitely the preferred way to deal with GeoTIFF raster data.
+There are two ways one could use the GeoTIFF reading capability in *geotrellis-geotools*: either read GeoTIFF's directly into a ``Raster`` type, or to give the GeoTrellis :ref:`catalog <Catalog-0.9.0>` the ability to read GeoTIFFs. Due to the lack of heavy use of the latter use case, we recommend using the GeoTiffReader object directly if having the GeoTIFFs be in the catalog isn't a hard requirement. One thing about reading GeoTIFFs directly (as opposed to converting them to ARGs) is that reading them can be quite slow; if you are reading quite a bit and not using caching, and are warping the raster on read (only reading a specific extent, possibly resampled), things will end up being very slow. Converting GeoTIFFs to ARG rasters is definitely the preferred way to deal with GeoTIFF raster data.
 
 To read a GeoTIFF file into a ``Raster``, you would use the following:
 
 .. includecode:: code/GeoToolsExamples.scala
    :snippet: geoTiffReader-read
 
-To add the ability to read GeoTiffs as a :ref:`RasterLayer <rasterlayers>` in the catalog, you'll need
+To add the ability to read GeoTiffs as a :ref:`RasterLayer <rasterlayers-0.9.0>` in the catalog, you'll need
 to add this piece of code before the catalog searches for rasters:
 
 .. includecode:: code/GeoToolsExamples.scala

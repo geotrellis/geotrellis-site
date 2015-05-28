@@ -1,4 +1,4 @@
-.. _Rendering:
+.. _Rendering-0.9.0:
 
 Rendering
 =========
@@ -35,7 +35,7 @@ You can also request linear breaks (or “equal interval” breaks). Linear brea
 
 There are other classification schemes that GeoTrellis does not currently support, such as Natural breaks (Jenks) and Standard Deviation, but we intend to implement them in the future. Let us know if you have a need.
 
-.. _Color Ramps:
+.. _Color Ramps-0.9.0:
 
 Color Ramps
 -----------

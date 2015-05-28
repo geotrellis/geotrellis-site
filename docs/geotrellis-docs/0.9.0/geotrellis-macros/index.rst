@@ -1,4 +1,4 @@
-.. _geotrellis-macros:
+.. _geotrellis-macros-0.9.0:
 
 geotrellis-macros
 =================
@@ -10,7 +10,7 @@ The *geotrellis-macro* jar is pulled in as dependency from the core *geotrellis*
 Checking for NoData
 -------------------
 
-``isNoData`` \ ``isData`` - These functions are for checking if a data type is NoData or not. See :ref:`NoData` for an explination of what NoData means. Using a macro for this check allows for different overloaded versions of the functions to inline their specific NoData check for the different datatypes; for example, 
+``isNoData`` \ ``isData`` - These functions are for checking if a data type is NoData or not. See :ref:`NoData-0.9.0` for an explination of what NoData means. Using a macro for this check allows for different overloaded versions of the functions to inline their specific NoData check for the different datatypes; for example,
 
 .. includecode:: code/MacroExamples.scala
    :snippet: noData-examples

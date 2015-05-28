@@ -1,9 +1,9 @@
-.. _geotrellis-admin:
+.. _geotrellis-admin-0.9.0:
 
 geotrellis-admin
 ================
 
-The *geotrellis-admin* project is a web application that you can use to view rasters inside of a :ref:`GeoTrellis catalog <Catalog>`. To run the viewer, switch to the admin subproject and run:
+The *geotrellis-admin* project is a web application that you can use to view rasters inside of a :ref:`GeoTrellis catalog <Catalog-0.9.0>`. To run the viewer, switch to the admin subproject and run:
 
 .. code-block:: console
 

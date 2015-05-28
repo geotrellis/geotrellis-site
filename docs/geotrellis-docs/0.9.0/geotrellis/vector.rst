@@ -1,4 +1,4 @@
-.. _vector:
+.. _vector-0.9.0:
 
 Working with Vector Data
 ========================
@@ -35,4 +35,4 @@ __ http://en.wikipedia.org/wiki/Kernel_density_estimation
 GeoJSON
 -------
 
-GeoTrellis provides utility objects that read and write GeoJson from GeoTrellis feature objects. See the :ref:`GeoJSON` section of *Reading and Writing Data* for more information.
+GeoTrellis provides utility objects that read and write GeoJson from GeoTrellis feature objects. See the :ref:`GeoJSON-0.9.0` section of *Reading and Writing Data* for more information.

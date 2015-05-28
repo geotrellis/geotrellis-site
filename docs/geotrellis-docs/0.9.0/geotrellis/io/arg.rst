@@ -1,12 +1,12 @@
-.. _`arg`:
-.. _`Azavea Raster Grid format (ARG)`:
+.. _`arg-0.9.0`:
+.. _`Azavea Raster Grid format (ARG)-0.9.0`:
 
 Azavea Raster Grid format (ARG)
 ===============================
 
 The ARG (Azavea Raster Grid) format is a simple way to encode raster data. A raster encoded in ARG comprises two files: foo.json and foo.arg. The JSON file contains all metadata about the raster, including name, data type, resolution, and the geographic extent. The ARG file contains the actual raster data (a two-dimension grid of numbers). It's important to know that both files are required.
 
-.. _ARG metadata:
+.. _`ARG metadata-0.9.0`:
 
 Metadata
 --------
@@ -29,7 +29,7 @@ Here is a sample JSON metadata file. Every key seen here is required. Other keys
     "cols": 5000
   }
 
-The ``layer`` key provides the name of the raster as a string. The type must be set to a valid type that GeoTrellis can read, such as ``arg`` or ``tiled``. See the documentation for :ref:`rasterlayers` for a complete list of layer types.
+The ``layer`` key provides the name of the raster as a string. The type must be set to a valid type that GeoTrellis can read, such as ``arg`` or ``tiled``. See the documentation for :ref:`rasterlayers-0.9.0` for a complete list of layer types.
 
 The geographic area covered by the raster is given by the points (``xmin``, ``ymin``) and (``xmax``, ``ymax``). ``xmin`` is the western edge of the raster and ``ymin`` is the southern edge. Together these values form the "lower left point" of the rectangle. ``xmax`` is the eastern edge of the raster and ``ymax`` is the northern edge. Together these values for the "upper right point" of the rectangle.
 

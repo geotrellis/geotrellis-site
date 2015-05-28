@@ -1,4 +1,4 @@
-.. _statistics:
+.. _statistics-0.9.0:
 
 Statistical Operations
 ======================

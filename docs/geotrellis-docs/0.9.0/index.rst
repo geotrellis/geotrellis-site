@@ -1,7 +1,7 @@
-Documentation
-=============
+0.9.0
+=====
 
-This is the index of all documentation chapters for the different modules of the *geotrellis* suite:
+This is the index for the 0.9.0 modules of the *geotrellis* suite:
 
 .. toctree::
 

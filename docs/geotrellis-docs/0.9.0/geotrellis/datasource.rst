@@ -1,5 +1,5 @@
-.. _Datasource:
-.. _Datasources:
+.. _Datasource-0.9.0:
+.. _Datasources-0.9.0:
 
 DataSource
 ==========
@@ -37,7 +37,7 @@ The DataSource has methods to transform the elements of the sequence. It has fam
 
 ``mapOp`` and ``combineOp``
   These methods behave like their non-Op counterparts, but instead take functions that
-  work with :ref:`Operations`. This allows you to work with the operations of the elements,
+  work with :ref:`Operations-0.9.0`. This allows you to work with the operations of the elements,
   which can be useful in cases where you want to modify the elements base on GeoTrellis Operations.
 
 Getting values from a DataSource
@@ -47,7 +47,7 @@ After a DataSource is created and transformed, you need some way to actually run
 and get the resulting data. You can do this by running the DataSource against the GeoTrellis server.
 The GeoTrellis server is an implicit parameter that is imported by ``import geotrellis._``. If you
 are using the default server configured by the configuration file, you won't have to worry about
-what server is being passed to the methods for running DataSources. See the section on the GeoTrellis :ref:`Server`.
+what server is being passed to the methods for running DataSources. See the section on the GeoTrellis :ref:`Server-0.9.0`.
 
 ValueSource
 -----------
@@ -58,7 +58,7 @@ a value that is the result of a chain of operations; for instance, if you mapped
 their maximum value, and reduced the resulting DataSource by taking the max of the sequence, you would
 end up with a ``ValueSource[Int]``, which when run would give the maximum value of the raster.
 
-.. _RasterSource:
+.. _RasterSource-0.9.0:
 
 RasterSource
 ------------
