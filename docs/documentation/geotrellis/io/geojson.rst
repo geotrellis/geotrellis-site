@@ -1,6 +1,0 @@
-.. _geojson:
-
-GeoJSON
--------
-
-TODO

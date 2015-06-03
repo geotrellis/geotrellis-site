@@ -2,6 +2,6 @@
 
    introduction/index
    tutorials/index
-   documentation/index
+   geotrellis-docs/index
    project-info/index
    contact
