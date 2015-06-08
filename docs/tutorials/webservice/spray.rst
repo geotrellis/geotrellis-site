@@ -130,6 +130,7 @@ Lets make an endpoint that will load a raster of a given name and render it to P
 
 .. includecode:: code/GeoTrellisService.scala
   :snippet: RasterRoute
+  }
 
 :ref:`RasterSource-0.9.0` is an object that represents the result of an operation that loads a raster with ID of "RASTER_NAME" from the catalog in the future. We are able to transform the result of this operation by using the methods defined on ``RasterSource``, such as ``.renderPng()``, ``localMap``, etc.  Note that ``.renderPng(_)`` transforms a ``RasterSource`` into a ``ValueSource``, essentially reducing a future collection of values, a raster, into a single one value, PNG file. We will see shortly that two RasterSources can be combined with ``*`` operation.
 
@@ -189,6 +190,11 @@ A ``Catalog`` is what a GeoTrellis server uses to define the data that can be us
 
 This catalog defines one data store, which is the directory ``data/arg``. This means any raster in ARG format found in that directory will be available to the Server. For a description of the ARG format, see the documentation on loading data. Note that a data store cannot be the same directory as the catalog.json lives, because the Server will consider any JSON file in a data store directory to be a layer definition for an :ref:`ARG-0.9.0` file.
 
+All that remains is to tell GeoTrellis where to find the catalog. This can easily be done by creating one last file ``src/main/resources/application.conf`` containing:
+
+.. code-block:: scala
+	geotrellis.catalog = "data/catalog.json"
+
 You can `download the data`__ from the completed tutorial project. It contains two rasters: 
 
   - ``SBN_inc_percap`` (Income per capita in Philadelphia area) -
@@ -206,7 +212,7 @@ Now that we have the data and the catalog defined we can finally test the servic
 
 .. code-block:: scala
 
-  val rootRoute = pingRoute ~ pongRoute ~ rasterRoute
+  def rootRoute = pingRoute ~ pongRoute ~ rasterRoute
   
 ... and restart the server. Lets see:
 
