@@ -2,6 +2,10 @@
 
 Current Versions
 ================
+0.10.0-M1
+---------
+
+This is a milestone release availabe in maven central.  It includes the addition of Spark support, RasterRDD[K] type support, HDFA/Accumulo/S3 storage support, anew geotrellis-vector library (a Scala wrapper around the JTS library, GeoJSON and reprojection support), raster reprojection, and many other features.  The major missing feature that will be in the final 0.10.0 release is support for multi-band rasters.
 
 0.9.0
 -----
