@@ -3,6 +3,20 @@
 Getting Started
 ===============
 
+Introduction
+------------
+
+GeoTrellis is a geospatial data processing engine for high performance applications that work with large geospatial data set. It works by supporting computation and data storage on a distributed cluster of machines.  GeoTrellis is written in Scala and relies on Spark.  It can also leverage HDFS, Accumulo, and S3 storage.  This is a framework project and is not aimed at end users.  If you are interested in either modifying or contributing to the project, you will likely need to learn Scala, and, to make significant contributions, learn about Spark.  Here are some resources:
+
+- Coursera:  Functional Programming Principles with Scala - https://www.coursera.org/course/progfun
+- Coursera:  Principles of Reactive Programming - https://www.coursera.org/course/reactive
+- Book:  Programming in Scala: A Comprehensive Step-by-Step Guide, 2nd Edition, by Martin Odersky, Lex Spoon, and Bill Venners 
+- Book:  Advanced Analytics with Spark: Patterns for Learning from Data at Scale, by Sandy Ryza, Uri Laserson, Sean Owen
+- Book:  Learning Spark: Lightning-Fast Big Data Analysis, by Holden Karau, Andy Konwinski, Patrick Wendell
+
+
+Dependencies
+------------
 .. _adding-dependencies:
 
 We publish the jars of the current release version of GeoTrellis, so you can include GeoTrellis in an SBT project by adding the following to your build.sbt file:
