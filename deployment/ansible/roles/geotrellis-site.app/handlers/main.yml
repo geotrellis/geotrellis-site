@@ -1,0 +1,3 @@
+---
+- name: Restart GeoTrellis site
+  service: name=geotrellis-site state=restarted
