@@ -21,5 +21,4 @@ TAGS
 .idea
 
 .vagrant
-build/roles/*
-!build/roles/.gitkeep
+deployment/ansible/roles/azavea.*

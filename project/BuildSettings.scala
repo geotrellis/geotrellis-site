@@ -64,7 +64,7 @@ object BuildSettings {
         constant(Seq(docsLocation)).map(_.flatMap(_.***.get))
       },
       fork := true,
-      assembly <<= assembly.dependsOn(unidoc in LocalRootProject)
+      assembly <<= assembly.dependsOn(unidoc in Compile in LocalRootProject)
     )
 
   lazy val docsSettings = basicSettings ++ noPublishing ++ seq(
@@ -81,10 +81,10 @@ object BuildSettings {
     javaOptions in Revolver.reStart ++= Seq("-verbose:gc", "-XX:+PrintCompilation")
   )
 
-  import com.github.siasia.WebPlugin._
+  import com.earldouglas.xsbtwebplugin.WebPlugin._
   lazy val jettyExampleSettings = exampleSettings ++ webSettings // ++ disableJettyLogSettings
 
-  import com.github.siasia.PluginKeys._
+  import com.earldouglas.xsbtwebplugin.PluginKeys._
   lazy val disableJettyLogSettings = inConfig(container.Configuration) {
     seq(
       start <<= (state, port, apps, customConfiguration, configurationFiles, configurationXml) map {

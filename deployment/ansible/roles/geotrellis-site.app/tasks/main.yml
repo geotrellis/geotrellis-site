@@ -1,0 +1,66 @@
+---
+- name: Install GeoTrellis site dependencies
+  apt: pkg=python-sphinx state=present
+
+- name: Create service account for the GeoTrellis site
+  user: name={{ geotrellis_site_user }}
+        system=yes
+        home=/var/lib/geotrellis-site
+        shell=/bin/false
+        state=present
+
+- name: Checkout the GeoTrellis site
+  git: repo=https://github.com/geotrellis/geotrellis-site.git
+       dest=/opt/geotrellis-site
+       depth=1
+       accept_hostkey=yes
+       version=master
+  notify:
+    - Restart GeoTrellis site
+  when: packing
+
+- name: Extract the Hillshade data files
+  unarchive: src=/opt/geotrellis-site/site/data/hillshade/hills.zip
+             dest=/opt/geotrellis-site/site/data/hillshade
+             copy=no
+
+- name: Alter GeoTrellis site permissions
+  file: path=/opt/geotrellis-site
+        owner="{{ geotrellis_site_user }}"
+        group="{{ geotrellis_site_user }}"
+        recurse=yes
+        state=directory
+
+- name: Configure Nginx site
+  template: src=geotrellis-site-nginx.conf.j2
+            dest=/etc/nginx/sites-available/geotrellis-site.conf
+  notify:
+    - Restart Nginx
+
+- name: Enable Nginx site
+  file: src=/etc/nginx/sites-available/geotrellis-site.conf
+        dest=/etc/nginx/sites-enabled/geotrellis-site
+        state=link
+  notify:
+    - Restart Nginx
+
+- name: Create GeoTrellis site service definition
+  template: src=geotrellis-site-upstart.conf.j2
+            dest=/etc/init/geotrellis-site.conf
+  notify:
+    - Restart GeoTrellis site
+
+- name: Touch log file if it does not exist
+  command: "touch {{ geotrellis_site_log }}"
+  args:
+    creates: "{{ geotrellis_site_log }}"
+
+- name: Set log file permissions
+  file: path="{{ geotrellis_site_log }}"
+        owner="{{ geotrellis_site_user }}"
+        group="{{ geotrellis_site_user }}"
+        mode=0644
+
+- name: Configure GeoTrellis site log rotation
+  template: src=logrotate_geotrellis-site.j2
+            dest=/etc/logrotate.d/geotrellis-site
