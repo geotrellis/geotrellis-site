@@ -20,8 +20,8 @@
   when: packing
 
 - name: Extract the Hillshade data files
-  unarchive: src=/opt/geotrellis-site/site/data/hillshade/hills.zip
-             dest=/opt/geotrellis-site/site/data/hillshade
+  unarchive: src=/opt/geotrellis-site/srv/data/hillshade/hills.zip
+             dest=/opt/geotrellis-site/srv/data/hillshade
              copy=no
 
 - name: Alter GeoTrellis site permissions

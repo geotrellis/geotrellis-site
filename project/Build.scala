@@ -13,16 +13,15 @@ object Build extends Build {
   }
 
   lazy val root = Project("root",file("."))
-    .aggregate(docs, site)
+    .aggregate(docs, srv)
     .settings(basicSettings: _*)
     .settings(noPublishing: _*)
     .settings(unidocSettings: _*)
 
 
 
-  lazy val site = Project("site", file("site"))
+  lazy val srv = Project("srv", file("srv"))
     .settings(siteSettings: _*)
-    .settings(SphinxSupport.settings: _*)
     .settings(resolvers ++= resolutionRepos)
     .settings(javaOptions += "-Xmx4G")
     .settings(libraryDependencies ++=

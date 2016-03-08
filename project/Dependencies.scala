@@ -31,7 +31,6 @@ object Dependencies {
   val sprayCaching  = "io.spray"                                %   "spray-caching"         % "1.2.0"
   val sprayCan      = "io.spray"                                %   "spray-can"             % "1.2.0"
   val sprayRouting  = "io.spray"                                %   "spray-routing"         % "1.2.0"
-  val twirlApi      = "io.spray"                                %%  "twirl-api"             % "0.6.1"
 
   val logback       = "ch.qos.logback"                          %   "logback-classic"       % "1.0.13"
   val mimepull      = "org.jvnet.mimepull"                      %   "mimepull"              % "1.9.3"
