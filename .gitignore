@@ -24,4 +24,4 @@ TAGS
 deployment/ansible/roles/azavea.*
 
 srv/data/hillshade/hills.arg
-srv/data/hillshade/hills.json
+site/_site/*

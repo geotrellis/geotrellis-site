@@ -7,7 +7,6 @@ import sbtassembly.Plugin._
 import sbtunidoc.Plugin._
 import sbtunidoc.Plugin.UnidocKeys._
 import spray.revolver.RevolverPlugin.Revolver
-import twirl.sbt.TwirlPlugin.Twirl
 import com.typesafe.sbt.osgi.SbtOsgi
 import SbtOsgi._
 
@@ -58,7 +57,7 @@ object BuildSettings {
     }
   )
 
-  lazy val siteSettings = basicSettings ++ formatSettings ++ noPublishing ++ Twirl.settings ++ Revolver.settings ++
+  lazy val siteSettings = basicSettings ++ formatSettings ++ noPublishing ++ Revolver.settings ++
     SiteSupport.settings ++ seq(
       resourceGenerators in Compile <+= (target in ScalaUnidoc in unidoc in LocalRootProject){ docsLocation =>
         constant(Seq(docsLocation)).map(_.flatMap(_.***.get))

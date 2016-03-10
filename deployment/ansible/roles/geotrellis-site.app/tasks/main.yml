@@ -2,6 +2,10 @@
 - name: Install GeoTrellis site dependencies
   apt: pkg=python-sphinx state=present
 
+- name: Install jekyll
+  gem: name=jekyll
+       version=3.1.2
+
 - name: Create service account for the GeoTrellis site
   user: name={{ geotrellis_site_user }}
         system=yes
@@ -43,6 +47,11 @@
         state=link
   notify:
     - Restart Nginx
+
+- name: Build jekyll source
+  command: "jekyll build --source {{ jekyll_dir }} --destination {{ jekyll_dir }}/_site"
+  args:
+    creates: "{{ jekyll_dir }}/_site"
 
 - name: Create GeoTrellis site service definition
   template: src=geotrellis-site-upstart.conf.j2
