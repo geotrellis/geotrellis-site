@@ -50,8 +50,6 @@
 
 - name: Build jekyll source
   command: "jekyll build --source {{ jekyll_dir }} --destination {{ jekyll_dir }}/_site"
-  args:
-    creates: "{{ jekyll_dir }}/_site"
 
 - name: Create GeoTrellis site service definition
   template: src=geotrellis-site-upstart.conf.j2
