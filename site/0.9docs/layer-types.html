@@ -1,0 +1,183 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+<section class="mainContentWrap">
+  <div class="container mainContent">
+
+    
+
+<div class="row-fluid breadcrumb-row">
+  <ul class="breadcrumb">
+
+        <li><a href="/">Home</a></li>
+      
+    
+        
+          <li><a href="/geotrellis-docs/">Documentation</a> </li>
+        
+      
+    
+        
+          <li><a href="/geotrellis-docs/0.9.0/">0.9.0</a> </li>
+        
+      
+    
+        
+          <li><a href="/geotrellis-docs/0.9.0/geotrellis/">geotrellis</a> </li>
+        
+      
+    
+        
+          <li><a href="/geotrellis-docs/0.9.0/geotrellis/io/">Reading and Writing Data</a> </li>
+        
+      
+    
+        
+          <li class="active">Raster Layer Types</li>
+        
+      
+    
+
+  </ul>
+</div>
+
+
+    <div class="row-fluid">
+
+      
+
+<aside class="span3 sidebar">
+
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">Reading and Writing Data</li>
+
+      
+
+      
+
+      
+
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/"><i class="icon-chevron-right"></i> Azavea Raster Grid format (ARG)</a>
+      </li>
+        
+      
+        
+          <li class="active">
+            
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/"><i class="icon-white icon-chevron-right"></i> Raster Layer Types</a>
+      
+            
+              <ul class="nav nav-list">
+                
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/#common-metadata"><i class="icon-chevron-right"></i> Common Metadata</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/#single-tile-args"><i class="icon-chevron-right"></i> Single Tile ARGs</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/#tiled-args"><i class="icon-chevron-right"></i> Tiled ARGs</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/#args-read-from-a-url"><i class="icon-chevron-right"></i> ARGs read from a URL</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/#geotiff"><i class="icon-chevron-right"></i> GeoTiff</a>
+      </li>
+        
+      
+              </ul>
+            
+          </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/catalog/"><i class="icon-chevron-right"></i> The Catalog</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/geojson/"><i class="icon-chevron-right"></i> GeoJSON</a>
+      </li>
+        
+      
+
+    </ul>
+  </div>
+
+</aside>
+
+
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="raster-layer-types">
+<span id="rasterlayers-0-9-0"></span><h1>Raster Layer Types</h1>
+<p>RasterLayers represent raster data in the <a class="reference internal" href="../catalog/#catalog-0-9-0"><em>catalog</em></a>. They consist of a metadata JSON file, and depending on the raster layer type, one or more data files.</p>
+<div class="section" id="common-metadata">
+<h2>Common Metadata</h2>
+<dl class="docutils">
+<dt>layer</dt>
+<dd>the <tt class="docutils literal"><span class="pre">layer</span></tt> property of the metadata JSON gives the name of layer, which can be used to reference the layer in Scala code.</dd>
+</dl>
+<dl class="docutils" id="layer-cache">
+<dt>cache</dt>
+<dd>the <tt class="docutils literal"><span class="pre">cache</span></tt> property will tell GeoTrellis whether or not to cache the raw byte information for the raster layer. This property does not apply to GeoTiff raster layers.</dd>
+</dl>
+<p>See the section on <a class="reference internal" href="../arg/#arg-metadata-0-9-0"><em>Metadata</em></a> for more information.</p>
+</div>
+<div class="section" id="single-tile-args">
+<h2>Single Tile ARGs</h2>
+<p>A single tile ARG consists only of one JSON metadata file and a <tt class="docutils literal"><span class="pre">.arg</span></tt> file for the binary data of the raster. See the section on <a class="reference internal" href="../arg/#arg-0-9-0"><em>ARG</em></a> for more information.</p>
+</div>
+<div class="section" id="tiled-args">
+<span id="tiledrasterlayer-0-9-0"></span><h2>Tiled ARGs</h2>
+<p>TODO</p>
+</div>
+<div class="section" id="args-read-from-a-url">
+<h2>ARGs read from a URL</h2>
+<p>TODO</p>
+</div>
+<div class="section" id="geotiff">
+<h2>GeoTiff</h2>
+<p>TODO</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

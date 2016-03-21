@@ -1,0 +1,268 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+<section class="mainContentWrap">
+  <div class="container mainContent">
+
+    
+
+<div class="row-fluid breadcrumb-row">
+  <ul class="breadcrumb">
+
+        <li><a href="/">Home</a></li>
+        
+          <li><a href="/geotrellis-docs/">Documentation</a> </li>
+          <li><a href="/geotrellis-docs/0.9.0/">0.9.0</a> </li>
+          <li><a href="/geotrellis-docs/0.9.0/geotrellis/">geotrellis</a> </li>
+          <li><a href="/geotrellis-docs/0.9.0/geotrellis/io/">Reading and Writing Data</a> </li>
+          <li class="active">Azavea Raster Grid format (ARG)</li>
+  </ul>
+</div>
+
+
+    <div class="row-fluid">
+
+      
+
+<aside class="span3 sidebar">
+
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">Reading and Writing Data</li>
+
+      
+
+      
+
+      
+
+      
+        
+          <li class="active">
+            
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/"><i class="icon-white icon-chevron-right"></i> Azavea Raster Grid format (ARG)</a>
+      
+            
+              <ul class="nav nav-list">
+                
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/#metadata"><i class="icon-chevron-right"></i> Metadata</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/#data"><i class="icon-chevron-right"></i> Data</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/#examples"><i class="icon-chevron-right"></i> Examples</a>
+      </li>
+        
+      
+              </ul>
+            
+          </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/"><i class="icon-chevron-right"></i> Raster Layer Types</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/catalog/"><i class="icon-chevron-right"></i> The Catalog</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/geojson/"><i class="icon-chevron-right"></i> GeoJSON</a>
+      </li>
+        
+      
+
+    </ul>
+  </div>
+
+</aside>
+
+
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="azavea-raster-grid-format-arg">
+<span id="azavea-raster-grid-format-arg-0-9-0"></span><span id="arg-0-9-0"></span><h1>Azavea Raster Grid format (ARG)</h1>
+<p>The ARG (Azavea Raster Grid) format is a simple way to encode raster data. A raster encoded in ARG comprises two files: foo.json and foo.arg. The JSON file contains all metadata about the raster, including name, data type, resolution, and the geographic extent. The ARG file contains the actual raster data (a two-dimension grid of numbers). It&#8217;s important to know that both files are required.</p>
+<div class="section" id="metadata">
+<span id="arg-metadata-0-9-0"></span><h2>Metadata</h2>
+<p>Here is a sample JSON metadata file. Every key seen here is required. Other keys are allowed but will be ignored.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;layer&quot;</span><span class="o">:</span> <span class="s2">&quot;philly rainfall&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;arg&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;datatype&quot;</span><span class="o">:</span> <span class="s2">&quot;int8&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;xmin&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">8507736.525864778</span><span class="p">,</span>
+  <span class="s2">&quot;ymin&quot;</span><span class="o">:</span> <span class="mf">4847928.144104313</span><span class="p">,</span>
+  <span class="s2">&quot;xmax&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">8457736.525864778</span><span class="p">,</span>
+  <span class="s2">&quot;ymax&quot;</span><span class="o">:</span> <span class="mf">4897928.144104313</span><span class="p">,</span>
+  <span class="s2">&quot;cellwidth&quot;</span><span class="o">:</span> <span class="mf">10.0</span><span class="p">,</span>
+  <span class="s2">&quot;cellheight&quot;</span><span class="o">:</span> <span class="mf">10.0</span><span class="p">,</span>
+  <span class="s2">&quot;rows&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
+  <span class="s2">&quot;cols&quot;</span><span class="o">:</span> <span class="mi">5000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">layer</span></tt> key provides the name of the raster as a string. The type must be set to a valid type that GeoTrellis can read, such as <tt class="docutils literal"><span class="pre">arg</span></tt> or <tt class="docutils literal"><span class="pre">tiled</span></tt>. See the documentation for <a class="reference internal" href="../rasterlayers/#rasterlayers-0-9-0"><em>Raster Layer Types</em></a> for a complete list of layer types.</p>
+<p>The geographic area covered by the raster is given by the points (<tt class="docutils literal"><span class="pre">xmin</span></tt>, <tt class="docutils literal"><span class="pre">ymin</span></tt>) and (<tt class="docutils literal"><span class="pre">xmax</span></tt>, <tt class="docutils literal"><span class="pre">ymax</span></tt>). <tt class="docutils literal"><span class="pre">xmin</span></tt> is the western edge of the raster and <tt class="docutils literal"><span class="pre">ymin</span></tt> is the southern edge. Together these values form the &#8220;lower left point&#8221; of the rectangle. <tt class="docutils literal"><span class="pre">xmax</span></tt> is the eastern edge of the raster and <tt class="docutils literal"><span class="pre">ymax</span></tt> is the northern edge. Together these values for the &#8220;upper right point&#8221; of the rectangle.</p>
+<p>The coordinate system for these points is unspecified. While the Web Mercator projection is often used, it is not required.</p>
+<p>The resolution of the raster is provided by <tt class="docutils literal"><span class="pre">cellwidth</span></tt> and <tt class="docutils literal"><span class="pre">cellheight</span></tt>, which describe how much geographic area is covered by a single pixel&#8217;s width and height, respectively. In general, these values should be the same when the output will be rendered with square pixels, although this is not enforced.</p>
+<p>Geographic values like <tt class="docutils literal"><span class="pre">xmin</span></tt> and <tt class="docutils literal"><span class="pre">cellwidth</span></tt> are interpreted as 64-bit floating point values. Thus, some slight rounding error may accumulate when doing calculations with these values. For this reason, the dimensions of the raster are also provided: the width of the raster is given in columns (<tt class="docutils literal"><span class="pre">cols</span></tt>) and the height of the raster is given in <tt class="docutils literal"><span class="pre">rows</span></tt>. Both values must be positive integers.</p>
+<p>The <tt class="docutils literal"><span class="pre">datatype</span></tt> parameter communicates the width (in bytes) of each cell, as well as how to interpret the value. It must be one of the following:</p>
+<table class="table-striped docutils">
+<colgroup>
+<col width="19%" />
+<col width="19%" />
+<col width="10%" />
+<col width="11%" />
+<col width="19%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">datatype</th>
+<th class="head">bytes per cell</th>
+<th class="head">min</th>
+<th class="head">max</th>
+<th class="head">no data value</th>
+<th class="head">Scala no data value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>int8</td>
+<td>1</td>
+<td>-127</td>
+<td>127</td>
+<td>-128</td>
+<td>Byte.MinValue</td>
+</tr>
+<tr class="row-odd"><td>int16</td>
+<td>2</td>
+<td>-32,767</td>
+<td>32,767</td>
+<td>-32,767</td>
+<td>Short.MinValue</td>
+</tr>
+<tr class="row-even"><td>int32</td>
+<td>4</td>
+<td>-2 <sup>31+1</sup> </td>
+<td>2 <sup>31-1</sup> </td>
+<td>-2 <sup>31</sup></td>
+<td>Int.MinValue</td>
+</tr>
+<tr class="row-odd"><td>float32</td>
+<td>32</td>
+<td>-10 <sup>38.5</sup> </td>
+<td>10 <sup>38.5</sup> </td>
+<td>NaN</td>
+<td>Float.NaN</td>
+</tr>
+<tr class="row-even"><td>float64</td>
+<td>64</td>
+<td>-10 <sup>308.2</sup> </td>
+<td>10 <sup>308.2</sup> </td>
+<td>NaN</td>
+<td>Float.NaN</td>
+</tr>
+</tbody>
+</table>
+<p>There are three specific keys which are not directly used by GeoTrellis but which could be used by other clients: <tt class="docutils literal"><span class="pre">epsg</span></tt>, <tt class="docutils literal"><span class="pre">xskew</span></tt> and <tt class="docutils literal"><span class="pre">yskew</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">epsg</span></tt> attribute gives the coordinate system of the data. When absent, the coordinate system is assumed to be Web Mercator (i.e. &#8220;3785&#8221;).</p>
+<p>The <tt class="docutils literal"><span class="pre">xskew</span></tt> and <tt class="docutils literal"><span class="pre">yskew</span></tt> attributes support rotated rasters. When unspecified their values are assumed to be &#8220;0.0&#8221;. GeoTrellis does not currently support rasters whose skew attributes are not zero (although they are allowed by the ARG format).</p>
+</div>
+<div class="section" id="data">
+<h2>Data</h2>
+<p>The ARG file contains every cell value, starting with the upper-left cell (Northwest corner) and ending with the lower-right cell (Southeast corner). Notice that this is different than how the geographic extent is represented.</p>
+<p>There is no header information in an ARG file, no checksum, and no form of compression. Each cell uses the same amount of space, so the total size of an ARG file is always equal to the number of cells times the size of each cell. For example, a 40x40 raster will have 1600 cells, so at 4 bytes per cell will use 1600 x 4 = 6400 bytes of space, or 6.4K.</p>
+<p>Sometimes this kind of file is called a &#8220;raw file&#8221;.</p>
+<p>All data is stored in network byte order (big-endian). That is, a 32-bit integer with the value 1 would be represented as <tt class="docutils literal"><span class="pre">0x00000001</span></tt>.</p>
+<p>Notice that without the accompanying JSON file there is no way to know what geographic area a raster pertains to, or even the correct dimensions of the raster.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples</h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="c"># given fmt and nodata, encodes a value as bytes</span>
+<span class="k">def</span> <span class="nf">pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="n">value</span> <span class="o">=</span> <span class="n">nodata</span>
+    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="c"># packs the given values together as bytes</span>
+<span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="n">pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+
+<span class="c"># translates the bytes &quot;\x12\x13&quot; into &quot;0x1213&quot;</span>
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;</span><span class="si">%02x</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s">&#39;0x&#39;</span> <span class="o">+</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+
+<span class="c"># None means &quot;no data&quot;</span>
+<span class="n">tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s">&#39;formats&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s">&#39;int8&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;b&#39;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">7</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="s">&#39;int16&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;h&#39;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">15</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="s">&#39;int32&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;i&#39;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">31</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="s">&#39;int64&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;q&#39;</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">63</span><span class="p">))],</span>
+     <span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s">&#39;formats&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s">&#39;uint8&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;B&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">8</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s">&#39;uint16&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;H&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">16</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s">&#39;uint32&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;I&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">32</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s">&#39;uint64&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;Q&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">64</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span>
+     <span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s">&#39;formats&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s">&#39;float32&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;f&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s">&#39;nan&#39;</span><span class="p">)),</span>
+                 <span class="p">(</span><span class="s">&#39;float64&#39;</span><span class="p">,</span> <span class="s">&#39;&gt;d&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s">&#39;nan&#39;</span><span class="p">))],</span>
+     <span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.02</span><span class="p">,</span> <span class="mf">300.003</span><span class="p">]},</span>
+<span class="p">]</span>
+
+<span class="k">print</span> <span class="s">&quot;2x2 raster values:&quot;</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;  data: </span><span class="si">%r</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">)</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;formats&#39;</span><span class="p">]:</span>
+        <span class="nb">bytes</span> <span class="o">=</span> <span class="n">encode</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s">&quot;  </span><span class="si">%-7s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">show</span><span class="p">(</span><span class="nb">bytes</span><span class="p">))</span>
+        <span class="k">print</span> <span class="s">&quot;&quot;</span>
+
+<span class="k">print</span> <span class="s">&quot;nodata values:&quot;</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">)</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;formats&#39;</span><span class="p">]:</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="n">pack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">nodata</span><span class="p">,</span> <span class="n">nodata</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;  </span><span class="si">%-7s</span><span class="s"> </span><span class="si">%s</span><span class="s"> (</span><span class="si">%s</span><span class="s">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">show</span><span class="p">(</span><span class="n">nd</span><span class="p">),</span> <span class="n">nodata</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

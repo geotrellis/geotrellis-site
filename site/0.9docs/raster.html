@@ -1,0 +1,426 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+<section class="mainContentWrap">
+  <div class="container mainContent">
+
+    
+
+<div class="row-fluid breadcrumb-row">
+  <ul class="breadcrumb">
+
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <li><a href="/">Home</a></li>
+      
+    
+        
+          <li><a href="/geotrellis-docs/">Documentation</a> </li>
+        
+      
+    
+        
+          <li><a href="/geotrellis-docs/0.9.0/">0.9.0</a> </li>
+        
+      
+    
+        
+          <li><a href="/geotrellis-docs/0.9.0/geotrellis/">geotrellis</a> </li>
+        
+      
+    
+        
+          <li class="active">Rasters</li>
+        
+      
+    
+
+  </ul>
+</div>
+
+
+    <div class="row-fluid">
+
+      
+
+<aside class="span3 sidebar">
+
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">geotrellis</li>
+
+      
+
+      
+
+      
+
+      
+        
+          <li class="active">
+            
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/"><i class="icon-white icon-chevron-right"></i> Rasters</a>
+      
+            
+              <ul class="nav nav-list">
+                
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#raster-types"><i class="icon-chevron-right"></i> Raster Types</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#performance-considerations"><i class="icon-chevron-right"></i> Performance considerations</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#nodata"><i class="icon-chevron-right"></i> NoData</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#rasterdata"><i class="icon-chevron-right"></i> RasterData</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#rasterextent"><i class="icon-chevron-right"></i> RasterExtent</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#extent"><i class="icon-chevron-right"></i> Extent</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#relationship-of-grid-coordinates-and-map-coordinates"><i class="icon-chevron-right"></i> Relationship of Grid Coordinates and Map Coordinates</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/#warping"><i class="icon-chevron-right"></i> Warping</a>
+      </li>
+        
+      
+              </ul>
+            
+          </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/datasource/"><i class="icon-chevron-right"></i> DataSource</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/operations/"><i class="icon-chevron-right"></i> Operations</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/engine/"><i class="icon-chevron-right"></i> Akka Execution Engine</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/io/"><i class="icon-chevron-right"></i> Reading and Writing Data</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/raster-operations/"><i class="icon-chevron-right"></i> Raster Operations</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/rendering/"><i class="icon-chevron-right"></i> Rendering</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/vector/"><i class="icon-chevron-right"></i> Working with Vector Data</a>
+      </li>
+        
+      
+        
+          <li>
+        <a href="/geotrellis-docs/0.9.0/geotrellis/srs/"><i class="icon-chevron-right"></i> Spatial Reference Systems</a>
+      </li>
+        
+      
+
+    </ul>
+  </div>
+
+</aside>
+
+
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="rasters">
+<span id="raster-0-9-0"></span><h1>Rasters</h1>
+<p>The <tt class="docutils literal"><span class="pre">Raster</span></tt> data type is the core type in GeoTrellis that represents a grid of values covering an extent of area. Rasters allow you to get values out of them by column and row:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">val</span> <span class="n">raster</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span> <span class="o">???</span>
+
+  <span class="c1">// Gets the Int value from column 2, row 3</span>
+  <span class="k">val</span> <span class="n">v1</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+
+  <span class="c1">// Gets the Double value from column 4, row 5</span>
+  <span class="k">val</span> <span class="n">v2</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">getDouble</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span><span class="mi">5</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>You can iterate over the values of a raster using the <tt class="docutils literal"><span class="pre">foreach</span></tt> methods:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="c1">// Counts the number of values above 100</span>
+  <span class="k">var</span> <span class="n">countInt</span> <span class="k">=</span> <span class="mi">0</span>
+  <span class="n">raster</span><span class="o">.</span><span class="n">foreach</span> <span class="o">{</span> <span class="n">z</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=&gt;</span> <span class="k">if</span><span class="o">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="o">)</span> <span class="n">countInt</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">}</span>
+
+  <span class="c1">// Counts the number of values above 12.5</span>
+  <span class="k">var</span> <span class="n">countDouble</span> <span class="k">=</span> <span class="mi">0</span>
+  <span class="n">raster</span><span class="o">.</span><span class="n">foreachDouble</span> <span class="o">{</span> <span class="n">z</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=&gt;</span> <span class="k">if</span><span class="o">(</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mf">12.5</span><span class="o">)</span> <span class="n">countDouble</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>Rasters also have <tt class="docutils literal"><span class="pre">map</span></tt> which allows you to transform the value of each cell by a function:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="c1">// Adds 1 to the Int values of this raster</span>
+  <span class="k">val</span> <span class="n">mappedRaster1</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">map</span> <span class="o">{</span> <span class="n">z</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=&gt;</span> <span class="n">z</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">}</span>
+
+  <span class="c1">// Adds 0.1 to the Double values of this raster</span>
+  <span class="k">val</span> <span class="n">mappedRaster2</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">mapDouble</span> <span class="o">{</span> <span class="n">z</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=&gt;</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>You can also combine the cells of one raster with another to create a new raster,
+the rasters represent the same area and resolution:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">val</span> <span class="n">raster2</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span> <span class="o">???</span>
+
+  <span class="c1">// Adds the Int values of the two rasters together.</span>
+  <span class="k">val</span> <span class="n">combinedRaster1</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">combine</span><span class="o">(</span><span class="n">raster2</span><span class="o">)</span> <span class="o">{</span> <span class="o">(</span><span class="n">z1</span><span class="o">,</span><span class="n">z2</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">z1</span> <span class="o">+</span> <span class="n">z2</span> <span class="o">}</span>
+
+  <span class="c1">// Adds the Double values of the two rasters together.</span>
+  <span class="k">val</span> <span class="n">combinedRaster2</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">combineDouble</span><span class="o">(</span><span class="n">raster2</span><span class="o">)</span> <span class="o">{</span> <span class="o">(</span><span class="n">z1</span><span class="o">,</span><span class="n">z2</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">z1</span> <span class="o">+</span> <span class="n">z2</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>You may have noticed that there are two versions of each of these functions: one to work with Int values, and one to work with Double values. This is because Rasters are backed by an underlying array of primitive values. If that array is integer based, then it is much faster to work with the integer valued functions. If the primitive values are floating point, then you must use the Double version of the functions. Another option is to use the &#8216;dual&#8217; versions of the <tt class="docutils literal"><span class="pre">map</span></tt> and <tt class="docutils literal"><span class="pre">combine</span></tt>:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">val</span> <span class="n">dualMapped</span> <span class="k">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">dualMap</span> <span class="o">{</span> <span class="n">z</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=&gt;</span> <span class="n">z</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">}</span>
+                   <span class="o">{</span> <span class="n">z</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=&gt;</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">}</span>
+
+  <span class="k">val</span> <span class="n">dualCombined</span> <span class="k">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">dualCombine</span><span class="o">(</span><span class="n">raster2</span><span class="o">)</span> <span class="o">{</span> <span class="o">(</span><span class="n">z1</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span><span class="n">z2</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="n">z1</span> <span class="o">+</span> <span class="n">z2</span>
+    <span class="o">}</span> <span class="o">{</span> <span class="o">(</span><span class="n">z1</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">z2</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="n">z1</span> <span class="o">+</span> <span class="n">z2</span>
+    <span class="o">}</span>
+</pre></div>
+</div>
+<p>The dual versions will determine if the raster or rasters being operated on are all integer based, in which case it will use the integer function. Otherwise it will use the double valued functions.</p>
+<div class="section" id="raster-types">
+<span id="raster-type-0-9-0"></span><h2>Raster Types</h2>
+<p>Rasters can have a number of data types for the backing array. You can check the <tt class="docutils literal"><span class="pre">rasterType</span></tt> property of Raster to find the the type. You can also check the <tt class="docutils literal"><span class="pre">isFloat</span></tt> property to see if the raster has a floating point-based type.</p>
+<p>Here are the possible values returned by <tt class="docutils literal"><span class="pre">rasterType</span></tt>:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">TypeBit</span></tt></dt>
+<dd>Bit rasters are backed with an Byte array, but contain 8 values per byte: each cell is either value
+0 (<a class="reference internal" href="#nodata-0-9-0">NoData-0.9.0</a>) or 1. This means that TypeBit rasters are much smaller in memory and on disk than
+the other raster types. Mapping bit rasters is also very fast, since the map can only be
+an identity, an inverse, or a constant.</dd>
+<dt><tt class="docutils literal"><span class="pre">TypeByte</span></tt>, <tt class="docutils literal"><span class="pre">TypeShort</span></tt>, <tt class="docutils literal"><span class="pre">TypeInt</span></tt></dt>
+<dd>These types represent rasters containing a subset of the set  of integers.</dd>
+<dt><tt class="docutils literal"><span class="pre">TypeFloat</span></tt>, <tt class="docutils literal"><span class="pre">TypeDouble</span></tt></dt>
+<dd><p class="first">These types represent rasters containing a subset of the set  of rationals.
+They are backed by floating point primitive values. You must use the <tt class="docutils literal"><span class="pre">Double</span></tt> version of
+raster methods and operations, where they are available, in order to preserve the fractional
+parts of the values. Rasters of these types can be used with integer value methods and operations;
+however their values will be rounded in accordance to the Scala <tt class="docutils literal"><span class="pre">toInt</span></tt> function. For example:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">val</span> <span class="n">intValue</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">doubleValue</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">getDouble</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span><span class="mi">10</span><span class="o">)</span>
+
+  <span class="n">intValue</span> <span class="o">==</span> <span class="n">doubleValue</span><span class="o">.</span><span class="n">toInt</span>
+</pre></div>
+</div>
+<p>will hold true, except for the case of <a class="reference internal" href="#nodata-0-9-0">NoData-0.9.0</a>. This statement:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">var</span> <span class="n">isTrue</span> <span class="k">=</span> <span class="kc">true</span>
+  <span class="k">for</span><span class="o">(</span><span class="n">col</span> <span class="k">&lt;-</span> <span class="mi">0</span> <span class="n">until</span> <span class="n">raster</span><span class="o">.</span><span class="n">cols</span><span class="o">;</span>
+      <span class="n">row</span> <span class="k">&lt;-</span> <span class="mi">0</span> <span class="n">until</span> <span class="n">raster</span><span class="o">.</span><span class="n">rows</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">i</span> <span class="k">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="n">col</span><span class="o">,</span><span class="n">row</span><span class="o">)</span>
+    <span class="k">val</span> <span class="n">d</span> <span class="k">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">getDouble</span><span class="o">(</span><span class="n">col</span><span class="o">,</span><span class="n">row</span><span class="o">)</span>
+    <span class="n">isTrue</span> <span class="o">&amp;=</span> <span class="o">(</span><span class="n">isNoData</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="n">isNoData</span><span class="o">(</span><span class="n">d</span><span class="o">))</span>
+  <span class="o">}</span>
+  <span class="n">isTrue</span>
+</pre></div>
+</div>
+<p class="last">will always evaluate to <tt class="docutils literal"><span class="pre">true</span></tt> for any raster.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="performance-considerations">
+<h2>Performance considerations</h2>
+<p>The type of the raster can greatly impact the performance of operations on the raster. For
+instance, consider the following benchmarking code, (similar to the RasterMap.scala code
+contained within the <a class="reference internal" href="../../benchmarking/#benchmarking-0-9-0"><em>geotrellis-benchmarking</em></a> project):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">def</span> <span class="n">timeRasterMapInt</span><span class="o">(</span><span class="n">reps</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">run</span><span class="o">(</span><span class="n">reps</span><span class="o">)(</span><span class="n">rasterMapInt</span><span class="o">)</span>
+<span class="k">def</span> <span class="n">rasterMapInt</span> <span class="k">=</span> <span class="n">intRaster</span> <span class="n">map</span> <span class="o">{</span> <span class="n">i</span> <span class="k">=&gt;</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">}</span>
+
+<span class="k">def</span> <span class="n">timeRasterMapByte</span><span class="o">(</span><span class="n">reps</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">run</span><span class="o">(</span><span class="n">reps</span><span class="o">)(</span><span class="n">rasterMapByte</span><span class="o">)</span>
+<span class="k">def</span> <span class="n">rasterMapByte</span> <span class="k">=</span> <span class="n">raster</span> <span class="n">map</span> <span class="o">{</span> <span class="n">i</span> <span class="k">=&gt;</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">}</span>
+
+<span class="k">def</span> <span class="n">timeRasterMapDouble</span><span class="o">(</span><span class="n">reps</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">run</span><span class="o">(</span><span class="n">reps</span><span class="o">)(</span><span class="n">rasterMapDouble</span><span class="o">)</span>
+<span class="k">def</span> <span class="n">rasterMapDouble</span> <span class="k">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">mapDouble</span> <span class="o">{</span> <span class="n">d</span> <span class="k">=&gt;</span> <span class="n">d</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">}</span>
+</pre></div>
+</div>
+<p>These benchmarks against TypeInt, TypeByte, and TypeDouble rasters yield the following
+results on an example workstation when run with various size
+rasters (where the size is the length of one dimension in a square raster):</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="n">size</span>       <span class="n">benchmark</span>    <span class="n">us</span> <span class="n">linear</span> <span class="n">runtime</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span>  <span class="mi">256</span>       <span class="nc">RasterMap</span>   <span class="mi">508</span> <span class="k">=</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span>  <span class="mi">256</span>   <span class="nc">RasterMapByte</span>   <span class="mi">537</span> <span class="k">=</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span>  <span class="mi">256</span> <span class="nc">RasterMapDouble</span>   <span class="mi">860</span> <span class="k">=</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span>  <span class="mi">512</span>       <span class="nc">RasterMap</span>  <span class="mi">2119</span> <span class="k">=</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span>  <span class="mi">512</span>   <span class="nc">RasterMapByte</span>  <span class="mi">2020</span> <span class="k">=</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span>  <span class="mi">512</span> <span class="nc">RasterMapDouble</span>  <span class="mi">3465</span> <span class="k">=</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="mi">1024</span>       <span class="nc">RasterMap</span>  <span class="mi">8282</span> <span class="o">====</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="mi">1024</span>   <span class="nc">RasterMapByte</span>  <span class="mi">8403</span> <span class="o">====</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="mi">1024</span> <span class="nc">RasterMapDouble</span> <span class="mi">14158</span> <span class="o">=======</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="mi">2048</span>       <span class="nc">RasterMap</span> <span class="mi">34001</span> <span class="o">==================</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="mi">2048</span>   <span class="nc">RasterMapByte</span> <span class="mi">34020</span> <span class="o">==================</span>
+<span class="o">[</span><span class="kt">info</span><span class="o">]</span> <span class="mi">2048</span> <span class="nc">RasterMapDouble</span> <span class="mi">56196</span> <span class="o">==============================</span>
+</pre></div>
+</div>
+<p>As you can see, there is a performance cost to using floating point values to rasters, so be
+wary, and use -based rasters whenever possible.</p>
+</div>
+<div class="section" id="nodata">
+<span id="nodata-0-9-0"></span><h2>NoData</h2>
+<p>Conceptually, NoData values in a raster represent cells which do not contain any data. Having a NoData value allows there to be a representation of not just values, but the absence of values as well. Often times when rendering rasters, you will want regions with NoData values to be transparent, to visually represent that there is no data; consider a raster that describes values inside of a complex city border. While the <a class="reference internal" href="#extent">Extent</a> of the raster is rectangular, the boundry containing the data is a complex polygon. So the Extent could be a box that encloses the border polygon, and all cell values outside of that border polygon could be set to NoData.</p>
+<p>NoData values are represented differently for each <a class="reference internal" href="#raster-type-0-9-0">Raster Type-0.9.0</a>:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">TypeBit:</th><td class="field-body"><tt class="docutils literal"><span class="pre">0:Byte</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">TypeByte:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Byte.MinValue</span></tt> (<tt class="docutils literal"><span class="pre">byteNODATA</span></tt> in code)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">TypeShort:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Short.MinValue</span></tt> (<tt class="docutils literal"><span class="pre">shortNODATA</span></tt> in code)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">TypeInt:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Int.MinValue</span></tt> (<tt class="docutils literal"><span class="pre">NODATA</span></tt> in code)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">TypeFloat:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Float.NaN</span></tt></td>
+</tr>
+<tr class="field-even field"><th class="field-name">TypeDouble:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Double.NaN</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>If you are getting or setting values in a Raster or base RasterData, remember that .get, .getDouble, .set, and .setDouble return Ints and Doubles, so you&#8217;d really only be checking for or setting <tt class="docutils literal"><span class="pre">NODATA</span></tt> or <tt class="docutils literal"><span class="pre">Double.NaN</span></tt>.</p>
+</div>
+<div class="section" id="rasterdata">
+<h2>RasterData</h2>
+<p>The RasterData type represents the data of a raster without the consideration of how that data is spatially located. It can be considered a grid of columns and rows, and you can use RasterData to iterate over the cell values, select certain values, and transform one grid into another.</p>
+<p>The <tt class="docutils literal"><span class="pre">RasterData</span></tt> only contains information about the number of columns (member <tt class="docutils literal"><span class="pre">cols</span></tt>) and the number of rows (member <tt class="docutils literal"><span class="pre">rows</span></tt>) of the grid, as well as the RasterType (member <tt class="docutils literal"><span class="pre">getType</span></tt>).</p>
+<p>The <tt class="docutils literal"><span class="pre">RasterData</span></tt> trait represents immutable raster data. There is an implementating trait, <tt class="docutils literal"><span class="pre">MutableRasterData</span></tt>, that represents RasterData that can be written to. This includes all of the base implementations of RasterData that are backed by an Array. These core data types use a single dimensional array to hold all cell values. There is an implementation of one of these RasterData types for each RasterType. For instance, a <tt class="docutils literal"><span class="pre">FloatArrayRasterData</span></tt> is backed by an <tt class="docutils literal"><span class="pre">Array[Float]</span></tt>. The <tt class="docutils literal"><span class="pre">.get(col,row)</span></tt> methods are implemented by using the equation <tt class="docutils literal"><span class="pre">cols</span> <span class="pre">*</span> <span class="pre">row</span> <span class="pre">+</span> <span class="pre">col</span></tt> to translate from grid coordinates to array index. The exception to this rule is <tt class="docutils literal"><span class="pre">BitArrayRasterData</span></tt>, which is backed by an <tt class="docutils literal"><span class="pre">Array[Byte]</span></tt>, and uses bitwise operations to extract and set values of single bits within each byte. This makes the <tt class="docutils literal"><span class="pre">BitArrayRasterData</span></tt> much more compact than the next smallest <tt class="docutils literal"><span class="pre">MutableRasterData</span></tt> type, the <tt class="docutils literal"><span class="pre">ByteArrayRasterData</span></tt>.</p>
+</div>
+<div class="section" id="rasterextent">
+<h2>RasterExtent</h2>
+<p>The <tt class="docutils literal"><span class="pre">RasterExtent</span></tt> is what defines the spatial association of the data contained in the cells of the raster to areas in space. While the <tt class="docutils literal"><span class="pre">RasterData</span></tt> only has information about the columns and rows of the grid, the RasterExtent describes the bounding box of the area that this grid covers (represented with an <tt class="docutils literal"><span class="pre">Extent</span></tt>, and the width and height of the cells of the grid (which can be computed with the Extent, the number of columns and the number of rows). In fact, a Raster can be thought of as a wrapped tuple of (RasterData,RasterExtent), though this simplification breaks down when considering <tt class="docutils literal"><span class="pre">TileRaster</span></tt> and <tt class="docutils literal"><span class="pre">CroppedRaster</span></tt>.</p>
+</div>
+<div class="section" id="extent">
+<h2>Extent</h2>
+<p>The <tt class="docutils literal"><span class="pre">Extent</span></tt> object is simply a case class that contains <tt class="docutils literal"><span class="pre">xmin</span></tt>, <tt class="docutils literal"><span class="pre">ymin</span></tt>, <tt class="docutils literal"><span class="pre">xmax</span></tt>, and <tt class="docutils literal"><span class="pre">ymax</span></tt> values that represent the bounds of the area for which a raster covers. It does not contain any inherent information about which spatial reference system is being used for those values. For instance, if a Raster were to cover a part of Philadelphia, PA, USA, and the spatial reference system being used was latitude-longitude coordinates (ESPG:4326), then the extent might look like this:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">Extent</span><span class="o">(-</span><span class="mf">75.211</span><span class="o">,</span><span class="mf">39.928</span><span class="o">,-</span><span class="mf">75.146</span><span class="o">,</span><span class="mf">39.978</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>If we were working in Web Mercator (EPSG:3857), it might look like this:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="nc">Extent</span><span class="o">(-</span><span class="mf">8372453.456</span><span class="o">,</span><span class="mf">4855608.477</span><span class="o">,-</span><span class="mf">8365230.157</span><span class="o">,</span><span class="mf">4862755.339</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="relationship-of-grid-coordinates-and-map-coordinates">
+<h2>Relationship of Grid Coordinates and Map Coordinates</h2>
+<p>The Raster extent has two coordinate concepts involved: map coordinates and grid
+coordinates. Map coordinates are what the <tt class="docutils literal"><span class="pre">Extent</span></tt> class uses, and specifies points
+using an X coordinate and a Y coordinate. The X coordinate is oriented along west to east
+such that the larger the X coordinate, the more eastern the point. The Y coordinate is
+along south to north such that the larger the Y coordinate, the more northern the point.</p>
+<p>This contrasts with the grid coordinate system. The grid coordinate system does not
+actually reference points on the map, but instead a cell of the raster that represents
+values for some square area of the map. The column axis is similar in that the number
+gets larger as one goes from west to east; however, the row axis is inverted from map coordinates:
+as the row number increases, the cell is heading south. The top row is labeled as 0, and the next
+1, so that the highest indexed row is the southern most row of the raster.
+A cell has a height and a width that is in terms of map units. You can think of it as each cell
+is itself an extent, with width cellwidth and height cellheight. When a cell needs
+to be represented or thought of as a point, the center of the cell will be used.
+So when gridToMap is called, what is returned is the center point, in map coordinates.</p>
+<p>Map points are considered to be &#8216;inside&#8217; the cell based on these rules:</p>
+<ul class="simple">
+<li>If the point is inside the area of the cell, it is included in the cell.</li>
+<li>If the point lies on the north or west border of the cell, it is included in the cell.</li>
+<li>If the point lies on the south or east border of the cell, it is not included in the cell, it is included in the next southern or eastern cell, respectively.</li>
+</ul>
+<p>Note that based on these rules, the eastern and southern borders of an Extent are not actually
+considered to be part of the RasterExtent.</p>
+</div>
+<div class="section" id="warping">
+<h2>Warping</h2>
+<p>Warping is the term used to describe changing the resolution of the raster (the columns and the rows) as well as changing the extent of the raster (cropping). Warping rasters is as easy as passing the new raster extent to the <tt class="docutils literal"><span class="pre">warp</span></tt> function:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">val</span> <span class="nc">Extent</span><span class="o">(</span><span class="n">xmin</span><span class="o">,</span> <span class="n">ymin</span><span class="o">,</span> <span class="n">xmax</span><span class="o">,</span> <span class="n">ymax</span><span class="o">)</span> <span class="k">=</span>
+    <span class="n">raster</span><span class="o">.</span><span class="n">rasterExtent</span><span class="o">.</span><span class="n">extent</span>
+  <span class="k">val</span> <span class="n">newExtent</span> <span class="k">=</span>
+    <span class="nc">Extent</span><span class="o">(</span><span class="n">xmin</span><span class="o">,</span> <span class="n">ymin</span><span class="o">,</span> <span class="o">(</span><span class="n">xmax</span><span class="o">+</span><span class="n">xmin</span><span class="o">)/</span><span class="mi">2</span><span class="o">,</span> <span class="o">(</span><span class="n">ymax</span> <span class="o">+</span> <span class="n">ymin</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">newRasterExtent</span> <span class="k">=</span>
+    <span class="nc">RasterExtent</span><span class="o">(</span><span class="n">newExtent</span><span class="o">,</span> <span class="mi">256</span><span class="o">,</span> <span class="mi">256</span><span class="o">)</span>
+  <span class="n">raster</span><span class="o">.</span><span class="n">warp</span><span class="o">(</span><span class="n">newRasterExtent</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>This code takes the raster&#8217;s existing RasterExtent, crops it to the lower-left corner, and changes the resolution to 256x256.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
