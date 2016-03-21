@@ -25,9 +25,7 @@ Ensure that you only edit the files inside the [docs](docs/) subdirectory. After
 
 ```bash
 $ vagrant ssh
-vagrant@geotrellis-site:~$ export AWS_ACCESS_KEY_ID="..."
-vagrant@geotrellis-site:~$ export AWS_SECRET_ACCESS_KEY="..."
-vagrant@geotrellis-site:~$ packer build /opt/geotrellis-site/deployment/packer/template.js
+vagrant@geotrellis-site:~$ AWS_PROFILE="geotrellis-site" packer build /opt/geotrellis-site/deployment/packer/template.js
 ```
 
 If successful, this should generate an EC2 AMI of the GeoTrellis site. Launching an instance of the AMI (we typically use `m3.large` instances) should yield a functioning clone of [geotrellis.io](http://geotrellis.io).

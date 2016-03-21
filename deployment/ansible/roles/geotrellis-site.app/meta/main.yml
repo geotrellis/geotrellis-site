@@ -2,6 +2,7 @@
 dependencies:
   - { role: "azavea.git" }
   - { role: "azavea.ruby", ruby_development: True }
+  - { role: "azavea.nodejs" }
   - { role: "azavea.java" }
   - { role: "azavea.nodejs" }
   - { role: "azavea.nginx", nginx_delete_default_site: True }
