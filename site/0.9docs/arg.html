@@ -3,98 +3,10 @@ layout: default
 title: GeoTrellis | Fast Raster Processing
 ---
 
+{% include 09sidebar.html %}
 <section class="mainContentWrap">
   <div class="container mainContent">
-
-    
-
-<div class="row-fluid breadcrumb-row">
-  <ul class="breadcrumb">
-
-        <li><a href="/">Home</a></li>
-        
-          <li><a href="/geotrellis-docs/">Documentation</a> </li>
-          <li><a href="/geotrellis-docs/0.9.0/">0.9.0</a> </li>
-          <li><a href="/geotrellis-docs/0.9.0/geotrellis/">geotrellis</a> </li>
-          <li><a href="/geotrellis-docs/0.9.0/geotrellis/io/">Reading and Writing Data</a> </li>
-          <li class="active">Azavea Raster Grid format (ARG)</li>
-  </ul>
-</div>
-
-
     <div class="row-fluid">
-
-      
-
-<aside class="span3 sidebar">
-
-  <div class="well" style="padding: 8px 0;">
-    <ul class="nav nav-list">
-      <li class="nav-header">Reading and Writing Data</li>
-
-      
-
-      
-
-      
-
-      
-        
-          <li class="active">
-            
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/"><i class="icon-white icon-chevron-right"></i> Azavea Raster Grid format (ARG)</a>
-      
-            
-              <ul class="nav nav-list">
-                
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/#metadata"><i class="icon-chevron-right"></i> Metadata</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/#data"><i class="icon-chevron-right"></i> Data</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/arg/#examples"><i class="icon-chevron-right"></i> Examples</a>
-      </li>
-        
-      
-              </ul>
-            
-          </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/rasterlayers/"><i class="icon-chevron-right"></i> Raster Layer Types</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/catalog/"><i class="icon-chevron-right"></i> The Catalog</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/geojson/"><i class="icon-chevron-right"></i> GeoJSON</a>
-      </li>
-        
-      
-
-    </ul>
-  </div>
-
-</aside>
-
-
       <!--main content-->
       <div class="span9">
         <div class="row-fluid">
@@ -123,7 +35,7 @@ title: GeoTrellis | Fast Raster Processing
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">layer</span></tt> key provides the name of the raster as a string. The type must be set to a valid type that GeoTrellis can read, such as <tt class="docutils literal"><span class="pre">arg</span></tt> or <tt class="docutils literal"><span class="pre">tiled</span></tt>. See the documentation for <a class="reference internal" href="../rasterlayers/#rasterlayers-0-9-0"><em>Raster Layer Types</em></a> for a complete list of layer types.</p>
+<p>The <tt class="docutils literal"><span class="pre">layer</span></tt> key provides the name of the raster as a string. The type must be set to a valid type that GeoTrellis can read, such as <tt class="docutils literal"><span class="pre">arg</span></tt> or <tt class="docutils literal"><span class="pre">tiled</span></tt>. See the documentation for <a class="reference internal" href="/0.9docsrasterlayers"><em>Raster Layer Types</em></a> for a complete list of layer types.</p>
 <p>The geographic area covered by the raster is given by the points (<tt class="docutils literal"><span class="pre">xmin</span></tt>, <tt class="docutils literal"><span class="pre">ymin</span></tt>) and (<tt class="docutils literal"><span class="pre">xmax</span></tt>, <tt class="docutils literal"><span class="pre">ymax</span></tt>). <tt class="docutils literal"><span class="pre">xmin</span></tt> is the western edge of the raster and <tt class="docutils literal"><span class="pre">ymin</span></tt> is the southern edge. Together these values form the &#8220;lower left point&#8221; of the rectangle. <tt class="docutils literal"><span class="pre">xmax</span></tt> is the eastern edge of the raster and <tt class="docutils literal"><span class="pre">ymax</span></tt> is the northern edge. Together these values for the &#8220;upper right point&#8221; of the rectangle.</p>
 <p>The coordinate system for these points is unspecified. While the Web Mercator projection is often used, it is not required.</p>
 <p>The resolution of the raster is provided by <tt class="docutils literal"><span class="pre">cellwidth</span></tt> and <tt class="docutils literal"><span class="pre">cellheight</span></tt>, which describe how much geographic area is covered by a single pixel&#8217;s width and height, respectively. In general, these values should be the same when the output will be rendered with square pixels, although this is not enforced.</p>

@@ -3,6 +3,7 @@ layout: default
 title: GeoTrellis | Fast Raster Processing
 ---
 
+{% include 09sidebar.html %}
 <section class="mainContentWrap">
   <div class="container mainContent">
 
@@ -16,10 +17,10 @@ title: GeoTrellis | Fast Raster Processing
               <div class="span12">
                 <div class="section" id="akka-execution-engine">
 <span id="engine-0-9-0"></span><h1>Akka Execution Engine</h1>
-<p>The Akka execution engine is what takes <a class="reference internal" href="#ops-0-9-0"><em>Operations</em></a> and <a class="reference internal" href="../datasource/#datasources-0-9-0"><em>DataSource</em></a>, executes them, and returns their computed values. There is no type <tt class="docutils literal"><span class="pre">Engine</span></tt>, the phrase Akka Execution Engine simply refers to the process of how DataSources and Operations are executed. Creating DataSources and Operations only describes the work that should be done; that work is not done until it is executed against the engine. The interface for executing DataSources or Operations against the engine is to run it through the <a class="reference internal" href="#server-0-9-0"><em>Server</em></a> instance.</p>
+<p>The Akka execution engine is what takes <a class="reference internal" href="#ops-0-9-0"><em>Operations</em></a> and <a class="reference internal" href="/0.9docs/datasource"><em>DataSource</em></a>, executes them, and returns their computed values. There is no type <tt class="docutils literal"><span class="pre">Engine</span></tt>, the phrase Akka Execution Engine simply refers to the process of how DataSources and Operations are executed. Creating DataSources and Operations only describes the work that should be done; that work is not done until it is executed against the engine. The interface for executing DataSources or Operations against the engine is to run it through the <a class="reference internal" href="#server-0-9-0"><em>Server</em></a> instance.</p>
 <div class="section" id="server">
 <span id="server-0-9-0"></span><h2>Server</h2>
-<p>The Server is the interface into the execution engine. It is what contains the Akka Actor system. The Server also contains the <a class="reference internal" href="../io/catalog/#catalog-0-9-0"><em>catalog</em></a> that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in <tt class="docutils literal"><span class="pre">geotrellis.GeoTrellis</span></tt> that is configured based on your <tt class="docutils literal"><span class="pre">application.conf</span></tt>; this system is also imported as an implicit value when importing <tt class="docutils literal"><span class="pre">geotrellis._</span></tt>. This provides a convenience for running DataSources: the <tt class="docutils literal"><span class="pre">.run</span></tt> and <tt class="docutils literal"><span class="pre">.get</span></tt> methods on DataSource take an implicit <tt class="docutils literal"><span class="pre">Server</span></tt> parameter that it executes itself through. So these two code blocks are equivalent:</p>
+<p>The Server is the interface into the execution engine. It is what contains the Akka Actor system. The Server also contains the <a class="reference internal" href="/0.9docs/catalog"><em>catalog</em></a> that contains the data accessible to GeoTrellis by LayerId. There should only be one server per instance of an application using GeoTrellis. There is a default system in <tt class="docutils literal"><span class="pre">geotrellis.GeoTrellis</span></tt> that is configured based on your <tt class="docutils literal"><span class="pre">application.conf</span></tt>; this system is also imported as an implicit value when importing <tt class="docutils literal"><span class="pre">geotrellis._</span></tt>. This provides a convenience for running DataSources: the <tt class="docutils literal"><span class="pre">.run</span></tt> and <tt class="docutils literal"><span class="pre">.get</span></tt> methods on DataSource take an implicit <tt class="docutils literal"><span class="pre">Server</span></tt> parameter that it executes itself through. So these two code blocks are equivalent:</p>
 <div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">geotrellis._</span>
 <span class="k">import</span> <span class="nn">geotrellis.source._</span>
 
@@ -87,10 +88,10 @@ title: GeoTrellis | Fast Raster Processing
 <div class="section" id="actor-diagram">
 <h2>Actor Diagram</h2>
 <p>The following diagram shows the structure of the actor system which evaluates the Operations. The <a class="reference internal" href="#server-0-9-0"><em>Server</em></a> in the diagram is <tt class="docutils literal"><span class="pre">geotrellis.process.Server</span></tt>, it will kick off the request and <tt class="docutils literal"><span class="pre">Await</span></tt> the <tt class="docutils literal"><span class="pre">PositionedResult</span></tt>.</p>
-<img alt="../../../../_images/akka-execution-engine.png" src="../../../../_images/akka-execution-engine.png" />
+<img alt="../img/akka-execution-engine.png" src="../img/akka-execution-engine.png" />
 <div class="section" id="akka-notation">
 <h3>Akka Notation</h3>
-<img alt="../../../../_images/akka-notation.png" src="../../../../_images/akka-notation.png" />
+<img alt="../img/akka-notation.png" src="../img/akka-notation.png" />
 </div>
 </div>
 <div class="section" id="operation-flow-example">

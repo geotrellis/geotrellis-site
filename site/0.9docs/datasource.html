@@ -3,163 +3,9 @@ layout: default
 title: GeoTrellis | Fast Raster Processing
 ---
 
+{% include 09sidebar.html %}
 <section class="mainContentWrap">
   <div class="container mainContent">
-
-    
-
-<div class="row-fluid breadcrumb-row">
-  <ul class="breadcrumb">
-
-    
-
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        <li><a href="/">Home</a></li>
-      
-    
-        
-          <li><a href="/geotrellis-docs/">Documentation</a> </li>
-        
-      
-    
-        
-          <li><a href="/geotrellis-docs/0.9.0/">0.9.0</a> </li>
-        
-      
-    
-        
-          <li><a href="/geotrellis-docs/0.9.0/geotrellis/">geotrellis</a> </li>
-        
-      
-    
-        
-          <li class="active">DataSource</li>
-        
-      
-    
-
-  </ul>
-</div>
-
-
-    <div class="row-fluid">
-
-      
-
-<aside class="span3 sidebar">
-
-  <div class="well" style="padding: 8px 0;">
-    <ul class="nav nav-list">
-      <li class="nav-header">geotrellis</li>
-
-      
-
-      
-
-      
-
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/raster/"><i class="icon-chevron-right"></i> Rasters</a>
-      </li>
-        
-      
-        
-          <li class="active">
-            
-        <a href="/geotrellis-docs/0.9.0/geotrellis/datasource/"><i class="icon-white icon-chevron-right"></i> DataSource</a>
-      
-            
-              <ul class="nav nav-list">
-                
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/datasource/#canbuildfrom-architecture"><i class="icon-chevron-right"></i> CanBuildFrom architecture</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/datasource/#getting-values-from-a-datasource"><i class="icon-chevron-right"></i> Getting values from a DataSource</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/datasource/#valuesource"><i class="icon-chevron-right"></i> ValueSource</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/datasource/#rastersource"><i class="icon-chevron-right"></i> RasterSource</a>
-      </li>
-        
-      
-              </ul>
-            
-          </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/operations/"><i class="icon-chevron-right"></i> Operations</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/engine/"><i class="icon-chevron-right"></i> Akka Execution Engine</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/io/"><i class="icon-chevron-right"></i> Reading and Writing Data</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/raster-operations/"><i class="icon-chevron-right"></i> Raster Operations</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/rendering/"><i class="icon-chevron-right"></i> Rendering</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/vector/"><i class="icon-chevron-right"></i> Working with Vector Data</a>
-      </li>
-        
-      
-        
-          <li>
-        <a href="/geotrellis-docs/0.9.0/geotrellis/srs/"><i class="icon-chevron-right"></i> Spatial Reference Systems</a>
-      </li>
-        
-      
-
-    </ul>
-  </div>
-
-</aside>
-
-
       <!--main content-->
       <div class="span9">
         <div class="row-fluid">
@@ -187,7 +33,7 @@ title: GeoTrellis | Fast Raster Processing
 The number of elements between the two DataSources must be the same.</dd>
 <dt><tt class="docutils literal"><span class="pre">mapOp</span></tt> and <tt class="docutils literal"><span class="pre">combineOp</span></tt></dt>
 <dd>These methods behave like their non-Op counterparts, but instead take functions that
-work with <a class="reference internal" href="../operations/#operations-0-9-0"><em>Operations</em></a>. This allows you to work with the operations of the elements,
+work with <a class="reference internal" href="/0.9docs/operations"><em>Operations</em></a>. This allows you to work with the operations of the elements,
 which can be useful in cases where you want to modify the elements base on GeoTrellis Operations.</dd>
 </dl>
 </div>
@@ -197,7 +43,7 @@ which can be useful in cases where you want to modify the elements base on GeoTr
 and get the resulting data. You can do this by running the DataSource against the GeoTrellis server.
 The GeoTrellis server is an implicit parameter that is imported by <tt class="docutils literal"><span class="pre">import</span> <span class="pre">geotrellis._</span></tt>. If you
 are using the default server configured by the configuration file, you won&#8217;t have to worry about
-what server is being passed to the methods for running DataSources. See the section on the GeoTrellis <a class="reference internal" href="../engine/#server-0-9-0"><em>Server</em></a>.</p>
+what server is being passed to the methods for running DataSources. See the section on the GeoTrellis <a class="reference internal" href="/0.9docs/akka-engine"><em>Server</em></a>.</p>
 </div>
 <div class="section" id="valuesource">
 <h2>ValueSource</h2>

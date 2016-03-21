@@ -1,0 +1,52 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container mainContent">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="geotrellis-services">
+<span id="geotrellis-services-0-9-0"></span><h1>geotrellis-services</h1>
+<p>The <em>geotrellis-services</em> project provides functionality that is common to writing raster based services using GeoTrellis.</p>
+<div class="section" id="including-geotrellis-services-into-your-project">
+<h2>Including <em>geotrellis-services</em> into your project</h2>
+<p>The geotrellis-services project is an additional dependency, so you will have to add it to your <em>build.sbt</em>:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">&quot;2.10.3&quot;</span>
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;com.azavea.geotrellis&quot;</span> <span class="o">%%</span> <span class="s">&quot;geotrellis-services&quot;</span> <span class="o">%</span> <span class="s">&quot;0.9.0&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="catalog-services">
+<h2>Catalog services</h2>
+<p>This class provides basic functionality for sending information about the catalog to a client. An example of its use <a class="reference external" href="https://github.com/geotrellis/geotrellis/blob/0.9/admin/src/main/scala/geotrellis/admin/AdminServiceActor.scala#L33">is in the admin site</a>.</p>
+</div>
+<div class="section" id="color-ramps">
+<h2>Color Ramps</h2>
+<p>This provides functionality for working with ColorRamps, including keyed json to send to the client for making additional requests, <a class="reference external" href="https://github.com/geotrellis/geotrellis/blob/0.9/admin/src/main/scala/geotrellis/admin/AdminServiceActor.scala#L36">as seen here in the admin project</a>, as well as providing a mapping from the key to the GeoTrellis ColorRamp type associated with it.</p>
+</div>
+<div class="section" id="layer-services">
+<h2>Layer services</h2>
+<p>The LayerService object provides functions to get information about individual layers, such as the bounding box, getting the class breaks for a layer, and rendering the layer based on query parameters. An example of its use is <a class="reference external" href="https://github.com/geotrellis/geotrellis/blob/0.9/admin/src/main/scala/geotrellis/admin/AdminServiceActor.scala#L79">in the admin project, for rendering a raster layer</a>.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
