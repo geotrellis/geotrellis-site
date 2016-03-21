@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
   config.vm.synced_folder ".", "/opt/geotrellis-site"
+  config.vm.synced_folder "~/.aws", "/home/vagrant/.aws"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "deployment/ansible/site.yml"
