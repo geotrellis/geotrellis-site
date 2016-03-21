@@ -7,7 +7,7 @@
       "name": "geotrellis-site",
       "type": "amazon-ebs",
       "region": "us-east-1",
-      "source_ami": "ami-e54cf98e",
+      "source_ami": "ami-fce3c696",
       "instance_type": "t2.medium",
       "security_group_id": "sg-f965ab9c",
       "ssh_username": "ubuntu",
