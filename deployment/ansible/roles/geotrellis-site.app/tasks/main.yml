@@ -2,9 +2,9 @@
 - name: Install GeoTrellis site dependencies
   apt: pkg=python-sphinx state=present
 
-- name: Install jekyll
-  gem: name=jekyll
-       version=3.1.2
+- name: Install Bundler
+  command: gem install bundler
+           creates=/usr/local/bin/bundle
 
 - name: Create service account for the GeoTrellis site
   user: name={{ geotrellis_site_user }}
@@ -48,8 +48,16 @@
   notify:
     - Restart Nginx
 
+- name: Install jekyll
+  sudo: False
+  command: "bundle install"
+  args:
+    chdir: "/opt/geotrellis-site/site"
+
 - name: Build jekyll source
-  command: "jekyll build --source {{ jekyll_dir }} --destination {{ jekyll_dir }}/_site"
+  command: "jekyll build"
+  args:
+    chdir: "/opt/geotrellis-site/site"
 
 - name: Create GeoTrellis site service definition
   template: src=geotrellis-site-upstart.conf.j2
@@ -58,15 +66,11 @@
     - Restart GeoTrellis site
 
 - name: Touch log file if it does not exist
-  command: "touch {{ geotrellis_site_log }}"
-  args:
-    creates: "{{ geotrellis_site_log }}"
-
-- name: Set log file permissions
   file: path="{{ geotrellis_site_log }}"
         owner="{{ geotrellis_site_user }}"
         group="{{ geotrellis_site_user }}"
         mode=0644
+        state=touch
 
 - name: Configure GeoTrellis site log rotation
   template: src=logrotate_geotrellis-site.j2
