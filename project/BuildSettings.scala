@@ -4,8 +4,6 @@ import com.typesafe.sbt.SbtScalariform
 import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 import sbtassembly.Plugin.AssemblyKeys._
 import sbtassembly.Plugin._
-import sbtunidoc.Plugin._
-import sbtunidoc.Plugin.UnidocKeys._
 import spray.revolver.RevolverPlugin.Revolver
 import com.typesafe.sbt.osgi.SbtOsgi
 import SbtOsgi._
@@ -59,11 +57,7 @@ object BuildSettings {
 
   lazy val siteSettings = basicSettings ++ formatSettings ++ noPublishing ++ Revolver.settings ++
     SiteSupport.settings ++ seq(
-      resourceGenerators in Compile <+= (target in ScalaUnidoc in unidoc in LocalRootProject){ docsLocation =>
-        constant(Seq(docsLocation)).map(_.flatMap(_.***.get))
-      },
-      fork := true,
-      assembly <<= assembly.dependsOn(unidoc in Compile in LocalRootProject)
+      fork := true
     )
 
   lazy val docsSettings = basicSettings ++ noPublishing ++ seq(

@@ -59,6 +59,11 @@
   args:
     chdir: "/opt/geotrellis-site/site"
 
+- name: Build site jar
+  command: "./sbt 'project srv' assembly"
+  args:
+    chdir: "/opt/geotrellis-site/"
+
 - name: Create GeoTrellis site service definition
   template: src=geotrellis-site-upstart.conf.j2
             dest=/etc/init/geotrellis-site.conf

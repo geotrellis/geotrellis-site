@@ -17,12 +17,11 @@
 package spray.site
 
 import akka.event.Logging._
-import shapeless._
+//import shapeless._
 import spray.routing.directives.{ DirectoryListing, LogEntry }
 import spray.httpx.marshalling.Marshaller
 import spray.http._
 import spray.routing._
-import html._
 import StatusCodes._
 
 import geotrellis._
@@ -133,7 +132,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
 
            var greyScaleRamp = ColorRamp.createWithRGBColors(0x000000, 0xE0E0E0);
 
-           println("extentHere", Extent.fromString(bbox), bbox)
            val re = RasterExtent(Extent.fromString(bbox), cols, rows)
            val layers = layersString
 

@@ -1,8 +1,6 @@
 import sbt._
 import Keys._
 import com.typesafe.sbt.osgi.SbtOsgi._
-import sbtunidoc.Plugin._
-import UnidocKeys._
 
 object Build extends Build {
   import BuildSettings._
@@ -16,7 +14,6 @@ object Build extends Build {
     .aggregate(docs, srv)
     .settings(basicSettings: _*)
     .settings(noPublishing: _*)
-    .settings(unidocSettings: _*)
 
 
 
