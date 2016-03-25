@@ -1,0 +1,77 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="the-catalog">
+<span id="catalog-0-9-0"></span><h1>The Catalog</h1>
+<p>The Catalog is what gives the GeoTrellis <a class="reference internal" href="/0.9docs/akka-engine"><em>Server</em></a> easy access to your raster data. It&#8217;s encoded on disk by a JSON file that specifies a number of data stores. Seperating out raster data by different data stores allows you to key a layer off of two levels: the DataStore name and the Layer name. This is useful for having the same raster data in different forms, for instance different projections, or tiled vs untiled.</p>
+<p>You can tell the <tt class="docutils literal"><span class="pre">geotrellis.GeoTrellis</span></tt> object to use your catalog by a setting in your <tt class="docutils literal"><span class="pre">application.conf</span></tt>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">geotrellis.catalog = &quot;/path/to/catalog.json&quot;</span>
+</pre></div>
+</div>
+<p>A catalog json looks like this:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;catalog&quot;</span><span class="o">:</span> <span class="s2">&quot;Catalog of Test Data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;stores&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;store&quot;</span><span class="o">:</span> <span class="s2">&quot;test:fs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cacheAll&quot;</span><span class="o">:</span> <span class="s2">&quot;no&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;store&quot;</span><span class="o">:</span> <span class="s2">&quot;test:fs2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;data2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cacheAll&quot;</span><span class="o">:</span> <span class="s2">&quot;no&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;store&quot;</span><span class="o">:</span> <span class="s2">&quot;sbn:fs&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;params&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;sbn&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cacheAll&quot;</span><span class="o">:</span> <span class="s2">&quot;no&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="/0.9docs/akka-engine"><em>Server</em></a> section on more information about how to set the catalog on a GeoTrellis Server.</p>
+<div class="section" id="datastore">
+<h2>DataStore</h2>
+<p>Each of the <tt class="docutils literal"><span class="pre">store</span></tt> entries in the above example JSON represents a DataStore. A DataStore is essentially points to a directory with raster data. The raster data can be a variety of <a class="reference internal" href="/0.9docs/layer-types"><em>layer types</em></a>.</p>
+</div>
+<div class="section" id="the-cache">
+<h2>The Cache</h2>
+<p>The Catalog has a cache that can load up the raw byte data for a raster, which makes loading of raster data much faster (at the expense of having to hold large raster data in memory). You can specify a <tt class="docutils literal"><span class="pre">cacheAll</span></tt> setting on the DataStore in the catalog, which will cause GeoTrellis to cache every layer in that DataStore. Alternatively, you can you set <em>the cache property</em> on the individual layer to have finer control over which layers get cached.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

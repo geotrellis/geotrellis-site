@@ -1,0 +1,177 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="python-geotrellis">
+<span id="python-geotrellis-0-9-0"></span><h1>python-geotrellis</h1>
+<p><em>python-geotrellis</em> is a python package for GeoTrellis data tasks, such as converting rasters into ARG format, tiling ARG rasters, and managing the <a class="reference internal" href="/0.9docs/catalog"><em>catalog</em></a>.</p>
+<div class="section" id="installation">
+<h2>Installation</h2>
+<p>To install <em>python-geotrellis</em>, use pip:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">sudo pip install python-geotrellis</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gdal-bindings">
+<h2>GDAL Bindings</h2>
+<p>The <em>python-geotrellis</em> package requires the <a class="reference external" href="http://www.gdal.org/">GDAL</a> bindings be installed. You can find information on installing the GDAL python bindings <a class="reference external" href="https://pypi.python.org/pypi/GDAL/">here</a>. We recommend building gdal from source with the <tt class="docutils literal"><span class="pre">--with-python</span></tt> option.</p>
+</div>
+<div class="section" id="gtloader">
+<h2>gtloader</h2>
+<p>The <em>python-geotrellis</em> package installs the <em>gtloader</em> module and executable script.
+The gtloader script is a utility for working with raster data. It uses GDAL to read
+rasters of <a class="reference external" href="http://www.gdal.org/formats_list.html">a wide array of formats</a> and convert those rasters into the <a class="reference internal" href="/0.9docs/arg"><em>Azavea Raster Grid format (ARG)</em></a>.</p>
+</div>
+<div class="section" id="gtloader-info">
+<h2><em>gtloader info</em></h2>
+<p>You can get information about an arg file with the the <tt class="docutils literal"><span class="pre">info</span></tt> subcommand.
+For instance, if we wanted to get information about <a class="reference external" href="https://github.com/geotrellis/geotrellis/blob/0.9/src/test/resources/data/aspect.json">the arg at src/test/resources/data/aspect.json</a>, we could use:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">&gt;</span> gtloader info src/test/resources/data/aspect.json
+<span class="go">cellwidth: 10.0</span>
+<span class="go">cols: 979</span>
+<span class="go">xskew: 0</span>
+<span class="go">yskew: 0</span>
+<span class="go">xmin: 557815.0</span>
+<span class="go">ymin: 5107985.0</span>
+<span class="go">cellheight: 10.0</span>
+<span class="go">rows: 1400</span>
+<span class="go">ymax: 5121985.0</span>
+<span class="go">datatype: float32</span>
+<span class="go">epsg: 26710</span>
+<span class="go">xmax: 567605.0</span>
+<span class="go">type: arg</span>
+<span class="gp">&gt;</span>
+</pre></div>
+</div>
+<p>Note: info currently does not support tiled rasters.</p>
+</div>
+<div class="section" id="gtloader-convert-command">
+<h2><em>gtloader convert</em> command</h2>
+<p>The <tt class="docutils literal"><span class="pre">convert</span></tt> subcommand is what you can use to both convert rasters of different formats into ARG files, or to convert rasters of either ARG or GDAL-readable format into a <a class="reference internal" href="/0.9docs/layer-types"><em>tiled ARG raster</em></a>.</p>
+<p>Here are some of the options for using the <em>convert</em> subcommand:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--cols-per-tile <var>COLS_PER_TILE</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>The number of pixels in the width of each tiled raster being created.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--rows-per-tile <var>ROWS_PER_TILE</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>The number of pixels in the height of each tiled raster being created.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-t <var>TYPE</var></span></kbd></td>
+<td>The <a class="reference internal" href="/0.9docs/raster"><em>raster type</em></a> of the output raster. One of: bit,int8,int16,int32,float32,float64</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n <var>NAME</var></span></kbd></td>
+<td>Name of the output raster. The name used to
+identify the raster when it is stored in the catalog.
+If not supplied, it will be the file name of the source raster,
+unless the source is an ARG.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-b <var>BAND</var></span></kbd></td>
+<td>The band of a multi-band raster to read from.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--clobber</span></kbd></td>
+<td>Clobber the file if it already exists.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">--no-verify</span></kbd></td>
+<td>Don&#8217;t verify input data falls in a given range (just truncate)</td></tr>
+</tbody>
+</table>
+<p>The raster being created will only be a tiled raster if &#8211;cols-per-tile COLS_PER_TILE and &#8211;rows-per-tile ROWS_PER_TILE are present.</p>
+<p>The second-to-last argument is the input file. If the output raster is not tiled, the last argument will be the output file name. If the output raster is tiled, then the last argument should specify the directory which the tiled raster will be created in.</p>
+<p>For example, if we wanted to convert <a class="reference external" href="https://github.com/geotrellis/geotrellis/blob/0.9/src/test/resources/slope.tif">the GeoTIFF at src/test/resources/slope.tif</a>, we could use the <em>convert</em> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">&gt;</span> gtloader convert -n slope src/test/resources/slope.tif slope.json
+<span class="go">NOTICE: Loading raster with width 979, height 1400</span>
+<span class="gp">&gt;</span>
+</pre></div>
+</div>
+<p>This will produce two files, slope.arg and slope.json. The data type of the ARG will be <tt class="docutils literal"><span class="pre">float32</span></tt>; this is because the GeoTIFF file has type float32 (you can check this with <tt class="docutils literal"><span class="pre">gdalinfo</span></tt>).</p>
+<p>If we want to create a Double raster version that was comprised of 256 x 256 tiles, we could run the command with the rows and columns per tile:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">&gt;</span> gtloader convert -n slope -t float64 --cols-per-tile 256 --rows-per-tile 256 src/test/resources/slope.tif .
+<span class="go">NOTICE: Loading raster with width 979, height 1400</span>
+<span class="go">Tile 1/24 (4%)</span>
+<span class="go">Tile 2/24 (8%)</span>
+<span class="go">Tile 3/24 (12%)</span>
+<span class="go">Tile 4/24 (16%)</span>
+<span class="go">Tile 5/24 (20%)</span>
+<span class="go">Tile 6/24 (25%)</span>
+<span class="go">Tile 7/24 (29%)</span>
+<span class="go">Tile 8/24 (33%)</span>
+<span class="go">Tile 9/24 (37%)</span>
+<span class="go">Tile 10/24 (41%)</span>
+<span class="go">Tile 11/24 (45%)</span>
+<span class="go">Tile 12/24 (50%)</span>
+<span class="go">Tile 13/24 (54%)</span>
+<span class="go">Tile 14/24 (58%)</span>
+<span class="go">Tile 15/24 (62%)</span>
+<span class="go">Tile 16/24 (66%)</span>
+<span class="go">Tile 17/24 (70%)</span>
+<span class="go">Tile 18/24 (75%)</span>
+<span class="go">Tile 19/24 (79%)</span>
+<span class="go">Tile 20/24 (83%)</span>
+<span class="go">Tile 21/24 (87%)</span>
+<span class="go">Tile 22/24 (91%)</span>
+<span class="go">Tile 23/24 (95%)</span>
+<span class="go">Tile 24/24 (100%)</span>
+<span class="go">Tile conversion completed.</span>
+<span class="gp">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gtloader-convert-all-command">
+<h2><em>gtloader convert-all</em> command</h2>
+<p>The <tt class="docutils literal"><span class="pre">convert-all</span></tt> is used to convert a set of rasters in a directory into ARGs. This command has mostly the same options as the <em>convert</em> command, but adds one option:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-e <var>EXT</var></span></kbd></td>
+<td>The extention of the files in the input directory to consider for conversion.</td></tr>
+</tbody>
+</table>
+<p>The input and output arguments are directories.</p>
+</div>
+<div class="section" id="gtloader-catalog-commands">
+<h2><em>gtloader catalog</em> commands</h2>
+<p>The <tt class="docutils literal"><span class="pre">catalog</span></tt> subcommand has a set of subcommands for working with a <a class="reference internal" href="/0.9docs/catalog"><em>GeoTrellis catalog</em></a>.</p>
+<dl class="docutils">
+<dt><em>gtloader catalog update</em></dt>
+<dd>This command updates the catalog information.</dd>
+<dt><em>gtloader catalog list</em></dt>
+<dd>This command lists the datastores of a catalog.</dd>
+<dt><em>gtloader catalog add-dir</em></dt>
+<dd>This command will add a directory to the catalog</dd>
+<dt><em>gtloader catalog create</em></dt>
+<dd>This command will create a new catalog.</dd>
+</dl>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

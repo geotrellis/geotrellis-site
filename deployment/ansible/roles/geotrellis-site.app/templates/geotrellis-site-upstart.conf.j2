@@ -5,6 +5,6 @@ stop on shutdown
 
 respawn
 setuid {{ geotrellis_site_user }}
-chdir /opt/geotrellis-site
+chdir /opt/geotrellis-site/srv
 
-exec ./sbt "project site" run >> {{ geotrellis_site_log }} 2>&1
+exec java -jar /opt/geotrellis-site/srv/target/scala-2.10/site.jar >> {{ geotrellis_site_log }} 2>&1

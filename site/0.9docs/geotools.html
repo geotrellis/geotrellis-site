@@ -1,0 +1,62 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="geotrellis-geotools">
+<span id="geotrellis-geotools-0-9-0"></span><h1>geotrellis-geotools</h1>
+<p>The <em>geotrellis-geotools</em> project houses functionality for reading GeoTiff and ShapeFiles using the <a class="reference external" href="http://www.geotools.org/">GeoTools</a> library. GeoTools is an open source Java library that provides tools for geospatial data. It&#8217;s a large dependency, so we have it in a separate project so that you only need to include it as a dependency for your project if you need it. The <em>geotrellis-geotools</em> library adds functionality to the <tt class="docutils literal"><span class="pre">geotrellis.data</span></tt> package for reading the ShapeFile and GeoTIFF formats.</p>
+<div class="section" id="including-geotrellis-geotools-into-your-project">
+<h2>Including <em>geotrellis-geotools</em> into your project</h2>
+<p>The geotrellis-geotools project is an additional dependency, so you will have to add it to your <em>build.sbt</em>:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">&quot;2.10.3&quot;</span>
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&quot;com.azavea.geotrellis&quot;</span> <span class="o">%%</span> <span class="s">&quot;geotrellis-geotools&quot;</span> <span class="o">%</span> <span class="s">&quot;0.9.0&quot;</span>
+<span class="n">resolvers</span> <span class="o">+=</span> <span class="s">&quot;Geotools&quot;</span> <span class="n">at</span> <span class="s">&quot;http://download.osgeo.org/webdav/geotools/&quot;</span>
+</pre></div>
+</div>
+<p>Notice that we need to add the GeoTools repository to the resolvers in order to find those dependencies.</p>
+</div>
+<div class="section" id="reading-geotiffs">
+<h2>Reading GeoTIFFs</h2>
+<p>There are two ways one could use the GeoTIFF reading capability in <em>geotrellis-geotools</em>: either read GeoTIFF&#8217;s directly into a <tt class="docutils literal"><span class="pre">Raster</span></tt> type, or to give the GeoTrellis <a class="reference internal" href="/0.9docs/catalog"><em>catalog</em></a> the ability to read GeoTIFFs. Due to the lack of heavy use of the latter use case, we recommend using the GeoTiffReader object directly if having the GeoTIFFs be in the catalog isn&#8217;t a hard requirement. One thing about reading GeoTIFFs directly (as opposed to converting them to ARGs) is that reading them can be quite slow; if you are reading quite a bit and not using caching, and are warping the raster on read (only reading a specific extent, possibly resampled), things will end up being very slow. Converting GeoTIFFs to ARG rasters is definitely the preferred way to deal with GeoTIFF raster data.</p>
+<p>To read a GeoTIFF file into a <tt class="docutils literal"><span class="pre">Raster</span></tt>, you would use the following:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">import</span> <span class="nn">geotrellis.data._</span>
+
+  <span class="k">val</span> <span class="n">path</span> <span class="k">=</span> <span class="s">&quot;/fake/path/to/geotiff.tif&quot;</span>
+  <span class="k">val</span> <span class="n">raster</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span> <span class="nc">GeoTiff</span><span class="o">.</span><span class="n">readRaster</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>To add the ability to read GeoTiffs as a <a class="reference internal" href="/0.9docs/layer-types"><em>RasterLayer</em></a> in the catalog, you&#8217;ll need
+to add this piece of code before the catalog searches for rasters:</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="nc">GeoTiffRasterLayerBuilder</span><span class="o">.</span><span class="n">addToCatalog</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-shapefiles">
+<h2>Reading ShapeFiles</h2>
+<p>There&#8217;s some wrapper code around reading GeoTool&#8217;s <tt class="docutils literal"><span class="pre">SimpleFeature</span></tt> type out of ShapeFiles, and for reading GeoTrellis <tt class="docutils literal"><span class="pre">Point[T]</span></tt> features out of ShapeFiles. The code is very minimal, but a good start if you want to work with shapefiles. The best way to see how this is done is to <a class="reference external" href="https://github.com/geotrellis/geotrellis/blob/0.9/geotools/src/main/scala/geotrellis/data/ShapeFileReader.scala">read the code</a>.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

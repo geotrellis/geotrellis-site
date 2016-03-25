@@ -1,0 +1,49 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="geotrellis-admin">
+<span id="geotrellis-admin-0-9-0"></span><h1>geotrellis-admin</h1>
+<p>The <em>geotrellis-admin</em> project is a web application that you can use to view rasters inside of a <a class="reference internal" href="/0.9docs/catalog"><em>GeoTrellis catalog</em></a>. To run the viewer, switch to the admin subproject and run:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">bash &gt; ./sbt</span>
+<span class="gp">&gt;</span> project admin
+<span class="gp">&gt;</span> run
+</pre></div>
+</div>
+<p>The catalog used to serve rasters is located in the <em>admin/src/main/resources/application.conf</em> in the <tt class="docutils literal"><span class="pre">geotrellis.catalog</span></tt> setting. The port is also configurable, but the default is <tt class="docutils literal"><span class="pre">8880</span></tt>.</p>
+<div class="section" id="viewing-rasters">
+<h2>Viewing Rasters</h2>
+<p>If you visit <tt class="docutils literal"><span class="pre">http://localhost:8880/</span></tt>, you&#8217;ll see the contents of the catalog on the left hand side.</p>
+<p><strong>Note:</strong> The application will only place rasters with extents in the Web Mercator (EPSG:3857) projection
+correctly on the map. Otherwise, the rasters <em>might</em> show up in the wrong location and of the wrong size, or they might not be viewable. If you need to see the raster through the <em>geotrellis-admin</em> project, you can use GDAL (<em>gdalwarp</em>) to reproject the raster and create a version of the raster in Web Mercator projection.</p>
+</div>
+<div class="section" id="checking-values">
+<h2>Checking Values</h2>
+<p>If you click the mouse on the raster, there will be a value view that comes up in the <em>Layer Info</em> tab of the left hand panel. This is useful for determining raster values at specific locations.</p>
+<p>The <em>Layer Info</em> tab will also supply some basic information about the raster.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,47 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="spatial-reference-systems">
+<span id="srs-0-9-0"></span><h1>Spatial Reference Systems</h1>
+<p>GeoTrellis provides a simple translation utility for converting between Latitude and Longitude coordinates and Web Mercator (WGS 84 Datum ESPG:4326 and Spherical Mercator EPSG:900913). You can transform JTS geometries and x and y coordinates between the two systems:</p>
+<div class="highlight-scala"><div class="highlight"><pre><span class="k">import</span> <span class="nn">geotrellis.util._</span>
+<span class="k">import</span> <span class="nn">com.vividsolutions.jts.</span><span class="o">{</span><span class="n">geom</span> <span class="k">=&gt;</span> <span class="n">jts</span><span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">TransformExample</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">toWebMercator</span><span class="o">(</span><span class="n">p</span><span class="k">:</span><span class="kt">jts.Polygon</span><span class="o">)</span><span class="k">:</span> <span class="kt">jts.Polygon</span> <span class="o">=</span>
+    <span class="n">srs</span><span class="o">.</span><span class="nc">LatLng</span><span class="o">.</span><span class="n">transform</span><span class="o">(</span><span class="n">p</span><span class="o">,</span> <span class="n">srs</span><span class="o">.</span><span class="nc">WebMercator</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">toLatLng</span><span class="o">(</span><span class="n">g</span><span class="k">:</span><span class="kt">jts.Geometry</span><span class="o">)</span><span class="k">:</span> <span class="kt">jts.Geometry</span> <span class="o">=</span>
+    <span class="n">srs</span><span class="o">.</span><span class="nc">WebMercator</span><span class="o">.</span><span class="n">transform</span><span class="o">(</span><span class="n">g</span><span class="o">,</span> <span class="n">srs</span><span class="o">.</span><span class="nc">LatLng</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="n">pointToWebMercator</span><span class="o">(</span><span class="n">x</span><span class="k">:</span><span class="kt">Double</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span><span class="kt">Double</span><span class="o">)</span><span class="k">:</span> <span class="o">(</span><span class="kt">Double</span><span class="o">,</span><span class="kt">Double</span><span class="o">)</span> <span class="k">=</span>
+    <span class="n">srs</span><span class="o">.</span><span class="nc">LatLng</span><span class="o">.</span><span class="n">transform</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">srs</span><span class="o">.</span><span class="nc">WebMercator</span><span class="o">)</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

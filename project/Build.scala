@@ -1,8 +1,6 @@
 import sbt._
 import Keys._
 import com.typesafe.sbt.osgi.SbtOsgi._
-import sbtunidoc.Plugin._
-import UnidocKeys._
 
 object Build extends Build {
   import BuildSettings._
@@ -13,16 +11,14 @@ object Build extends Build {
   }
 
   lazy val root = Project("root",file("."))
-    .aggregate(docs, site)
+    .aggregate(docs, srv)
     .settings(basicSettings: _*)
     .settings(noPublishing: _*)
-    .settings(unidocSettings: _*)
 
 
 
-  lazy val site = Project("site", file("site"))
+  lazy val srv = Project("srv", file("srv"))
     .settings(siteSettings: _*)
-    .settings(SphinxSupport.settings: _*)
     .settings(resolvers ++= resolutionRepos)
     .settings(javaOptions += "-Xmx4G")
     .settings(libraryDependencies ++=

@@ -2,6 +2,10 @@
 - name: Install GeoTrellis site dependencies
   apt: pkg=python-sphinx state=present
 
+- name: Install Bundler
+  command: gem install bundler
+           creates=/usr/local/bin/bundle
+
 - name: Create service account for the GeoTrellis site
   user: name={{ geotrellis_site_user }}
         system=yes
@@ -20,8 +24,8 @@
   when: packing
 
 - name: Extract the Hillshade data files
-  unarchive: src=/opt/geotrellis-site/site/data/hillshade/hills.zip
-             dest=/opt/geotrellis-site/site/data/hillshade
+  unarchive: src=/opt/geotrellis-site/srv/data/hillshade/hills.zip
+             dest=/opt/geotrellis-site/srv/data/hillshade
              copy=no
 
 - name: Alter GeoTrellis site permissions
@@ -44,6 +48,22 @@
   notify:
     - Restart Nginx
 
+- name: Install jekyll
+  sudo: False
+  command: "bundle install"
+  args:
+    chdir: "/opt/geotrellis-site/site"
+
+- name: Build jekyll source
+  command: "jekyll build"
+  args:
+    chdir: "/opt/geotrellis-site/site"
+
+- name: Build site jar
+  command: "./sbt 'project srv' assembly"
+  args:
+    chdir: "/opt/geotrellis-site/"
+
 - name: Create GeoTrellis site service definition
   template: src=geotrellis-site-upstart.conf.j2
             dest=/etc/init/geotrellis-site.conf
@@ -51,15 +71,11 @@
     - Restart GeoTrellis site
 
 - name: Touch log file if it does not exist
-  command: "touch {{ geotrellis_site_log }}"
-  args:
-    creates: "{{ geotrellis_site_log }}"
-
-- name: Set log file permissions
   file: path="{{ geotrellis_site_log }}"
         owner="{{ geotrellis_site_user }}"
         group="{{ geotrellis_site_user }}"
         mode=0644
+        state=touch
 
 - name: Configure GeoTrellis site log rotation
   template: src=logrotate_geotrellis-site.j2

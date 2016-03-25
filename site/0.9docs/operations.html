@@ -1,0 +1,47 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="raster-operations">
+<span id="raster-operations-0-9-0"></span><h1>Raster Operations</h1>
+<p>Manipulation and processing of raster data is a large part of the GeoTrellis library. The approach taken to the organization of raster operations is in line with <a class="reference external" href="http://www.amazon.com/GIS-Cartographic-Modeling-Dana-Tomlin/dp/158948309X">C. Dana Tomlin’s Map Algebra</a>, as detailed in the book GIS and Cartographic Modeling. Map Algebra breaks raster operations into three main categories:</p>
+<ul class="simple">
+<li><em>Local Operations</em>: Local operations calculate resulting raster cell values based on the value at the same cell location in one or more input rasters.</li>
+<li><em>Focal Operations</em>: Focal operations calculate resulting raster cell values based on the values in a defined in a neighborhood around the same cell location in one or more input rasters.</li>
+<li><em>Zonal Operations</em>: Zonal operations calcuate resulting raster cell values based on the values associated with that cell’s zone in one or more input rasters.</li>
+</ul>
+<p>There are also some additional operation categories that GeoTrellis recognizes:</p>
+<ul class="simple">
+<li><em>Global Operations</em>: Global operations are operations that need all information from the whole entire raster.</li>
+<li><em>Statistical Operations</em>: Statistics operations compute statistics from raster values.</li>
+</ul>
+<p><em>Note:</em> For each Operation that takes an input Raster and returns a Raster, the data type of the output Raster will be the same as the input Raster, unless otherwise noted.</p>
+<div class="section" id="how-operations-are-implemented">
+<h2>How operations are implemented</h2>
+<p>Raster operations are accessed through methods on the <a class="reference internal" href="/0.9docs/datasource"><em>RasterSource</em></a> type, or through methods on a sequence of <em>RasterSources</em>.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,52 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="geotrellis-macros">
+<span id="geotrellis-macros-0-9-0"></span><h1>geotrellis-macros</h1>
+<p>The <em>geotrellis-macro</em> project holds macros for the geotrellis project. Macros must be defined in a separate project, since to perform macro expansion, the compiler needs a macro implementation in executable form.</p>
+<p>The <em>geotrellis-macro</em> jar is pulled in as dependency from the core <em>geotrellis</em> jar, so you won&#8217;t have to worry about pulling this dependency into your project manually.</p>
+<div class="section" id="checking-for-nodata">
+<h2>Checking for NoData</h2>
+<p><tt class="docutils literal"><span class="pre">isNoData</span></tt> <tt class="docutils literal"><span class="pre">isData</span></tt> - These functions are for checking if a data type is NoData or not. See <a class="reference internal" href="/0.9docs/raster"><em>NoData</em></a> for an explination of what NoData means. Using a macro for this check allows for different overloaded versions of the functions to inline their specific NoData check for the different datatypes; for example,</p>
+<div class="highlight-scala"><div class="highlight"><pre>  <span class="k">val</span> <span class="n">raster</span><span class="k">:</span><span class="kt">Raster</span> <span class="o">=</span> <span class="o">???</span>
+
+  <span class="k">val</span> <span class="n">i</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">)</span>
+  <span class="k">val</span> <span class="n">d</span><span class="k">:</span><span class="kt">Double</span> <span class="o">=</span> <span class="n">raster</span><span class="o">.</span><span class="n">getDouble</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">0</span><span class="o">)</span>
+
+  <span class="k">if</span><span class="o">(</span><span class="n">isNoData</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Is a NoData value.&quot;</span><span class="o">)</span> <span class="o">}</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">isData</span><span class="o">(</span><span class="n">i</span><span class="o">))</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Is a data value.&quot;</span><span class="o">)</span> <span class="o">}</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">isNoData</span><span class="o">(</span><span class="n">d</span><span class="o">))</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Is a NoData value.&quot;</span><span class="o">)</span> <span class="o">}</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">isData</span><span class="o">(</span><span class="n">d</span><span class="o">))</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Is a data value.&quot;</span><span class="o">)</span> <span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="future-macro-work">
+<h2>Future Macro work</h2>
+<p>We hope to add more macros to this project in order to take advantage of the API and optimization improvements that can be gained from this newer feature of the Scala language. If you have ideas about how macros could help, let us know.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+

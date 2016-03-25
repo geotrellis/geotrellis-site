@@ -1,0 +1,42 @@
+---
+layout: default
+title: GeoTrellis | Fast Raster Processing
+---
+
+{% include 09sidebar.html %}
+<section class="mainContentWrap">
+  <div class="container">
+      <!--main content-->
+      <div class="span9">
+        <div class="row-fluid">
+          <div class="innerSpacer left">
+
+            <div class="row-fluid">
+              <div class="span12">
+                <div class="section" id="working-with-vector-data">
+<span id="vector-0-9-0"></span><h1>Working with Vector Data</h1>
+<p>Even though rasters are the main focus of GeoTrellis, there is functionality for working with vector/feature data. GeoTrellis doesn&#8217;t provide underlying vector data types or operations; the open source java library <a class="reference external" href="http://www.vividsolutions.com/jts/JTSHome.htm">Java Topology Suite (JTS)</a> has done a great job of providing solid types and operations for dealing with vector data. GeoTrellis provides some wrappers around the base Geometry types to provide functionality dealing with features (geometries combined with data), and ways to use vector and raster data together.</p>
+<p>There are plans for the 0.10 release of GeoTrellis to greatly improve the handling of vector data in Scala; namely, to provide a more complete and idiomatic scala wrapper around JTS functionality so there is a natural Scala solution for dealing with geometries and features.</p>
+<div class="section" id="kernel-density">
+<h2>Kernel Density</h2>
+<p>The Kernel Density operation is a method for smoothing values of point data across a raster using an estimated probability density function. It&#8217;s a geostatistical method that a full explination of is beyond the scope of this documentation; please refer to the <a class="reference external" href="http://en.wikipedia.org/wiki/Kernel_density_estimation">Wikipedia article</a> for more information, or ask for more resources on the mailing list or IRC.</p>
+<p>GeoTrellis implements the kernel density operation through the <tt class="docutils literal"><span class="pre">VectorToRaster.kernelDensity</span></tt> method.</p>
+</div>
+<div class="section" id="geojson">
+<h2>GeoJSON</h2>
+<p>GeoTrellis provides utility objects that read and write GeoJson from GeoTrellis feature objects.</p>
+</div>
+</div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
