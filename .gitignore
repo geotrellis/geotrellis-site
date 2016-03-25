@@ -24,5 +24,6 @@ TAGS
 deployment/ansible/roles/azavea.*
 
 srv/data/hillshade/hills.arg
+site/_site
 site/_site/*
 srv/hs_err_pid*
