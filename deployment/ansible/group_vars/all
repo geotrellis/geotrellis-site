@@ -1,5 +1,0 @@
----
-developing: "'development' in group_names"
-packing: "'packer' in group_names"
-
-packer_version: "0.10.0"
