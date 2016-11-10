@@ -21,12 +21,11 @@ import scala.collection.JavaConverters._
 import spray.util.SettingsCompanion
 
 case class SiteSettings(
-    interface:     String,
-    port:          Int,
-    devMode:       Boolean,
-    mainVersion:   String,
-    otherVersions: Seq[String]
-) {
+    interface: String,
+    port: Int,
+    devMode: Boolean,
+    mainVersion: String,
+    otherVersions: Seq[String]) {
 
   require(interface.nonEmpty, "interface must be non-empty")
   require(0 < port && port < 65536, "illegal port")
@@ -38,6 +37,5 @@ object SiteSettings extends SettingsCompanion[SiteSettings]("spray.site") {
     c getInt "port",
     c getBoolean "dev-mode",
     c getString "main-version",
-    c.getStringList("other-versions").asScala
-  )
+    c.getStringList("other-versions").asScala)
 }

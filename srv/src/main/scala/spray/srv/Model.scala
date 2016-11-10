@@ -8,10 +8,9 @@ import geotrellis.source._
  */
 object Model {
   def weightedOverlay(
-    layers:       Iterable[String],
-    weights:      Iterable[Int],
-    rasterExtent: Option[RasterExtent]
-  ): RasterSource =
+    layers: Iterable[String],
+    weights: Iterable[Int],
+    rasterExtent: Option[RasterExtent]): RasterSource =
     layers
       .zip(weights)
       .map {
