@@ -1,0 +1,16 @@
+version: '2'
+services:
+  jekyll:
+    image: jekyll-nginx
+    build:
+      context: ./jekyll
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  geotrellis:
+    image: gtserver
+    build:
+      context: ./geotrellis
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
