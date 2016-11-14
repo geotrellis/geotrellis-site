@@ -1,12 +1,6 @@
 version: '2'
+
 services:
-  jekyll:
-    image: jekyll-nginx
-    build:
-      context: ./jekyll
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
   geotrellis:
     image: gtserver
     build:
@@ -14,3 +8,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
+    volumes:
+      - "/home/colin/.ivy2:/root/.ivy2"
+      - "/home/colin/.m2:/root/.m2"
+      - "/home/colin/.sbt:/root/.sbt"
+  jekyll:
+    image: jekyll-nginx
+    build:
+      context: ./jekyll
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
