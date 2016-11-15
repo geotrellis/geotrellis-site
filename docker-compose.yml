@@ -9,9 +9,9 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - "/home/colin/.ivy2:/root/.ivy2"
-      - "/home/colin/.m2:/root/.m2"
-      - "/home/colin/.sbt:/root/.sbt"
+      - "${HOME}/.ivy2:/root/.ivy2"
+      - "${HOME}/.m2:/root/.m2"
+      - "${HOME}/.sbt:/root/.sbt"
   jekyll:
     image: jekyll-nginx
     build:
