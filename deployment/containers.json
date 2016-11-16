@@ -1,0 +1,28 @@
+[
+    {
+        "name": "geotrellis-site-static",
+        "image": "${static_image}",
+        "cpu": 1024,
+        "memory": 1024,
+        "essential": true,
+        "portMappings": [
+            {
+                "containerPort": 8080,
+                "hostPort": 80
+            }
+        ]
+    },
+    {
+        "name": "geotrellis-site-service",
+        "image": "${service_image}",
+        "cpu": 1024,
+        "memory": 3072,
+        "essential": true,
+        "portMappings": [
+            {
+                "containerPort": 9090,
+                "hostPort": 9090
+            }
+        ]
+    }
+]
