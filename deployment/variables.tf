@@ -1,4 +1,5 @@
 variable "stack_name" {
+  default = "GeoTrellis Site"
   type = "string"
   description = "Disambiguation prefix for the EMR/ECS stack"
 }
@@ -14,16 +15,18 @@ variable "static_image" {
 }
 
 variable "ec2_key" {
+  default = "geotrellis-cluster"
   type = "string"
   description = "EC2 key for EMR and ECS machines"
 }
 
 variable "subnet_id" {
+  default = "subnet-c5fefdb1"
   type = "string"
   description = "Subnet ID shared by EMR and ECS"
 }
 variable "desired_instance_count" {
-  default = 2
+  default = 1
   description = "Number benchmark instances to provision"
 }
 

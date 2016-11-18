@@ -35,7 +35,7 @@ resource "aws_ecs_service" "gtsite" {
   task_definition                    = "${aws_ecs_task_definition.gtsite.family}:${aws_ecs_task_definition.gtsite.revision}"
   desired_count                      = "${var.desired_instance_count}"
   iam_role                           = "${var.ecs_service_role}"
-  deployment_minimum_healthy_percent = "0" # allow old services to be torn down
+  deployment_minimum_healthy_percent = "20" # allow old services to be torn down
   deployment_maximum_percent         = "100"
 
   load_balancer {
@@ -52,7 +52,7 @@ resource "aws_elb" "gtsite" {
   listener {
     lb_port = 80
     lb_protocol       = "HTTP"
-    instance_port     = 80
+    instance_port     = 8080
     instance_protocol = "HTTP"
   }
 

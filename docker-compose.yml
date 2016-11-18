@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  service:
+  gtsite-service:
     image: quay.io/geotrellis/gtsite-service
     build:
       context: ./service
@@ -12,7 +12,7 @@ services:
       - "${HOME}/.ivy2:/root/.ivy2"
       - "${HOME}/.m2:/root/.m2"
       - "${HOME}/.sbt:/root/.sbt"
-  static:
+  gtsite-static:
     image: quay.io/geotrellis/gtsite-static
     build:
       context: ./static
