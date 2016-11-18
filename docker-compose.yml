@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  geotrellis:
+    image: gtserver
+    build:
+      context: ./geotrellis
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    volumes:
+      - "${HOME}/.ivy2:/root/.ivy2"
+      - "${HOME}/.m2:/root/.m2"
+      - "${HOME}/.sbt:/root/.sbt"
+  jekyll:
+    image: jekyll-nginx
+    build:
+      context: ./jekyll
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

@@ -1,4 +1,0 @@
----
-geotrellis_site_user: geotrellis
-geotrellis_site_log: /var/log/geotrellis-site.log
-jekyll_dir: /opt/geotrellis-site/site
