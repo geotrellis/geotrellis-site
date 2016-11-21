@@ -18,7 +18,12 @@ This will expose `localhost:8080` to listen for HTTP requests.
 
 ## Deploying
 Deploying on AWS should be relatively simple as well (note that terraform
-is required in addition to docker for this step):
+is required in addition to docker for this step). Note that, because the terraform
+state is stored on S3, any updates can be applied without having to tear
+down the previous deployment. Keep in mind, too, that containers are
+tagged according to the SHA of the commit from which they come - to
+ensure that ECS picks up the updated container, verify that all changes have
+been committed.
 
 ```console
 > make deploy
