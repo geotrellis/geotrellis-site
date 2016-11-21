@@ -19,7 +19,8 @@ object Model {
             case Some(re) ⇒ RasterSource(layer, re)
             case None     ⇒ RasterSource(layer)
           }
-          rs.convert(TypeShort).localMultiply(weight)
+          rs.convert(TypeShort)
+            .localMultiply(weight)
       }
       .localAdd
 
