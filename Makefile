@@ -29,19 +29,31 @@ publish: build
 	docker push ${SERVICE_IMG}:${TAG}
 	docker push ${STATIC_IMG}:${TAG}
 
-deploy: build
+deploy: publish
+	terraform remote config \
+		-backend="s3" \
+		-backend-config="region=us-east-1" \
+		-backend-config="bucket=aws-state" \
+		-backend-config="key=geotrellis-site/GT-SITE.tfstate" \
+		-backend-config="encrypt=true"
 	terraform apply \
-		-state="deployment/${STACK_NAME}.tfstate" \
 		-var 'stack_name=${STACK_NAME}' \
 		-var 'service_image=${SERVICE_IMG}:${TAG}' \
 		-var 'static_image=${STATIC_IMG}:${TAG}' \
 		./deployment
+	terraform remote push
 
 destroy:
+	terraform remote config \
+		-backend="s3" \
+		-backend-config="region=us-east-1" \
+		-backend-config="bucket=aws-state" \
+		-backend-config="key=geotrellis-site/GT-SITE.tfstate \
+		-backend-config="encrypt=true"
 	terraform destroy -force \
-		-state="deployment/${STACK_NAME}.tfstate" \
 		-var 'stack_name=${STACK_NAME}' \
 		-var 'service_image=NA' \
 		-var 'static_image=NA' \
 		./deployment
+	terraform remote push
 
