@@ -36,7 +36,7 @@ variable "aws_ecs_ami" {
 }
 
 variable "ecs_instance_type" {
-  default = "m3.large"
+  default = "t2.medium"
 }
 
 variable "ecs_service_role" {

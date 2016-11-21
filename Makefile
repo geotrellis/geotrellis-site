@@ -29,7 +29,7 @@ publish: build
 	docker push ${SERVICE_IMG}:${TAG}
 	docker push ${STATIC_IMG}:${TAG}
 
-deploy: build
+deploy: publish
 	terraform apply \
 		-state="deployment/${STACK_NAME}.tfstate" \
 		-var 'stack_name=${STACK_NAME}' \
