@@ -5,8 +5,8 @@ FROM ruby:2.3.3
 RUN apt-get update && apt-get install -y node
 
 # Built assets remain on the host filesystem.
-VOLUME /build
+VOLUME /build /handoff
 WORKDIR /build
 
 # Build the static portions of the site.
-CMD bundle install && jekyll build
+CMD bundle install && jekyll build && mv _site/ /handoff

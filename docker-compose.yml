@@ -12,10 +12,10 @@ services:
       - "${HOME}/.ivy2:/root/.ivy2"
       - "${HOME}/.m2:/root/.m2"
       - "${HOME}/.sbt:/root/.sbt"
-  gtsite-static:
-    image: quay.io/geotrellis/gtsite-static
+  gtsite-nginx:
+    image: quay.io/geotrellis/gtsite-nginx
     build:
-      context: ./static
+      context: ./nginx
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
