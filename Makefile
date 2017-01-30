@@ -14,6 +14,11 @@ clean:
 	docker-compose down
 
 build:
+	cd static/ && docker build -t gtsite-assets .
+	docker run --rm \
+		-v ${PWD}/static:/build \
+		-v ${PWD}/nginx:/handoff \
+		gtsite-assets:latest
 	docker-compose build
 	docker tag ${SERVICE_IMG} ${SERVICE_IMG}:${TAG}
 	docker tag ${STATIC_IMG} ${STATIC_IMG}:${TAG}
@@ -56,4 +61,3 @@ destroy:
 		-var 'static_image=NA' \
 		./deployment
 	terraform remote push
-
