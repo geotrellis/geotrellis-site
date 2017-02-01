@@ -17,5 +17,7 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    depends_on:
+      - gtsite-service
     ports:
       - "8080:8080"
