@@ -21,7 +21,7 @@ assets:
 		gtsite-assets:latest
 
 assembly:
-	cd service/srv/data/hillshade/ && unzip hills.zip
+	cd service/srv/data/hillshade/ && unzip -o hills.zip
 	cd service && ./sbt assembly
 
 build:
