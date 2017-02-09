@@ -5,20 +5,26 @@ export AWS_DEFAULT_REGION := us-east-1
 # Docker image of benchmarking service
 TAG := $(shell git rev-parse --short HEAD)
 export SERVICE_IMG := quay.io/geotrellis/gtsite-service
-export STATIC_IMG := quay.io/geotrellis/gtsite-static
-
+export STATIC_IMG := quay.io/geotrellis/gtsite-nginx
 
 clean:
 	rm -rf service/srv/target
 	rm -rf ./build
 	docker-compose down
+	sudo rm -rf nginx/_site/
 
-build:
+assets:
 	cd static/ && docker build -t gtsite-assets .
 	docker run --rm \
 		-v ${PWD}/static:/build \
 		-v ${PWD}/nginx:/handoff \
 		gtsite-assets:latest
+
+assembly:
+	cd service/srv/data/hillshade/ && unzip -o hills.zip
+	cd service && ./sbt assembly
+
+build:
 	docker-compose build
 	docker tag ${SERVICE_IMG} ${SERVICE_IMG}:${TAG}
 	docker tag ${STATIC_IMG} ${STATIC_IMG}:${TAG}

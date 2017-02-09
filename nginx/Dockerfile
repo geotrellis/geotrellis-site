@@ -1,4 +1,4 @@
-FROM nginx:1.10.2
+FROM nginx:1.10.3
 
 COPY _site/ /var/www/
 

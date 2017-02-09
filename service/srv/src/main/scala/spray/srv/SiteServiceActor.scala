@@ -163,18 +163,6 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
       }
     }
   } ~
-  pathPrefix("transit"){
-    path("wms") {
-      import Uri._
-      val uri = Uri("http://transit.geotrellis.com/api/travelshed/wms")
-      parameterSeq { params =>
-        redirect(
-          uri.withQuery(params.map(t=> (t._1.toLowerCase, t._2)): _*),
-          StatusCodes.TemporaryRedirect
-        )
-      }
-    }
-  } ~
   unmatchedPath { ump => //anything hitting the demo subroute will have standard 404
     complete(StatusCodes.NotFound)
   }
