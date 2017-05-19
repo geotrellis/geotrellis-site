@@ -19,5 +19,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - gtsite-service
+    extra_hosts:
+      - "gt-transit:127.0.0.1"
+      - "gt-chatta-demo:127.0.0.1"
     ports:
       - "8080:8080"

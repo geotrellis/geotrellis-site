@@ -20,12 +20,13 @@ TAGS
 .history
 .idea
 
-.vagrant
+.vagrant/
 deployment/ansible/roles/azavea.*
+*.retry
 
-srv/data/hillshade/hills.arg
-site/_site
-site/_site/*
+service/srv/data/hillshade/hills.arg
+nginx/_site
+nginx/_site/*
 srv/hs_err_pid*
 
 assembly

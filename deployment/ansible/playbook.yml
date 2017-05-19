@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: True
+
+  pre_tasks:
+    - name: Update APT cache
+      apt: update_cache=yes cache_valid_time=3600
+
+  roles:
+    - { role: "azavea.terraform" }
+    - { role: "azavea.java" } 
+    - { role: "azavea.aws-cli" }
+    - { role: "gtsite.environment" }
+    - { role: "gtsite.docker" }
