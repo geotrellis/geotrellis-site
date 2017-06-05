@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  gtsite-service:
+    image: gtsite-service:${GIT_COMMIT}
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+  gtsite-nginx:
+    image: gtsite-nginx:${GIT_COMMIT}
