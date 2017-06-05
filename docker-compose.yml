@@ -1,17 +1,25 @@
-version: '2'
+version: '2.1'
 
 services:
   gtsite-service:
-    image: quay.io/geotrellis/gtsite-service
-    build:
-      context: ./service
-      dockerfile: Dockerfile
+    image: openjdk:8-jre
     ports:
       - "9090:9090"
+    entrypoint: ./sbt
+    command: srv/run docs/run
+    working_dir: /service
     volumes:
       - "${HOME}/.ivy2:/root/.ivy2"
       - "${HOME}/.m2:/root/.m2"
       - "${HOME}/.sbt:/root/.sbt"
+      - "./service/:/service"
+  gtsite-assets:
+    build:
+      context: ./static
+      dockerfile: Dockerfile
+    volumes:
+      - ./static:/build
+      - ./nginx:/handoff
   gtsite-nginx:
     image: quay.io/geotrellis/gtsite-nginx
     build:

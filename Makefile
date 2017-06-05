@@ -3,32 +3,13 @@ export STACK_NAME := GT-SITE
 export AWS_DEFAULT_REGION := us-east-1
 
 # Docker image of benchmarking service
-TAG := $(shell git rev-parse --short HEAD)
-export SERVICE_IMG := quay.io/geotrellis/gtsite-service
-export STATIC_IMG := quay.io/geotrellis/gtsite-nginx
+export GIT_COMMIT := $(if ${GIT_COMMIT},${GIT_COMMIT},$(shell git rev-parse --short HEAD))
 
 clean:
-	rm -rf service/srv/target
 	rm -rf ./build
 	docker-compose down
 	sudo rm -rf nginx/_site/
-
-assets:
-	cd static/ && docker build -t gtsite-assets .
-	docker run --rm \
-		-v ${PWD}/static:/build \
-		-v ${PWD}/nginx:/handoff \
-		gtsite-assets:latest
-
-assembly:
-	cd service/srv/data/hillshade/ && unzip -o hills.zip
-	cd service && ./sbt assembly
-
-build:
-	docker-compose build
-	docker tag ${SERVICE_IMG} ${SERVICE_IMG}:${TAG}
-	docker tag ${STATIC_IMG} ${STATIC_IMG}:${TAG}
-	touch ./build
+	docker-compose run --rm gtsite-service clean
 
 start: build
 	docker-compose up
@@ -49,8 +30,8 @@ deploy: publish
 		-backend-config="encrypt=true"
 	terraform apply \
 		-var 'stack_name=${STACK_NAME}' \
-		-var 'service_image=${SERVICE_IMG}:${TAG}' \
-		-var 'static_image=${STATIC_IMG}:${TAG}' \
+		-var 'service_image=${SERVICE_IMG}:${GIT_COMMIT}' \
+		-var 'static_image=${STATIC_IMG}:${GIT_COMMIT}' \
 		./deployment
 	terraform remote push
 

@@ -1,0 +1,56 @@
+#!/bin/bash
+
+set -e
+
+if [[ -n "${GT_SITE_DEBUG}" ]]; then
+    set -x
+fi
+
+if [[ -n "${GIT_COMMIT}" ]]; then
+    GIT_COMMIT="${GIT_COMMIT:0:7}"
+else
+    GIT_COMMIT="$(git rev-parse --short HEAD)"
+fi
+
+function usage() {
+    echo -n \
+"Usage: $(basename "$0")
+Publish images to Amazon ECR
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    if [ "${1:-}" = "--help" ]; then
+        usage
+    else
+
+        if [[ -n "${AWS_ECR_ENDPOINT}" ]]; then
+
+            echo "Building geotrellis-service JAR..."
+            docker-compose run --rm gtsite-service assembly
+
+            echo "Building gtsite-service and gtsite-nginx containers"
+            docker-compose run --rm --entrypoint "/bin/bash -c" gtsite-service \
+               "unzip -d /srv/data/hillshade/ -o /srv/data/hillshade/hills.zip"
+
+            GIT_COMMIT="${GIT_COMMIT}" \
+                docker-compose -f docker-compose.yml \
+                               -f docker-compose.test.yml build \
+                               gtsite-nginx gtsite-service
+
+            eval "$(aws ecr get-login)"
+            docker tag "gtsite-service:${GIT_COMMIT}" \
+                "${AWS_ECR_ENDPOINT}/gtsite-service:${GIT_COMMIT}"
+
+            docker tag "gtsite-nginx:${GIT_COMMIT}" \
+                "${AWS_ECR_ENDPOINT}/gtsite-nginx:${GIT_COMMIT}"
+
+            docker push "${AWS_ECR_ENDPOINT}/gtsite-service:${GIT_COMMIT}"
+            docker push "${AWS_ECR_ENDPOINT}/gtsite-nginx:${GIT_COMMIT}"
+        else
+            echo "ERROR: No AWS_ECR_ENDPOINT variable defined."
+            exit 1
+        fi
+
+    fi
+fi
