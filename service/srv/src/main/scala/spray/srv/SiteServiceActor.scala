@@ -176,7 +176,8 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     case r @ HttpResponse(Found | MovedPermanently, _, _, _) ⇒
       Some(LogEntry(s"${r.status.intValue}: ${request.uri} -> ${r.header[HttpHeaders.Location].map(_.uri.toString).getOrElse("")}", WarningLevel))
     case response ⇒ Some(
-      LogEntry("Non-200 response for\n  Request : " + request + "\n  Response: " + response, WarningLevel))
+      LogEntry("Non-200 response for\n  Request : " + request + "\n  Response: " + response, WarningLevel)
+    )
   }
 
   def showRepoResponses(repo: String)(request: HttpRequest): HttpResponsePart ⇒ Option[LogEntry] = {
@@ -190,6 +191,7 @@ class SiteServiceActor(settings: SiteSettings) extends HttpServiceActor {
     Marshaller.delegate(MediaTypes.`text/html`) { (listing: DirectoryListing) ⇒
       listing.copy(
         files = listing.files.filterNot(file ⇒
-          file.getName.startsWith(".") || file.getName.startsWith("archetype-catalog")))
+          file.getName.startsWith(".") || file.getName.startsWith("archetype-catalog"))
+      )
     }(DirectoryListing.DefaultMarshaller)
 }
