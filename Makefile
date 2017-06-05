@@ -11,17 +11,7 @@ clean:
 	sudo rm -rf nginx/_site/
 	docker-compose run --rm gtsite-service clean
 
-start: build
-	docker-compose up
-
-stop:
-	docker-compose down
-
-publish: build
-	docker push ${SERVICE_IMG}:${TAG}
-	docker push ${STATIC_IMG}:${TAG}
-
-deploy: publish
+deploy:
 	terraform remote config \
 		-backend="s3" \
 		-backend-config="region=us-east-1" \
