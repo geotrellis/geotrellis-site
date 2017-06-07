@@ -1,6 +1,6 @@
 [
     {
-        "name": "geotrellis-site-static",
+        "name": "gtsite-static",
         "image": "${static_image}",
         "cpu": 10,
         "memory": 800,
@@ -9,7 +9,17 @@
         "portMappings": [
             {
                 "containerPort": 8080,
-                "hostPort": 8080
+                "hostPort": 0
+            }
+        ],
+        "extraHosts": [
+            {
+                "hostname":"gt-transit",
+                "ipAddress": "127.0.0.1"
+            },
+            {
+                "hostname":"gt-chatta-demo",
+                "ipAddress": "127.0.0.1"
             }
         ]
     },
