@@ -1,5 +1,5 @@
 java_version: "7u131*"
-terraform_version: "0.9.3"
+terraform_version: "0.9.6"
 awscli_version: "1.11.*"
 aws_profile: "geotrellis-site"
 docker_version: "1.12.*"
