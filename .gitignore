@@ -32,4 +32,6 @@ srv/hs_err_pid*
 assembly
 build
 deployment/GT-SITE.tfstate*
+deployment/terraform/.terraform
 *tfstate*
+*.tfplan
