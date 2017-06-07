@@ -1,48 +1,50 @@
-variable "stack_name" {
-  default = "GeoTrellis Site"
-  type = "string"
-  description = "Disambiguation prefix for the EMR/ECS stack"
+variable "environment" {
+  default = "Production"
 }
 
-variable "service_image" {
-  type = "string"
-  description = "Geotrellis service Docker image"
+variable "remote_state_bucket" {
+  type        = "string"
+  description = "Core infrastructure config bucket"
 }
 
-variable "static_image" {
-  type = "string"
-  description = "Static service Docker image"
+variable "aws_account_id" {
+  default     = "896538046175"
+  description = "Geotrellis Site account ID"
 }
 
-variable "ec2_key" {
-  default = "geotrellis-cluster"
-  type = "string"
-  description = "EC2 key for EMR and ECS machines"
+variable "aws_region" {
+  default = "us-east-1"
 }
 
-variable "subnet_id" {
-  default = "subnet-c5fefdb1"
-  type = "string"
-  description = "Subnet ID shared by EMR and ECS"
-}
-variable "desired_instance_count" {
-  default = 1
-  description = "Number benchmark instances to provision"
+variable "image_version" {
+  type        = "string"
+  description = "Geotrellis Service and Static Image version"
 }
 
-# TODO: make this a dynamic lookup
-variable "aws_ecs_ami" {
-  default = "ami-6bb2d67c"
+variable "cdn_price_class" {
+  default = "PriceClass_200"
 }
 
-variable "ecs_instance_type" {
-  default = "t2.medium"
+variable "ssl_certificate_arn" {
+  default = "arn:aws:acm:us-east-1:896538046175:certificate/a416c2af-00dd-4afd-8c71-dd32edefa839"
 }
 
-variable "ecs_service_role" {
-  default = "arn:aws:iam::896538046175:role/ecs_service_role"
+variable "website_ecs_desired_count" {
+  default = "1"
 }
 
-variable "ecs_instance_profile" {
-  default = "arn:aws:iam::896538046175:instance-profile/terraform-wzxkyowirnachcosiqxrriheki"
+variable "website_ecs_min_count" {
+  default = "1"
+}
+
+variable "website_ecs_max_count" {
+  default = "2"
+}
+
+variable "website_ecs_deployment_min_percent" {
+  default = "100"
+}
+
+variable "website_ecs_deployment_max_percent" {
+  default = "200"
 }
