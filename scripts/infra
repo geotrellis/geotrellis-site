@@ -23,7 +23,7 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     else
         TERRAFORM_DIR="${DIR}/../deployment/terraform"
         echo
-        echo "Attempting to deploy application version [${TRAVIS_COMMIT}]..."
+        echo "Attempting to deploy application version [${TRAVIS_COMMIT:0:7}]..."
         echo "-----------------------------------------------------"
         echo
     fi
@@ -39,7 +39,7 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
                     -backend-config="key=terraform/site/state"
 
                 terraform plan \
-                          -var="image_version=\"${TRAVIS_COMMIT}\"" \
+                          -var="image_version=\"${TRAVIS_COMMIT:0:7}\"" \
                           -var="remote_state_bucket=\"${GT_SITE_SETTINGS_BUCKET}\"" \
                           -out="${GT_SITE_SETTINGS_BUCKET}.tfplan"
                 ;;
