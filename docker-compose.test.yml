@@ -2,9 +2,9 @@ version: '2.1'
 
 services:
   gtsite-service:
-    image: gtsite-service:${GIT_COMMIT}
+    image: gtsite-service:${VERSION}
     build:
       context: ./service
       dockerfile: Dockerfile
   gtsite-nginx:
-    image: gtsite-nginx:${GIT_COMMIT}
+    image: gtsite-nginx:${VERSION}

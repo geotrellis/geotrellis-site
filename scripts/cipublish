@@ -6,10 +6,10 @@ if [[ -n "${GT_SITE_DEBUG}" ]]; then
     set -x
 fi
 
-if [[ -n "${GIT_COMMIT}" ]]; then
-    GIT_COMMIT="${GIT_COMMIT:0:7}"
+if [[ -n "${TRAVIS_COMMIT}" ]]; then
+    VERSION="${TRAVIS_COMMIT:0:7}"
 else
-    GIT_COMMIT="$(git rev-parse --short HEAD)"
+    VERSION="$(git rev-parse --short HEAD)"
 fi
 
 function usage() {
@@ -33,20 +33,19 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
             docker-compose run --rm --entrypoint "/bin/bash -c" gtsite-service \
                "unzip -d /srv/data/hillshade/ -o /srv/data/hillshade/hills.zip"
 
-            GIT_COMMIT="${GIT_COMMIT}" \
-                docker-compose -f docker-compose.yml \
-                               -f docker-compose.test.yml build \
-                               gtsite-nginx gtsite-service
-
+            VERSION="${VERSION}" \
+            docker-compose -f docker-compose.yml \
+                           -f docker-compose.test.yml build \
+                              gtsite-nginx gtsite-service
             eval "$(aws ecr get-login)"
-            docker tag "gtsite-service:${GIT_COMMIT}" \
-                "${AWS_ECR_ENDPOINT}/gtsite-service:${GIT_COMMIT}"
+            docker tag "gtsite-service:${VERSION}" \
+                "${AWS_ECR_ENDPOINT}/gtsite-service:${VERSION}"
 
-            docker tag "gtsite-nginx:${GIT_COMMIT}" \
-                "${AWS_ECR_ENDPOINT}/gtsite-nginx:${GIT_COMMIT}"
+            docker tag "gtsite-nginx:${VERSION}" \
+                "${AWS_ECR_ENDPOINT}/gtsite-nginx:${VERSION}"
 
-            docker push "${AWS_ECR_ENDPOINT}/gtsite-service:${GIT_COMMIT}"
-            docker push "${AWS_ECR_ENDPOINT}/gtsite-nginx:${GIT_COMMIT}"
+            docker push "${AWS_ECR_ENDPOINT}/gtsite-service:${VERSION}"
+            docker push "${AWS_ECR_ENDPOINT}/gtsite-nginx:${VERSION}"
         else
             echo "ERROR: No AWS_ECR_ENDPOINT variable defined."
             exit 1
