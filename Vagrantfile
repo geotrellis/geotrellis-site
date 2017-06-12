@@ -19,6 +19,12 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "~/.aws", "/home/vagrant/.aws"
     config.vm.synced_folder "./", "/home/vagrant/geotrellis-site"
 
+    config.vm.provision "shell" do |s|
+        s.inline = <<-SHELL
+            sed -i 's/^mesg n$/tty -s \\&\\& mesg n/g' /root/.profile
+        SHELL
+    end
+
     # Provisioning
     # Ansible is installed automatically by Vagrant.
     config.vm.provision "ansible_local" do |ansible|
