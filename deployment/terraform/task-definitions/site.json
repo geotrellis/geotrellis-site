@@ -11,16 +11,6 @@
                 "containerPort": 8080,
                 "hostPort": 0
             }
-        ],
-        "extraHosts": [
-            {
-                "hostname":"gt-transit",
-                "ipAddress": "127.0.0.1"
-            },
-            {
-                "hostname":"gt-chatta-demo",
-                "ipAddress": "127.0.0.1"
-            }
         ]
     },
     {
