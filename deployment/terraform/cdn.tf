@@ -45,7 +45,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   logging_config {
     include_cookies = false
     bucket          = "${data.terraform_remote_state.core.logs_bucket_id}.s3.amazonaws.com"
-    prefix          = "CloudFront/"
+    prefix          = "CloudFront/Site/"
   }
 
   restrictions {
