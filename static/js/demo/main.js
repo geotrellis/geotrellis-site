@@ -31,6 +31,8 @@ function(wo_ui, hs_ui, transit, maps){
           switch (to) {
             case 1: hs_ui.init();
               break;
+            case 2: transit.init();
+              break;
           }
         }
         
