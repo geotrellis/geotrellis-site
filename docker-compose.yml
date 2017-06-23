@@ -30,3 +30,6 @@ services:
       - gtsite-service
     ports:
       - "8080:8080"
+    volumes:
+      - ./nginx/_site:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/default.conf
