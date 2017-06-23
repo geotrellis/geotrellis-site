@@ -33,7 +33,7 @@ define([
         mapLayer = null;
     }
 
-    mapLayer = new L.TileLayer.WMS("http://transit.geotrellis.com/api/travelshed/wms", {
+    mapLayer = new L.TileLayer.WMS("https://transit.geotrellis.io/api/travelshed/wms2", {
                     latitude: marker.getLatLng().lat,
                     longitude: marker.getLatLng().lng,
                     time: time,
