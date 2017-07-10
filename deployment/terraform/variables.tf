@@ -30,7 +30,7 @@ variable "ssl_certificate_arn" {
 }
 
 variable "website_ecs_desired_count" {
-  default = "1"
+  default = "2"
 }
 
 variable "website_ecs_min_count" {
@@ -42,9 +42,9 @@ variable "website_ecs_max_count" {
 }
 
 variable "website_ecs_deployment_min_percent" {
-  default = "100"
+  default = "50"
 }
 
 variable "website_ecs_deployment_max_percent" {
-  default = "200"
+  default = "100"
 }
