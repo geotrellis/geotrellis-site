@@ -48,3 +48,7 @@ variable "website_ecs_deployment_min_percent" {
 variable "website_ecs_deployment_max_percent" {
   default = "100"
 }
+
+variable "docs_website_url" {
+  default = "geotrellis.readthedocs.io"
+}
