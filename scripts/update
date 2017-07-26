@@ -10,7 +10,7 @@ fi
 function usage() {
     echo -n \
 "Usage: $(basename "$0")
-Turn up vagrant development environment
+Update development environment
 "
 }
 
@@ -18,7 +18,7 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     if [ "${1:-}" = "--help" ]; then
         usage
     else
-        vagrant up --provision
-        vagrant ssh -c "cd /home/vagrant/geotrellis-site && ./scripts/update"
+		docker-compose build gtsite-assets
+		docker-compose run --rm gtsite-assets
     fi
 fi
