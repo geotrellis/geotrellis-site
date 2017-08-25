@@ -8,7 +8,6 @@
 
   roles:
     - { role: "azavea.terraform" }
-    # - { role: "azavea.java" } 
     - { role: "azavea.aws-cli" }
     - { role: "gtsite.environment" }
     - { role: "gtsite.docker" }
