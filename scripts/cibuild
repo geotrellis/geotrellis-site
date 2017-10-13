@@ -17,7 +17,6 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     if [ "${1:-}" = "--help" ]; then
         usage
     else
-
         make clean
 
         echo "Running tests..."
@@ -25,7 +24,6 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
 
         docker-compose build gtsite-assets
 
-        echo "Building static asset bundle..."
         docker-compose run --rm gtsite-assets
     fi
 fi

@@ -1,10 +1,11 @@
 FROM ruby:2.3
 
 # `jekyll` requires a JS runtime.
-RUN apt-get update && apt-get install -y node
+RUN apt-get update && apt-get install -y node rsync
 
-# Built assets remain on the host filesystem.
+RUN mkdir -p /build /handoff
 WORKDIR /build
 
-# Build the static portions of the site.
-CMD bundle install && jekyll build && mv _site/ /handoff
+COPY Gemfile /build/
+COPY Gemfile.lock /build/
+RUN bundle install
