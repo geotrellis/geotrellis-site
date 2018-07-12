@@ -35,3 +35,4 @@ deployment/GT-SITE.tfstate*
 deployment/terraform/.terraform
 *tfstate*
 *.tfplan
+*.tfvars

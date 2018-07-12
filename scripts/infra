@@ -33,12 +33,16 @@ if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
 
         case "${1}" in
             plan)
+                aws s3 cp "s3://${GT_SITE_SETTINGS_BUCKET}/terraform/site/terraform.tfvars" \
+                    "${GT_SITE_SETTINGS_BUCKET}.tfvars"
+
                 rm -rf .terraform/ terraform.tfstate*
                 terraform init \
                     -backend-config="bucket=${GT_SITE_SETTINGS_BUCKET}" \
                     -backend-config="key=terraform/site/state"
 
                 terraform plan \
+                          -var-file="${GT_SITE_SETTINGS_BUCKET}.tfvars" \
                           -var="image_version=\"${TRAVIS_COMMIT:0:7}\"" \
                           -var="remote_state_bucket=\"${GT_SITE_SETTINGS_BUCKET}\"" \
                           -out="${GT_SITE_SETTINGS_BUCKET}.tfplan"
