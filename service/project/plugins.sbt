@@ -1,6 +1,7 @@
 resolvers += "spray repo" at "http://repo.spray.io"
 
 libraryDependencies ++= Seq(
+  "javax.media" % "jai_core" % "1.1.3" from "http://download.osgeo.org/webdav/geotools/javax/media/jai_core/1.1.3/jai_core-1.1.3.jar",
   "com.decodified" % "scala-ssh" % "0.6.2",
   "org.bouncycastle" % "bcprov-jdk16" % "1.46",
   "com.jcraft" % "jzlib" % "1.1.1"
