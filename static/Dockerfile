@@ -1,7 +1,7 @@
 FROM ruby:2.3
 
 # `jekyll` requires a JS runtime.
-RUN apt-get update && apt-get install -y node rsync
+RUN apt-get update && apt-get install -y nodejs rsync
 
 RUN mkdir -p /build /handoff
 WORKDIR /build
