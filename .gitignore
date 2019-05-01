@@ -1,38 +1,19 @@
-project/boot
-project/plugins/project
-project/plugins/target
-project/target
-target
-.ensime
-TAGS
-\#*#
-*~
-.#*
-.lib
-*.aux.xml
-*.jar
-
-*.pyc
-.project
-.classpath
-.cache
-.settings
-.history
-.idea
-
-.vagrant/
+# Ansible
 deployment/ansible/roles/azavea.*
 *.retry
 
-service/srv/data/hillshade/hills.arg
-nginx/_site/*
-!nginx/_site/.gitkeep
-srv/hs_err_pid*
+# Vagrant
+.vagrant
 
-assembly
-build
-deployment/GT-SITE.tfstate*
-deployment/terraform/.terraform
-*tfstate*
-*.tfplan
-*.tfvars
+# Jekyll
+_site
+.sass-cache
+.jekyll-metadata
+
+# OSX
+.DS_Store
+
+# Yarn
+node_modules/
+package.json
+.stylelintrc

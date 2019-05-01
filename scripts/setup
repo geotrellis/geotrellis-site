@@ -2,23 +2,24 @@
 
 set -e
 
-if [[ -n "${GT_SITE_DEBUG}" ]]; then
+if [[ -n "${GEOTRELLIS_SITE_DEBUG}" ]]; then
     set -x
 fi
-
 
 function usage() {
     echo -n \
 "Usage: $(basename "$0")
-Turn up vagrant development environment
+Attempts to setup the project's development environment.
 "
 }
 
-if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
-    if [ "${1:-}" = "--help" ]; then
+if [ "${BASH_SOURCE[0]}" = "${0}" ]
+then
+    if [ "${1:-}" = "--help" ]
+    then
         usage
     else
         vagrant up --provision
-        vagrant ssh -c "cd /home/vagrant/geotrellis-site && ./scripts/update"
+        rm -rf deployment/ansible/roles/azavea.*
     fi
 fi

@@ -1,6 +1,0 @@
-build/
-docs/
-srv/src
-srv/target/streams
-srv/target/resolution-cache
-srv/target/scala-2.10/classes/
