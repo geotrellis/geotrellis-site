@@ -20,7 +20,7 @@ exclude:
   - .vagrant/
   - deployment
   - scripts
-  - .ruby_version
+  - .ruby-version
   - docker-compose.yml
   - Dockerfile
   - Gemfile
