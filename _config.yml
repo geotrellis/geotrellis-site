@@ -15,6 +15,10 @@ github_username:  geotrellis
 # Build settings
 markdown: kramdown
 
+sass:
+  sass_dir: _sass
+  style: compressed
+
 exclude:
   - .gitignore
   - .vagrant/
@@ -29,5 +33,4 @@ exclude:
   - LICENSE
   - netlify.toml
   - README.md
-  - node_modules
   
