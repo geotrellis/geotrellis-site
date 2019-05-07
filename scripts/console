@@ -1,26 +1,22 @@
 #!/bin/bash
-set -eu
 
-DIR="$(dirname "$0")"
+set -e
+
+if [[ -n "${GEOTRELLIS_SITE_DEBUG}" ]]; then
+    set -x
+fi
 
 function usage() {
     echo -n \
-"Usage: $(basename "$0") SERVICE COMMAND[S]
-Use Docker Compose to run a command for a service, or drop into a console.
-
-Example: ./scripts/console gtsite-service \"./sbt\"
+"Usage: $(basename "$0")
+Login to the jekyll container.
 "
 }
 
-
-if [ "${BASH_SOURCE[0]}" = "${0}" ]
-then
-    if [ "${1:-}" = "--help" ]
-    then
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    if [ "${1:-}" = "--help" ]; then
         usage
     else
-        docker-compose -f "${DIR}/../docker-compose.yml" \
-                       run --rm --service-ports --entrypoint \
-                       "/bin/bash -c" "$1" "${@:2}"
+        docker-compose run --rm --entrypoint /bin/bash jekyll
     fi
 fi

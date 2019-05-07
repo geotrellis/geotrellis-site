@@ -1,38 +1,15 @@
-version: '2.1'
-
+version: '3'
 services:
-  gtsite-service:
-    image: openjdk:8-jre
-    ports:
-      - "9090:9090"
-    entrypoint: ./sbt
-    command: srv/run docs/run
-    working_dir: /service
-    volumes:
-      - "${HOME}/.ivy2:/root/.ivy2"
-      - "${HOME}/.m2:/root/.m2"
-      - "${HOME}/.sbt:/root/.sbt"
-      - "./service/:/service"
-      - "./service/srv/data:/srv/data"
-
-  gtsite-assets:
+  jekyll:
     build:
-      context: ./static
+      context: .
       dockerfile: Dockerfile
     volumes:
-      - ./static:/build
-      - ./nginx:/handoff
-    command: "bash -c 'jekyll build && rsync -a --delete /build/_site /handoff/'"
-
-  gtsite-nginx:
-    image: quay.io/geotrellis/gtsite-nginx
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    depends_on:
-      - gtsite-service
+      - ./:/usr/src/app
+    environment:
+      - JEKYLL_ENV=development
+      - LANG=C.UTF-8
+    command: serve --livereload --force_polling --host 0.0.0.0
     ports:
-      - "8080:8080"
-    volumes:
-      - ./nginx/_site:/var/www
-      - ./nginx/nginx.conf:/etc/nginx/default.conf
+        - '4000:4000'
+        - '35729:35729'
