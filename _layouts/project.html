@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+    <body 
+        {% if page.page_class %} 
+            class="{{- page.page_class }} {{ layout.page_class -}}" 
+        {% endif %}>
+        
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVKTSL4"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        <div class="main">
+            {% include navbar.html %}
+            <main class="main__inner">
+                <header class="page-header">
+                    <h2 class="page-header__mini-title">Projects that use GeoTrellis</h2>
+                    <h1 class="page-header__title">{{ page.title }}</h1>
+                </header>
+                <div class="project-content">
+                    <div class="project-text">
+                        <div class="section__blurb">
+                            {{ page.intro | markdownify }}
+                        </div>
+                        <div class="section__text">
+                            {{ page.body | markdownify }}
+                        </div>
+                        {% if page.project-url %}
+                        <a href="{{ page.project-url }}" class="button button--primary">
+                            View project
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    {% if page.image %}
+                    <div class="image-container">
+                        <img src="{{ page.image }}" alt="{{ page.image-alt }}" class="image"> 
+                    </div>
+                    {% endif %}
+                </div>
+            </main>
+            
+            <!-- paginator -->
+            {% include paginator.html %}
+            <!-- paginator -->
+
+            <!-- call-to-action -->
+            {% include call-to-action_secondary.html type = "dark" %}
+            <!-- call-to-action -->
+
+            {% include footer.html %}
+        </div>
+        {% if page.js_dependencies %}
+            {% for dependency in page.js_dependencies %}
+            <script src="{{ site.baseurl }}/assets/javascript/{{ dependency }}"></script>
+            {% endfor %}
+        {% endif %}  
+        <script src="{{ site.baseurl }}/assets/javascript/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<div class="paginator">
+    <div class="paginator__inner">
+        {% if page.previous.url %}
+            <a class="paginator__button paginator__prev" href="{{page.previous.url}}">
+                <i class="fal fa-long-arrow-left paginator__icon"></i> 
+                <span class="paginator__text">{{page.previous.title}}</span>
+            </a>
+        {% endif %}
+
+        {% if page.next.url %}
+            <a class="paginator__button paginator__next" href="{{page.next.url}}">
+                <span class="paginator__text">{{page.next.title}}</span>
+                <i class="fal fa-long-arrow-right paginator__icon"></i> 
+            </a>
+        {% endif %}
+    </div>
+</div>

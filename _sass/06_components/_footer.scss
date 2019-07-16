@@ -1,0 +1,89 @@
+.footer {
+    width: 100%;
+    position: relative;
+    background: $footer-background;
+    color: $footer-color;
+    text-align: center;
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
+
+    @media all and (min-width: 80rem) {
+        margin: 0 auto;
+    }
+
+    &__section {
+        flex: auto;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: $main-max-width;
+        margin: auto;
+        padding: 2.5rem;
+
+        @media all and (min-width: $bp-small-3) {
+            padding: 3.5rem 2.5rem;
+        }
+    }
+
+    &__brand {
+        width: 15rem;
+
+        @media all and (min-width: $bp-small-3) {
+            width: 20rem;
+        }
+    }
+    
+    nav {
+        a:not(.btn) {
+            margin: $pad-compact $pad-small;
+
+            @media all and (max-width: $bp-small-3) {
+                display: block;
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        padding-bottom: 0;
+        line-height: 1.5;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+
+        li {
+            text-indent: 0;
+            display: inline-flex;     
+            padding-left: 0.5rem;   
+        }
+
+        li:first-child {
+            padding-left: 0;   
+        }
+
+        li:before {
+            content: "•";
+            color: $brand-slate;
+            margin-right: 0.5rem;
+        }
+
+        li:first-child:before {
+            content: "";
+            margin-right: 0;
+        }
+    }
+
+    a {
+        color: $footer-color;
+        text-decoration: none;
+
+        &:hover {
+            color: $primary;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}

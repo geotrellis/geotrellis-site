@@ -1,0 +1,183 @@
+@mixin font-weight($weight: normal) {
+    font-weight: map-get($font-weights, $weight);
+}
+
+@mixin light-on-dark {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin _type($settings, $size, $color: null, $inverted: false) {
+    font-family: $font-family;
+    
+    @each $property, $value in map-get($settings, $size) {
+        #{$property}: $value;
+    }
+
+    @if $color {
+        color: $color;
+    }
+
+    @if $inverted {
+        @include light-on-dark();
+    }
+}
+
+@mixin text($size: $default-font-size-text, $color: null, $inverted: false) {
+    @if not map-has-key($text-settings, $size) {
+        @error "#{$size} is not an allowable text size";
+    }
+
+    @include _type($text-settings, $size, $color, $inverted);
+}
+
+@mixin heading($size: $default-font-size-heading, $color: null, $inverted: false) {
+    @if not map-has-key($heading-settings, $size) {
+        @error "#{$size} is not an allowable heading size";
+    }
+
+    @include _type($heading-settings, $size, $color, $inverted);
+}
+
+@mixin elevation($elevation : 1) {
+    @if $elevation == 5 {
+        box-shadow:
+            0 24px 38px 3px rgba($brand-granite, 0.14),
+            0 9px 46px 8px rgba($brand-granite, 0.12),
+            0 11px 15px -7px rgba($brand-granite, 0.2);
+    } @else if $elevation == 4 {
+        box-shadow:
+            0 12px 17px 2px rgba($brand-granite, 0.14),
+            0 5px 22px 4px rgba($brand-granite, 0.12),
+            0 7px 8px -4px rgba($brand-granite, 0.2);
+    } @else if $elevation == 3 {
+        box-shadow:
+            0 8px 10px 1px rgba($brand-granite, 0.14),
+            0 3px 14px 2px rgba($brand-granite, 0.12),
+            0 5px 5px -3px rgba($brand-granite, 0.2);
+    } @else if $elevation == 2 {
+        box-shadow:
+            // 0 3px 4px 0 rgba($brand-granite, 0.14),
+            0 3px 3px -2px rgba($brand-granite, 0.12),
+            0 1px 8px 0 rgba($brand-granite, 0.2);
+    } @else {
+        box-shadow:
+            0 1px 1px 0 rgba($brand-granite,  0.14),
+            0 2px 1px -1px rgba($brand-granite, 0.12),
+            0 1px 3px 0 rgba($brand-granite, 0.2);
+    }
+}
+
+@mixin link-reset($color : inherit) {
+    &:link,
+    &:visited,
+    &:focus,
+    &:hover,
+    &:active {
+        color: $color;
+        text-decoration: none;
+    }
+}
+
+@mixin button($background: $black, $color: $white) {
+    display: inline-block;
+    margin: 0;
+    padding: 0.8rem 1.6em;
+    color: $color;
+    font: inherit;
+    text-align: center;
+    text-transform: none;
+    text-decoration: none;
+    background: $background;
+    border: 0;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    appearance: none;
+
+    &:focus {
+        outline: 1px solid $white;
+        outline-offset: -3px;
+    }
+
+    &:active {
+        transform: scale(0.99);
+    }
+
+    &:hover:not([disabled]) {
+        transform: scale(1.04);
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        filter: saturate(12%);
+    }
+}
+
+@mixin button-reset($color: inherit) {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: $color;
+    font: inherit;
+    text-align: inherit;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    appearance: none;
+}
+
+@mixin invisible {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@mixin visible($opacity: 1) {
+    opacity: $opacity;
+    pointer-events: auto;
+}
+
+@mixin light-on-dark {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon-font($content : ' ') {
+    position: absolute;
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.2em;
+
+    /* Animation center compensation - margins should be symmetric */
+
+    /* remove if not needed */
+    margin-left: 0.2em;
+    font-weight: normal;
+    font-family: "fontello"; /* stylelint-disable-line font-family-no-missing-generic-family-keyword */
+    font-style: normal;
+
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes */
+    font-variant: normal;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+    text-align: center;
+    text-transform: none;
+    text-decoration: inherit;
+    content: $content;
+    speak: none;
+
+    /* you can be more comfortable with increased icons size */
+
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}

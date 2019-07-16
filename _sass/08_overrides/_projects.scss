@@ -1,0 +1,81 @@
+.l-project {
+    .main__inner {
+        margin: $pad-medium auto auto;
+
+        @media all and (min-width: $bp-med) {
+            margin: $pad-medium 0 auto;
+        }
+
+        @media all and (min-width: 72.500em) {
+            margin: $pad-spacious $pad-comfortable auto;
+        }
+
+        @media all and (min-width: $bp-large-2) {
+            margin: $pad-spacious auto auto;
+        }
+    }
+    
+    .project-content {
+        display: flex;
+
+        @media all and (min-width: 73rem) {
+            max-width: $main-max-width;
+        }
+
+        @media all and (max-width: $bp-large-2) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    .image-container {
+        flex: 1 0 50%;
+        margin-left: $pad-comfortable;
+
+        @media all and (max-width: $bp-large-2) {
+            background: $brand-porcelain;
+            border-bottom: 1px solid $brand-porcelain;
+            height: 30rem;
+            margin-left: 0;
+            overflow: hidden;
+            position: relative;
+            flex: auto;
+
+            .image {
+                position: absolute;
+                width: 60%;
+                top: 3rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media all and (max-width: $bp-med) {
+            height: 20rem;
+
+            .image {
+                width: 80%;
+            }
+        }
+    }
+
+    .project-text {
+        @media all and (max-width: $bp-large-2) {
+            padding: $pad-comfortable;
+        }
+    }
+
+    .page-header {
+
+        &__title {
+            margin-bottom: 0;
+        }
+
+        @media all and (min-width: $bp-med) {
+            padding: $pad-comfortable;
+        }
+
+        @media all and (min-width: $bp-large-2) {
+            padding: 0;
+        }
+    }
+}

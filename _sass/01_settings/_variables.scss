@@ -1,0 +1,159 @@
+/*------------------------------------*\
+        #BREAKPOINTS
+\*------------------------------------*/
+
+/**
+ * Breakpoints used in media queries
+ */
+$bp-small: 24em;
+$bp-small-2: 29.75em;
+$bp-small-3: 39.8em;
+$bp-med: 46.8em;
+$bp-med-2: 48em;
+$bp-large: 50em;
+$bp-large-2: 56em;
+$bp-xl: 62em;
+
+/*------------------------------------*\
+        #PADDING
+\*------------------------------------*/
+
+$space: 1rem;
+$pad-tiny: 2px;
+$pad-small: 0.5rem;
+$pad-compact: 1rem;
+$pad-medium: 1.4rem;
+$pad-normal: 2rem; /* 1 */
+$pad-comfortable: 3rem;
+$pad-spacious: 6rem;
+$pad-large: 8rem;
+
+$space-bullet-offset: 1.6rem; /* 2 */
+
+/*------------------------------------*\
+        #COMPONENTS
+\*------------------------------------*/
+/* * * *
+ * Overall Styles
+ * * * */
+$main-max-width: 100rem;
+$text-max-width: (
+    normal: 50rem,
+    medium: 60rem,
+    large: 80rem,
+    x-large: 95rem
+);
+
+$body-background: $white;
+$selection-background: rgba($primary, 0.7);
+$selection-color: $off-white;
+
+$link-color: $brand-blue;
+$link-color-inverted: $white;
+$link-underline-color: $gray-600;
+$link-icon-color: $primary;
+
+$rule-color: $gray-300;
+$rule-color-darker: $gray-500;
+$rule-color-invert: lighten($gray-900, 20%);
+$rule-border: 1px solid $rule-color;
+
+$border-radius: 2px;
+$border-radius-big: 10px;
+$box-shadow: 0 0 25px rgba($gray-900, 0.15);
+$box-shadow-darker: 0 0 25px rgba($gray-900, 0.5);
+
+$list-bullet-font-size: 0.5rem;
+$list-bullet-color: $brand-cyan;
+
+$image-background-color: rgba($black, 0.25);
+
+/* * * *
+ * Zindex
+ * * * */
+$z-index-carousel-arrows: 1;
+$z-index-slider-marker: 1;
+$z-index-map-preview-label: 2;
+$z-index-carousel-control: 2;
+$z-index-map-legend: 3;
+$z-index-demo-controllers: 3;
+$z-index-controlpad: 4;
+$z-index-controlpad-pad: 5;
+$z-index-navbar: 60;
+$z-index-navbar: 15;
+
+/* * * *
+ * Navbar
+ * * * */
+$nav-color: $white;
+$nav-background: $brand-navy;
+
+$a-link-background: $brand-ink;
+$a-link-color: $white;
+$a-box-shadow-color: $brand-granite;
+
+$nav-mobile-color: $brand-ink;
+$nav-mobile-font-size: 20px;
+$nav-mobile-background: $white;
+
+/* * * *
+ * Section
+ * * * */
+$section-background: $off-white;
+$section-background-darker: $gray-300;
+$section-background-invert: $gray-900;
+
+/* * * *
+ * Hero
+ * * * */
+$hero-background-default: $gray-300;
+$hero-background: $section-background-invert;
+$hero-home-color: $white;
+$hero-rule-color: $rule-color-invert;
+
+/* * * *
+ * Footer
+ * * * */
+$footer-background: $brand-navy;
+$footer-color: #d5e5f4;
+
+/* * * *
+ * Interaction
+ * * * */
+$focus-state: 0 0 0 3px rgba(lighten($primary, 10%), .4);
+
+/* * * *
+ * Shadows
+ * * * */
+$shadow-default: 0 24px 32px rgba($black, .1);
+
+/* * * *
+ * Buttons
+ * * * */
+$button-color-default: $white;
+$button-weight-default: map-get( $font-weights, semibold );
+$button-background-default: $gray-300;
+
+/* * * *
+ * Cards
+ * * * */
+$card-background: $white;
+$card-title-color: $brand-granite;
+$card-border: 1px solid $rule-color-darker;
+$card-border-color: $brand-pewter;
+
+
+/* * * *
+ * Carousel (from bootstrap)
+ * * * */
+$carousel-text-shadow:                        0 1px 2px rgba(0, 0, 0, .6) !default;
+
+$carousel-control-color:                      #fff !default;
+$carousel-control-width:                      15% !default;
+$carousel-control-opacity:                    .5 !default;
+$carousel-control-font-size:                  20px !default;
+
+$carousel-indicator-active-bg:                #fff !default;
+$carousel-indicator-border-color:             #fff !default;
+
+$carousel-caption-color:                      #fff !default;

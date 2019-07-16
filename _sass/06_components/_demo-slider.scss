@@ -1,0 +1,319 @@
+////////////////////////
+// Carousels
+////////////////////////
+.carousel-indicators li.active {
+    display: inline-block;
+}
+
+.carousel-fade .carousel-inner .item {
+    opacity: 0;
+    transition: opacity 200ms;
+}
+
+.carousel-fade .carousel-inner .active {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: $z-index-carousel-arrows;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+    z-index: $z-index-carousel-control;
+}
+
+#carousel-controller {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+////////////////////////
+// Demo controller component
+////////////////////////
+.demo-controller {
+    width: 340px !important;
+    text-align: left;
+    padding: $pad-comfortable;
+    background-color: $white;
+    pointer-events: visible;
+    border-radius: $border-radius;
+    border: 1px solid $brand-steel;
+    box-shadow: $box-shadow;
+
+    @media all and (max-width: $bp-med) {
+        display: none!important;
+    }
+}
+
+.demo-controller__mini-title {
+    @include heading(300, $color: $brand-slate);
+    text-transform: uppercase;
+}
+
+.demo-controller__title {
+    @include heading(600);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.demo-controller__content {
+    padding: 4px 0;
+}
+
+.demo-controller__label {
+    @include heading(200);
+    line-height: 1.5;
+    margin: 0;
+    flex: 1 50%;
+}
+
+.demo-controller__input-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $pad-comfortable;
+    position: relative;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+#controller-2 .demo-controller__content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ui-controlpad {
+    width: 150px;
+    height: 150px;
+    background-image: url('/assets/images/demos/globe.png');
+    background-size: 150px 150px;
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+    z-index: $z-index-controlpad;
+}
+
+.ui-controlpad-pad {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    top: 24px;
+    left: 24px;
+    z-index: $z-index-controlpad-pad;
+    background-image: url(/assets/images/demos/slider.png);
+    background-color: $white;
+    border-radius: 20px;
+    cursor: move;
+}
+
+.controller__sun-slider {
+    position: relative;
+}
+
+#controller-2 .demo-controller__label {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#controller-2-slider-1 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+}
+
+#controller-2-slider-1 .ui-slider-handle {
+    background: url(/assets/images/demos/slider.png);
+    background-color: $white !important;
+    display: block;
+    width: 25px !important;
+    height: 25px;
+    border: none;
+}
+
+input.demo-amount {
+    @include heading(200);
+    outline: 0;
+    height: 100%;
+    text-align: right;
+    background-color: inherit !important;
+    border-width: 0;
+    padding: 0;
+    width: 100%;
+    flex: 1 50%;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+
+.ui-slider {
+    flex: 1 100%;
+    border: 1px solid $brand-pewter;
+    height: 17px;
+    margin-top: $pad-tiny;
+}
+
+.slider-marker {
+    height: 22px;
+    width: 1px;
+    background-color: $brand-slate;
+    position: absolute;
+    bottom: -3px;
+    margin-left: 50%;
+    transform: translateX(-1px);
+    z-index: $z-index-slider-marker;
+}
+
+.ui-state-default, 
+.ui-widget-content .ui-state-default, 
+.ui-widget-header .ui-state-default {
+    background: none;
+    width: 20px;
+    width: .5em !important;
+    margin-left: -.1em;
+    border: none !important;
+    margin-top: 2px;
+}
+
+.ui-slider-handle {
+    background-color: $brand-granite !important;
+    border-radius: $border-radius;
+    outline: none;
+
+    transition: background-color 0.5s ease;
+}
+
+.ui-slider-handle:hover {
+    cursor: move;
+}
+
+.ui-slider-handle.ui-state-hover, 
+.ui-slider-handle.ui-state-focus {
+    border: 0;
+    background-color: $brand-navy !important;
+}
+
+#demo-controllers {
+    position: absolute;
+    transform: translate3d(100px, 60px, 0);
+    -webkit-transform: translate3d(100px, 60px, 0);
+    z-index: $z-index-demo-controllers;
+    width: auto;
+}
+
+.demo-controller-input-header {
+    height: 40px;
+}
+
+.map-preview-icon {
+    margin-left: -20px;
+    display: inline-block !important;
+    cursor: pointer;
+    width: 340px;
+}
+
+////////////////////////
+// Map styles
+////////////////////////
+.demo-map {
+    height: 30vh;
+    max-height: 60rem;
+
+    @media all and (min-width: $bp-med) {
+        height: 80vh;
+    }
+}
+
+.demo-map-legend {
+    padding: 14px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: $z-index-map-legend;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius;
+    border: 1px solid $brand-steel;
+    box-shadow: $box-shadow;
+
+    @media all and (max-width: $bp-med) {
+        bottom: 50px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: fit-content;
+    }
+}
+
+.demo-map-legend__label {
+    @include heading(200);
+
+    &:first-child {
+        padding-right: $pad-compact;
+    }
+
+    &:last-child {
+        padding-left: $pad-compact;
+    }
+}
+
+.leaflet-control-container {
+    display: none;
+}
+
+.demo-map-transit-icon {
+    height: 16px;
+    margin-top: -2px 2px 0;
+}
+
+.map-preview-label {
+    position: absolute;
+    z-index: $z-index-map-preview-label;
+    bottom: 0;
+    right: 0;
+    background-color: #36bdbb;
+    color: #fff;
+    padding: 10px;
+}
+
+.map-preview-icons {
+    position: absolute;
+    bottom: 0;
+}
+
+.map-preview-icon.active {
+    padding: 3px;
+    margin-top: 0;
+    background-color: #1c2e3f;
+}
+
+.map-preview-icon:last-child {
+    margin-right: 0;
+}
+
+#map-preview-icons {
+    margin-top: 12px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    left: 0px;
+    padding: 20px;
+}

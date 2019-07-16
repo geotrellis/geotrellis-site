@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WVKTSL4');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <title>{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}</title>
+    <meta name="description" content="{% if page.seo_description %}{{ page.seo_description }}{% endif %}">
+    <meta name="Copyright" content="Copyright © 2016 - {{ 'now' | date: '%Y' }} Azavea. All Rights Reserved.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ site.baseurl }}/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{ site.baseurl }}/assets/favicon/safari-pinned-tab.svg" color="#3174a3">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/fc9b38bfed.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,600,600i,700,700i">
+    <link href='https://api.mapbox.com/mapbox.js/v3.2.0/mapbox.css' rel='stylesheet' />
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+</head>

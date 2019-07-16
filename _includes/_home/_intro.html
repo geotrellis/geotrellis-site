@@ -1,0 +1,22 @@
+<section class="section section--intro">
+    <div class="section__inner">
+        <h1 class="section__callout" markdown="1">
+            {{ page.intro.blurb }}
+        </h1>
+
+        <div class="card-container">
+            {% for feature in page.intro.features %}
+                <div class="card">
+                    <div class="card__content">
+                        <h3 class="card__title">
+                            {{ feature.title }}
+                        </h3>
+                        <p class="card__description">
+                            {{ feature.blurb }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

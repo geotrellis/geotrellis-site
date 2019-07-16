@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+    <body 
+        {% if page.page_class %} 
+            class="{{- page.page_class }} {{ layout.page_class -}}" 
+        {% endif %}>
+
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVKTSL4"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        <div class="main">
+            {% include navbar.html %}
+            <main class="main__inner">
+                {% include hero.html %}
+                <!-- page content -->
+                {{ content }}
+                <!-- page content -->
+            </main>
+            
+            <!-- call-to-action -->
+            {% if page.cta-blurb %}
+                {% include call-to-action.html 
+                    cta-blurb = page.cta-blurb
+                %}
+            {% endif %}
+            <!-- call-to-action -->
+            {% include footer.html %}
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script src="https://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script data-main="./assets/javascript/demos/main" src="./assets/javascript/demos/require.min.js"></script>
+        <script src="./assets/javascript/main.js"></script>
+    </body>
+</html>
