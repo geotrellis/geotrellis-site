@@ -91,13 +91,21 @@
 // ---------------------------
 .carousel-control-container {
     position: relative;
-    bottom: 40px;
     display: flex;
     align-items: baseline;
     justify-content: center;
+    background: white;    
+    width: $carousel-control-width;
+    bottom: 0;
+    padding: $pad-compact 0 $pad-small;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    border-radius: 4px 4px 0 0;
 
     @media all and (max-width: $bp-med) {
-        bottom: 50px;
+        width: 15rem;
+        padding: $pad-small 0 0;
+        pointer-events: all;
     }
 }
 
@@ -105,7 +113,6 @@
     font-size: $carousel-control-font-size;
     color: $carousel-control-color;
     text-align: center;
-    text-shadow: $carousel-text-shadow;
 
     @media all and (max-width: $bp-med) {
         &.right,
@@ -114,6 +121,10 @@
             border-radius: 2px;
             line-height: 0;
             padding: 1rem 2rem;
+
+            @media all and (max-width: $bp-med) {
+                padding: 0.5rem 2rem 0;
+            }
         }
 
         &.right {
@@ -181,7 +192,6 @@
         cursor: pointer;
         border: 2px solid $carousel-indicator-border-color;
         border-radius: 10px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.6);
 
         &:last-child {
             margin: 0;
@@ -191,7 +201,8 @@
     .active {
         width: 16px;
         height: 16px;
-        background-color: $carousel-indicator-active-bg;
+        border-color: $brand-blue;
+        background-color: $brand-blue;
     }
 }
 

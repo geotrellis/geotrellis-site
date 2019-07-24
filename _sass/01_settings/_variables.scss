@@ -148,12 +148,11 @@ $card-border-color: $brand-pewter;
  * * * */
 $carousel-text-shadow:                        0 1px 2px rgba(0, 0, 0, .6) !default;
 
-$carousel-control-color:                      #fff !default;
-$carousel-control-width:                      15% !default;
-$carousel-control-opacity:                    .5 !default;
-$carousel-control-font-size:                  20px !default;
+$carousel-control-color:                      $brand-pewter;
+$carousel-control-width:                      12rem;
+$carousel-control-font-size:                  20px;
 
-$carousel-indicator-active-bg:                #fff !default;
-$carousel-indicator-border-color:             #fff !default;
+$carousel-indicator-active-bg:                $brand-cyan;
+$carousel-indicator-border-color:             $carousel-control-color;
 
 $carousel-caption-color:                      #fff !default;
