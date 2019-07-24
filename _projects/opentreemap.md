@@ -17,7 +17,7 @@ order: 3
 # # # # # #
 # Page copy
 # # # # # #
-intro: OpenTreeMap allows urban foresters to map trees from a phone or tablet, calculate ecosystem benefits and more.
+intro: OpenTreeMap allows urban foresters to map trees from a phone or tablet, calculate ecosystem benefits, and more.
 body: Different communities have different tree planting needs. This tree prioritization demo enables users to combine multiple datasets and set weights to generate a list of priority tree planting sites. Datasets include household income, percent tree canopy cover, and impervious surface among others.
 project-url: https://www.opentreemap.org/
 image: /assets/images/project_otm.png

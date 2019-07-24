@@ -66,10 +66,6 @@
 
     .page-header {
 
-        &__title {
-            margin-bottom: 0;
-        }
-
         @media all and (min-width: $bp-med) {
             padding: $pad-comfortable;
         }
