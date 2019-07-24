@@ -28,7 +28,7 @@ intro:
 # user guide section
 user-guide:
   title: GeoTrellis User Guide
-  blurb: Our [User Guide](https://geotrellis.readthedocs.io/en/latest/) is hosted on ReadTheDocs, and provides all the conceptual information required to use GeoTrellis.
+  blurb: Our [User Guide](https://geotrellis.readthedocs.io/en/latest/) provides all the conceptual information required to use GeoTrellis.
   links:
     - text: Home
       url: https://docs.geotrellis.io 
@@ -44,24 +44,26 @@ user-guide:
 # scala api section
 scala-api:
   title: Scala API Documentation
-  blurb: The latest Scaladoc tracks the master branch on github. Tagged releases are identified by their version number.
+  blurb: The latest Scaladoc tracks the master branch on GitHub. Tagged releases are identified by their version number.
   links:
     - text: Latest 
       url: https://geotrellis.github.io/scaladocs/latest/#geotrellis.package
+      github-url:
+    - text: Version 2.0
+      url: https://geotrellis.github.io/scaladocs/2.0/#geotrellis.package
+      github-url: https://github.com/locationtech/geotrellis/tree/2.0
+    - text: Version 1.2
+      url: https://geotrellis.github.io/scaladocs/1.2/#geotrellis.package
+      github-url: https://github.com/locationtech/geotrellis/tree/1.2
     - text: Version 1.1
       url: https://geotrellis.github.io/scaladocs/1.1/#geotrellis.package
+      github-url: https://github.com/locationtech/geotrellis/tree/1.1
     - text: Version 1.0
       url: https://geotrellis.github.io/scaladocs/1.0/#geotrellis.package
+      github-url: https://github.com/locationtech/geotrellis/tree/1.0
     - text: Version 0.10
       url: https://geotrellis.github.io/scaladocs/0.10/#geotrellis.package
-    - text: Version 0.9
-      url: https://geotrellis.github.io/scaladocs/0.9/#geotrellis.package
-    - text: Version 0.8
-      url: https://geotrellis.github.io/scaladocs/0.8/#geotrellis.package
-    - text: Version 0.7
-      url: https://geotrellis.github.io/scaladocs/0.7/#geotrellis.package
-    - text: Version 0.6
-      url: https://geotrellis.github.io/scaladocs/0.6/#geotrellis.package
+      github-url: https://github.com/locationtech/geotrellis/tree/_old/0.10
 # scala api section
 
 # contributing section

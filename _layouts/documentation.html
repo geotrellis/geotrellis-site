@@ -64,6 +64,12 @@
                                     <a href="{{ link.url }}">
                                         {{ link.text }}
                                     </a>
+                                    {% if link.github-url %}
+                                        <span class="links-list__divider">&vert;</span>
+                                        <a href="{{ link.github-url }}">
+                                            GitHub
+                                        </a>
+                                    {% endif %}
                                 </li>
                                 {% endfor %}
                             </ul>
