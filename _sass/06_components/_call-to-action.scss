@@ -43,6 +43,8 @@
 }
 
 .call-to-action--secondary {
+    margin-top: 0; 
+    
     &::after {
         display: none;
     }
