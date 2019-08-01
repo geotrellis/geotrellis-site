@@ -1,0 +1,19 @@
+.section--dark {
+    .links-list {
+        background: $brand-porcelain;
+        border-radius: $border-radius;
+    }
+}
+
+.section__text {
+    @media all and (min-width: $bp-med) {
+        flex: 1;
+    }
+}
+
+.links-list {
+    @media all and (min-width: $bp-med) {
+        flex: 1;
+        margin-left: $pad-comfortable;
+    }
+}

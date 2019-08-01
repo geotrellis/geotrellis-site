@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+    <body 
+        {% if page.page_class %} 
+            class="{{- page.page_class }} {{ layout.page_class -}}" 
+        {% endif %}>
+        
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVKTSL4"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        
+        <div class="main">
+            {% include navbar.html %}
+            <main class="main__inner">
+                <header class="page-header">
+                    <div class="page-header__inner">
+                        <div class="page-header__text">
+                            <h1 class="page-header__title"> 
+                                {{ page.intro.title }}
+                            </h1>
+                            <div class="page-header__blurb">
+                                {{ page.intro.blurb | markdownify }}
+                            </div>
+                            {{ page.intro.body | markdownify }}
+                            <a href="{{ page.intro.button.url }}" class="button button--primary">{{ page.intro.button.text }}</a>
+                        </div>
+                    </div>
+                </header>
+                <section class="section section--dark">
+                    <div class="section__inner section__inner--columns">
+                        <div class="section__text">
+                            <h2 class="section__title">
+                                {{ page.user-guide.title }}
+                            </h2>
+                            {{ page.user-guide.blurb | markdownify }}
+                        </div>
+                        <div class="links-list">
+                            <ul class="links-list__inner">
+                                {% for link in page.user-guide.links %}
+                                <li class="links-list__list-item">
+                                    <a href="{{ link.url }}">
+                                        {{ link.text }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="section__inner section__inner--columns">
+                        <div class="section__text">
+                            <h2 class="section__title">
+                                {{ page.scala-api.title }}
+                            </h2>
+                            {{ page.scala-api.blurb | markdownify }}
+                        </div>
+                        <div class="links-list">
+                            <ul class="links-list__inner">
+                                {% for link in page.scala-api.links %}
+                                <li class="links-list__list-item">
+                                    <a href="{{ link.url }}">
+                                        {{ link.text }}
+                                    </a>
+                                    {% if link.github-url %}
+                                        <span class="links-list__divider">&vert;</span>
+                                        <a href="{{ link.github-url }}">
+                                            GitHub
+                                        </a>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="section section--dark section--centered">
+                    <div class="section__inner">
+                        <div class="section__text">
+                            <h2 class="section__title">
+                                {{ page.contributing.title }}
+                            </h2>
+                            {{ page.contributing.blurb | markdownify }}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- call-to-action -->
+                {% include call-to-action_secondary.html %}
+                <!-- call-to-action -->
+            </main>
+            {% include footer.html %}
+        </div>
+        {% if page.js_dependencies %}
+            {% for dependency in page.js_dependencies %}
+            <script src="{{ site.baseurl }}/assets/javascript/{{ dependency }}"></script>
+            {% endfor %}
+        {% endif %}  
+        <script src="{{ site.baseurl }}/assets/javascript/main.js"></script>
+    </body>
+</html>

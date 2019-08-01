@@ -1,0 +1,31 @@
+<section class="section section--dark">
+    <div class="section__inner">
+        <header class="section__header">
+            <h2 class="section__title">
+                {{ page.demos.title }}
+            </h2>
+            <p class="section__blurb" markdown="1">{{ page.demos.blurb }}</p>
+        </header>
+
+        <div class="card-container card-container--large">
+            {% for demo in site.data.demos %}
+                <div class="card">
+                    <div class="card__image-container">
+                        <img class="card__image" src="{{ demo.image }}" alt="{{ demo.image-alt }}">
+                    </div>
+                    <div class="card__content">
+                        <h4 class="card__title">
+                            {{ demo.title }}
+                        </h4>
+                        <p class="card__description">
+                            {{ demo.blurb || markdownify }}
+                        </p>
+                        <a href="{{ demo.demo-url }}">
+                            See demo
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

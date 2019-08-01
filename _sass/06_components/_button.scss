@@ -1,0 +1,185 @@
+@mixin button-states($bg, $text) {
+    &:hover,
+    &.hover,
+    &:active,
+    &.active, {
+        color: $text;
+        background-color: darken($bg, 5%);
+    }
+
+    &:active,
+    &.active {
+        background: darken($bg, 7%);
+    }
+
+    &:focus,
+    &.focus {
+        outline: none;
+        box-shadow: $focus-state;
+    }
+
+    &:disabled,
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    /* Note: <buttons> and <a> handle active+focus differently. This will normalize behaviour. */
+    &:focus:active {
+        background: darken($bg, 7%);
+    }
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: 1.5rem 2.5rem;
+    color: $button-color-default;
+    font-weight: $button-weight-default;
+    font-size: 1.4rem;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: $button-background-default;
+    border: none;
+    border-radius: $border-radius;
+    outline: 0;
+    cursor: pointer;
+    transition:
+        0.2s ease-in-out box-shadow,
+        0.2s ease-in-out color,
+        0.2s ease-in-out background;
+    user-select: none;
+    letter-spacing: 1px;
+
+    &:hover,
+    &.hover,
+    &:active,
+    &.active, {
+        color: darken($button-color-default, 5%);
+        text-decoration: none;
+        background-color: darken($button-background-default, 5%);
+    }
+
+    &:active,
+    &.active {
+        box-shadow: darken($button-background-default, 7%);
+        box-shadow: $box-shadow-darker;
+    }
+
+    &:focus,
+    &.focus {
+        outline: none;
+        box-shadow: $focus-state;
+        text-decoration: none;
+    }
+
+    &:disabled,
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    &-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: flex-start;
+        margin: $pad-normal 0;
+
+        .button {
+            margin-right: $pad-medium;
+        }
+    }
+
+    /* Note: <buttons> and <a> handle active+focus differently. This will normalize behaviour. */
+    &:focus:active {
+        box-shadow: inset 0 2px 2px 0 rgba($black, 0.2);
+    }
+
+    &--primary {
+        @include button-states($primary, $button-color-default);
+        
+        color: $button-color-default;
+        background: $primary;
+        box-shadow: $box-shadow;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    &--secondary {
+        @include button-states($secondary, $base);
+
+        color: $base;
+        background: $brand-yellow;
+    }
+
+    &--icon {
+        padding: 1rem 0.5rem;
+    }
+
+    &--ghost {
+        @include button-states(rgba($white, 0.1), $white);
+
+        color: $white;
+        background: none;
+        box-shadow: inset 0 0 0 1.5px currentColor;
+    }
+
+    &--outline {
+        color: $primary;
+        background: none;
+        border: 2px solid currentColor;
+
+        &:hover,
+        &.hover,
+        &:active,
+        &.active, {
+            color: $white;
+            background: $primary;
+        }
+
+        &:active,
+        &.active {
+            color: $white;
+            background: darken( $primary, 5% );
+        }
+
+        &:focus,
+        &.focus {
+            outline: none;
+            box-shadow: $focus-state;
+        }
+
+        &:disabled,
+        &.disabled,
+        &[disabled] {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Note: <buttons> and <a> handle active+focus differently. This will normalize behaviour. */
+        &:focus:active {
+            opacity: 0.95;
+        }
+    }
+
+    &--small {
+        padding: $pad-compact;
+        font-size: map-get($font-sizes, 100);
+    }
+
+    &__block {
+        display: block;
+        width: 100%;
+    }
+
+    &__icon {
+        font-size: map-get($font-sizes, 500);
+        margin-right: 5px;
+        margin-bottom: -2px;
+    }
+}

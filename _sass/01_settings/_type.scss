@@ -1,0 +1,118 @@
+$font-family: 'Lato', sans-serif;
+$font-family-header: $font-family;
+
+$font-weights: (
+    light: 300,
+    normal: 400,
+    semibold: 600,
+    bold: 700
+);
+
+$default-font-size-text: 300;
+$default-font-size-heading: 500;
+
+$font-sizes: (
+    100: 1rem,
+    200: 1.2rem,
+    300: 1.6rem,
+    400: 1.85rem,
+    500: 2.25rem,
+    600: 2.8rem,
+    700: 3.9rem,
+);
+
+$text-settings: (
+    100: (
+        font-family: $font-family,
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 100),
+        line-height: 1.5,
+    ),
+    200: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 200),
+        line-height: 1.65,
+    ),
+    300: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 300),
+        line-height: 1.65,
+    ),
+    400: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 400),
+        line-height: 1.5,
+    ),
+    500: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 500),
+        line-height: 1.5,
+    ),
+);
+
+$heading-settings: (
+    100: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, bold),
+        font-size: map-get($font-sizes, 100),
+        line-height: 1.2,
+        text-transform: uppercase,
+        letter-spacing: 1px
+    ),
+    200: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, bold),
+        font-size: map-get($font-sizes, 200),
+        line-height: 1.2,
+        text-transform: none,
+        letter-spacing: 0
+    ),
+    300: (
+        color: map-get($font-colors, normal),
+        font-weight: map-get($font-weights, semibold),
+        font-size: map-get($font-sizes, 300),
+        line-height: 1.2,
+        text-transform: uppercase,
+        letter-spacing: 1px
+    ),
+    400: (
+        color: map-get($font-colors, dark),
+        font-weight: map-get($font-weights, semibold),
+        font-size: map-get($font-sizes, 400),
+        line-height: 1.2,
+        text-transform: none,
+        letter-spacing: 0
+    ),
+    500: (
+        color: map-get($font-colors, dark),
+        font-family: $font-family-header,
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 500),
+        line-height: 1.2,
+        text-transform: none,
+        letter-spacing: 0
+    ),
+    600: (
+        color: map-get($font-colors, dark),
+        font-family: $font-family-header,
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 600),
+        line-height: 1.2,
+        text-transform: none,
+        letter-spacing: 0
+    ),
+    700: (
+        color: map-get($font-colors, dark),
+        font-family: $font-family-header,
+        font-weight: map-get($font-weights, normal),
+        font-size: map-get($font-sizes, 700),
+        line-height: 1.2,
+        text-transform: none,
+        letter-spacing: 0
+    ),
+);

@@ -1,0 +1,51 @@
+/*------------------------------------*\
+    #COLORS
+\*------------------------------------*/
+
+/**
+ * Grayscale
+ */
+$brand-ink: #27323D;
+$brand-granite: #4D6379;
+$brand-slate: #7C94AC;
+$brand-pewter: #B8C5D2;
+$brand-steel: #D0D9E1;
+$brand-porcelain: #E5EAEE;
+$brand-off-white: #F4F6F8;
+
+// Geotrellis colors
+$brand-navy: #1c2d3f;
+$brand-blue: #417dbf;
+$brand-yellow: #e3d262;
+$brand-mint: #7ac485;
+$brand-cyan: #38bebe;
+$brand-lime: #a4ce59;
+ 
+/* * * *
+ * Base
+ * * * */
+$primary: $brand-blue; // blue light 1
+$secondary: $brand-yellow; // blue light 2
+$base: $brand-ink; // For fonts
+
+$black: #000;
+$gray-100: $brand-off-white;
+$gray-200: $brand-porcelain;
+$gray-300: $brand-steel;
+$gray-400: $brand-pewter;
+$gray-500: rgba( $brand-slate, 0.6 );
+$gray-600: $brand-slate;
+// $gray-700: #616161;
+$gray-800: $brand-granite;
+$gray-900: $brand-ink;
+$white: #fff;
+$off-white: $brand-off-white;
+ 
+/* * * *
+ * Fonts
+ * * * */
+$font-colors: (
+    blue: $brand-yellow,
+    normal: lighten( $gray-900, 15% ),
+    dark: $gray-900,
+);

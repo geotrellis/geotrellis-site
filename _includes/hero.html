@@ -1,0 +1,106 @@
+{% if page.no_hero != true %}
+<section class="hero">
+    <div id="interactive-demos">
+        <div id="carousel-controller" class="carousel slide carousel-fade">
+            <div class="carousel-inner hidden-xs" id="demo-controllers">
+                <div id="controller-1" class="demo-controller item active">
+                    <h4 class="demo-controller__mini-title">
+                        In action
+                    </h4>
+                    <h2 class="demo-controller__title">
+                        Weighted overlay
+                    </h2>
+                    <p>
+                        Try adjusting the weights below to find your ideal location. If you want to <span class="overlay-dislike">avoid</span> rail stops, give them a negative weight. If you <span class="overlay-prefer">prefer</span> bars, give them a positive weight.
+                    </p>
+                    <div class="demo-controller__content">
+                        <div class="demo-controller__input-container">
+                            <label class="demo-controller__label" for="controller-1-amount-1">
+                                Bars
+                            </label>
+                            <input type="text" id="controller-1-amount-1" class="demo-amount demo-controller__input" disabled>
+                            <div class="slider-marker"></div>
+                            <div id="controller-1-slider-1"></div>
+                        </div>
+                        <div class="demo-controller__input-container">
+                            <label class="demo-controller__label" for="controller-1-amount-2">
+                                Grocery stores
+                            </label>
+                            <input type="text" id="controller-1-amount-2" class="demo-amount demo-controller__input" disabled>
+                            <div class="slider-marker"></div>
+                            <div id="controller-1-slider-2"></div>
+                        </div>
+                        <div class="demo-controller__input-container">
+                            <label class="demo-controller__label" for="controller-1-amount-3">
+                                Rail stops
+                            </label>
+                            <input type="text" id="controller-1-amount-3" class="demo-amount demo-controller__input" disabled>
+                            <div class="slider-marker"></div>
+                            <div id="controller-1-slider-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="controller-2" class="demo-controller item">
+                    <h4 class="demo-controller__mini-title">
+                        In action
+                    </h4>
+                    <h2 class="demo-controller__title">
+                        Hillshade
+                    </h2>
+                    <p>
+                        The GeoTrellis hillshade operation computes the illumination angle and shadows of a surface given a light source. Try adjusting the position or altitude of the sun.
+                    </p>
+                    <div class="demo-controller__content">
+                        <div class="demo-controller__sun-slider">
+                            <label class="demo-controller__label" for="controller-2-slider-1">
+                                Altitude
+                            </label>
+                            <div id="controller-2-slider-1"></div>
+                        </div>
+                        
+                        <div class="demo-controller__sun-globe"> 
+                            <label class="demo-controller__label" for="circle-sun">
+                                N
+                            </label>
+                            <div class="ui-controlpad">
+                                <div id="circle-sun" class="ui-controlpad-pad ui-draggable"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="carousel-map" class="demo-map carousel slide carousel-fade">
+            <div id="demo-maps" class="carousel-inner">
+                <div class="item active">
+                    <div class="demo-map-legend">
+                       <span class="demo-map-legend__label">Avoid</span> 
+                       <img class="demo-map-legend__image" src="./assets/images/demos/red-to-blue.png"> 
+                       <span class="demo-map-legend__label">Prefer</span>
+                    </div>
+                    <div id="map-1" class="demo-map"></div>
+                </div>
+                <div class="item">
+                    <div id="map-2" class="demo-map"></div>
+                </div>
+            </div>
+
+            <div class="carousel-control-container">
+                <a class="left carousel-control" href="#carousel-controller" data-slide="prev">
+                    <span class="icon-prev far-chevron-left"></span>
+                </a>
+                
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-controller" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-controller" data-slide-to="1"></li>
+                </ol>
+
+                <a class="right carousel-control" href="#carousel-controller" data-slide="next">
+                    <span class="icon-next far-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

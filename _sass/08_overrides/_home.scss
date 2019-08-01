@@ -1,0 +1,40 @@
+.p-home {
+    .section--developing {
+        .button {
+            @media all and (max-width: $bp-small-2) {
+                width: 100%;
+            }
+        }
+
+        .header {
+            @media all and (min-width: $bp-med) {
+                margin-right: $pad-spacious; 
+            }
+        }
+
+        .section__inner {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+
+            @media all and (min-width: $bp-med) {
+                flex-direction: row;
+            }
+
+            .image-container {
+                margin: 0 0 0 $pad-normal;
+
+                @media all and (max-width: $bp-med) {
+                    max-width: 30rem;
+                    margin: -2rem 0 $pad-normal;
+                }
+            }
+        }
+    }
+
+    .header__title {
+        @media all and (max-width: $bp-med) {
+            @include heading(600);
+        }
+    }
+}

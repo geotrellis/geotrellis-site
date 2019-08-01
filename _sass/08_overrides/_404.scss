@@ -1,0 +1,45 @@
+.page-404 {
+  
+  .join-us,
+  .site-footer,
+  footer {
+    display: none;
+  }
+}
+
+.text-404 {
+  font-size: 130px;
+  color: $primary;
+  display: block;
+  margin-bottom: -40px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.block-404 {
+  display: block;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  background: #172b3d;
+  padding: 14px;
+  border-radius: 10px;
+
+  h2, p {
+    color: #c6cfd7;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    margin-bottom: 10px;
+  }
+}

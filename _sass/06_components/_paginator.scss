@@ -1,0 +1,56 @@
+.paginator {
+    padding: 0 $pad-comfortable;
+    width: 100%;
+
+    @media all and (min-width: $bp-small-2) {
+        padding: $pad-comfortable $pad-comfortable;
+    }
+
+    @media all and (min-width: $bp-med) {
+        padding: $pad-spacious $pad-spacious 0;
+        margin: 0 auto;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid $brand-porcelain;
+        max-width: $main-max-width;
+        margin: auto;
+
+        @media all and (max-width: $bp-small) {
+            flex-direction: column;
+            align-items: center;   
+        }
+    }
+
+    &__button {
+        padding: $pad-normal 0;
+
+        @media all and (max-width: $bp-small) {
+            padding: $pad-compact 0;
+        }
+    }
+
+    &__text {
+        @media all and (max-width: $bp-small) {
+            @include text(300);
+        }
+    }
+
+    &__prev {
+        .paginator__icon {
+            margin-right: 5px;
+        }
+    }
+
+    &__next {
+        @media all and (min-width: $bp-small) {
+            margin-left: auto;
+        }
+        
+        .paginator__icon {
+            margin-left: 5px;
+        }
+    }
+}

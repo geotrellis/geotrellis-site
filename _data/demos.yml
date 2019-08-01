@@ -1,0 +1,12 @@
+- title: "Supporting Sustainable Development Goals"
+  blurb: "This map shows the proportion of a country’s population that is within 2km of an all-season road in support of SDG Indicator 9.1.1."
+  image: "./assets/images/demo_sdg.jpg"
+  image-alt: "Crop of Sustainable Development Goals demo with hospitals and population highlighted."
+  demo-url: https://azavea-sdg-prototype.netlify.com
+  source-code-url: 
+- title: "Visualizing building footprint elevations"
+  blurb: "Hover on a building footprint to see its min elevation, max elevation, and the delta between them. The larger a building's elevation delta compared to all other buildings within the current viewport, the more saturated its fill."
+  image: "./assets/images/demo_building-footprint.jpg"
+  image-alt: "Screenshot of the Elected Officials and Districts tool in a laptop."
+  demo-url: https://demos.azavea.com/cooling-towers
+  source-code-url: 

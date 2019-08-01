@@ -1,0 +1,25 @@
+<section class="section">
+    <div class="section__inner">
+        <header class="section__header">
+            <h2 class="section__title">
+                {{ page.projects.title }}
+            </h2>
+            <p class="section__blurb" markdown="1">
+                {{ page.projects.blurb }}
+            </p>
+        </header>
+
+        <div class="card-container">
+            {% for project in site.projects %}
+                <div class="card card--fancy">
+                    <figure class="card__image-container">
+                        <img src="{{ project.featured-image }}" alt="{{ project.featured-image-alt }}">
+                        <figcaption class="card__title">
+                            <a class="card__link" href="{{ project.url }}">{{ project.title }}</a>
+                        </figcaption>
+                    </figure>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,129 @@
+/* stylelint-disable selector-max-type */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    color: map-get($font-colors, normal);
+    font-size: 62.5%;
+    background: $body-background;
+    overflow-x: hidden;
+}
+
+body {
+    @include text();
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+strong {
+    font-weight: font-weight(bold);
+}
+/* stylelint-enable selector-max-type */
+
+.heading--100 {
+    @include heading(100);
+}
+
+h6,
+.heading--200 {
+    @include heading(200);
+}
+
+h5,
+.heading--300 {
+    @include heading(300);
+}
+
+h4,
+.heading--400 {
+    @include heading(400);
+}
+
+h3,
+.heading--500 {
+    @include heading(500);
+}
+
+h2,
+.heading--600 {
+    @include heading(600);
+}
+
+h1,
+.heading--700 {
+    @include heading(700);
+}
+
+.text--100 {
+    @include text(100);
+}
+
+.text--200 {
+    @include text(200);
+}
+
+.text--300 {
+    @include text(300);
+}
+
+.text--400 {
+    @include text(400);
+}
+
+.text--500 {
+    @include text(500);
+}
+
+p,
+.p {
+    @include text(300);
+
+    margin-bottom: $pad-medium;
+}
+
+ul {
+    margin: 0;
+    padding-left: 0;
+    font-size: inherit;
+    list-style-type: disc;
+
+    li {
+        position: relative;
+        margin: 1rem 0;
+        padding-left: 1.45rem;
+        text-indent: -1.45rem;
+    }
+}
+
+a {
+    @include font-weight(bold);
+
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        -webkit-text-decoration-color: $link-underline-color; 
+                text-decoration-color: $link-underline-color; 
+
+        &::before,
+        &::after {
+            text-decoration: none!important;
+        }
+    }
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}

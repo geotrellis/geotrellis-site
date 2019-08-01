@@ -1,0 +1,37 @@
+.callout {
+
+    @media all and (min-width: $bp-small-2) {
+        align-items: center;
+
+        &__list {
+            display: flex;
+        }
+    }
+
+    @media all and (min-width: $bp-xl) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    display: flex;
+    flex-direction: column;
+    max-width: map-get($text-max-width, large);
+    margin: auto auto 0;
+    padding: $pad-compact 0;
+    text-align: center;
+    border-top: $rule-border;
+    border-bottom: $rule-border;
+
+    &__title {
+        @include text(400);
+    }
+
+    &__list-item {
+        text-indent: 0;
+
+        &::before {
+            display: none;
+        }
+    }
+}

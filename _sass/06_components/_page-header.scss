@@ -1,0 +1,34 @@
+.page-header {
+    padding: $pad-normal $pad-comfortable;
+
+    @media all and (min-width: $bp-small-2) {
+        padding: $pad-comfortable $pad-comfortable;
+    }
+
+    @media all and (min-width: $bp-med) {
+        padding: $pad-spacious $pad-spacious $pad-comfortable;
+        margin: 0 auto;
+    }
+
+    &__inner {
+        max-width: $main-max-width;
+        margin: auto;
+    }
+
+    &__mini-title {
+        @include heading(300, $color: map-get($font-colors, dark) );
+    }
+
+    &__title {
+        margin-bottom: $pad-normal;
+    }
+
+    &__text {
+        max-width: map-get($text-max-width, medium);
+    }
+
+    &__blurb p,
+    &__blurb {
+        @include text(500);
+    }
+}
