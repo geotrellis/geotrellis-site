@@ -31,7 +31,7 @@ intro:
 # demos section
 demos:
   title: "Demos"
-  blurb: "We are always figuring out new ways to leverage the powerful processing power of Geotrellis. The source code for demos can be found at our [Github account.](http://github.com/geotrellis)"
+  blurb: "We are always figuring out new ways to leverage the powerful processing power of GeoTrellis. The source code for demos can be found on our [GitHub account](http://github.com/geotrellis)."
 
 # demos section
 
