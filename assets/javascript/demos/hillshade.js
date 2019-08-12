@@ -35,7 +35,7 @@ define(['app/maps'], function(maps){
       map.removeLayer(HSLayer);
     }
 
-    HSLayer = new L.TileLayer.WMS("https://geotrellis.io/gt/hillshade/wms", {
+    HSLayer = new L.TileLayer.WMS("https://tiles.geotrellis.io/gt/hillshade/wms", {
       'layers': layer,
       'azimuth': state.azimuth,
       'altitude': state.altitude,

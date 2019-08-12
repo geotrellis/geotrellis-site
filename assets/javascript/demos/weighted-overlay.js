@@ -8,7 +8,7 @@ define(['app/maps'], function(maps){
 
   var update = function(layers, weights, numBreaks){
     $.ajax({
-      url: 'https://geotrellis.io/gt/weighted-overlay/breaks',
+      url: 'https://tiles.geotrellis.io/gt/weighted-overlay/breaks',
       data: {
         'layers' : layers.join(),
         'weights' : weights.join(),
@@ -22,7 +22,7 @@ define(['app/maps'], function(maps){
           map.removeLayer(WOLayer);
         }
 
-        WOLayer = new L.TileLayer.WMS("https://geotrellis.io/gt/weighted-overlay/wms", {
+        WOLayer = new L.TileLayer.WMS("https://tiles.geotrellis.io/gt/weighted-overlay/wms", {
           breaks: breaks,
           layers: layers,
           format: 'image/png',
