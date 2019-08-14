@@ -69,7 +69,7 @@ scala-api:
 # contributing section
 contributing:
   title: Contributing to GeoTrellis
-  blurb: GeoTrellis is an open source project, so contributions of any kind are welcome and appreciated! Contributors will need to sign a CLA (Contributor’s License Agreement). These details and others relating to GeoTrellis contributions can be found [here.](https://docs.geotrellis.io/en/latest/contributing.html)
+  blurb: GeoTrellis is an open source project, so contributions of any kind are welcome and appreciated! Contributors will need to sign a CLA (Contributor’s License Agreement). These details and others relating to GeoTrellis contributions can be found [here.](https://docs.geotrellis.io/en/latest/CONTRIBUTING.html)
 # contributing section
 
 ---
