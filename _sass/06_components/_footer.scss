@@ -3,7 +3,6 @@
     position: relative;
     background: $footer-background;
     color: $footer-color;
-    text-align: center;
     -webkit-font-smoothing: antialiased; 
     -moz-osx-font-smoothing: grayscale;
 
@@ -23,21 +22,52 @@
         max-width: $main-max-width;
         margin: auto;
         padding: 2.5rem;
+        text-align: center;
 
         @media all and (min-width: $bp-small-3) {
+            align-items: flex-start;
+            text-align: left;
             padding: 3.5rem 2.5rem;
         }
     }
 
+    &__main-content {
+        width: 100%;
+
+        @media all and (min-width: $bp-small-3) {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+    }
+
     &__brand {
+        display: block;
+        margin: 0 auto 1rem;
         width: 15rem;
 
         @media all and (min-width: $bp-small-3) {
+            margin: 0 0 1rem 0;
             width: 20rem;
         }
     }
+
+    &__text {
+        display: block;
+        max-width: 60rem;
+        @include text(200, $color: $brand-porcelain);
+    }
+
+    &__text--trademark {
+        opacity: 0.5;
+    }
     
-    nav {
+    &__nav {
+        @media all and (max-width: $bp-small) {
+            display: flex;
+            flex-direction: column;   
+        }     
+
         a:not(.btn) {
             margin: $pad-compact $pad-small;
 
@@ -53,6 +83,10 @@
         line-height: 1.5;
         text-transform: uppercase;
         font-size: 1.2rem;
+
+        @media all and (max-width: $bp-small-3) {
+            justify-content: center;
+        }
 
         li {
             text-indent: 0;

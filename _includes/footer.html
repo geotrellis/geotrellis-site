@@ -1,25 +1,36 @@
 <footer class="footer">
     <div class="footer__inner">
-        <a href="/"><img class="footer__brand" src="{{ site.baseurl }}/assets/images/geotrellis-logo-darkbg.svg" alt="GeoTrellis logo"></a>
-        <nav>
-            <a role="menuitem" href="{{ site.url }}/documentation">
-                Documentation
-            </a>
-            <a role="menuitem" href="https://github.com/geotrellis/geotrellis">
-                GitHub
-            </a>
-        </nav>
-        <small class="footer__copyright">
-                © 2016 - {{ 'now' | date: "%Y" }} <a href="www.azavea.com">Azavea</a> Inc., using technology to inform research for civic and social impact. All rights reserved.
+        <div class="footer__main-content">
+            <a href="/" class="footer__brand"><img src="{{ site.baseurl }}/assets/images/geotrellis-logo-darkbg.svg" alt="GeoTrellis logo"></a>
+
+            <nav class="footer__nav">
+                <a role="menuitem" href="{{ site.url }}/documentation">
+                    <i class="fal fa-book navbar__link-icon"></i>
+                    Documentation
+                </a>
+                <a role="menuitem" href="https://github.com/geotrellis/geotrellis">
+                    <i class="fab fa-github navbar__link-icon"></i> 
+                    GitHub
+                </a>
+            </nav>
+        </div>
+
+        <small class="footer__text footer__text--copyright">
+            © 2016 - {{ 'now' | date: "%Y" }} <a href="www.azavea.com">Azavea</a> Inc., using technology to inform research for civic and social impact. All rights reserved. 
+            Some GeoTrellis features have been supported by grants from the U.S. Dept of Energy (DE-SC0011303) and NASA (NNX16CS04C).
         </small>
+        <small class="footer__text footer__text--trademark">
+            GeoTrellis and the GeoTrellis logo are trademarks of the Eclipse Foundation, Inc.
+        </small>
+
         <ul class="footer__bottom">
             <li>
-                <a href="https://azavea.com/terms-of-use/">
+                <a href="https://azavea.com/terms-of-use/"> 
                     Terms of Use
                 </a>
             </li>
             <li>
-                <a href="https://azavea.com/privacy-policy/">
+                <a href="https://azavea.com/privacy-policy/"> 
                     Privacy Policy
                 </a>
             </li>
