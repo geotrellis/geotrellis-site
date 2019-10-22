@@ -8,5 +8,5 @@
   blurb: "Hover on a building footprint to see its min elevation, max elevation, and the delta between them. The larger a building's elevation delta compared to all other buildings within the current viewport, the more saturated its fill."
   image: "./assets/images/demo_building-footprint.jpg"
   image-alt: "Screenshot of the Elected Officials and Districts tool in a laptop."
-  demo-url: https://demos.azavea.com/cooling-towers
+  demo-url: https://demos.azavea.com/building-footprint-comparison
   source-code-url: 
