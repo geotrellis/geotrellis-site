@@ -22,23 +22,4 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     menubutton.addEventListener('click', trigger, false);
-
-    // Accessible Card click
-    // Adapted from https://inclusive-components.design/cards/
-    const cards = document.querySelectorAll('.card');
-    if (cards) {
-        cards.forEach.call(cards, card => {
-            if (card.querySelector('.card__link')) {
-                let down, up, link = card.querySelector('.card__link');
-                card.style.cursor = 'pointer';
-                card.onmousedown = () => down = +new Date();
-                card.onmouseup = () => {
-                    up = +new Date();
-                    if ((up - down) < 200) {
-                        link.click();
-                    }
-                }
-            }
-        });
-    }
 });
