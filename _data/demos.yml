@@ -4,9 +4,15 @@
   image-alt: "Crop of Sustainable Development Goals demo with hospitals and population highlighted."
   demo-url: https://azavea-sdg-prototype.netlify.com
   source-code-url: 
-- title: "Visualizing building footprint elevations"
-  blurb: "Hover on a building footprint to see its min elevation, max elevation, and the delta between them. The larger a building's elevation delta compared to all other buildings within the current viewport, the more saturated its fill."
+- title: "Visualizing dataset discrepancies"
+  blurb: There are 125 million building footprints in Bing and 33 million in OpenStreetMap. This map leverages Azavea’s [VectorPipe](https://github.com/geotrellis/vectorpipe) library to help show how the two large datasets differ.
   image: "./assets/images/demo_building-footprint.jpg"
-  image-alt: "Screenshot of the Elected Officials and Districts tool in a laptop."
+  image-alt: "Application screenshot displaying a pop-up of a building that is in both OpenStreetMap and Bing."
   demo-url: https://demos.azavea.com/building-footprint-comparison
+  source-code-url: 
+- title: "Identifying the best place to plant a tree"
+  blurb: "Trees provide countless economic, social, and environmental benefits. Discover optimal tree planting locations based on environmental and demographic data."
+  image: "./assets/images/demo_tree-prioritization.jpg"
+  image-alt: "."
+  demo-url: https://treeprioritization.geotrellis.io/
   source-code-url: 
