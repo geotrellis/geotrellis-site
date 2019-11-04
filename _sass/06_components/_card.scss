@@ -10,6 +10,8 @@
 }
 
 .card {
+    position: relative;
+
     @media all and (min-width: $bp-small-3) {
         flex: 0 1 48%;
     }
@@ -35,6 +37,18 @@
     &::before {
         content: "";
         display: none;
+    }
+
+    &__link {
+        // This is so the whole card is clickable
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
     }
 
     &__header {
