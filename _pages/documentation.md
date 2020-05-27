@@ -18,7 +18,7 @@ title: "Documentation"
 # intro section
 intro: 
   title: Documentation
-  blurb: In addition to our API documentation, we provide a detailed [User Guide.](https://docs.geotrellis.io/en/latest/) Please see that guide for setup instructions, tutorials, and explanations of GeoTrellis/GIS concepts.
+  blurb: In addition to our API documentation, we provide a detailed [User Guide.](https://geotrellis.readthedocs.io/en/latest/) Please see that guide for setup instructions, tutorials, and explanations of GeoTrellis/GIS concepts.
   body: If you can’t find exactly what you’re looking for in either our Guide or API docs, feel free to join us in our [Gitter channel,](https://gitter.im/geotrellis/geotrellis) where we can answer your questions live.
   button:
     text: Go to docs
@@ -31,13 +31,13 @@ user-guide:
   blurb: Our [User Guide](https://geotrellis.readthedocs.io/en/latest/) provides all the conceptual information required to use GeoTrellis.
   links:
     - text: Home
-      url: https://docs.geotrellis.io 
+      url: https://geotrellis.readthedocs.io/en/latest/
     - text: Setup
-      url: https://docs.geotrellis.io/en/latest/tutorials/setup.html 
+      url: https://geotrellis.readthedocs.io/en/latest/tutorials/setup.html
     - text: Quick Start
-      url: https://docs.geotrellis.io/en/latest/tutorials/quickstart.html 
+      url: https://geotrellis.readthedocs.io/en/latest/tutorials/quickstart.html
     - text: Core Concepts
-      url: https://docs.geotrellis.io/en/latest/guide/core-concepts.html 
+      url: https://geotrellis.readthedocs.io/en/latest/guide/core-concepts.html
 
 # user guide section
 
@@ -69,7 +69,7 @@ scala-api:
 # contributing section
 contributing:
   title: Contributing to GeoTrellis
-  blurb: GeoTrellis is an open source project, so contributions of any kind are welcome and appreciated! Contributors will need to sign a CLA (Contributor’s License Agreement). These details and others relating to GeoTrellis contributions can be found [here.](https://docs.geotrellis.io/en/latest/CONTRIBUTING.html)
+  blurb: GeoTrellis is an open source project, so contributions of any kind are welcome and appreciated! Contributors will need to sign a CLA (Contributor’s License Agreement). These details and others relating to GeoTrellis contributions can be found [here.](https://geotrellis.readthedocs.io/en/latest/CONTRIBUTING.html)
 # contributing section
 
 ---
