@@ -6,4 +6,8 @@
         padding: 0 $pad-small;
         color: $brand-pewter;
     }
+
+    &__inner {
+        list-style-type: none;
+    }
 }
